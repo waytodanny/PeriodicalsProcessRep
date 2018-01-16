@@ -1,0 +1,14 @@
+ERROR - Object with same identifier already exists
+ERROR - Object with same identifier already exists
+ERROR - Object with same identifier already exists
+ERROR - No keys were generated: entry was not written in DB
+ERROR - Duplicate entry 'batman' for key 'login'
+ERROR - Duplicate entry 'batman' for key 'login'
+ERROR - Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
+ERROR - Object with same identifier already exists
+ERROR - Unknown column 'user_uuid' in 'field list'
+ERROR - Unknown column 'user_uuid' in 'field list'
+ERROR - Duplicate entry '1f940bd3-f7a5-11e7-93e6-a30f6152aa28-2' for key 'PRIMARY'
+ERROR - Unknown column 'user_id' in 'where clause'
+ERROR - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 1 AND user_uuid = '34fa41df-f7a5-11e7-adbd-41982924721f'' at line 1
+ERROR - Unknown column 'id' in 'where clause'

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JavaExternalCoursesFinalProject:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="JavaExternalCoursesFinalProject.war">
+      <element id="artifact" artifact-name="JavaExternalCoursesFinalProject:war exploded" />
+    </root>
+  </artifact>
+</component>
