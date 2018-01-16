@@ -5,22 +5,21 @@
 <%--<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"--%>
 <%--scope="session" />--%>
 <%--<fmt:setLocale value="${language}" />--%>
-<fmt:setBundle basename="resources" var="rb" />
+<fmt:setBundle basename="resources" var="rb"/>
 <html>
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="<c:url value='/css/main.css'/>" type="text/css"/>
 </head>
-<body>
+<body class="no-header">
 <div class="login-wrapper">
-    <form id="ordertracking" class="form-signin" method="post" action="/app/login">
-        <input type="hidden" name="command" value="/login"/>
-
+    <form id="login" class="form-signin" method="post" action="/app/login">
         <h2 class="form-signin-heading">
             <fmt:message key="page.login.title" bundle="${rb}"/>
         </h2>
-        <hr class="colorgraph"><br>
+        <hr class="colorgraph">
+        <br>
         <input type="text" class="form-control" name="login" required="" maxlength="50" autofocus=""
                placeholder="<fmt:message key="page.login.placeholder.login" bundle="${rb}"/>"/>
         <input type="password" class="form-control" name="password" required="" maxlength="50"
@@ -31,8 +30,10 @@
             </span>
         </button>
         <c:if test="${not empty loginErrorMessage}">
-        <span class="help-block">${loginErrorMessage}, would you like to
-            <a href="registration" value="register">register</a>?
+        <span class="help-block">${loginErrorMessage}, <fmt:message key="page.login.register.begin" bundle="${rb}"/>
+            <a href="registration">
+                <fmt:message key="page.login.register.end" bundle="${rb}"/>?
+            </a>
         </span>
         </c:if>
     </form>

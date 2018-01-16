@@ -9,7 +9,7 @@
 
     <appender name="TxtAppender" class="org.apache.log4j.FileAppender">
         <param name="Encoding" value="UTF-8"/>
-        <param name="Threshold" value="ERROR"/>
+        <param name="Threshold" value="INFO"/>
         <param name="File" value="src/main/resources/log.txt"/>
         <layout class="org.apache.log4j.SimpleLayout"/>
     </appender>

@@ -10,7 +10,6 @@ import static com.periodicals.utils.AttributesHolder.SERVLET_ROOT;
 
 /*TODO divide not to let class have lot of responsibilities*/
 public class CommandHelper {
-
     public static boolean requiredFieldsNotEmpty(String[] fields) {
         for (String field : fields) {
             if (!paramIsNotEmpty(field)) {

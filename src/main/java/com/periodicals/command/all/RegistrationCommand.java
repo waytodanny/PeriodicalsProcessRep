@@ -1,26 +1,32 @@
 package com.periodicals.command.all;
 
 import com.periodicals.command.Command;
-import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.exceptions.RegistrationException;
 import com.periodicals.services.RegistrationService;
+import com.periodicals.utils.propertyManagers.LanguagePropsManager;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Locale;
 
 import static com.periodicals.command.util.CommandHelper.requiredFieldsNotEmpty;
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
 import static com.periodicals.utils.AttributesHolder.GET;
+import static com.periodicals.utils.MessagesHolder.REGISTRATION_ERROR_MESSAGE;
 import static com.periodicals.utils.PagesHolder.LOGIN_PAGE;
 import static com.periodicals.utils.PagesHolder.REGISTRATION_PAGE;
 
 public class RegistrationCommand implements Command {
-    private RegistrationService reqistrService = RegistrationService.getInstance();
+    private static final Logger LOGGER = Logger.getLogger(RegistrationCommand.class.getSimpleName());
+    private RegistrationService regService = RegistrationService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
+        Locale locale = req.getLocale();
+
         if (req.getMethod().equals(GET)) {
             return new CommandResult(req, resp, FORWARD, REGISTRATION_PAGE);
         }
@@ -30,17 +36,16 @@ public class RegistrationCommand implements Command {
         String email = req.getParameter("email");
 
         String[] reqFields = {login, password, email};
-
         if (!requiredFieldsNotEmpty(reqFields)) {
-            req.setAttribute("registrErrorMessage", "All fields must been not empty");
+            req.setAttribute(REGISTRATION_ERROR_MESSAGE, LanguagePropsManager.getProperty("registration.error.empty", locale));
             return new CommandResult(req, resp, FORWARD, REGISTRATION_PAGE);
         }
 
         try {
-            reqistrService.register(login, password, email);
+            regService.register(login, password, email);
             return new CommandResult(req, resp, REDIRECT, LOGIN_PAGE);
         } catch (RegistrationException e) {
-            req.setAttribute("registrErrorMessage", e.getMessage());
+            req.setAttribute(REGISTRATION_ERROR_MESSAGE, LanguagePropsManager.getProperty("registration.error.exists", locale));
             return new CommandResult(req, resp, FORWARD, REGISTRATION_PAGE);
         }
     }

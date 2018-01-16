@@ -16,5 +16,7 @@
         <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
 
-    контекст листенер
+    <listener>
+        <listener-class>com.periodicals.servlet.ContextListener</listener-class>
+    </listener>
 </web-app>

@@ -12,15 +12,15 @@ import com.periodicals.exceptions.ServiceException;
 import com.periodicals.security.SecurityConfiguration;
 import com.periodicals.services.UserService;
 import com.periodicals.services.UserSubscriptionsService;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+
 public class Main {
 
     public static void main(String[] args) throws DaoException, ServiceException {
-        SecurityConfiguration.getInstance();
-
 //        UserSubscriptionsService service = UserSubscriptionsService.getInstance();
 //        String uuid = "1f940bd3-f7a5-11e7-93e6-a30f6152aa28";
 //        Genre genre = JdbcDaoFactory.getInstance().getGenresDao().getGenreByName("comics");

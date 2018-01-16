@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Set;
 
 import static com.periodicals.utils.AttributesHolder.PAGE_SUFFIX;
@@ -24,6 +25,9 @@ public class AccessFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+//        Locale locale = request.getLocale();
+//        request.getSession().setAttribute("locale", locale);
 
         SecurityConfiguration config = SecurityConfiguration.getInstance();
 
