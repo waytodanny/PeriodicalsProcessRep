@@ -13,7 +13,9 @@ import com.periodicals.dao.transactions.Transaction;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserSubscriptionsService {
     private static UserSubscriptionsService userSubsService = new UserSubscriptionsService();
@@ -72,5 +74,19 @@ public class UserSubscriptionsService {
            /*TODO log*/
         }
         return subscribed;
+    }
+
+    public List<Periodical> getUserSubscriptions(String uuid) {
+        List<Periodical> subs = new ArrayList<>();
+        try {
+            subs = perDao.getUserSubscriptions(uuid);
+        } catch (DaoException e) {
+            /*TODO log*/
+        }
+        return subs;
+    }
+
+    public void siftAlreadySubscribed(List<Periodical> upToSubs, List<Periodical> userSubs) {
+        upToSubs.removeAll(userSubs);
     }
 }

@@ -1,15 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%--<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"--%>
+<%--scope="session" />--%>
+<%--<fmt:setLocale value="${language}" />--%>
+<fmt:setBundle basename="resources" var="rb"/>
 <ul class="pagination">
     <c:choose>
         <c:when test="${currentPage != 1}">
             <li class="page-item">
-                <a class="page-link" href="catalog?page=${currentPage - 1}">Previous</a>
+                <a class="page-link" href="catalog?page=${currentPage - 1}">
+                    <fmt:message key="pagination.btn.prev" bundle="${rb}"/>
+                </a>
             </li>
         </c:when>
         <c:otherwise>
             <li class="page-item disabled">
-                <span class="page-link">Previous</span>
+                <span class="page-link">
+                   <fmt:message key="pagination.btn.prev" bundle="${rb}"/>
+                </span>
             </li>
         </c:otherwise>
     </c:choose>
@@ -35,12 +44,16 @@
     <c:choose>
         <c:when test="${currentPage lt pagesCount}">
             <li class="page-item">
-                <a class="page-link" href="catalog?page=${currentPage + 1}">Next</a>
+                <a class="page-link" href="catalog?page=${currentPage + 1}">
+                    <fmt:message key="pagination.btn.next" bundle="${rb}"/>
+                </a>
             </li>
         </c:when>
         <c:otherwise>
             <li class="page-item disabled">
-                <span class="page-link">Next</span>
+                <span class="page-link">
+                  <fmt:message key="pagination.btn.next" bundle="${rb}"/>
+                </span>
             </li>
         </c:otherwise>
     </c:choose>

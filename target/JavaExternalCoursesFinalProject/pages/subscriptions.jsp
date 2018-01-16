@@ -43,7 +43,7 @@
                     <p class="list-group-item-text">${periodical.description}</p>
                     <div class="row">
                         <div class="col-sm-12">
-                            <a class="btn btn-warning" href="issues?periodical=${subscription.id}">
+                            <a class="btn btn-warning" href="issues?periodical=${periodical.id}">
                                 Periodical Issues</a>
                         </div>
                     </div>

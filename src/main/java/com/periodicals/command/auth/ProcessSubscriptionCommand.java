@@ -1,11 +1,14 @@
 package com.periodicals.command.auth;
 
 import com.periodicals.command.Command;
+import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.UserDto;
 import com.periodicals.dao.entities.Periodical;
+import com.periodicals.dto.UserDto;
+import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.UserSubscriptionsService;
 import com.periodicals.utils.Cart;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,34 +22,41 @@ import static com.periodicals.command.util.RedirectType.REDIRECT;
 import static com.periodicals.utils.PagesHolder.*;
 
 public class ProcessSubscriptionCommand implements Command {
+    public static final Logger LOGGER = Logger.getLogger(ProcessSubscriptionCommand.class.getSimpleName());
     private UserSubscriptionsService subsService = UserSubscriptionsService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession();
-        if(!isUserLoggedIn(session)){
-           return new CommandResult(req, resp, REDIRECT, LOGIN_PAGE);
+        if (!isUserLoggedIn(session)) {
+            return new CommandResult(req, resp, REDIRECT, LOGIN_PAGE);
         }
+
+        String referer = CommandHelper.getRefererWithoutServletPath(req);
+
         Cart cart = (Cart) session.getAttribute("cart");
-        if(Objects.nonNull(cart)){
-            List<Periodical> subs = cart.getPeriodicals();
+        if (Objects.nonNull(cart)) {
+            List<Periodical> upToSubs = cart.getPeriodicals();
             BigDecimal paySum = cart.getQuantity();
-            if(Objects.nonNull(subs) && Objects.nonNull(paySum)){
+            if (Objects.nonNull(upToSubs) && Objects.nonNull(paySum)) {
                 UserDto user = (UserDto) session.getAttribute("user");
                 try {
-                    subsService.processSubscriptions(user.getUuid(), subs, paySum);
+                    List<Periodical> userSubs = subsService.getUserSubscriptions(user.getUuid());
+                    subsService.siftAlreadySubscribed(upToSubs, userSubs);
+                    subsService.processSubscriptions(user.getUuid(), upToSubs, paySum);
+                    cart.cleanUp();
                     return new CommandResult(req, resp, REDIRECT, USER_SUBSCRIPTIONS_PAGE);
-                } catch (Exception e) {
-                    /*TODO log*/
-                    return new CommandResult(req, resp, REDIRECT, LOGIN_PAGE);
+                } catch (ServiceException e) {
+                    LOGGER.error(e.getMessage());
+                    return new CommandResult(req, resp, REDIRECT, referer);
                 }
-            } else{
-                /*TODO log*/
-                return new CommandResult(req, resp, REDIRECT, ERROR_PAGE);
+            } else {
+                LOGGER.error("payments or payment sum were nullable");
+                return new CommandResult(req, resp, REDIRECT, referer);
             }
-        } else{
-            /*TODO log*/
-            return new CommandResult(req, resp, REDIRECT, ERROR_PAGE);
+        } else {
+            LOGGER.error("user cart is nullable");
+            return new CommandResult(req, resp, REDIRECT, referer);
         }
     }
 }

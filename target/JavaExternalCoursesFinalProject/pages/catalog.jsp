@@ -52,7 +52,8 @@
                     <div class="col-sm-6">
                         <form class="list-group-item-button" method="post" action="add_to_cart">
                             <button name="perId" value="${periodical.id}" type="submit" class="btn btn-success">
-                                <i class="fa fa-shopping-cart">&nbsp;</i> Add to Cart
+                                <i class="fa fa-shopping-cart">&nbsp;</i>
+                                <fmt:message key="page.catalog.btn.add_to_cart" bundle="${rb}"/>
                             </button>
                         </form>
                     </div>

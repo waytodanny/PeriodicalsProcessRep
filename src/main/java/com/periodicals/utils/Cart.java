@@ -3,6 +3,7 @@ package com.periodicals.utils;
 import com.periodicals.dao.entities.Periodical;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class Cart {
             quantity = quantity.subtract(periodical.getSubscriptionCost())
                     .setScale(2, BigDecimal.ROUND_DOWN);
         }
+    }
+
+    public void cleanUp() {
+       this.periodicals = new LinkedList<>();
+       this.quantity = new BigDecimal(0);
     }
 
     public List<Periodical> getPeriodicals() {
