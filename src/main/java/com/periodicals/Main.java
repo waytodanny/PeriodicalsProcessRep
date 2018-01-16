@@ -1,21 +1,7 @@
 package com.periodicals;
 
-import com.periodicals.dao.factories.JdbcDaoFactory;
-import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
-import com.periodicals.dto.PeriodicalDto;
-import com.periodicals.entities.Genre;
-import com.periodicals.entities.Payment;
-import com.periodicals.entities.Periodical;
-import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.security.SecurityConfiguration;
-import com.periodicals.services.UserService;
-import com.periodicals.services.UserSubscriptionsService;
-import org.apache.log4j.Logger;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 
 public class Main {

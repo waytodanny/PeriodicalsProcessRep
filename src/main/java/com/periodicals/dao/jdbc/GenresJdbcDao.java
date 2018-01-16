@@ -3,7 +3,7 @@ package com.periodicals.dao.jdbc;
 import com.periodicals.dao.connection.ConnectionManager;
 import com.periodicals.dao.connection.ConnectionWrapper;
 import com.periodicals.dao.interfaces.GenresDao;
-import com.periodicals.entities.Genre;
+import com.periodicals.dao.entities.Genre;
 import com.periodicals.exceptions.DaoException;
 
 import java.sql.PreparedStatement;

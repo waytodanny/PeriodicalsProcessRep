@@ -13,6 +13,11 @@ import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.PagesHolder.LOGIN_PAGE;
 import static com.periodicals.utils.PagesHolder.USER_SUBSCRIPTIONS_PAGE;
 
+/**
+ * Command that uses pagination to display user subscriptions(periodicals)
+ *
+ * @see CatalogCommand
+ */
 public class UserSubscriptionsCommand extends CatalogCommand {
     private UserSubscriptionsService subsService = UserSubscriptionsService.getInstance();
     private HttpSession session;
@@ -34,11 +39,11 @@ public class UserSubscriptionsCommand extends CatalogCommand {
 
     private PeriodicalsRequestData getPeriodicalsRequestDataByUser(HttpServletRequest req, UserDto user) {
         PeriodicalsRequestData data = new PeriodicalsRequestData();
-        data.currentPage = getPageFromReguest(req);
+        data.currentPage = getPageFromRequest(req);
         data.periodicals = subsService.getUserSubscriptionsDtoSublist(user.getUuid(),
                 (data.currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
 
-         data.recordsCount = subsService.getUserSubscriptionsCount(user.getUuid());
+        data.recordsCount = subsService.getUserSubscriptionsCount(user.getUuid());
         data.pageLink = USER_SUBSCRIPTIONS_PAGE + "?page=" + data.currentPage;
         return data;
     }

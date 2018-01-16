@@ -3,9 +3,9 @@ package com.periodicals.dao.jdbc;
 import com.periodicals.dao.interfaces.PaymentsDao;
 import com.periodicals.dao.connection.ConnectionManager;
 import com.periodicals.dao.connection.ConnectionWrapper;
-import com.periodicals.entities.Payment;
-import com.periodicals.entities.Periodical;
-import com.periodicals.entities.User;
+import com.periodicals.dao.entities.Payment;
+import com.periodicals.dao.entities.Periodical;
+import com.periodicals.dao.entities.User;
 import com.periodicals.exceptions.DaoException;
 
 import javax.naming.OperationNotSupportedException;

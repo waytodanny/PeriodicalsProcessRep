@@ -3,7 +3,7 @@ package com.periodicals.services;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.RolesJdbcDao;
 import com.periodicals.dto.RoleDto;
-import com.periodicals.entities.Role;
+import com.periodicals.dao.entities.Role;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 

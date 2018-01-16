@@ -1,10 +1,9 @@
 package com.periodicals.command.auth;
 
-import com.periodicals.authentification.AuthenticationHelper;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dto.UserDto;
-import com.periodicals.entities.Periodical;
+import com.periodicals.dao.entities.Periodical;
 import com.periodicals.services.UserSubscriptionsService;
 import com.periodicals.utils.Cart;
 

@@ -2,7 +2,7 @@ package com.periodicals.command.auth;
 
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.entities.Periodical;
+import com.periodicals.dao.entities.Periodical;
 import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;

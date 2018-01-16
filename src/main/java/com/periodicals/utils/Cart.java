@@ -1,6 +1,6 @@
 package com.periodicals.utils;
 
-import com.periodicals.entities.Periodical;
+import com.periodicals.dao.entities.Periodical;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;

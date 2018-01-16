@@ -2,7 +2,9 @@ package com.periodicals.servlet;
 
 import com.periodicals.dao.connection.ConnectionPool;
 import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.services.GenresService;
 import com.periodicals.services.LoginService;
+import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -19,6 +21,8 @@ public class ContextListener implements ServletContextListener {
         ConnectionPool.getInstance();
         LoginService.getInstance();
         JdbcDaoFactory.getInstance();
+        PeriodicalService.getInstance();
+        GenresService.getInstance();
     }
 
     @Override

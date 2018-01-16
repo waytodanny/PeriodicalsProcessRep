@@ -19,7 +19,10 @@ public class SecurityConfiguration {
         permissions.put(PERIODICAL, "AUTH");
         permissions.put(PERIODICAL_ISSUES, "ALL");
         permissions.put(SUBSCRIPTIONS, "AUTH");
-        permissions.put(ADD_TO_CART, "AUTH");
+
+        /*all for redirecting to login page in case of unauthorized user
+        wants to buy something, instead of redirecting to error page by filter*/
+        permissions.put(ADD_TO_CART, "ALL");
         permissions.put(SUBSCRIBE, "AUTH");
 
         permissions.put(ADMIN_MAIN, /*"ADMIN_MAIN"*/"ALL");

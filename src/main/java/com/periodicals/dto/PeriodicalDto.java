@@ -1,7 +1,7 @@
 package com.periodicals.dto;
 
-import com.periodicals.entities.Genre;
-import com.periodicals.entities.Publisher;
+import com.periodicals.dao.entities.Genre;
+import com.periodicals.dao.entities.Publisher;
 
 import java.math.BigDecimal;
 

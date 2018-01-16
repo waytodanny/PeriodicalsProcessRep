@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import static com.periodicals.utils.AttributesHolder.PAGE_SUFFIX;
+import static com.periodicals.utils.PagesHolder.ERROR_PAGE;
 
 @WebFilter(urlPatterns = {"/*"})
 public class AccessFilter implements Filter {
@@ -25,9 +26,6 @@ public class AccessFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-
-//        Locale locale = request.getLocale();
-//        request.getSession().setAttribute("locale", locale);
 
         SecurityConfiguration config = SecurityConfiguration.getInstance();
 
@@ -48,6 +46,7 @@ public class AccessFilter implements Filter {
                 return;
             }
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.sendRedirect(ERROR_PAGE);
             return;
 
         }
@@ -59,15 +58,15 @@ public class AccessFilter implements Filter {
                 return;
             }
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.sendRedirect(ERROR_PAGE);
             return;
         }
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.sendRedirect(ERROR_PAGE);
     }
 
     private String getCorrectPath(HttpServletRequest request) {
         String path = request.getRequestURI();
-        String perId = request.getParameter("periodical");
-
         if (path == null) {
             path = "/";
         } else {

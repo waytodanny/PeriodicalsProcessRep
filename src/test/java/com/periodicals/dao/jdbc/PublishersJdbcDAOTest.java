@@ -1,7 +1,7 @@
 //package com.periodicals.dao.jdbc;
 //
 //import com.periodicals.dao.factories.JdbcDaoFactory;
-//import com.periodicals.entities.Publisher;
+//import com.periodicals.dao.entities.Publisher;
 //import com.periodicals.exceptions.DaoException;
 //import dbTestHelpers.InMemoryDbManager;
 //import org.apache.log4j.LogManager;

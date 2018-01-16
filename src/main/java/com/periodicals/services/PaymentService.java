@@ -4,10 +4,9 @@ import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PaymentsJdbcDao;
 import com.periodicals.dto.PaymentDto;
 import com.periodicals.dto.PeriodicalDto;
-import com.periodicals.dto.RoleDto;
-import com.periodicals.entities.Payment;
-import com.periodicals.entities.Periodical;
-import com.periodicals.entities.User;
+import com.periodicals.dao.entities.Payment;
+import com.periodicals.dao.entities.Periodical;
+import com.periodicals.dao.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 

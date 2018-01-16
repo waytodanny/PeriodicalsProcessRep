@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+
 import static com.periodicals.utils.AttributesHolder.COMMAND;
+import static com.periodicals.utils.PagesHolder.ERROR_PAGE;
 
 //@WebServlet("/")
 public class Dispatcher extends HttpServlet {

@@ -3,7 +3,7 @@ package com.periodicals.services;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.GenresJdbcDao;
 import com.periodicals.dto.GenreDto;
-import com.periodicals.entities.Genre;
+import com.periodicals.dao.entities.Genre;
 import com.periodicals.exceptions.DaoException;
 
 import java.util.ArrayList;

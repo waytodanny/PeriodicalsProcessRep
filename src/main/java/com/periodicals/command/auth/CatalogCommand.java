@@ -5,7 +5,7 @@ import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dto.GenreDto;
 import com.periodicals.dto.PeriodicalDto;
-import com.periodicals.entities.Genre;
+import com.periodicals.dao.entities.Genre;
 import com.periodicals.services.GenresService;
 import com.periodicals.services.PeriodicalService;
 
@@ -26,7 +26,6 @@ public class CatalogCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
         PeriodicalsRequestData data = getPeriodicalsRequestData(req);
-         /*Cюда заходит с команты user subscription где не нужны жанры*/
         SetRequestAttributes(req, data);
         return new CommandResult(req, resp, FORWARD, data.pageLink);
     }
@@ -42,9 +41,14 @@ public class CatalogCommand implements Command {
         return getPeriodicalsRequestDataAll(req);
     }
 
+    /**
+     * fills PeriodicalsRequestData object by sublist of all periodicals
+     *
+     * @see PeriodicalsRequestData
+     */
     private PeriodicalsRequestData getPeriodicalsRequestDataAll(HttpServletRequest req) {
         PeriodicalsRequestData data = new PeriodicalsRequestData();
-        data.currentPage = getPageFromReguest(req);
+        data.currentPage = getPageFromRequest(req);
         data.periodicals = perService.getPeriodicalsDtoSublist
                 ((data.currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
         data.recordsCount = perService.getPeriodicalsCount();
@@ -52,9 +56,14 @@ public class CatalogCommand implements Command {
         return data;
     }
 
+    /**
+     * fills PeriodicalsRequestData object by sublist of some genre periodicals
+     *
+     * @see PeriodicalsRequestData
+     */
     private PeriodicalsRequestData getPeriodicalsRequestDataByGenre(HttpServletRequest req, Genre genre) {
         PeriodicalsRequestData data = new PeriodicalsRequestData();
-        data.currentPage = getPageFromReguest(req);
+        data.currentPage = getPageFromRequest(req);
         data.periodicals = perService.getGenrePeriodicalsDtoSublist
                 (genre, (data.currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
         data.recordsCount = perService.getGenrePeriodicalCount(genre);
@@ -62,7 +71,10 @@ public class CatalogCommand implements Command {
         return data;
     }
 
-    protected int getPageFromReguest(HttpServletRequest req) {
+    /**
+     * Gets page from request query or returns default if page param is not found
+     */
+    protected int getPageFromRequest(HttpServletRequest req) {
         int page = 1;
         if (paramClarifiedInQuery(req, "page")) {
             page = Integer.parseInt(req.getParameter("page"));
@@ -70,6 +82,9 @@ public class CatalogCommand implements Command {
         return page;
     }
 
+    /**
+     * Sets request attributes that are needed for view to display
+     */
     private void SetRequestAttributes(HttpServletRequest req, PeriodicalsRequestData data) {
         List<GenreDto> genres = genresService.getAll();
         int pagesCount = CommandHelper.getPagesCount(data.recordsCount, RECORDS_PER_PAGE);
@@ -80,6 +95,9 @@ public class CatalogCommand implements Command {
         req.setAttribute("currentPage", data.currentPage);
     }
 
+    /**
+     * Additional class that is needed to carry some info for pages that use periodicals pagination
+     */
     class PeriodicalsRequestData {
         protected List<PeriodicalDto> periodicals;
         protected int recordsCount;

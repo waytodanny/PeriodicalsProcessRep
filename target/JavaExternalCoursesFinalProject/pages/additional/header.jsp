@@ -16,20 +16,20 @@
 </header>
 
 <nav id="sidebar" role="navigation">
-    <a class="btn btn-success navbar-button" href="login">
+    <a class="btn btn-success navbar-button" href="registration">
         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
         <fmt:message key="page.header.sidebar.btn.register" bundle="${rb}"/>
     </a>
-    <a class="btn btn-info navbar-button" href="">
+    <a class="btn btn-info navbar-button" href="login">
         <i class="fa fa-sign-in" aria-hidden="true"></i>
         <fmt:message key="page.header.sidebar.btn.login" bundle="${rb}"/>
     </a>
 
-    <a class="btn btn-secondary navbar-button" href="">
+    <a class="btn btn-secondary navbar-button" href="logout">
         <i class="fa fa-sign-out" aria-hidden="true"></i>
-        <fmt:message key="page.header.sidebar.btn.sign_out" bundle="${rb}"/>
+        <fmt:message key="page.header.sidebar.btn.log_out" bundle="${rb}"/>
     </a>
-    <a class="btn btn-warning navbar-button" href="">
+    <a class="btn btn-warning navbar-button" href="subscriptions">
         <i class="fa fa-book" aria-hidden="true"></i>
         <fmt:message key="page.header.sidebar.btn.subscribes" bundle="${rb}"/>
     </a>

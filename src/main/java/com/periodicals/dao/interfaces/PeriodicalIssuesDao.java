@@ -1,7 +1,6 @@
 package com.periodicals.dao.interfaces;
 
-import com.periodicals.dao.interfaces.GenericDao;
-import com.periodicals.entities.PeriodicalIssue;
+import com.periodicals.dao.entities.PeriodicalIssue;
 import com.periodicals.exceptions.DaoException;
 
 import java.util.List;

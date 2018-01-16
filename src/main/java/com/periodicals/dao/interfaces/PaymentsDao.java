@@ -1,8 +1,7 @@
 package com.periodicals.dao.interfaces;
 
-import com.periodicals.dao.interfaces.GenericDao;
-import com.periodicals.entities.Payment;
-import com.periodicals.entities.Periodical;
+import com.periodicals.dao.entities.Payment;
+import com.periodicals.dao.entities.Periodical;
 import com.periodicals.exceptions.DaoException;
 
 import java.util.List;

@@ -4,8 +4,8 @@ import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dto.PeriodicalDto;
-import com.periodicals.entities.Periodical;
-import com.periodicals.entities.Publisher;
+import com.periodicals.dao.entities.Periodical;
+import com.periodicals.dao.entities.Publisher;
 import com.periodicals.services.PeriodicalService;
 import com.periodicals.services.PublisherService;
 

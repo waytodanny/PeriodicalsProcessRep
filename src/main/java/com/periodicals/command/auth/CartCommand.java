@@ -3,21 +3,17 @@ package com.periodicals.command.auth;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.entities.Periodical;
+import com.periodicals.dao.entities.Periodical;
 import com.periodicals.services.PeriodicalService;
 import com.periodicals.utils.Cart;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Objects;
 
 import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
-import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.AttributesHolder.SERVLET_ROOT;
 import static com.periodicals.utils.PagesHolder.LOGIN_PAGE;
 
 public class CartCommand implements Command {

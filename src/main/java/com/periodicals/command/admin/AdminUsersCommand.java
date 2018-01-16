@@ -5,8 +5,7 @@ import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dto.RoleDto;
 import com.periodicals.dto.UserDto;
-import com.periodicals.entities.Role;
-import com.periodicals.entities.User;
+import com.periodicals.dao.entities.User;
 import com.periodicals.services.RoleService;
 import com.periodicals.services.UserService;
 

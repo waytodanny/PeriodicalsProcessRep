@@ -3,8 +3,8 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandHelper;
-import com.periodicals.entities.Periodical;
-import com.periodicals.entities.PeriodicalIssue;
+import com.periodicals.dao.entities.Periodical;
+import com.periodicals.dao.entities.PeriodicalIssue;
 import com.periodicals.services.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 
