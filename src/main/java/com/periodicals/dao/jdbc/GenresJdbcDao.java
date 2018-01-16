@@ -46,7 +46,7 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, Short> implements Genr
     }
 
     @Override
-    protected Object[] getObjectParams(Genre object) throws DaoException {
+    protected Object[] getInsertObjectParams(Genre object) throws DaoException {
         return new Object[0];
     }
 

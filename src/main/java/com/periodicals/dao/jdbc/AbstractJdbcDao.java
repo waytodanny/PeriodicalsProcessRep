@@ -17,7 +17,7 @@ import static com.periodicals.utils.JdbcQueriesHolder.COUNT_PARAM;
 public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     private static final Logger LOGGER = Logger.getLogger(AbstractJdbcDao.class);
 
-    protected abstract Object[] getObjectParams(T object) throws DaoException;
+    protected abstract Object[] getInsertObjectParams(T object) throws DaoException;
 
     protected abstract Object[] getObjectUpdateParams(T object) throws DaoException;
 
@@ -70,6 +70,14 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
 
 
     public void update(String query, Object... params) throws DaoException {
+        executeUpdate(query, params);
+    }
+
+    public void delete(String query, Object... params) throws DaoException {
+        executeUpdate(query, params);
+    }
+
+    private void executeUpdate(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -82,10 +90,6 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             LOGGER.error("Cannot parse update query", e);
             throw new DaoException(e);
         }
-    }
-
-    public void delete(String query, Object... params) throws DaoException {
-        update(query, params);
     }
 
     public Long getEntriesCount(String query, Object... params) throws DaoException {

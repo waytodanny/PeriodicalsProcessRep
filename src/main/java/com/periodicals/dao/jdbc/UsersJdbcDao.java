@@ -3,7 +3,6 @@ package com.periodicals.dao.jdbc;
 import com.periodicals.dao.entities.Role;
 import com.periodicals.dao.entities.User;
 import com.periodicals.dao.interfaces.UsersDao;
-import com.periodicals.dao.jdbc.AbstractJdbcDao;
 import com.periodicals.exceptions.DaoException;
 
 
@@ -33,7 +32,7 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
 
     @Override
     public String add(User user) throws DaoException {
-        return super.insert(USER_INSERT, getObjectParams(user));
+        return super.insert(USER_INSERT, getInsertObjectParams(user));
     }
 
     @Override
@@ -57,7 +56,7 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
     }
 
     @Override
-    protected Object[] getObjectParams(User user) {
+    protected Object[] getInsertObjectParams(User user) {
         String id = user.getId();
         String login = user.getLogin();
         String pass = user.getPassword();

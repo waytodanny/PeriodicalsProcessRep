@@ -4,7 +4,7 @@ import com.periodicals.dao.entities.util.Identified;
 
 import java.util.Objects;
 
-public class Role implements Identified<Byte>, Cloneable {
+public class Role implements Identified<Byte> {
     private static final int MAX_ROLE_NAME_LENGTH = 50;
 
     private Byte id;

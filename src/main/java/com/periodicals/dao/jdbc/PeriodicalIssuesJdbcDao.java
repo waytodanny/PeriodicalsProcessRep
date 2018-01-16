@@ -44,7 +44,7 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, Lo
     }
 
     @Override
-    protected Object[] getObjectParams(PeriodicalIssue object) throws DaoException {
+    protected Object[] getInsertObjectParams(PeriodicalIssue object) throws DaoException {
         return new Object[0];
     }
 

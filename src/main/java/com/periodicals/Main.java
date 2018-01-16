@@ -1,9 +1,11 @@
 package com.periodicals;
 
+import com.periodicals.dao.entities.Publisher;
 import com.periodicals.dao.entities.Role;
 import com.periodicals.dao.entities.User;
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.dao.jdbc.PublishersJdbcDao;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
@@ -16,27 +18,6 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws DaoException, ServiceException {
-
-        AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
-        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
-
-//                User user = usersJdbcDAO.getByLogin("a");
-//                user.setEmail("new mail");
-//                usersJdbcDAO.update(user);
-//        List<User> users = usersJdbcDAO.getAll();
-//        System.out.println(users.size());
-
-//        User user = usersJdbcDAO.getById("156638d4-fab3-11e7-ad94-2b2421f23a42");
-//        System.out.println(user.getRole().getName());
-
-//        User user = usersJdbcDAO.getByLogin("b");
-//        System.out.println(user.getEmail());
-
-//        System.out.println(usersJdbcDAO.getEntriesCount());
-
-//        List<User> users = usersJdbcDAO.getSublist(1, 5);
-//        System.out.println(users.size());
-
 
 //        UserSubscriptionsService service = UserSubscriptionsService.getInstance();
 //        String uuid = "1f940bd3-f7a5-11e7-93e6-a30f6152aa28";
@@ -52,40 +33,11 @@ public class Main {
 //            System.out.println("кук");
 //        }
 
-//        AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
-//
-////        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getDaoByClass(User.class, conn);
-////        UsersJdbcDao usersJdbcDAO2 = (UsersJdbcDao) factory.getDaoByClass(User.class, conn);
-////
-////        User user1 = new User("TestUser127", "testPass");
-////        User user2 = new User("TestUser227", "testPass");
-////
-////        Transaction.doTransaction(new Transaction() {
-////            @Override
-////            public void pass() throws DaoException {
-////                int id = usersJdbcDAO.add(user1);
-////                int id2 = usersJdbcDAO2.add(user2);
-////            }
-////        }, conn);
-//
-////        for (int i = 0; i < 2; i++) {
-////            new Thread(new Runnable() {
-////                public void run() {
-////                    try {
-////                        Transaction.doTransaction(() -> {
-////                            System.out.println(ConnectionManager.getConnectionWrapper());
-////                            System.out.println(ConnectionManager.getConnectionWrapper());
-////                        });
-////                    } catch (Exception | TransactionException e) {
-////
-////                    }
-////                }
-////            }).start();
-////        }
 //
 
+        AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
+
 //        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
-//
 //        List<User> users = usersJdbcDAO.getAll();
 //        System.out.println(users.size());
 //
@@ -93,7 +45,7 @@ public class Main {
 //        user.setId(UuidGenerator.generateUuid());
 //        user.setLogin("batman");
 //        user.setEmail("batman@gmail.com");
-//        user.setRoleId((byte)1);
+//        user.setRole(new Role((byte)1, ""));
 //        user.setPassword(new MD5_Cryptographer().encrypt("batman"));
 //
 //        usersJdbcDAO.add(user);

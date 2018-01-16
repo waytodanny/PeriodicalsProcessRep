@@ -1,7 +1,7 @@
 package com.periodicals.authentification;
 
+import com.periodicals.dao.entities.Role;
 import com.periodicals.dto.UserDto;
-import com.periodicals.dao.entities.util.Role;
 import com.periodicals.services.RoleService;
 
 import javax.servlet.http.HttpSession;

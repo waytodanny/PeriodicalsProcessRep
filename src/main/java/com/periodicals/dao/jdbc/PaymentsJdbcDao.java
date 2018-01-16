@@ -80,7 +80,7 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, Long> implements P
     }
 
     @Override
-    protected Object[] getObjectParams(Payment object) throws DaoException {
+    protected Object[] getInsertObjectParams(Payment object) throws DaoException {
         return new Object[0];
     }
 

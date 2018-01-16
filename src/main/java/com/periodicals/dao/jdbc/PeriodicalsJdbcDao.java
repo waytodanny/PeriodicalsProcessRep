@@ -103,7 +103,7 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> imp
     }
 
     @Override
-    protected Object[] getObjectParams(Periodical object) throws DaoException {
+    protected Object[] getInsertObjectParams(Periodical object) throws DaoException {
         return new Object[0];
     }
 

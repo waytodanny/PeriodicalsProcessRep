@@ -4,138 +4,74 @@ import com.periodicals.dao.interfaces.PublishersDao;
 import com.periodicals.dao.entities.Publisher;
 import com.periodicals.exceptions.DaoException;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.periodicals.utils.JdbcQueriesHolder.*;
+
 public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> implements PublishersDao {
+
     @Override
-    public Integer add(Publisher element) throws DaoException {
-        return null;
+    public Integer add(Publisher publisher) throws DaoException {
+        return super.insert(PUBLISHER_INSERT, getInsertObjectParams(publisher));
     }
 
     @Override
-    public Publisher getById(Integer key) throws DaoException {
-        return null;
+    public Publisher getById(Integer id) throws DaoException {
+        return super.selectObject(PUBLISHER_SELECT_BY_ID, id);
     }
 
     @Override
     public void update(Publisher object) throws DaoException {
-
+        super.update(PUBLISHER_UPDATE, getObjectUpdateParams(object));
     }
 
     @Override
     public void delete(Integer key) throws DaoException {
-
+        super.delete(PUBLISHER_DELETE, key);
     }
 
     @Override
     public List<Publisher> getAll() throws DaoException {
-        return null;
+        return super.selectObjects(PUBLISHER_SELECT_ALL);
     }
 
     @Override
-    protected Object[] getObjectParams(Publisher object) throws DaoException {
-        return new Object[0];
+    protected Object[] getInsertObjectParams(Publisher object) throws DaoException {
+        String name = object.getName();
+
+        return new Object[]{name};
     }
 
     @Override
     protected Object[] getObjectUpdateParams(Publisher object) throws DaoException {
-        return new Object[0];
+        Integer id = object.getId();
+        String name = object.getName();
+
+        return new Object[]{name, id};
     }
 
     @Override
     protected Integer getGeneratedKey(ResultSet rs) throws SQLException {
-        return null;
+        return rs.getInt(1);
     }
 
     @Override
     protected List<Publisher> parseResultSet(ResultSet rs) throws DaoException {
-        return null;
-    }
+        List<Publisher> result = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Publisher publ = new Publisher();
+                publ.setId(rs.getInt("id"));
+                publ.setName(rs.getString("name"));
 
-//    @Override
-//    public String getSelectQuery() {
-//        return "SELECT id, name FROM publishers ";
-//    }
-//
-//    @Override
-//    public String getInsertQuery() {
-//        return "INSERT INTO publishers (name) VALUES (?);";
-//    }
-//
-//    @Override
-//    public String getUpdateQuery() {
-//        return "UPDATE publishers SET name = ? WHERE id = ?;";
-//    }
-//
-//    @Override
-//    public String getDeleteQuery() {
-//        return "DELETE FROM publishers WHERE id = ?;";
-//    }
-//
-//    @Override
-//    protected Object[] getObjectParams(Publisher object) throws DaoException {
-//        return new Object[0];
-//    }
-//
-//    @Override
-//    protected Object[] getObjectUpdateParams(Publisher object) throws DaoException {
-//        return new Object[0];
-//    }
-//
-//    @Override
-//    public Integer getGeneratedKey(ResultSet rs) throws DaoException {
-//        try {
-//            if (rs.next()){
-//                return rs.getInt(1);
-//            }
-//            throw new SQLException("entry was not written in DB");
-//        } catch (SQLException e) {
-//            throw new DaoException("No keys were generated: " + e.getMessage());
-//        }
-//    }
-//
-//    @Override
-//    protected void setGeneratedKey(Publisher object, Integer genId) {
-//        object.setId(genId);
-//    }
-//
-//    @Override
-//    protected List<Publisher> parseResultSet(ResultSet rs) throws DaoException {
-//        List<Publisher> result = new ArrayList<>();
-//        try {
-//            while (rs.next()) {
-//                PersistPublisher publ = new PersistPublisher();
-//                publ.setId(rs.getInt("id"));
-//                publ.setName(rs.getString("name"));
-//
-//                result.add(publ);
-//            }
-//        } catch (Exception e) {
-//            throw new DaoException(e);
-//        }
-//        return result;
-//    }
-//
-//    @Override
-//    protected void prepareStatementForInsert(PreparedStatement stmt, Publisher publ) throws DaoException {
-//        try {
-//            stmt.setString(1, publ.getName());
-//        } catch (Exception e) {
-//            throw new DaoException(e);
-//        }
-//    }
-//
-//    @Override
-//    protected void prepareStatementForUpdate(PreparedStatement stmt, Publisher publ) throws DaoException {
-//        try {
-//            stmt.setString(1, publ.getName());
-//            stmt.setInt(2, publ.getId());
-//        } catch (Exception e) {
-//            throw new DaoException(e);
-//        }
-//    }
+                result.add(publ);
+            }
+        } catch (Exception e) {
+            throw new DaoException(e);
+        }
+        return result;
+    }
 }
