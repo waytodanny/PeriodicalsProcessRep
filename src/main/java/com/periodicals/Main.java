@@ -1,10 +1,12 @@
 package com.periodicals;
 
+import com.periodicals.dao.entities.Genre;
 import com.periodicals.dao.entities.Publisher;
 import com.periodicals.dao.entities.Role;
 import com.periodicals.dao.entities.User;
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.dao.jdbc.GenresJdbcDao;
 import com.periodicals.dao.jdbc.PublishersJdbcDao;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.exceptions.DaoException;
@@ -64,34 +66,34 @@ public class Main {
 //        List<Publisher> publs = publsDao.getAll();
 //        System.out.println(publs.size());
 //
-//        Publisher publisher = new Publisher();
-//        publisher.setName("Dark Horse");
+//        Publisher genre = new Publisher();
+//        genre.setName("Dark Horse");
 //
-//        publsDao.add(publisher);
+//        publsDao.add(genre);
 //
 //        publs = publsDao.getAll();
 //        System.out.println(publs.size());
 
+
+//        GenresJdbcDao perGenres =
+//                (GenresJdbcDao) factory.getGenresDao();
 //
-////        GenresJdbcDao perGenres =
-////                (GenresJdbcDao) factory.getDaoByClass(Genre.class, conn);
-////
-////        List<Genre> genres = perGenres.getAll();
-////        System.out.println(genres.size());
-////
-////        Genre genre = new Genre();
-////        genre.setName("fantastic");
-////        short id2 = perGenres.add(genre);
-////
-////        Genre genre2 = perGenres.getById(id2);
-////
-////        List<Genre> genres2 = perGenres.getAll();
-////        System.out.println(genres2.size());
-////
-////        perGenres.delete(genre2);
-////
-////        List<Genre> genres3 = perGenres.getAll();
-////        System.out.println(genres3.size());
+//        List<Genre> genres = perGenres.getAll();
+//        System.out.println(genres.size());
+//
+//        Genre genre = new Genre();
+//        genre.setName("fantastic1");
+//        short id2 = perGenres.add(genre);
+//
+//        Genre genre2 = perGenres.getById(id2);
+//
+//        List<Genre> genres2 = perGenres.getAll();
+//        System.out.println(genres2.size());
+//
+//        perGenres.delete(genre2.getId());
+//
+//        List<Genre> genres3 = perGenres.getAll();
+//        System.out.println(genres3.size());
 ////
 ////        PeriodicalsJdbcDao persDao =
 ////               (PeriodicalsJdbcDao) factory.getDaoByClass(PeriodicalDto.class);

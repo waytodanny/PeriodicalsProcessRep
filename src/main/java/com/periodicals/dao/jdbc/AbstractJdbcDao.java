@@ -65,7 +65,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
         if(objects.size() > 0){
             return objects.get(0);
         }
-        throw new DaoException("No objects founded by given params");
+        throw new DaoException("No object founded by given params");
     }
 
 

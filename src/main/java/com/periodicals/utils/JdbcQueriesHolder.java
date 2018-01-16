@@ -38,6 +38,16 @@ public class JdbcQueriesHolder {
     public static final String PUBLISHER_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("publisher.entries.count");
     public static final String PUBLISHER_SELECT_SUBLIST = JdbcQueriesPropertyManager.getProperty("publisher.select.sublist");
 
+    /*genres table*/
+    public static final String GENRE_INSERT = JdbcQueriesPropertyManager.getProperty("genre.insert");
+    public static final String GENRE_SELECT_BY_ID = JdbcQueriesPropertyManager.getProperty("genre.select.one.id");
+    public static final String GENRE_SELECT_BY_NAME = JdbcQueriesPropertyManager.getProperty("genre.select.one.name");
+    public static final String GENRE_UPDATE = JdbcQueriesPropertyManager.getProperty("genre.update");
+    public static final String GENRE_DELETE = JdbcQueriesPropertyManager.getProperty("genre.delete");
+    public static final String GENRE_SELECT_ALL = JdbcQueriesPropertyManager.getProperty("genre.select.all");
+    public static final String GENRE_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("genre.entries.count");
+    public static final String GENRE_SELECT_SUBLIST = JdbcQueriesPropertyManager.getProperty("genre.select.sublist");
+
     private JdbcQueriesHolder() {
 
     }
