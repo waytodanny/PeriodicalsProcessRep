@@ -6,11 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de233fcb-9b4f-4b67-b303-f82ebe6967e2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/resources.properties" afterPath="$PROJECT_DIR$/src/main/resources/resources.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/resources_ru.properties" afterPath="$PROJECT_DIR$/src/main/resources/resources_ru.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/subscriptions.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/subscriptions.jsp" />
-    </list>
+    <list default="true" id="de233fcb-9b4f-4b67-b303-f82ebe6967e2" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -829,12 +825,12 @@
       <workItem from="1516095551551" duration="226000" />
       <workItem from="1516095882189" duration="207000" />
       <workItem from="1516096410111" duration="111000" />
-      <workItem from="1516096920040" duration="18797000" />
+      <workItem from="1516096920040" duration="18941000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359365000" />
+    <option name="totallyTimeSpent" value="359509000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
