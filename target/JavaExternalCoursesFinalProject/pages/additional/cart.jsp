@@ -38,7 +38,7 @@
 
     <c:if test="${fn:length(sessionScope.cart.periodicals) gt 0}">
         <form method="post" action="subscribe">
-            <input type="submit" class="btn btn-success btn-lg btn-block cart-checkout" value="Checkout">
+            <input type="submit" class="btn btn-success btn-lg btn-block cart-checkout" value="<fmt:message key="page.cart.checkout" bundle="${rb}"/>">
         </form>
     </c:if>
 </div>
