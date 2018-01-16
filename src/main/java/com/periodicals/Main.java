@@ -1,12 +1,43 @@
 package com.periodicals;
 
+import com.periodicals.dao.entities.Role;
+import com.periodicals.dao.entities.User;
+import com.periodicals.dao.factories.AbstractDaoFactory;
+import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
+import com.periodicals.utils.encryption.MD5_Cryptographer;
+import com.periodicals.utils.uuid.UuidGenerator;
+
+import java.util.List;
 
 
 public class Main {
 
     public static void main(String[] args) throws DaoException, ServiceException {
+
+        AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
+        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
+
+//                User user = usersJdbcDAO.getByLogin("a");
+//                user.setEmail("new mail");
+//                usersJdbcDAO.update(user);
+//        List<User> users = usersJdbcDAO.getAll();
+//        System.out.println(users.size());
+
+//        User user = usersJdbcDAO.getById("156638d4-fab3-11e7-ad94-2b2421f23a42");
+//        System.out.println(user.getRole().getName());
+
+//        User user = usersJdbcDAO.getByLogin("b");
+//        System.out.println(user.getEmail());
+
+//        System.out.println(usersJdbcDAO.getEntriesCount());
+
+//        List<User> users = usersJdbcDAO.getSublist(1, 5);
+//        System.out.println(users.size());
+
+
 //        UserSubscriptionsService service = UserSubscriptionsService.getInstance();
 //        String uuid = "1f940bd3-f7a5-11e7-93e6-a30f6152aa28";
 //        Genre genre = JdbcDaoFactory.getInstance().getGenresDao().getGenreByName("comics");
@@ -14,7 +45,7 @@ public class Main {
 //        try {
 //            Payment payment1 = new Payment(uuid, new BigDecimal("22.2"));
 ////            JdbcDaoFactory.getInstance().getPaymentsDao().add(payment);
-//            Payment payment = JdbcDaoFactory.getInstance().getPaymentsDao().getByKey(1L);
+//            Payment payment = JdbcDaoFactory.getInstance().getPaymentsDao().getById(1L);
 //            JdbcDaoFactory.getInstance().getPaymentsDao().addPaymentPeriodicals(payment, subs);
 ////            service.processSubscriptions(uuid, subs, new BigDecimal("22.2"));
 //        } catch (Exception e) {
@@ -70,7 +101,7 @@ public class Main {
 //        users = usersJdbcDAO.getAll();
 //        System.out.println(users.size());
 //
-//        User same = usersJdbcDAO.getUserByLogin("batman");
+//        User same = usersJdbcDAO.getByLogin("batman");
 //        usersJdbcDAO.delete(same.getId());
 //
 //        users = usersJdbcDAO.getAll();
@@ -100,7 +131,7 @@ public class Main {
 ////        genre.setName("fantastic");
 ////        short id2 = perGenres.add(genre);
 ////
-////        Genre genre2 = perGenres.getByKey(id2);
+////        Genre genre2 = perGenres.getById(id2);
 ////
 ////        List<Genre> genres2 = perGenres.getAll();
 ////        System.out.println(genres2.size());
@@ -122,7 +153,7 @@ public class Main {
 ////        List<PeriodicalDto> pers2 = persDao.getAll();
 ////        System.out.println(pers2.size());
 ////
-////        PeriodicalDto per2 = persDao.getByKey(id3);
+////        PeriodicalDto per2 = persDao.getById(id3);
 ////
 ////        persDao.delete(per2);
 ////
@@ -141,7 +172,7 @@ public class Main {
 ////        List<PeriodicalIssue> issues2 = persIssDao.getAll();
 ////        System.out.println(issues2.size());
 ////
-////        PeriodicalIssue grp2 = persIssDao.getByKey(id4);
+////        PeriodicalIssue grp2 = persIssDao.getById(id4);
 ////
 ////        persIssDao.delete(grp2);
 ////

@@ -25,7 +25,7 @@ public class GenresService {
     public Genre getGenreById(Short genreId) {
         Genre genre = null;
         try {
-            genre = dao.getByKey(genreId);
+            genre = dao.getById(genreId);
         } catch (DaoException e) {
             e.printStackTrace();
         }

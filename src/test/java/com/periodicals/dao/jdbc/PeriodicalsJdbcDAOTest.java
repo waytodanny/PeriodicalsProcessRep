@@ -61,7 +61,7 @@
 //        try {
 //            conn = inmManager.getConnection();
 //            persDAO = (PeriodicalsJdbcDao) JdbcDaoFactory.getInstance().getPeriodicalsDao();
-//            insertedPeriodical = persDAO.getByKey(1);
+//            insertedPeriodical = persDAO.getById(1);
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -86,7 +86,7 @@
 //            persDAO.add(testPeriodical);
 //            assertTrue(testPeriodical.getId() != 0);
 //
-//            samePeriodicalFromDB = persDAO.getByKey(testPeriodical.getId());
+//            samePeriodicalFromDB = persDAO.getById(testPeriodical.getId());
 //
 //            assertNotNull(samePeriodicalFromDB);
 //            assertEquals(testPeriodical, samePeriodicalFromDB);
@@ -131,7 +131,7 @@
 //    @Test
 //    void getByValidPK() {
 //        try {
-//            samePeriodicalFromDB = persDAO.getByKey(insertedPeriodical.getId());
+//            samePeriodicalFromDB = persDAO.getById(insertedPeriodical.getId());
 //
 //            assertNotNull(samePeriodicalFromDB);
 //            assertEquals(insertedPeriodical, samePeriodicalFromDB);
@@ -144,21 +144,21 @@
 //    @Test
 //    void getByInvalidPK() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.getByKey(111);
+//            persDAO.getById(111);
 //        });
 //    }
 //
 //    @Test
 //    void getByNullableKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.getByKey(null);
+//            persDAO.getById(null);
 //        });
 //    }
 //
 //    @Test
 //    void updateExistingPeriodical() {
 //        try {
-//            samePeriodicalFromDB = persDAO.getByKey(insertedPeriodical.getId());
+//            samePeriodicalFromDB = persDAO.getById(insertedPeriodical.getId());
 //            assertNotNull(samePeriodicalFromDB);
 //
 //            String newName = "new name";
@@ -173,7 +173,7 @@
 //
 //            persDAO.update(samePeriodicalFromDB);
 //
-//            samePeriodicalFromDB = persDAO.getByKey(insertedPeriodical.getId());
+//            samePeriodicalFromDB = persDAO.getById(insertedPeriodical.getId());
 //            assertNotEquals(samePeriodicalFromDB, testPeriodical);
 //            assertEquals(newName, samePeriodicalFromDB.getName());
 //            assertEquals(newDescription, samePeriodicalFromDB.getDescription());

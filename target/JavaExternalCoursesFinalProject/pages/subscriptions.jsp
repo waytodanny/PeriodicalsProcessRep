@@ -8,7 +8,7 @@
 <fmt:setBundle basename="resources" var="rb"/>
 <html>
 <head>
-    <title>Subscriptions</title>page.subs.title
+    <title>Subscriptions</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="<c:url value='/css/main.css'/>" type="text/css"/>

@@ -2,7 +2,7 @@ package com.periodicals.services;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
-import com.periodicals.dao.entities.Role;
+import com.periodicals.dao.entities.util.Role;
 import com.periodicals.dao.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.RegistrationException;
@@ -48,7 +48,7 @@ public class RegistrationService {
 
                 Role role = roleService.getRole(ROLE_USER);
 
-                user.setRoleId(role.getId());
+//                user.setRoleId(role.getId());
                 user.setPassword(new MD5_Cryptographer().encrypt(pass));
 
                 usersDao.add(user);

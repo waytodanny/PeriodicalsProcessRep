@@ -2,8 +2,12 @@ package com.periodicals.command.all;
 
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
+import com.periodicals.dao.entities.User;
 import com.periodicals.dto.UserDto;
+import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.LoginService;
+import com.periodicals.services.RoleService;
+import com.periodicals.services.UserService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
 import org.apache.log4j.Logger;
 
@@ -21,6 +25,7 @@ import static com.periodicals.utils.PagesHolder.*;
 public class LoginCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(LoginCommand.class.getSimpleName());
     private LoginService loginService = LoginService.getInstance();
+    private UserService userService = UserService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -39,10 +44,16 @@ public class LoginCommand implements Command {
             return new CommandResult(req, resp, FORWARD, LOGIN_PAGE);
         }
 
-        UserDto user = loginService.getIfVerified(enterLogin, enterPass);
+        User user = loginService.getUserIfVerified(enterLogin, enterPass);
         if (Objects.nonNull(user)) {
-            req.getSession().setAttribute("user", user);
-            if (user.getRole().getName().equals(ROLE_ADMIN)) {
+            UserDto userDto = null;
+            try {
+                userDto = userService.getDtoOfEntity(user);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+            req.getSession().setAttribute("user", userDto);
+            if (userDto.getRole().equals(RoleService.ADMIN_ROLE)) {
                 LOGGER.info("User " + user.getLogin() + " entered as an admin");
                 return new CommandResult(req, resp, REDIRECT, ADMIN_MAIN_PAGE);
             } else {

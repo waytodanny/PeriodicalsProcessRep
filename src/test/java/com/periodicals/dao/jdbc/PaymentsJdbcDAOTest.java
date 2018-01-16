@@ -65,7 +65,7 @@
 //        try {
 //            conn = inmManager.getConnection();
 //            paymentsDao = (PaymentsJdbcDAO) JdbcDAOFactory.getInstance().getPaymentsDao();
-//            insertedPayment = paymentsDao.getByKey(INSERTED_KEY);
+//            insertedPayment = paymentsDao.getById(INSERTED_KEY);
 //            insertedPayment.setPeriodicalsId(paymentsDao.getPaymentPeriodicals(insertedPayment.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
@@ -91,7 +91,7 @@
 //            paymentsDao.add(testPayment);
 //            assertTrue(testPayment.getId() != 0);
 //
-//            samePaymentFromDB = paymentsDao.getByKey(testPayment.getId());
+//            samePaymentFromDB = paymentsDao.getById(testPayment.getId());
 //
 //            assertNotNull(samePaymentFromDB);
 //
@@ -138,7 +138,7 @@
 //    @Test
 //    void getByValidPK() {
 //        try {
-//            samePaymentFromDB = paymentsDao.getByKey(insertedPayment.getId());
+//            samePaymentFromDB = paymentsDao.getById(insertedPayment.getId());
 //
 //            assertNotNull(samePaymentFromDB);
 //            assertEquals(samePaymentFromDB, insertedPayment);
@@ -151,14 +151,14 @@
 //    @Test
 //    void getByInvalidPK() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.getByKey(INVALID_PK);
+//            paymentsDao.getById(INVALID_PK);
 //        });
 //    }
 //
 //    @Test
 //    void getByNullableKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.getByKey(null);
+//            paymentsDao.getById(null);
 //        });
 //    }
 //

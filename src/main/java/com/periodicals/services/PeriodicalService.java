@@ -42,7 +42,7 @@ public class PeriodicalService {
     public Periodical getPeriodicalById(int id) {
         Periodical result = null;
         try {
-            result = perDao.getByKey(id);
+            result = perDao.getById(id);
         } catch (DaoException e) {
             e.printStackTrace();
         }

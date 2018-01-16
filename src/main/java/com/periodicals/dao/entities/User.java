@@ -13,7 +13,7 @@ public class User implements Identified<String> {
     private String login;
     private String password;
     private String email;
-    private Byte roleId;
+    private Role role;
 
     public User() {
 
@@ -75,13 +75,12 @@ public class User implements Identified<String> {
         this.email = email;
     }
 
-    public Byte getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    /*TODO decide whether is right to check here*/
-    public void setRoleId(Byte roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -93,11 +92,11 @@ public class User implements Identified<String> {
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(roleId, user.roleId);
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, login, password, email, roleId);
+        return Objects.hash(uuid, login, password, email, role);
     }
 }

@@ -63,7 +63,7 @@
 //            try {
 //                for (String query : queries) {
 //                    if (!query.trim().isEmpty()) {
-//                        statement.execute(query);
+//                        statement.parse(query);
 //                    }
 //                }
 //            } catch (SQLException e) {

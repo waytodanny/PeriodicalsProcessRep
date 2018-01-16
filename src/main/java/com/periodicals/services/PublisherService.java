@@ -23,7 +23,7 @@ public class PublisherService {
     public Publisher getPublisherById(Integer id) {
         Publisher publisher = null;
         try {
-            publisher = dao.getByKey(id);
+            publisher = dao.getById(id);
         } catch (DaoException e) {
             e.printStackTrace();
         }

@@ -38,9 +38,9 @@ public class AdminUsersCommand implements Command {
 
                 String updRoleIdParam = req.getParameter("updateRoleId");
                 Byte updRoleId = Byte.parseByte(updRoleIdParam);
-                if (!Objects.equals(upToEdit.getRoleId(), updRoleId)) {
-                    upToEdit.setRoleId(updRoleId);
-                }
+//                if (!Objects.equals(upToEdit.getRoleId(), updRoleId)) {
+//                    upToEdit.setRoleId(updRoleId);
+//                }
 
                 userService.update(upToEdit);
             } catch (NumberFormatException e) {

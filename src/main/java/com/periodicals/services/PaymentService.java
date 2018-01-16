@@ -33,7 +33,7 @@ public class PaymentService {
         try {
             List<Payment> entityList = payDao.getUserPaymentsSublist(user, skip, take);
             fillPaymentsDtoList(entityList, dtoList);
-        } catch (DaoException | ServiceException e) {
+        } catch (ServiceException e) {
             /*TODO log*/
             throw new ServiceException(e.getMessage());
         }
@@ -43,11 +43,7 @@ public class PaymentService {
 
     public int getUserPaymentsCount(User user) {
         int result = 0;
-        try {
-            result = payDao.getUserPaymentsCount(user);
-        } catch (DaoException e) {
-            /*TODO log*/
-        }
+                    result = payDao.getUserPaymentsCount(user);
         return result;
     }
 

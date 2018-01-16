@@ -18,7 +18,7 @@
 //class UsersJdbcDAOTest {
 //    static final String USERS_TABLE_NAME = "users";
 //    static InMemoryDbManager inmManager;
-//    static UsersJdbcDao usersDAO;
+//    static UsersJdbcDao2 usersDAO;
 //    static User testUser1, testUser2, nonExistingUser, sameUserFromDB;
 //    static Connection conn;
 //
@@ -60,7 +60,7 @@
 //    void setUp() {
 //            genId = 0;
 //            conn = inmManager.getConnection();
-//            usersDAO = (UsersJdbcDao) JdbcDaoFactory.getInstance().getUsersDao();
+//            usersDAO = (UsersJdbcDao2) JdbcDaoFactory.getInstance().getUsersDao();
 //    }
 //
 //    @AfterEach
@@ -87,7 +87,7 @@
 //            List<User> usersAfter = usersDAO.getAll();
 //
 //            assertTrue(testUser1.getId() != 0);
-//            sameUserFromDB = usersDAO.getByKey(testUser1.getId());
+//            sameUserFromDB = usersDAO.getById(testUser1.getId());
 //
 //            assertNotNull(sameUserFromDB);
 //            assertEquals(testUser1, sameUserFromDB);
@@ -137,7 +137,7 @@
 //            usersDAO.add(testUser1);
 //            assertNotNull(testUser1.getId());
 //
-//            sameUserFromDB = usersDAO.getByKey(testUser1.getId());
+//            sameUserFromDB = usersDAO.getById(testUser1.getId());
 //
 //            assertNotNull(sameUserFromDB);
 //            assertEquals(testUser1, sameUserFromDB);
@@ -150,14 +150,14 @@
 //    @Test
 //    void getByInvalidPK() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            User result = usersDAO.getByKey(11);
+//            User result = usersDAO.getById(11);
 //        });
 //    }
 //
 //    @Test
 //    void getByNullableKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            User result = usersDAO.getByKey(null);
+//            User result = usersDAO.getById(null);
 //        });
 //    }
 //
@@ -167,14 +167,14 @@
 //            genId = usersDAO.add(testUser1);
 //            assertTrue(genId != 0);
 //
-//            sameUserFromDB = usersDAO.getByKey(genId);
+//            sameUserFromDB = usersDAO.getById(genId);
 //            assertEquals(testUser1, sameUserFromDB);
 //
 //            String newPass = "11";
 //            sameUserFromDB.setPassword(newPass);
 //            usersDAO.update(sameUserFromDB);
 //
-//            sameUserFromDB = usersDAO.getByKey(genId);
+//            sameUserFromDB = usersDAO.getById(genId);
 //            assertNotEquals(sameUserFromDB, testUser1);
 //            assertEquals(newPass, sameUserFromDB.getPassword());
 //        } catch (DaoException e) {
@@ -207,7 +207,7 @@
 //            int resultTableSize = usersDAO.getAll().size();
 //            assertEquals(expectedTableSize, resultTableSize);
 //
-//            sameUserFromDB = usersDAO.getByKey(genId);
+//            sameUserFromDB = usersDAO.getById(genId);
 //            assertEquals(testUser1, sameUserFromDB);
 //
 //            usersDAO.delete(sameUserFromDB.getId());
@@ -248,7 +248,7 @@
 //            genId = usersDAO.add(testUser1);
 //            assertTrue(genId != 0);
 //
-//            sameUserFromDB = usersDAO.getUserByLogin(testUser1.getLogin());
+//            sameUserFromDB = usersDAO.getByLogin(testUser1.getLogin());
 //            assertNotNull(sameUserFromDB);
 //            assertEquals(testUser1, sameUserFromDB);
 //        } catch (DaoException e) {
@@ -263,7 +263,7 @@
 //            assertTrue(tableSize == 0);
 //
 //            Assertions.assertThrows(DaoException.class, () -> {
-//                usersDAO.getUserByLogin(nonExistingUser.getLogin());
+//                usersDAO.getByLogin(nonExistingUser.getLogin());
 //            });
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
@@ -274,7 +274,7 @@
 //    @Test
 //    void getUserByNullableLogin() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            usersDAO.getUserByLogin(null);
+//            usersDAO.getByLogin(null);
 //        });
 //    }
 //}

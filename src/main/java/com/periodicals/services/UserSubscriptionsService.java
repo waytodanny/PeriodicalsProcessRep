@@ -36,7 +36,7 @@ public class UserSubscriptionsService {
         try {
             Payment payment = new Payment(uuid, paymentSum);
             Transaction.doTransaction(() -> {
-                payDao.addWithKeyReturn(payment);
+//                payDao.addWithKeyReturn(payment);
                 payDao.addPaymentPeriodicals(payment, subs);
                 perDao.addUserSubscriptions(uuid, subs);
             });

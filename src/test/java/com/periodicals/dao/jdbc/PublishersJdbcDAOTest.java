@@ -85,7 +85,7 @@
 //            List<Publisher> publsAfter = publsDAO.getAll();
 //
 //            assertTrue(testPublisher1.getId() != 0);
-//            samePublisherFromDB = publsDAO.getByKey(testPublisher1.getId());
+//            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
 //
 //            assertNotNull(samePublisherFromDB);
 //            assertEquals(testPublisher1, samePublisherFromDB);
@@ -134,7 +134,7 @@
 //            publsDAO.add(testPublisher1);
 //            assertNotNull(testPublisher1.getId());
 //
-//            samePublisherFromDB = publsDAO.getByKey(testPublisher1.getId());
+//            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
 //
 //            assertNotNull(samePublisherFromDB);
 //            assertEquals(testPublisher1, samePublisherFromDB);
@@ -147,14 +147,14 @@
 //    @Test
 //    void getByInvalidPK() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            publsDAO.getByKey(11);
+//            publsDAO.getById(11);
 //        });
 //    }
 //
 //    @Test
 //    void getByNullableKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            publsDAO.getByKey(null);
+//            publsDAO.getById(null);
 //        });
 //    }
 //
@@ -164,14 +164,14 @@
 //            publsDAO.add(testPublisher1);
 //            assertTrue(testPublisher1.getId() != 0);
 //
-//            samePublisherFromDB = publsDAO.getByKey(testPublisher1.getId());
+//            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
 //            assertEquals(testPublisher1, samePublisherFromDB);
 //
 //            String newName = "Marvel v.2";
 //            samePublisherFromDB.setName(newName);
 //            publsDAO.update(samePublisherFromDB);
 //
-//            samePublisherFromDB = publsDAO.getByKey(testPublisher1.getId());
+//            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
 //            assertNotEquals(samePublisherFromDB, testPublisher1);
 //            assertEquals(newName, samePublisherFromDB.getName());
 //        } catch (DaoException e) {
@@ -204,7 +204,7 @@
 //            int resultTableSize = publsDAO.getAll().size();
 //            assertEquals(expectedTableSize, resultTableSize);
 //
-//            samePublisherFromDB = publsDAO.getByKey(testPublisher1.getId());
+//            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
 //            assertEquals(testPublisher1, samePublisherFromDB);
 //
 //            publsDAO.delete(samePublisherFromDB.getId());

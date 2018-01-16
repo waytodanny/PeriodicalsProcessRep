@@ -43,7 +43,7 @@ public class PeriodicalIssueService {
     public PeriodicalIssue getByPk(long id) {
         PeriodicalIssue result = null;
         try {
-            result = dao.getByKey(id);
+            result = dao.getById(id);
         } catch (DaoException e) {
             e.printStackTrace();
         }

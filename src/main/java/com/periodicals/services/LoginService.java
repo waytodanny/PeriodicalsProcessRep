@@ -2,11 +2,8 @@ package com.periodicals.services;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
-import com.periodicals.dto.RoleDto;
-import com.periodicals.dto.UserDto;
 import com.periodicals.dao.entities.User;
 import com.periodicals.exceptions.DaoException;
-import com.periodicals.exceptions.ServiceException;
 import com.periodicals.utils.encryption.MD5_Cryptographer;
 
 import java.util.Objects;
@@ -25,39 +22,18 @@ public class LoginService {
         return loginService;
     }
 
-    public UserDto getIfVerified(String login, String pass) {
-        User entity = getUser(login);
-        if (isVerified(entity, pass)) {
-            UserDto dto;
-            try {
-                dto = getDtoOfEntity(entity);
-            } catch (ServiceException e) {
-                return null;
-            }
-            return dto;
+    public User getUserIfVerified(String login, String pass) {
+        User user = getUser(login);
+        if (isVerified(user, pass)) {
+            return user;
         }
         return null;
-    }
-
-    /*TODO вынести логику роли*/
-    private UserDto getDtoOfEntity(User entity) throws ServiceException {
-        UserDto userDto = new UserDto();
-
-        userDto.setUuid(entity.getId());
-        userDto.setLogin(entity.getLogin());
-        userDto.setPassword(entity.getPassword());
-        userDto.setEmail(entity.getEmail());
-
-        RoleDto roleDto = roleService.getRoleDtoById(entity.getRoleId());
-        userDto.setRole(roleDto);
-
-        return userDto;
     }
 
     private User getUser(String login) {
         User user = null;
         try {
-            user = usersDao.getUserByLogin(login);
+            user = usersDao.getByLogin(login);
         } catch (DaoException e) {
             /*TODO LOG*/
         }

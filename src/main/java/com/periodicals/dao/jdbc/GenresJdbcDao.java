@@ -16,96 +16,141 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, Short> implements Genr
     public static final String SELECT_GENRE_BY_NAME = "SELECT id, name FROM genres WHERE name = ? LIMIT 0,1;";
 
     @Override
-    public String getSelectQuery() {
-        return "SELECT id, name FROM genres ";
+    public Genre getGenreByName(String name) throws DaoException {
+        return null;
     }
 
     @Override
-    public String getInsertQuery() {
-        return "INSERT INTO genres(name) VALUES (?);";
+    public Short add(Genre element) throws DaoException {
+        return null;
     }
 
     @Override
-    public String getUpdateQuery() {
-        return "UPDATE genres SET name = ? WHERE id = ?;";
+    public Genre getById(Short key) throws DaoException {
+        return null;
     }
 
     @Override
-    public String getDeleteQuery() {
-        return "DELETE FROM genres WHERE id = ?;";
+    public void update(Genre object) throws DaoException {
+
     }
 
     @Override
-    public Short getGeneratedKey(ResultSet rs) throws DaoException {
-        try {
-            if (rs.next())
-                return rs.getShort(1);
+    public void delete(Short key) throws DaoException {
 
-            throw new SQLException("entry was not written in DB");
-        } catch (SQLException e) {
-            throw new DaoException("No keys were generated: " + e.getMessage());
-        }
     }
 
     @Override
-    protected void setGeneratedKey(Genre genre, Short genId) throws IllegalArgumentException {
-        genre.setId(genId);
+    public List<Genre> getAll() throws DaoException {
+        return null;
+    }
+
+    @Override
+    protected Object[] getObjectParams(Genre object) throws DaoException {
+        return new Object[0];
+    }
+
+    @Override
+    protected Object[] getObjectUpdateParams(Genre object) throws DaoException {
+        return new Object[0];
+    }
+
+    @Override
+    protected Short getGeneratedKey(ResultSet rs) throws SQLException {
+        return null;
     }
 
     @Override
     protected List<Genre> parseResultSet(ResultSet rs) throws DaoException {
-        List<Genre> result = new ArrayList<>();
-        try {
-            while (rs.next()) {
-                Genre genre = new Genre();
-                genre.setId(rs.getShort("id"));
-                genre.setName(rs.getString("name"));
-
-                result.add(genre);
-            }
-        } catch (SQLException | IllegalArgumentException e) {
-            throw new DaoException(e);
-        }
-        return result;
+        return null;
     }
 
-    @Override
-    protected void prepareStatementForInsert(PreparedStatement stmt, Genre genre) throws DaoException {
-        try {
-            stmt.setString(1, genre.getName());
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    protected void prepareStatementForUpdate(PreparedStatement stmt, Genre genre) throws DaoException {
-        try {
-            stmt.setString(1, genre.getName());
-            stmt.setLong(2, genre.getId());
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public Genre getGenreByName(String name) throws DaoException {
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_GENRE_BY_NAME)) {
-
-            stmt.setString(1, name);
-            ResultSet rs = stmt.executeQuery();
-
-            return parseResultSet(rs).iterator().next();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-//    private class PersistPeriodicalGenre extends Genre {
-//        public void setId(short id) {
-//            super.setId(id);
+//    @Override
+//    public String getSelectQuery() {
+//        return "SELECT id, name FROM genres ";
+//    }
+//
+//    @Override
+//    public String getInsertQuery() {
+//        return "INSERT INTO genres(name) VALUES (?);";
+//    }
+//
+//    @Override
+//    public String getUpdateQuery() {
+//        return "UPDATE genres SET name = ? WHERE id = ?;";
+//    }
+//
+//    @Override
+//    public String getDeleteQuery() {
+//        return "DELETE FROM genres WHERE id = ?;";
+//    }
+//
+//    @Override
+//    public Short getGeneratedKey(ResultSet rs) throws DaoException {
+//        try {
+//            if (rs.next())
+//                return rs.getShort(1);
+//
+//            throw new SQLException("entry was not written in DB");
+//        } catch (SQLException e) {
+//            throw new DaoException("No keys were generated: " + e.getMessage());
 //        }
 //    }
+//
+//    @Override
+//    protected void setGeneratedKey(Genre genre, Short genId) throws IllegalArgumentException {
+//        genre.setId(genId);
+//    }
+//
+//    @Override
+//    protected List<Genre> parseResultSet(ResultSet rs) throws DaoException {
+//        List<Genre> result = new ArrayList<>();
+//        try {
+//            while (rs.next()) {
+//                Genre genre = new Genre();
+//                genre.setId(rs.getShort("id"));
+//                genre.setName(rs.getString("name"));
+//
+//                result.add(genre);
+//            }
+//        } catch (SQLException | IllegalArgumentException e) {
+//            throw new DaoException(e);
+//        }
+//        return result;
+//    }
+//
+//    @Override
+//    protected void prepareStatementForInsert(PreparedStatement stmt, Genre genre) throws DaoException {
+//        try {
+//            stmt.setString(1, genre.getName());
+//        } catch (SQLException e) {
+//            throw new DaoException(e);
+//        }
+//    }
+//
+//    @Override
+//    protected void prepareStatementForUpdate(PreparedStatement stmt, Genre genre) throws DaoException {
+//        try {
+//            stmt.setString(1, genre.getName());
+//            stmt.setLong(2, genre.getId());
+//        } catch (SQLException e) {
+//            throw new DaoException(e);
+//        }
+//    }
+//
+//    @Override
+//    public Genre getGenreByName(String name) throws DaoException {
+//        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
+//             PreparedStatement stmt = conn.prepareStatement(SELECT_GENRE_BY_NAME)) {
+//
+//            stmt.setString(1, name);
+//            ResultSet rs = stmt.executeQuery();
+//
+//            return parseResultSet(rs).iterator().next();
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//            throw new DaoException(e);
+//        }
+//    }
+
 }

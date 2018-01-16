@@ -57,7 +57,7 @@
 //        try {
 //            conn = inmManager.getConnection();
 //            issuesDao = (PeriodicalIssuesJdbcDao) JdbcDaoFactory.getInstance().getPeriodicalIssuesDao();
-//            insertedIssue = issuesDao.getByKey(1);
+//            insertedIssue = issuesDao.getById(1);
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -82,7 +82,7 @@
 //            issuesDao.add(testIssue);
 //            assertTrue(testIssue.getId() != 0);
 //
-//            sameIssueFromDB = issuesDao.getByKey(testIssue.getId());
+//            sameIssueFromDB = issuesDao.getById(testIssue.getId());
 //
 //            assertNotNull(sameIssueFromDB);
 //
@@ -129,7 +129,7 @@
 //    @Test
 //    void getByValidPK() {
 //        try {
-//            sameIssueFromDB = issuesDao.getByKey(insertedIssue.getId());
+//            sameIssueFromDB = issuesDao.getById(insertedIssue.getId());
 //
 //            assertNotNull(sameIssueFromDB);
 //            assertEquals(sameIssueFromDB, insertedIssue);
@@ -142,21 +142,21 @@
 //    @Test
 //    void getByInvalidPK() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            issuesDao.getByKey(111);
+//            issuesDao.getById(111);
 //        });
 //    }
 //
 //    @Test
 //    void getByNullableKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            issuesDao.getByKey(null);
+//            issuesDao.getById(null);
 //        });
 //    }
 //
 //    @Test
 //    void updateExistingPeriodicalIssue() {
 //        try {
-//            sameIssueFromDB = issuesDao.getByKey(insertedIssue.getId());
+//            sameIssueFromDB = issuesDao.getById(insertedIssue.getId());
 //            assertNotNull(sameIssueFromDB);
 //
 //            String newName = "new name";
@@ -166,7 +166,7 @@
 //            sameIssueFromDB.setPeriodicalId(1);
 //            issuesDao.update(sameIssueFromDB);
 //
-//            sameIssueFromDB = issuesDao.getByKey(insertedIssue.getId());
+//            sameIssueFromDB = issuesDao.getById(insertedIssue.getId());
 //            assertNotEquals(sameIssueFromDB, insertedIssue);
 //            assertEquals(newName, sameIssueFromDB.getName());
 //            assertTrue(newPeriodicalId == sameIssueFromDB.getPeriodicalId());

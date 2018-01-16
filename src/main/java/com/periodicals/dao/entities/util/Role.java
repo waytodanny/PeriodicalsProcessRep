@@ -1,6 +1,4 @@
-package com.periodicals.dao.entities;
-
-import com.periodicals.dao.entities.util.Identified;
+package com.periodicals.dao.entities.util;
 
 import java.util.Objects;
 
@@ -17,11 +15,6 @@ public class Role implements Identified<Byte>, Cloneable {
     public Role(String name) throws IllegalArgumentException {
         this();
         setName(name);
-    }
-
-    public Role(Byte id, String name) throws IllegalArgumentException {
-        this(name);
-        setId(id);
     }
 
     @Override
