@@ -32,7 +32,7 @@
                 <fmt:message key="page.registration.button.enter" bundle="${rb}"/>
             </span>
         </button>
-        <span class="help-block">${registrationErrorMessage}</span>
+        <span>${registrationErrorMessage}</span>
         <span class="help-block">
             <a href="login">
                 <fmt:message key="page.registration.link.login" bundle="${rb}"/>?

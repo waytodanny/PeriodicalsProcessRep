@@ -1,5 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<%--<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"--%>
+<%--scope="session" />--%>
+<%--<fmt:setLocale value="${language}" />--%>
+<fmt:setBundle basename="resources" var="rb"/>
 <div id="overlay"></div>
 
 <header>
@@ -10,23 +16,27 @@
 </header>
 
 <nav id="sidebar" role="navigation">
-
-
-    <a class="btn btn-success navbar-button" href="">
-        <i class="fa fa-user-circle-o" aria-hidden="true"></i> Register
+    <a class="btn btn-success navbar-button" href="login">
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        <fmt:message key="page.header.sidebar.btn.register" bundle="${rb}"/>
     </a>
     <a class="btn btn-info navbar-button" href="">
-        <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+        <i class="fa fa-sign-in" aria-hidden="true"></i>
+        <fmt:message key="page.header.sidebar.btn.login" bundle="${rb}"/>
     </a>
 
     <a class="btn btn-secondary navbar-button" href="">
-        <i class="fa fa-sign-out" aria-hidden="true"></i> Sign out
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <fmt:message key="page.header.sidebar.btn.sign_out" bundle="${rb}"/>
     </a>
     <a class="btn btn-warning navbar-button" href="">
-        <i class="fa fa-book" aria-hidden="true"></i> Subscribes
+        <i class="fa fa-book" aria-hidden="true"></i>
+        <fmt:message key="page.header.sidebar.btn.subscribes" bundle="${rb}"/>
     </a>
-    
-    <h2>Genres</h2>
+
+    <h2>
+        <fmt:message key="page.header.sidebar.genres" bundle="${rb}"/>
+    </h2>
     <ul class="nav sidebar-nav">
         <c:forEach var="genre" items="${genres}">
             <li><a href="catalog?genre=${genre.name}">${genre.name}</a></li>
