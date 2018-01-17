@@ -84,8 +84,8 @@ public class PeriodicalService {
         return dtoList;
     }
 
-    public int getPeriodicalsCount() {
-        int result = 0;
+    public long getPeriodicalsCount() {
+        long result = 0;
         try {
             result = perDao.getPeriodicalsCount();
         } catch (DaoException e) {
@@ -113,8 +113,8 @@ public class PeriodicalService {
         }
     }
 
-    public int getGenrePeriodicalCount(Genre genre) {
-        int result = 0;
+    public long getGenrePeriodicalCount(Genre genre) {
+        long result = 0;
         try {
             result = perDao.getGenrePeriodicalCount(genre);
         } catch (DaoException e) {
@@ -141,10 +141,10 @@ public class PeriodicalService {
         dto.setIssuesPerYear(entity.getIssuesPerYear());
         dto.setLimited(entity.isLimited());
 
-        Genre genre = GenresService.getInstance().getGenreById(entity.getGenreId());
+        Genre genre = GenresService.getInstance().getGenreById(entity.getGenre().getId());
         dto.setGenre(genre);
 
-        Publisher publisher = PublisherService.getInstance().getPublisherById(entity.getPublisherId());
+        Publisher publisher = PublisherService.getInstance().getPublisherById(entity.getPublisher().getId());
         dto.setPublisher(publisher);
 
         return dto;

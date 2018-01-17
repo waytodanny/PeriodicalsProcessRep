@@ -1,12 +1,10 @@
 package com.periodicals;
 
-import com.periodicals.dao.entities.Genre;
-import com.periodicals.dao.entities.Publisher;
-import com.periodicals.dao.entities.Role;
-import com.periodicals.dao.entities.User;
+import com.periodicals.dao.entities.*;
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.GenresJdbcDao;
+import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
 import com.periodicals.dao.jdbc.PublishersJdbcDao;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.exceptions.DaoException;
@@ -23,8 +21,8 @@ public class Main {
 
 //        UserSubscriptionsService service = UserSubscriptionsService.getInstance();
 //        String uuid = "1f940bd3-f7a5-11e7-93e6-a30f6152aa28";
-//        Genre genre = JdbcDaoFactory.getInstance().getGenresDao().getGenreByName("comics");
-//        List<Periodical> subs = JdbcDaoFactory.getInstance().getPeriodicalsDao().getGenrePeriodicalsSublist(genre, 0, 5);
+//        Genre periodical = JdbcDaoFactory.getInstance().getGenresDao().getGenreByName("comics");
+//        List<Periodical> subs = JdbcDaoFactory.getInstance().getPeriodicalsDao().getGenrePeriodicalsSublist(periodical, 0, 5);
 //        try {
 //            Payment payment1 = new Payment(uuid, new BigDecimal("22.2"));
 ////            JdbcDaoFactory.getInstance().getPaymentsDao().add(payment);
@@ -66,10 +64,10 @@ public class Main {
 //        List<Publisher> publs = publsDao.getAll();
 //        System.out.println(publs.size());
 //
-//        Publisher genre = new Publisher();
-//        genre.setName("Dark Horse");
+//        Publisher periodical = new Publisher();
+//        periodical.setName("Dark Horse");
 //
-//        publsDao.add(genre);
+//        publsDao.add(periodical);
 //
 //        publs = publsDao.getAll();
 //        System.out.println(publs.size());
@@ -81,9 +79,9 @@ public class Main {
 //        List<Genre> genres = perGenres.getAll();
 //        System.out.println(genres.size());
 //
-//        Genre genre = new Genre();
-//        genre.setName("fantastic1");
-//        short id2 = perGenres.add(genre);
+//        Genre periodical = new Genre();
+//        periodical.setName("fantastic1");
+//        short id2 = perGenres.add(periodical);
 //
 //        Genre genre2 = perGenres.getById(id2);
 //
@@ -95,27 +93,22 @@ public class Main {
 //        List<Genre> genres3 = perGenres.getAll();
 //        System.out.println(genres3.size());
 ////
-////        PeriodicalsJdbcDao persDao =
-////               (PeriodicalsJdbcDao) factory.getDaoByClass(PeriodicalDto.class);
-////
-////        List<PeriodicalDto> pers = persDao.getAll();
-////        System.out.println(pers.size());
-////
-////        PeriodicalDto per = new PeriodicalDto("TMNT", "story of ninja turtles", 5.60, (short) 1, 2);
-////        int id3 = persDao.add(per);
-////
-////        List<PeriodicalDto> pers2 = persDao.getAll();
-////        System.out.println(pers2.size());
-////
-////        PeriodicalDto per2 = persDao.getById(id3);
-////
-////        persDao.delete(per2);
-////
-////        List<PeriodicalDto> pers3 = persDao.getAll();
-////        System.out.println(pers3.size());
-////
-////        PeriodicalIssuesJdbcDao persIssDao =
-////              (PeriodicalIssuesJdbcDao) factory.getDaoByClass(PeriodicalIssue.class);
+//        PeriodicalsJdbcDao persDao =
+//               (PeriodicalsJdbcDao) factory.getPeriodicalsDao();
+//
+//        System.out.println(persDao.getUserSubscriptionsCount(user));
+//        List<Periodical> pers = persDao.getAll();
+//        System.out.println(pers.size());
+//
+//        Periodical per2 = persDao.getById(1);
+//
+//        System.out.println(per2);
+//
+//        List<Periodical> pers3 = persDao.getAll();
+//        System.out.println(pers3.size());
+
+//        PeriodicalIssuesJdbcDao persIssDao =
+//              (PeriodicalIssuesJdbcDao) factory.getDaoByClass(PeriodicalIssue.class);
 ////
 ////        List<PeriodicalIssue> issues = persIssDao.getAll();
 ////        System.out.println(issues.size());

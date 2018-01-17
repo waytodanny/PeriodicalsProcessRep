@@ -4,6 +4,7 @@ import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dao.entities.Periodical;
+import com.periodicals.dao.entities.User;
 import com.periodicals.dto.UserDto;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.UserSubscriptionsService;
@@ -39,11 +40,11 @@ public class ProcessSubscriptionCommand implements Command {
             List<Periodical> upToSubs = cart.getPeriodicals();
             BigDecimal paySum = cart.getQuantity();
             if (Objects.nonNull(upToSubs) && Objects.nonNull(paySum)) {
-                UserDto user = (UserDto) session.getAttribute("user");
+                User user = (User) session.getAttribute("user");
                 try {
-                    List<Periodical> userSubs = subsService.getUserSubscriptions(user.getUuid());
+                    List<Periodical> userSubs = subsService.getUserSubscriptions(user);
                     subsService.siftAlreadySubscribed(upToSubs, userSubs);
-                    subsService.processSubscriptions(user.getUuid(), upToSubs, paySum);
+                    subsService.processSubscriptions(user, upToSubs, paySum);
                     cart.cleanUp();
                     return new CommandResult(req, resp, REDIRECT, USER_SUBSCRIPTIONS_PAGE);
                 } catch (ServiceException e) {

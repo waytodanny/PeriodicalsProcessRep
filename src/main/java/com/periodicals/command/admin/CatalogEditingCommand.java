@@ -37,15 +37,15 @@ public class CatalogEditingCommand implements Command {
             upToEdit.setIssuesPerYear(Short.parseShort(req.getParameter("updatedIssuesPerYear")));
             upToEdit.setLimited(Boolean.valueOf(req.getParameter("updatedIsLimited")));
 
-            if (isGenreChanged(upToEdit.getGenreId(), req)) {
-                short newGenreId = Short.parseShort(req.getParameter("genreId"));
-                upToEdit.setGenreId(newGenreId);
-            }
-
-            if (isPublisherChanged(upToEdit.getPublisherId(), req)) {
-                int newPublId = Integer.parseInt(req.getParameter("publisherId"));
-                upToEdit.setPublisherId(newPublId);
-            }
+//            if (isGenreChanged(upToEdit.getGenreId(), req)) {
+//                short newGenreId = Short.parseShort(req.getParameter("genreId"));
+//                upToEdit.setGenreId(newGenreId);
+//            }
+//
+//            if (isPublisherChanged(upToEdit.getPublisherId(), req)) {
+//                int newPublId = Integer.parseInt(req.getParameter("publisherId"));
+//                upToEdit.setPublisherId(newPublId);
+//            }
 
             PeriodicalService.getInstance().update(upToEdit);
         }
@@ -58,7 +58,7 @@ public class CatalogEditingCommand implements Command {
         if (req.getParameter("page") != null)
             page = Integer.parseInt(req.getParameter("page"));
 
-        int entriesCount = PeriodicalService.getInstance().getPeriodicalsCount();
+        long entriesCount = PeriodicalService.getInstance().getPeriodicalsCount();
         int pagesCount = (int) Math.ceil(entriesCount * 1.0 / recordsPerPage);
 
         int skip = (page - 1) * recordsPerPage;

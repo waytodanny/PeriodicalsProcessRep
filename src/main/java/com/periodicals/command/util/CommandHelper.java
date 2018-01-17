@@ -28,7 +28,7 @@ public class CommandHelper {
         return Objects.nonNull(param) && !Objects.equals(param, "");
     }
 
-    public static int getPagesCount(int recordsCount, int recordsPerPage) {
+    public static int getPagesCount(long recordsCount, int recordsPerPage) {
         return (int) Math.ceil(recordsCount * 1.0 / recordsPerPage);
     }
 

@@ -97,6 +97,3 @@ CREATE TABLE IF NOT EXISTS payments_periodicals (
 
 
 
-
-
-

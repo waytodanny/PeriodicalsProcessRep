@@ -94,3 +94,35 @@ INFO - Trying to get connection form dataSource
 INFO - Got connection from dataSource
 INFO - Trying to get connection form dataSource
 INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource

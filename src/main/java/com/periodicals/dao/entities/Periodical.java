@@ -15,8 +15,8 @@ public class Periodical implements Identified<Integer> {
     private BigDecimal subscriptionCost;
     private short issuesPerYear;
     private boolean isLimited;
-    private Short genreId;
-    private Integer publisherId;
+    private Genre genre;
+    private Publisher publisher;
 
     public Periodical() {
 
@@ -86,42 +86,19 @@ public class Periodical implements Identified<Integer> {
         isLimited = limited;
     }
 
-    public Short getGenreId() {
-        return genreId;
+    public Genre getGenre() {
+        return genre;
     }
 
-    /*TODO decide whether is right to check here*/
-    public void setGenreId(Short genreId) {
-        this.genreId = genreId;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
-    public Integer getPublisherId() {
-        return publisherId;
+    public Publisher getPublisher() {
+        return publisher;
     }
 
-    /*TODO decide whether is right to check here*/
-    public void setPublisherId(Integer publisherId) {
-        this.publisherId = publisherId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Periodical that = (Periodical) o;
-        return issuesPerYear == that.issuesPerYear &&
-                isLimited == that.isLimited &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(subscriptionCost, that.subscriptionCost) &&
-                Objects.equals(genreId, that.genreId) &&
-                Objects.equals(publisherId, that.publisherId);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, name, description, subscriptionCost, issuesPerYear, isLimited, genreId, publisherId);
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }

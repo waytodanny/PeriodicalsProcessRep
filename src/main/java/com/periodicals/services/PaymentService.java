@@ -61,7 +61,7 @@ public class PaymentService {
         dto.setId(entity.getId());
         dto.setPaymentSum(entity.getPaymentSum());
         dto.setPaymentTime(entity.getPaymentTime());
-        dto.setUserId(entity.getUserId());
+//        dto.setUserId(entity.getUserId());
 
         List<PeriodicalDto> periodicalDtos = new ArrayList<>();
         try {

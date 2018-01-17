@@ -40,8 +40,8 @@ public class AddPeriodicalCommand implements Command {
             try{
                 newPer.setSubscriptionCost(new BigDecimal(subCost));
                 newPer.setIssuesPerYear(Short.parseShort(iss_per_year));
-                newPer.setGenreId(Short.parseShort(genreId));
-                newPer.setPublisherId(Integer.parseInt(publishId));
+//                newPer.setGenreId(Short.parseShort(genreId));
+//                newPer.setPublisherId(Integer.parseInt(publishId));
 
                 PeriodicalService.getInstance().add(newPer);
 

@@ -11,17 +11,17 @@ import java.util.Objects;
 public class Payment implements Identified<Long> {
     private Long id;
     private Timestamp paymentTime;
-    private String userUuid;
     private BigDecimal paymentSum;
+    private User user;
     private List<Integer> periodicalIdList;
 
     public Payment() {
         periodicalIdList = new ArrayList<>();
     }
 
-    public Payment(String userUuid, BigDecimal paymentSum) throws IllegalArgumentException {
+    public Payment(User user, BigDecimal paymentSum) throws IllegalArgumentException {
         this();
-        setUserUuid(userUuid);
+        setUser(user);
         setPaymentSum(paymentSum);
     }
 
@@ -48,13 +48,12 @@ public class Payment implements Identified<Long> {
         this.paymentTime = paymentTime;
     }
 
-    public String getUserId() {
-        return userUuid;
+    public User getUser() {
+        return user;
     }
 
-    /*TODO decide whether is right to check here*/
-    public void setUserUuid(String userUuid) {
-        this.userUuid = userUuid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public BigDecimal getPaymentSum() {
@@ -83,13 +82,14 @@ public class Payment implements Identified<Long> {
         Payment payment = (Payment) o;
         return Objects.equals(id, payment.id) &&
                 Objects.equals(paymentTime, payment.paymentTime) &&
-                Objects.equals(userUuid, payment.userUuid) &&
                 Objects.equals(paymentSum, payment.paymentSum) &&
+                Objects.equals(user, payment.user) &&
                 Objects.equals(periodicalIdList, payment.periodicalIdList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, paymentTime, userUuid, paymentSum, periodicalIdList);
+
+        return Objects.hash(id, paymentTime, paymentSum, user, periodicalIdList);
     }
 }

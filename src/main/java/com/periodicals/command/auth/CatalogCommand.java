@@ -100,7 +100,7 @@ public class CatalogCommand implements Command {
      */
     class PeriodicalsRequestData {
         protected List<PeriodicalDto> periodicals;
-        protected int recordsCount;
+        protected long recordsCount;
         protected int currentPage;
         protected String pageLink;
     }

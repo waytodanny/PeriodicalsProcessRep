@@ -1,6 +1,7 @@
 package com.periodicals.command.auth;
 
 import com.periodicals.command.util.CommandResult;
+import com.periodicals.dao.entities.User;
 import com.periodicals.dto.UserDto;
 import com.periodicals.services.UserSubscriptionsService;
 
@@ -33,17 +34,17 @@ public class UserSubscriptionsCommand extends CatalogCommand {
 
     @Override
     protected PeriodicalsRequestData getPeriodicalsRequestData(HttpServletRequest req) {
-        UserDto user = (UserDto) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         return getPeriodicalsRequestDataByUser(req, user);
     }
 
-    private PeriodicalsRequestData getPeriodicalsRequestDataByUser(HttpServletRequest req, UserDto user) {
+    private PeriodicalsRequestData getPeriodicalsRequestDataByUser(HttpServletRequest req, User user) {
         PeriodicalsRequestData data = new PeriodicalsRequestData();
         data.currentPage = getPageFromRequest(req);
-        data.periodicals = subsService.getUserSubscriptionsDtoSublist(user.getUuid(),
+        data.periodicals = subsService.getUserSubscriptionsDtoSublist(user,
                 (data.currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
 
-        data.recordsCount = subsService.getUserSubscriptionsCount(user.getUuid());
+        data.recordsCount = subsService.getUserSubscriptionsCount(user);
         data.pageLink = USER_SUBSCRIPTIONS_PAGE + "?page=" + data.currentPage;
         return data;
     }
