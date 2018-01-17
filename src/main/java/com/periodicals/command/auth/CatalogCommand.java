@@ -3,14 +3,15 @@ package com.periodicals.command.auth;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.GenreDto;
-import com.periodicals.dto.PeriodicalDto;
+
 import com.periodicals.dao.entities.Genre;
+import com.periodicals.dao.entities.Periodical;
 import com.periodicals.services.GenresService;
 import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.List;
 
 import static com.periodicals.command.util.CommandHelper.paramClarifiedInQuery;
@@ -49,7 +50,7 @@ public class CatalogCommand implements Command {
     private PeriodicalsRequestData getPeriodicalsRequestDataAll(HttpServletRequest req) {
         PeriodicalsRequestData data = new PeriodicalsRequestData();
         data.currentPage = getPageFromRequest(req);
-        data.periodicals = perService.getPeriodicalsDtoSublist
+        data.periodicals = perService.getPeriodicalsSublist
                 ((data.currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
         data.recordsCount = perService.getPeriodicalsCount();
         data.pageLink = CATALOG_PAGE + "?page=" + data.currentPage;
@@ -86,7 +87,7 @@ public class CatalogCommand implements Command {
      * Sets request attributes that are needed for view to display
      */
     private void SetRequestAttributes(HttpServletRequest req, PeriodicalsRequestData data) {
-        List<GenreDto> genres = genresService.getAll();
+        List<Genre> genres = genresService.getAll();
         int pagesCount = CommandHelper.getPagesCount(data.recordsCount, RECORDS_PER_PAGE);
 
         req.setAttribute("genres", genres);
@@ -99,7 +100,7 @@ public class CatalogCommand implements Command {
      * Additional class that is needed to carry some info for pages that use periodicals pagination
      */
     class PeriodicalsRequestData {
-        protected List<PeriodicalDto> periodicals;
+        protected List<Periodical> periodicals;
         protected long recordsCount;
         protected int currentPage;
         protected String pageLink;

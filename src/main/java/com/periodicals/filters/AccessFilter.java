@@ -2,7 +2,6 @@ package com.periodicals.filters;
 
 import com.periodicals.authentification.AuthenticationHelper;
 import com.periodicals.dao.entities.User;
-import com.periodicals.dto.UserDto;
 import com.periodicals.security.SecurityConfiguration;
 
 import javax.servlet.*;
@@ -10,7 +9,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Set;
 
 import static com.periodicals.utils.AttributesHolder.PAGE_SUFFIX;
@@ -54,7 +52,7 @@ public class AccessFilter implements Filter {
 
         }
         if ("ADMIN".equals(securityType)) {
-            UserDto user = (UserDto) request.getSession().getAttribute(USER);
+            User user = (User) request.getSession().getAttribute(USER);
             if (AuthenticationHelper.isAdmin(user)) {
                 request.setAttribute("command", command);
                 filterChain.doFilter(servletRequest, servletResponse);

@@ -4,7 +4,6 @@ import com.periodicals.dao.entities.User;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PaymentsJdbcDao;
 import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
-import com.periodicals.dto.PeriodicalDto;
 import com.periodicals.dao.entities.Payment;
 import com.periodicals.dao.entities.Periodical;
 import com.periodicals.exceptions.DaoException;
@@ -14,9 +13,7 @@ import com.periodicals.dao.transactions.Transaction;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class UserSubscriptionsService {
     private static UserSubscriptionsService userSubsService = new UserSubscriptionsService();
@@ -35,10 +32,13 @@ public class UserSubscriptionsService {
 
     public void processSubscriptions(User user, List<Periodical> subs, BigDecimal paymentSum) throws ServiceException {
         try {
-            Payment payment = new Payment(user, paymentSum);
+            Payment payment = new Payment();
+            payment.setUserId(user.getId());
+            payment.setPeriodicals(subs);
+
             Transaction.doTransaction(() -> {
-//                payDao.addWithKeyReturn(payment);
-                payDao.addPaymentPeriodicals(payment, subs);
+                payDao.add(payment);
+                payDao.addPaymentPeriodicals(payment);
                 perDao.addUserSubscriptions(user, subs);
             });
         } catch (TransactionException e) {
@@ -46,15 +46,14 @@ public class UserSubscriptionsService {
         }
     }
 
-    public List<PeriodicalDto> getUserSubscriptionsDtoSublist(User user, int skip, int take) {
-        List<PeriodicalDto> dtos = new ArrayList<>();
+    public List<Periodical> getUserSubscriptionsDtoSublist(User user, int skip, int take) {
+        List<Periodical> periodicals = new ArrayList<>();
         try {
             List<Periodical> entities = perDao.getUserSubscriptions(user);
-            PeriodicalService.fillPeriodicalsDto(entities, dtos);
         } catch (DaoException e) {
             /*TODO log*/
         }
-        return dtos;
+        return periodicals;
     }
 
     public long getUserSubscriptionsCount(User user) {

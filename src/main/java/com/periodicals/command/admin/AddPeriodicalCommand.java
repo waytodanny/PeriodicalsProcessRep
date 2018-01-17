@@ -3,7 +3,7 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.GenreDto;
+import com.periodicals.dao.entities.Genre;
 import com.periodicals.dao.entities.Periodical;
 import com.periodicals.dao.entities.Publisher;
 import com.periodicals.services.GenresService;
@@ -30,14 +30,14 @@ public class AddPeriodicalCommand implements Command {
         String genreId = req.getParameter("add_genre_id");
         String publishId = req.getParameter("add_publish_id");
 
-        String [] reqFields = {name, desc, subCost, is_limited, iss_per_year, genreId, publishId};
+        String[] reqFields = {name, desc, subCost, is_limited, iss_per_year, genreId, publishId};
         if (CommandHelper.requiredFieldsNotEmpty(reqFields)) {
             Periodical newPer = new Periodical();
             newPer.setName(name);
             newPer.setDescription(desc);
             newPer.setLimited(Boolean.valueOf(is_limited));
 
-            try{
+            try {
                 newPer.setSubscriptionCost(new BigDecimal(subCost));
                 newPer.setIssuesPerYear(Short.parseShort(iss_per_year));
 //                newPer.setGenreId(Short.parseShort(genreId));
@@ -46,7 +46,7 @@ public class AddPeriodicalCommand implements Command {
                 PeriodicalService.getInstance().add(newPer);
 
                 req.setAttribute("addingResultMessage", "Successful periodical adding");
-            } catch (Exception e){
+            } catch (Exception e) {
                 req.setAttribute("addingResultMessage", "Failed to add periodical: " + e.getMessage());
             }
         }
@@ -57,9 +57,9 @@ public class AddPeriodicalCommand implements Command {
         return new CommandResult(req, resp, FORWARD, ADMIN_ADD_PERIODICAL_PAGE);
     }
 
-   /*POVTOR*/
+    /*POVTOR*/
     private void createGenresList(HttpServletRequest request) {
-        List<GenreDto> genres = GenresService.getInstance().getAll();
+        List<Genre> genres = GenresService.getInstance().getAll();
         request.setAttribute("genres", genres);
     }
 

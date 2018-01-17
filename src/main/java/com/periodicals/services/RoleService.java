@@ -3,7 +3,6 @@ package com.periodicals.services;
 import com.periodicals.dao.entities.Role;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.RolesJdbcDao;
-import com.periodicals.dto.RoleDto;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 
@@ -29,37 +28,15 @@ public class RoleService {
         return roleService;
     }
 
-    static void fillRolesDto(List<Role> entityList, List<RoleDto> dtoList) {
-        for (Role entity : entityList) {
-            RoleDto dto = getDtoByEntity(entity);
-            dtoList.add(dto);
-        }
-    }
-
-    /*TODO checking for null*/
-    static RoleDto getDtoByEntity(Role entity) {
-        RoleDto dto = new RoleDto();
-
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-
-        return dto;
-    }
-
-    public RoleDto getRoleDtoById(Byte roleId) throws ServiceException {
+    public Role getRoleById(Byte roleId) throws ServiceException {
         try {
             Role role;
-            if(USER_ROLE.getId().equals(roleId)){ /*надо ли клон?*/
-                role  = USER_ROLE;
+            if (USER_ROLE.getId().equals(roleId)) { /*надо ли клон?*/
+                role = USER_ROLE;
             } else {
                 role = rolesDao.getById(roleId);
             }
-
-            RoleDto dto = new RoleDto();
-            dto.setId(role.getId());
-            dto.setName(role.getName());
-
-            return dto;
+            return role;
         } catch (DaoException e) {
             throw new ServiceException("failed to obtain user role");
         }
@@ -75,15 +52,13 @@ public class RoleService {
         return role;
     }
 
-    public List<RoleDto> getAll() {
-        List<Role> entities = null;
-        List<RoleDto> dtos = new ArrayList<>();
+    public List<Role> getAll() {
+        List<Role> roles = null;
         try {
-            entities = rolesDao.getAll();
-            fillRolesDto(entities, dtos);
+            roles = rolesDao.getAll();
         } catch (DaoException e) {
             e.printStackTrace();
         }
-        return dtos;
+        return roles;
     }
 }

@@ -1,7 +1,7 @@
 package com.periodicals.authentification;
 
 import com.periodicals.dao.entities.Role;
-import com.periodicals.dto.UserDto;
+import com.periodicals.dao.entities.User;
 import com.periodicals.services.RoleService;
 
 import javax.servlet.http.HttpSession;
@@ -18,13 +18,13 @@ public class AuthenticationHelper {
     private static final Role adminRole = RoleService.getInstance().getRole(ROLE_ADMIN);
 
     public static boolean isUserLoggedIn(HttpSession session) {
-        UserDto user = (UserDto) session.getAttribute(USER);
+        User user = (User) session.getAttribute(USER);
         return Objects.nonNull(user);
     }
 
-    public static boolean isAdmin(UserDto user) {
+    public static boolean isAdmin(User user) {
         return Objects.nonNull(user) &&
                 Objects.nonNull(user.getRole()) &&
-                user.getRole().getName().equals(adminRole.getName());
+                user.getRole().equals(adminRole);
     }
 }

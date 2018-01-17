@@ -1,10 +1,8 @@
 package com.periodicals.services;
 
+import com.periodicals.dao.entities.User;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
-import com.periodicals.dto.RoleDto;
-import com.periodicals.dto.UserDto;
-import com.periodicals.dao.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 
@@ -32,6 +30,7 @@ public class UserService {
             /*TODO log*/
         }
     }
+
     public void update(User user) {
         try {
             usersDao.update(user);
@@ -45,7 +44,7 @@ public class UserService {
         try {
             result = usersDao.getById(id);
         } catch (DaoException e) {
-           throw new ServiceException("not found user by id");
+            throw new ServiceException("not found user by id");
         }
         return result;
     }
@@ -60,53 +59,14 @@ public class UserService {
         return result;
     }
 
-    public List<UserDto> getUsersDtoSublist(int skip, int take) {
-        List<UserDto> dtoList = new ArrayList<>();
+    public List<User> getUsersSublist(int skip, int take) {
+        List<User> dtoList = new ArrayList<>();
 //        try {
 //            List<User> entityList = usersDao.getSublist(skip, take);
-//            fillPeriodicalsDto(entityList, dtoList);
+//            fillPeriodicals(entityList, dtoList);
 //        } catch (DaoException e) {
 //            /*TODO log*/
 //        }
         return dtoList;
-    }
-
-    private static void fillPeriodicalsDto(List<User> entityList, List<UserDto> dtoList) {
-        for (User entity : entityList) {
-            UserDto dto = getDtoByEntity(entity);
-            dtoList.add(dto);
-        }
-    }
-
-    /*TODO checking for null*/
-    private static UserDto getDtoByEntity(User entity) {
-        UserDto dto = new UserDto();
-
-        dto.setUuid(entity.getId());
-        dto.setLogin(entity.getLogin());
-        dto.setPassword(entity.getPassword());
-        dto.setEmail(entity.getEmail());
-//        try {
-////            RoleDto role = RoleService.getInstance().getRoleDtoById(entity.getRoleId());
-////            dto.setRole(role);
-//        } catch (ServiceException e) {
-//            /*TODO log*/
-//        }
-        return dto;
-    }
-
-    /*TODO вынести логику роли*/
-    public UserDto getDtoOfEntity(User entity) throws ServiceException {
-        UserDto userDto = new UserDto();
-
-        userDto.setUuid(entity.getId());
-        userDto.setLogin(entity.getLogin());
-        userDto.setPassword(entity.getPassword());
-        userDto.setEmail(entity.getEmail());
-
-        RoleDto roleDto = roleService.getRoleDtoById(entity.getRole().getId());
-        userDto.setRole(roleDto);
-
-        return userDto;
     }
 }

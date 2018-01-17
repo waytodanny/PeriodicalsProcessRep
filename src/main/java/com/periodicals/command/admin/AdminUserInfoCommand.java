@@ -3,7 +3,7 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.PaymentDto;
+import com.periodicals.dao.entities.Payment;
 import com.periodicals.dao.entities.User;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.PaymentService;
@@ -38,11 +38,11 @@ public class AdminUserInfoCommand implements Command {
         try {
             User user = userService.getUserById(userId);
 
-            int entriesCount = paymentService.getUserPaymentsCount(user);
+            long entriesCount = paymentService.getUserPaymentsCount(user);
             int pagesCount = (int) Math.ceil(entriesCount * 1.0 / RECORDS_PER_PAGE);
 
             int skip = (page - 1) * RECORDS_PER_PAGE;
-            List<PaymentDto> userPayments = paymentService.getUserPaymentsDtoSublist(user, skip, RECORDS_PER_PAGE);
+            List<Payment> userPayments = paymentService.getUserPaymentsSublist(user, skip, RECORDS_PER_PAGE);
 
             req.setAttribute("payments", userPayments);
             req.setAttribute("pagesCount", pagesCount);

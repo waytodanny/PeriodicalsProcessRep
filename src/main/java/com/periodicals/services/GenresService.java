@@ -2,7 +2,6 @@ package com.periodicals.services;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.GenresJdbcDao;
-import com.periodicals.dto.GenreDto;
 import com.periodicals.dao.entities.Genre;
 import com.periodicals.exceptions.DaoException;
 
@@ -32,16 +31,14 @@ public class GenresService {
         return genre;
     }
 
-    public List<GenreDto> getAll() {
-        List<GenreDto> dtoList = new ArrayList<>();
+    public List<Genre> getAll() {
         List<Genre> entityList = null;
         try {
             entityList = dao.getAll();
-            fillDtoByEntityList(entityList, dtoList);
         } catch (DaoException e) {
             /*TODO log*/
         }
-        return dtoList;
+        return entityList;
     }
 
     public Genre getGenre(String genreName) {
@@ -52,18 +49,5 @@ public class GenresService {
             /*TODO log*/
         }
         return entity;
-    }
-
-    private GenreDto getDtoByEntity(Genre entity) {
-        GenreDto dto = new GenreDto();
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        return dto;
-    }
-
-    private void fillDtoByEntityList(List<Genre> entityList, List<GenreDto> dtoList) {
-        for (Genre entity : entityList) {
-            dtoList.add(getDtoByEntity(entity));
-        }
     }
 }

@@ -1,6 +1,7 @@
 package com.periodicals.dao.entities;
 
 import com.periodicals.dao.entities.util.Identified;
+import com.periodicals.dto.PeriodicalDto;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -11,19 +12,10 @@ import java.util.Objects;
 public class Payment implements Identified<Long> {
     private Long id;
     private Timestamp paymentTime;
+    private String userId;
     private BigDecimal paymentSum;
-    private User user;
-    private List<Integer> periodicalIdList;
+    private List<Periodical> periodicals;
 
-    public Payment() {
-        periodicalIdList = new ArrayList<>();
-    }
-
-    public Payment(User user, BigDecimal paymentSum) throws IllegalArgumentException {
-        this();
-        setUser(user);
-        setPaymentSum(paymentSum);
-    }
 
     @Override
     public Long getId() {
@@ -48,12 +40,13 @@ public class Payment implements Identified<Long> {
         this.paymentTime = paymentTime;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    /*TODO decide whether is right to check here*/
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public BigDecimal getPaymentSum() {
@@ -67,12 +60,12 @@ public class Payment implements Identified<Long> {
         this.paymentSum = paymentSum;
     }
 
-    public List<Integer> getPeriodicalIdList() {
-        return periodicalIdList;
+    public List<Periodical> getPeriodicals() {
+        return periodicals;
     }
 
-    public void setPeriodicalIdList(List<Integer> periodicalIdList) {
-        this.periodicalIdList = periodicalIdList;
+    public void setPeriodicals(List<Periodical> periodicals) {
+        this.periodicals = periodicals;
     }
 
     @Override
@@ -82,14 +75,12 @@ public class Payment implements Identified<Long> {
         Payment payment = (Payment) o;
         return Objects.equals(id, payment.id) &&
                 Objects.equals(paymentTime, payment.paymentTime) &&
-                Objects.equals(paymentSum, payment.paymentSum) &&
-                Objects.equals(user, payment.user) &&
-                Objects.equals(periodicalIdList, payment.periodicalIdList);
+                Objects.equals(userId, payment.userId) &&
+                Objects.equals(paymentSum, payment.paymentSum);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, paymentTime, paymentSum, user, periodicalIdList);
+        return Objects.hash(id, paymentTime, userId, paymentSum);
     }
 }

@@ -124,26 +124,14 @@ public class Main {
 //        List<PeriodicalIssue> issues3 = persIssDao.getAll();
 //        System.out.println(issues3.size());
 ////
-////        PaymentsJdbcDao paysDao =
-////                (PaymentsJdbcDao) factory.getDaoByClass(Payment.class, conn);
-////
-////        List<Payment> pays2 = paysDao.getAll();
-////        System.out.println(pays2.size());
-////        System.out.println(paysDao.getPaymentPeriodicals(2).size());
-////
-////        Payment payment = new Payment(1, 25.50);
-////        payment.getPeriodicalIdList().add(1);
-////        payment.getPeriodicalIdList().add(2);
-////        payment.getPeriodicalIdList().add(3);
-////
-////        Transaction.doTransaction(new Transaction() {
-////            @Override
-////            public void pass() throws DaoException {
-////                long id5 = paysDao.add(payment);
-////                payment.setId(id5);
-////                paysDao.addPaymentPeriodicals(payment);
-////            }
-////        }, conn);
+//        PaymentsJdbcDao paysDao =
+//                (PaymentsJdbcDao) factory.getPaymentsDao();
+//
+//        List<Payment> pays2 = paysDao.getAll();
+//        System.out.println(pays2.size());
+//
+
+
 ////
 ////        Transaction.doTransaction(new Transaction() {
 ////            @Override

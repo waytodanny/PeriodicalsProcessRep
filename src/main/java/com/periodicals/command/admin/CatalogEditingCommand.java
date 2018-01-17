@@ -3,7 +3,6 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.PeriodicalDto;
 import com.periodicals.dao.entities.Periodical;
 import com.periodicals.dao.entities.Publisher;
 import com.periodicals.services.PeriodicalService;
@@ -62,8 +61,8 @@ public class CatalogEditingCommand implements Command {
         int pagesCount = (int) Math.ceil(entriesCount * 1.0 / recordsPerPage);
 
         int skip = (page - 1) * recordsPerPage;
-        List<PeriodicalDto> periodicals = PeriodicalService.getInstance().
-                getPeriodicalsDtoSublist(skip, recordsPerPage);
+        List<Periodical> periodicals = PeriodicalService.getInstance().
+                getPeriodicalsSublist(skip, recordsPerPage);
 
         req.setAttribute("periodicals", periodicals);
         req.setAttribute("pagesCount", pagesCount);

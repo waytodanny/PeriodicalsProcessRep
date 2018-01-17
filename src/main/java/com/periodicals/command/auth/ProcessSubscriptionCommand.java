@@ -5,7 +5,6 @@ import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dao.entities.Periodical;
 import com.periodicals.dao.entities.User;
-import com.periodicals.dto.UserDto;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.UserSubscriptionsService;
 import com.periodicals.utils.Cart;

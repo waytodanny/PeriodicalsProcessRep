@@ -3,17 +3,14 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.RoleDto;
-import com.periodicals.dto.UserDto;
+import com.periodicals.dao.entities.Role;
 import com.periodicals.dao.entities.User;
 import com.periodicals.services.RoleService;
 import com.periodicals.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.util.List;
-import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.PagesHolder.ADMIN_EDIT_USERS_PAGE;
@@ -62,7 +59,7 @@ public class AdminUsersCommand implements Command {
         int pagesCount = (int) Math.ceil(entriesCount * 1.0 / RECORDS_PER_PAGE);
 
         int skip = (page - 1) * RECORDS_PER_PAGE;
-        List<UserDto> users = userService.getUsersDtoSublist(skip, RECORDS_PER_PAGE);
+        List<User> users = userService.getUsersSublist(skip, RECORDS_PER_PAGE);
 
 
         req.setAttribute("users", users);
@@ -73,7 +70,7 @@ public class AdminUsersCommand implements Command {
     }
 
     private void createRolesList(HttpServletRequest req) {
-        List<RoleDto> roles = roleService.getAll();
+        List<Role> roles = roleService.getAll();
         req.setAttribute("roles", roles);
     }
 }

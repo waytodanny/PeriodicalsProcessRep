@@ -2,11 +2,9 @@ package com.periodicals.services;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
-import com.periodicals.dto.PeriodicalDto;
 import com.periodicals.dao.entities.Genre;
 import com.periodicals.dao.entities.Payment;
 import com.periodicals.dao.entities.Periodical;
-import com.periodicals.dao.entities.Publisher;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 
@@ -73,11 +71,10 @@ public class PeriodicalService {
         }
     }
 
-    public List<PeriodicalDto> getPeriodicalsDtoSublist(int skip, int take) {
-        List<PeriodicalDto> dtoList = new ArrayList<>();
+    public List<Periodical> getPeriodicalsSublist(int skip, int take) {
+        List<Periodical> dtoList = new ArrayList<>();
         try {
             List<Periodical> entityList = perDao.getPeriodicalSubList(skip, take);
-            fillPeriodicalsDto(entityList, dtoList);
         } catch (DaoException e) {
             /*TODO log*/
         }
@@ -94,11 +91,10 @@ public class PeriodicalService {
         return result;
     }
 
-    public List<PeriodicalDto> getGenrePeriodicalsDtoSublist(Genre genre, int skip, int take) {
-        List<PeriodicalDto> dtoList = new ArrayList<>();
+    public List<Periodical> getGenrePeriodicalsDtoSublist(Genre genre, int skip, int take) {
+        List<Periodical> dtoList = new ArrayList<>();
         try {
             List<Periodical> entityList = perDao.getGenrePeriodicalsSublist(genre, skip, take);
-            fillPeriodicalsDto(entityList, dtoList);
         } catch (DaoException e) {
             /*TODO log*/
         }
@@ -121,32 +117,5 @@ public class PeriodicalService {
             /*TODO log*/
         }
         return result;
-    }
-
-    static void fillPeriodicalsDto(List<Periodical> entityList, List<PeriodicalDto> dtoList) {
-        for (Periodical entity : entityList) {
-            PeriodicalDto dto = getDtoByEntity(entity);
-            dtoList.add(dto);
-        }
-    }
-
-    /*TODO checking for null*/
-    static PeriodicalDto getDtoByEntity(Periodical entity) {
-        PeriodicalDto dto = new PeriodicalDto();
-
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setDescription(entity.getDescription());
-        dto.setSubscriptionCost(entity.getSubscriptionCost());
-        dto.setIssuesPerYear(entity.getIssuesPerYear());
-        dto.setLimited(entity.isLimited());
-
-        Genre genre = GenresService.getInstance().getGenreById(entity.getGenre().getId());
-        dto.setGenre(genre);
-
-        Publisher publisher = PublisherService.getInstance().getPublisherById(entity.getPublisher().getId());
-        dto.setPublisher(publisher);
-
-        return dto;
     }
 }

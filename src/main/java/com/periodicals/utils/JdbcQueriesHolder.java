@@ -71,9 +71,22 @@ public class JdbcQueriesHolder {
     public static final String PERIODICAL_ISSUE_UPDATE = JdbcQueriesPropertyManager.getProperty("periodical_issues.update");
     public static final String PERIODICAL_ISSUE_DELETE = JdbcQueriesPropertyManager.getProperty("periodical_issues.delete");
     public static final String PERIODICAL_ISSUE_SELECT_ALL = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.all");
-    public static final String PERIODICAL_ISSUE_SELECT_BY_PERIODICAL= JdbcQueriesPropertyManager.getProperty("periodical_issues.select.by.periodical");
+    public static final String PERIODICAL_ISSUE_SELECT_BY_PERIODICAL = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.by.periodical");
     public static final String PERIODICAL_ISSUE_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("periodical_issues.entries.count");
     public static final String PERIODICAL_ISSUE_SELECT_SUBLIST = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.sublist");
+
+    /*role table*/
+    public static final String PAYMENT_INSERT = JdbcQueriesPropertyManager.getProperty("payments.insert");
+    public static final String PAYMENT_SELECT_BY_ID = JdbcQueriesPropertyManager.getProperty("payments.select.one.id");
+    public static final String PAYMENT_UPDATE = JdbcQueriesPropertyManager.getProperty("payments.update");
+    public static final String PAYMENT_DELETE = JdbcQueriesPropertyManager.getProperty("payments.delete");
+    public static final String PAYMENT_SELECT_ALL = JdbcQueriesPropertyManager.getProperty("payments.select.all");
+    public static final String PAYMENT_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("payments.entries.count");
+    public static final String PAYMENT_SELECT_SUBLIST = JdbcQueriesPropertyManager.getProperty("payments.select.sublist");
+    public static final String PAYMENT_SELECT_USER_PAYMENTS_SUBLIST = JdbcQueriesPropertyManager.getProperty("payments.select.user.payments.sublist");
+    public static final String PAYMENT_INSERT_PAYMENT_PERIODICALS = JdbcQueriesPropertyManager.getProperty("payments.insert.payment.periodicals");
+    public static final String PAYMENT_DELETE_PAYMENT_PERIODICALS= JdbcQueriesPropertyManager.getProperty("payments.delete.payment.periodicals");
+    public static final String PAYMENT_SELECT_USER_PAYMENTS_COUNT = JdbcQueriesPropertyManager.getProperty("payments.select.user.payments.count");
 
     private JdbcQueriesHolder() {
 

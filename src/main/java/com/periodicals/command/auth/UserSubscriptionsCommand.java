@@ -2,7 +2,6 @@ package com.periodicals.command.auth;
 
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dao.entities.User;
-import com.periodicals.dto.UserDto;
 import com.periodicals.services.UserSubscriptionsService;
 
 import javax.servlet.http.HttpServletRequest;

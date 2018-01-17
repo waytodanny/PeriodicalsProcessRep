@@ -1,16 +1,12 @@
 package com.periodicals.services;
 
+import com.periodicals.dao.entities.Payment;
+import com.periodicals.dao.entities.User;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PaymentsJdbcDao;
-import com.periodicals.dto.PaymentDto;
-import com.periodicals.dto.PeriodicalDto;
-import com.periodicals.dao.entities.Payment;
-import com.periodicals.dao.entities.Periodical;
-import com.periodicals.dao.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentService {
@@ -28,50 +24,23 @@ public class PaymentService {
         return paymentService;
     }
 
-    public List<PaymentDto> getUserPaymentsDtoSublist(User user, int skip, int take) throws ServiceException {
-        List<PaymentDto> dtoList = new ArrayList<>();
+    public List<Payment> getUserPaymentsSublist(User user, int skip, int take) throws ServiceException {
         try {
             List<Payment> entityList = payDao.getUserPaymentsSublist(user, skip, take);
-            fillPaymentsDtoList(entityList, dtoList);
-        } catch (ServiceException e) {
+            return entityList;
+        } catch (Exception e) {
             /*TODO log*/
             throw new ServiceException(e.getMessage());
         }
-        return dtoList;
     }
 
-
-    public int getUserPaymentsCount(User user) {
-        int result = 0;
-                    result = payDao.getUserPaymentsCount(user);
-        return result;
-    }
-
-    private static void fillPaymentsDtoList(List<Payment> entityList, List<PaymentDto> dtoList) throws ServiceException {
-        for (Payment entity : entityList) {
-            PaymentDto dto = getDtoByEntity(entity);
-            dtoList.add(dto);
-        }
-    }
-
-    /*TODO checking for null*/
-    private static PaymentDto getDtoByEntity(Payment entity) throws ServiceException {
-        PaymentDto dto = new PaymentDto();
-
-        dto.setId(entity.getId());
-        dto.setPaymentSum(entity.getPaymentSum());
-        dto.setPaymentTime(entity.getPaymentTime());
-//        dto.setUserId(entity.getUserId());
-
-        List<PeriodicalDto> periodicalDtos = new ArrayList<>();
+    public long getUserPaymentsCount(User user) {
+        long result = 0;
         try {
-            List<Periodical> perEntities = perService.getPaymentPeriodicals(entity);
-            PeriodicalService.fillPeriodicalsDto(perEntities, periodicalDtos);
-
-            dto.setPeriodicals(periodicalDtos);
-            return dto;
-        } catch (ServiceException e) {
-            throw new ServiceException("failed to obtain user payment: " + e.getMessage());
+            result = payDao.getUserPaymentsCount(user);
+        } catch (DaoException e) {
+            e.printStackTrace();
         }
+        return result;
     }
 }
