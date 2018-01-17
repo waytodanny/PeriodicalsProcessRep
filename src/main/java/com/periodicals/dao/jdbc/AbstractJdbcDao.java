@@ -2,7 +2,7 @@ package com.periodicals.dao.jdbc;
 
 import com.periodicals.dao.connection.ConnectionManager;
 import com.periodicals.dao.connection.ConnectionWrapper;
-import com.periodicals.dao.entities.util.Identified;
+import com.periodicals.entities.util.Identified;
 import com.periodicals.exceptions.DaoException;
 import org.apache.log4j.Logger;
 

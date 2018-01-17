@@ -1,7 +1,7 @@
 package com.periodicals.dao.jdbc;
 
-import com.periodicals.dao.entities.Role;
-import com.periodicals.dao.entities.User;
+import com.periodicals.entities.Role;
+import com.periodicals.entities.User;
 import com.periodicals.dao.interfaces.UsersDao;
 import com.periodicals.exceptions.DaoException;
 

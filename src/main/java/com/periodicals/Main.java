@@ -1,15 +1,9 @@
 package com.periodicals;
 
-import com.periodicals.dao.entities.*;
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
-import com.periodicals.dao.jdbc.*;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.utils.encryption.MD5_Cryptographer;
-import com.periodicals.utils.uuid.UuidGenerator;
-
-import java.util.List;
 
 
 public class Main {

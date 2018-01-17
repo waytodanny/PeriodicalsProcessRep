@@ -2,7 +2,7 @@ package com.periodicals.dao.jdbc;
 
 import com.periodicals.dao.connection.ConnectionManager;
 import com.periodicals.dao.connection.ConnectionWrapper;
-import com.periodicals.dao.entities.*;
+import com.periodicals.entities.*;
 import com.periodicals.dao.interfaces.PeriodicalsDao;
 import com.periodicals.exceptions.DaoException;
 
@@ -119,7 +119,7 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> imp
         String description = periodical.getDescription();
         Short issuesPerYear = periodical.getIssuesPerYear();
         BigDecimal subscriptionCost = periodical.getSubscriptionCost();
-        Boolean isLimited = periodical.isLimited();
+        Boolean isLimited = periodical.getIsLimited();
         Short genreId = periodical.getGenre().getId();
         Integer publisherId = periodical.getPublisher().getId();
 
@@ -133,7 +133,7 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> imp
         String description = periodical.getDescription();
         Short issuesPerYear = periodical.getIssuesPerYear();
         BigDecimal subscriptionCost = periodical.getSubscriptionCost();
-        Boolean isLimited = periodical.isLimited();
+        Boolean isLimited = periodical.getIsLimited();
         Short genreId = periodical.getGenre().getId();
         Integer publisherId = periodical.getPublisher().getId();
 

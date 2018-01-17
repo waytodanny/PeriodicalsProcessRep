@@ -2,7 +2,7 @@ package com.periodicals.services;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
-import com.periodicals.dao.entities.User;
+import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.utils.encryption.MD5_Cryptographer;
 

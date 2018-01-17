@@ -10,58 +10,188 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUsersCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUsersCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/CatalogEditingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/CatalogEditingCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/all/LoginCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/all/LoginCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/all/DefaultCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/DefaultCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/all/LoginCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/LoginCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/all/RegistrationCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/RegistrationCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Payment.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Payment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandFactory.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Genre.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Genre.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Payment.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Payment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Periodical.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Periodical.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/PeriodicalIssue.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/PeriodicalIssue.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Publisher.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Publisher.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Role.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Role.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/User.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/util/Identified.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/util/Identified.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenresDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenresDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PaymentsDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PaymentsDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalsDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalsDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PublishersDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PublishersDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/RolesDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/RolesDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/UsersDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/UsersDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/AbstractJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/AbstractJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/GenresJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/GenresJdbcDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PaymentsJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PaymentsJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dto/GenreDto.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dto/PaymentDto.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dto/PeriodicalDto.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dto/RoleDto.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dto/UserDto.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PublishersJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PublishersJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/filters/AccessFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/filters/AccessFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/security/SecurityConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/security/SecurityConfiguration.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/GenresService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/GenresService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/LoginService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/LoginService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PublisherService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PublisherService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/RegistrationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/RegistrationService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/RoleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/RoleService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserSubscriptionsService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserSubscriptionsService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/JdbcQueriesHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/JdbcQueriesHolder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log.txt" afterPath="$PROJECT_DIR$/src/main/resources/log.txt" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/Cart.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/Cart.java" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/queries.properties" afterPath="$PROJECT_DIR$/src/main/resources/queries.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Добавить" afterPath="$PROJECT_DIR$/src/main/resources/Добавить" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/Main.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/Payment.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/Payment.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/AbstractJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/GenresJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PaymentsJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PublishersJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/RolesJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/UsersJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/GenresService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/LoginService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PaymentService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalIssueService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PublisherService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/RegistrationService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/RoleService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserSubscriptionsService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/utils/JdbcQueriesHolder.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log.txt" afterPath="$PROJECT_DIR$/target/classes/log.txt" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/AbstractJdbcDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/AbstractJdbcDAOTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/GenresJdbcDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/GenresJdbcDAOTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PaymentsJdbcDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PaymentsJdbcDAOTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDAOTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDAOTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PublishersJdbcDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/PublishersJdbcDAOTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/UsersJdbcDAOTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/periodicals/dao/jdbc/UsersJdbcDAOTest.java" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/Main.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/Main.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/authentification/AuthenticationHelper.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/authentification/AuthenticationHelper.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AddIssueCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AddIssueCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AddPeriodicalCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AddPeriodicalCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AdminUserInfoCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AdminUserInfoCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AdminUsersCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/AdminUsersCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/CatalogEditingCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/CatalogEditingCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/IssuesEditingCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/IssuesEditingCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/all/DefaultCommand.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/all/LoginCommand.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/all/RegistrationCommand.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/CartCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/CartCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/CatalogCommand$PeriodicalsRequestData.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/CatalogCommand$PeriodicalsRequestData.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/CatalogCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/CatalogCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/PeriodicalCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/PeriodicalCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/ProcessSubscriptionCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/ProcessSubscriptionCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandFactory.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandFactory.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandHelper.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandHelper.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/Genre.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/Payment.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/Periodical.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/PeriodicalIssue.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/Publisher.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/Role.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/User.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/entities/util/Identified.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/GenericDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/GenericDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/GenresDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/GenresDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PaymentsDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PaymentsDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PeriodicalsDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PeriodicalsDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PublishersDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PublishersDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/RolesDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/RolesDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/UsersDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/UsersDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/AbstractJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/AbstractJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/GenresJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/GenresJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PaymentsJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PaymentsJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PublishersJdbcDao$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PublishersJdbcDao$PersistPublisher.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PublishersJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PublishersJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/RolesJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/RolesJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/UsersJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/UsersJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dto/GenreDto.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dto/PaymentDto.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dto/PeriodicalDto.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dto/RoleDto.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dto/UserDto.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/filters/AccessFilter.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/filters/AccessFilter.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/GenresService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/GenresService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/LoginService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/LoginService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PaymentService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PaymentService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalIssueService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalIssueService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PublisherService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PublisherService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/RegistrationService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/RegistrationService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/RoleService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/RoleService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/UserService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/UserService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/UserSubscriptionsService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/UserSubscriptionsService.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/utils/Cart.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/utils/Cart.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/log.txt" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/log.txt" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/mySQL_CreateDB.sql" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/mySQL_CreateDB.sql" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/Добавить" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/Добавить" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/Main.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/Main.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/authentification/AuthenticationHelper.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/authentification/AuthenticationHelper.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AddIssueCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AddIssueCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AddPeriodicalCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AddPeriodicalCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AdminUserInfoCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AdminUserInfoCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AdminUsersCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/AdminUsersCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/CatalogEditingCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/CatalogEditingCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/IssuesEditingCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/IssuesEditingCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/all/DefaultCommand.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/all/LoginCommand.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/all/RegistrationCommand.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/CartCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/CartCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/CatalogCommand$PeriodicalsRequestData.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/CatalogCommand$PeriodicalsRequestData.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/CatalogCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/CatalogCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/PeriodicalCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/PeriodicalCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/ProcessSubscriptionCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/ProcessSubscriptionCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/util/CommandFactory.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/util/CommandFactory.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/Genre.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/Payment.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/Periodical.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/PeriodicalIssue.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/Publisher.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/Role.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/User.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/entities/util/Identified.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/GenresDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/GenresDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PaymentsDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PaymentsDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalsDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalsDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PublishersDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PublishersDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/RolesDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/RolesDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/UsersDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/UsersDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/AbstractJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/AbstractJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/GenresJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/GenresJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PaymentsJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PaymentsJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PublishersJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PublishersJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/RolesJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/RolesJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/UsersJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/UsersJdbcDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/filters/AccessFilter.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/filters/AccessFilter.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/GenresService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/GenresService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/LoginService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/LoginService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PaymentService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/PaymentService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalIssueService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalIssueService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PublisherService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/PublisherService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/RegistrationService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/RegistrationService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/RoleService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/RoleService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserSubscriptionsService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserSubscriptionsService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/utils/Cart.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/utils/Cart.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/queries.properties" afterPath="$PROJECT_DIR$/target/classes/queries.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Добавить" afterPath="$PROJECT_DIR$/target/classes/Добавить" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,24 +216,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/Main.java">
+      <file leaf-file-name="CatalogCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2574">
-              <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="52" column="47" lean-forward="true" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessSubscriptionCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java">
+      <file leaf-file-name="Periodical.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Periodical.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="51" column="17" lean-forward="true" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="466">
+              <caret line="80" column="23" lean-forward="false" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="catalog.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/catalog.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="59" column="22" lean-forward="true" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,9 +300,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/utils/propertyManagers/JdbcQueriesPropertyManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities2/Role2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc2/AbstractJdbcDao2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc2/RolesJdbcDao2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc2/UsersJdbcDao2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc2/AbstractJdbcDao.java" />
@@ -199,7 +334,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/CatalogEditingCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/GenresService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserSubscriptionsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" />
@@ -213,6 +347,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/filters/AccessFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/all/LoginCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Payment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Periodical.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/pages/catalog.jsp" />
       </list>
     </option>
   </component>
@@ -320,7 +458,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="command" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -330,7 +468,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -339,7 +476,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -347,22 +484,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -371,23 +492,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="additional" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -420,14 +524,15 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\java\com\periodicals\dao\entities\util" />
-      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\webapp\pages" />
-      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\resources" />
-      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\webapp\css" />
-      <recent name="C:\Users\Daniel\Desktop\Periodicals-e523d7f1936d9d995cbf4afd67506143dfc58fce\src\main\webapp\js" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.periodicals.dto" />
+      <recent name="com.periodicals.dao.jdbc" />
+      <recent name="com.periodicals.exceptions" />
+      <recent name="com.periodicals.services" />
+      <recent name="com.periodicals.command" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.periodicals" />
       <recent name="com.periodicals.dao.jdbc" />
       <recent name="com.periodicals.dao" />
     </key>
@@ -445,12 +550,12 @@
       <recent name="com.periodicals.command.helpers" />
       <recent name="com.periodicals.authentification" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.periodicals.dto" />
-      <recent name="com.periodicals.dao.jdbc" />
-      <recent name="com.periodicals.exceptions" />
-      <recent name="com.periodicals.services" />
-      <recent name="com.periodicals.command" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\java\com\periodicals\dao\entities\util" />
+      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\webapp\pages" />
+      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\resources" />
+      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\webapp\css" />
+      <recent name="C:\Users\Daniel\Desktop\Periodicals-e523d7f1936d9d995cbf4afd67506143dfc58fce\src\main\webapp\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -465,7 +570,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Tomcat Server.Server">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -922,12 +1027,12 @@
       <workItem from="1516095882189" duration="207000" />
       <workItem from="1516096410111" duration="111000" />
       <workItem from="1516096920040" duration="43287000" />
-      <workItem from="1516182912067" duration="17222000" />
+      <workItem from="1516182912067" duration="19712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="401077000" />
+    <option name="totallyTimeSpent" value="403567000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
@@ -943,7 +1048,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1375948" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37486458" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.082340196" sideWeight="0.49270833" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -951,7 +1056,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21451788" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09967497" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.246875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1019,7 +1124,7 @@
           <option name="timeStamp" value="603" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="604" />
+      <option name="time" value="606" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1029,62 +1134,11 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="98" column="27" lean-forward="false" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#874#875#0" expanded="false" />
-            <element signature="e#2780#2781#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/util/User.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="45" lean-forward="false" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Publisher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/RegistrationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PublishersJdbcDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="44" column="28" lean-forward="false" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/RolesDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenresDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,25 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Periodical.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="69" column="17" lean-forward="false" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
-          <folding>
-            <element signature="e#2088#2089#0" expanded="true" />
-            <element signature="e#2124#2125#0" expanded="true" />
-            <element signature="e#2585#2586#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2654#2655#0" expanded="true" />
-            <element signature="e#2688#2689#0" expanded="true" />
-            <element signature="e#2727#2728#0" expanded="true" />
-            <element signature="e#2759#2760#0" expanded="true" />
-            <element signature="e#2812#2813#0" expanded="true" />
-            <element signature="e#2854#2855#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/GenresJdbcDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-66">
@@ -1155,15 +1190,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/PeriodicalIssue.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/PeriodicalIssue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
           <folding>
-            <element signature="e#918#919#0" expanded="false" />
-            <element signature="e#948#949#0" expanded="false" />
-            <element signature="e#1825#1826#0" expanded="false" />
-            <element signature="e#1859#1860#0" expanded="false" />
+            <element signature="e#910#911#0" expanded="false" />
+            <element signature="e#940#941#0" expanded="false" />
+            <element signature="e#1817#1818#0" expanded="false" />
+            <element signature="e#1851#1852#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1240,33 +1275,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/entities/Payment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="62" column="26" lean-forward="false" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-          <folding>
-            <element signature="e#790#791#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1154#1155#0" expanded="true" />
-            <element signature="e#1249#1250#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1762#1763#0" expanded="true" />
-            <element signature="e#1826#1827#0" expanded="true" />
-            <element signature="e#1872#1873#0" expanded="true" />
-            <element signature="e#2355#2356#0" expanded="true" />
-            <element signature="e#2427#2428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1332,7 +1346,7 @@
         <state relative-caret-position="97">
           <caret line="63" column="13" lean-forward="false" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1341,16 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="836">
           <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
@@ -1370,7 +1374,7 @@
         <state relative-caret-position="374">
           <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1380,7 +1384,7 @@
         <state relative-caret-position="594">
           <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1390,7 +1394,7 @@
         <state relative-caret-position="352">
           <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1400,16 +1404,8 @@
         <state relative-caret-position="418">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1756">
-          <caret line="6" column="47" lean-forward="false" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1418,7 +1414,7 @@
         <state relative-caret-position="1496">
           <caret line="70" column="5" lean-forward="false" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1428,7 +1424,7 @@
         <state relative-caret-position="880">
           <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1438,27 +1434,7 @@
         <state relative-caret-position="1584">
           <caret line="72" column="17" lean-forward="false" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/filters/AccessFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="54" column="29" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/all/LoginCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="23" column="67" lean-forward="false" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1471,20 +1447,132 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2574">
+          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
+        <state relative-caret-position="290">
           <caret line="51" column="17" lean-forward="true" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/LoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/utils/PagesHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/common/LoginCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="49" column="68" lean-forward="true" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/filters/AccessFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/filters/CharsetFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/servlet/Dispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#864#865#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="76" column="29" lean-forward="true" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Payment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2574">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        <state relative-caret-position="308">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="52" column="47" lean-forward="true" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Publisher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Periodical.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="80" column="23" lean-forward="false" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/catalog.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="59" column="22" lean-forward="true" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
           <folding />
         </state>
       </provider>

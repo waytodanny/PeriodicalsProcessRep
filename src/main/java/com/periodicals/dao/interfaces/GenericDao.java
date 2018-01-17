@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Created by Daniel Volnitsky on 23.12.17
- * Dao pattern interface for all dao implementors
+ * Dao pattern interface for common dao implementors
  *
  * @T type of object implementor dao working with
  * @K primary key type

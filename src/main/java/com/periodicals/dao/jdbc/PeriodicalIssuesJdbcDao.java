@@ -1,14 +1,10 @@
 package com.periodicals.dao.jdbc;
 
-import com.periodicals.dao.connection.ConnectionManager;
-import com.periodicals.dao.connection.ConnectionWrapper;
-import com.periodicals.dao.entities.Periodical;
+import com.periodicals.entities.Periodical;
 import com.periodicals.dao.interfaces.PeriodicalIssuesDao;
-import com.periodicals.dao.entities.PeriodicalIssue;
+import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.exceptions.DaoException;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

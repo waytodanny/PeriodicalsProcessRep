@@ -3,7 +3,7 @@ package com.periodicals.command.auth;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dao.entities.Periodical;
+import com.periodicals.entities.Periodical;
 import com.periodicals.services.PeriodicalService;
 import com.periodicals.utils.Cart;
 

@@ -2,9 +2,9 @@ package com.periodicals.services;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
-import com.periodicals.dao.entities.Genre;
-import com.periodicals.dao.entities.Payment;
-import com.periodicals.dao.entities.Periodical;
+import com.periodicals.entities.Genre;
+import com.periodicals.entities.Payment;
+import com.periodicals.entities.Periodical;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 
@@ -72,13 +72,13 @@ public class PeriodicalService {
     }
 
     public List<Periodical> getPeriodicalsSublist(int skip, int take) {
-        List<Periodical> dtoList = new ArrayList<>();
+        List<Periodical> periodicals = new ArrayList<>();
         try {
-            List<Periodical> entityList = perDao.getPeriodicalSubList(skip, take);
+            periodicals = perDao.getPeriodicalSubList(skip, take);
         } catch (DaoException e) {
             /*TODO log*/
         }
-        return dtoList;
+        return periodicals;
     }
 
     public long getPeriodicalsCount() {

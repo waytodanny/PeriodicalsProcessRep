@@ -1,6 +1,6 @@
 package com.periodicals.services;
 
-import com.periodicals.dao.entities.User;
+import com.periodicals.entities.User;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.exceptions.DaoException;

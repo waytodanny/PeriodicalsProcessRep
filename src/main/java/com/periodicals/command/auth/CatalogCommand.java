@@ -4,8 +4,8 @@ import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 
-import com.periodicals.dao.entities.Genre;
-import com.periodicals.dao.entities.Periodical;
+import com.periodicals.entities.Genre;
+import com.periodicals.entities.Periodical;
 import com.periodicals.services.GenresService;
 import com.periodicals.services.PeriodicalService;
 
@@ -43,7 +43,7 @@ public class CatalogCommand implements Command {
     }
 
     /**
-     * fills PeriodicalsRequestData object by sublist of all periodicals
+     * fills PeriodicalsRequestData object by sublist of common periodicals
      *
      * @see PeriodicalsRequestData
      */

@@ -2,7 +2,7 @@
 //
 //import com.periodicals.exceptions.DaoException;
 //import com.periodicals.dao.factories.JdbcDaoFactory;
-//import com.periodicals.dao.entities.PeriodicalIssue;
+//import com.periodicals.entities.PeriodicalIssue;
 //import dbTestHelpers.InMemoryDbManager;
 //import org.apache.log4j.LogManager;
 //import org.apache.log4j.Logger;

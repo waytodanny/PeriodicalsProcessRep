@@ -1,12 +1,11 @@
 package com.periodicals.services;
 
-import com.periodicals.dao.entities.Role;
+import com.periodicals.entities.Role;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.RolesJdbcDao;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.periodicals.utils.AttributesHolder.ROLE_ADMIN;

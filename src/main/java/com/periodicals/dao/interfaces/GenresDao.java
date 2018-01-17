@@ -1,6 +1,6 @@
 package com.periodicals.dao.interfaces;
 
-import com.periodicals.dao.entities.Genre;
+import com.periodicals.entities.Genre;
 import com.periodicals.exceptions.DaoException;
 
 public interface GenresDao extends GenericDao<Genre, Short> {

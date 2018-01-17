@@ -1,6 +1,6 @@
 package com.periodicals.dao.jdbc;
 
-import com.periodicals.dao.entities.Role;
+import com.periodicals.entities.Role;
 import com.periodicals.dao.interfaces.RolesDao;
 import com.periodicals.exceptions.DaoException;
 

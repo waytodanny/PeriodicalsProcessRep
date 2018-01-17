@@ -3,12 +3,11 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dao.entities.PeriodicalIssue;
+import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.services.PeriodicalIssueService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;

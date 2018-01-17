@@ -1,7 +1,7 @@
 package com.periodicals.filters;
 
 import com.periodicals.authentification.AuthenticationHelper;
-import com.periodicals.dao.entities.User;
+import com.periodicals.entities.User;
 import com.periodicals.security.SecurityConfiguration;
 
 import javax.servlet.*;

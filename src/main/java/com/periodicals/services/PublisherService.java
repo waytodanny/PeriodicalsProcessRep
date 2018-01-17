@@ -2,7 +2,7 @@ package com.periodicals.services;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PublishersJdbcDao;
-import com.periodicals.dao.entities.Publisher;
+import com.periodicals.entities.Publisher;
 import com.periodicals.exceptions.DaoException;
 
 import java.util.List;

@@ -1,9 +1,8 @@
 package com.periodicals.utils;
 
-import com.periodicals.dao.entities.Periodical;
+import com.periodicals.entities.Periodical;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

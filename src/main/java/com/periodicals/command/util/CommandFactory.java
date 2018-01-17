@@ -2,9 +2,9 @@ package com.periodicals.command.util;
 
 import com.periodicals.command.Command;
 import com.periodicals.command.admin.*;
-import com.periodicals.command.all.DefaultCommand;
-import com.periodicals.command.all.LoginCommand;
-import com.periodicals.command.all.RegistrationCommand;
+import com.periodicals.command.common.DefaultCommand;
+import com.periodicals.command.common.LoginCommand;
+import com.periodicals.command.common.RegistrationCommand;
 import com.periodicals.command.auth.*;
 
 import java.util.HashMap;

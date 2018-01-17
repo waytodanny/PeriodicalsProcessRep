@@ -1,6 +1,6 @@
 //package com.periodicals.dao.jdbc;
 //
-//import com.periodicals.dao.entities.Genre;
+//import com.periodicals.entities.Genre;
 //import com.periodicals.exceptions.DaoException;
 //import com.periodicals.dao.factories.JdbcDaoFactory;
 //import dbTestHelpers.InMemoryDbManager;
