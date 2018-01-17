@@ -34,10 +34,11 @@ public class UserSubscriptionsService {
         try {
             Payment payment = new Payment();
             payment.setUserId(user.getId());
+            payment.setPaymentSum(paymentSum);
             payment.setPeriodicals(subs);
 
             Transaction.doTransaction(() -> {
-                payDao.add(payment);
+                payment.setId(payDao.add(payment));
                 payDao.addPaymentPeriodicals(payment);
                 perDao.addUserSubscriptions(user, subs);
             });
@@ -49,7 +50,7 @@ public class UserSubscriptionsService {
     public List<Periodical> getUserSubscriptionsDtoSublist(User user, int skip, int take) {
         List<Periodical> periodicals = new ArrayList<>();
         try {
-            List<Periodical> entities = perDao.getUserSubscriptions(user);
+            periodicals = perDao.getUserSubscriptions(user);
         } catch (DaoException e) {
             /*TODO log*/
         }

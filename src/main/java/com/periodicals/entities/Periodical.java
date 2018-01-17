@@ -101,4 +101,25 @@ public class Periodical implements Identified<Integer> {
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Periodical that = (Periodical) o;
+        return issuesPerYear == that.issuesPerYear &&
+                isLimited == that.isLimited &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(subscriptionCost, that.subscriptionCost) &&
+                Objects.equals(genre, that.genre) &&
+                Objects.equals(publisher, that.publisher);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name, description, subscriptionCost, issuesPerYear, isLimited, genre, publisher);
+    }
 }

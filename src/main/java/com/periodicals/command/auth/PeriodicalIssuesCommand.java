@@ -3,8 +3,9 @@ package com.periodicals.command.auth;
 import com.periodicals.authentification.AuthenticationHelper;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.entities.User;
 import com.periodicals.entities.Periodical;
+import com.periodicals.entities.PeriodicalIssue;
+import com.periodicals.entities.User;
 import com.periodicals.services.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 import com.periodicals.services.UserSubscriptionsService;
@@ -20,6 +21,7 @@ import static com.periodicals.utils.PagesHolder.PERIODICAL_ISSUES_PAGE;
 
 public class PeriodicalIssuesCommand implements Command {
     private PeriodicalIssueService issueService = PeriodicalIssueService.getInstance();
+    private PeriodicalService periodicalService = PeriodicalService.getInstance();
     private UserSubscriptionsService subsService = UserSubscriptionsService.getInstance();
 
     @Override
@@ -35,10 +37,10 @@ public class PeriodicalIssuesCommand implements Command {
         }
 
         User user = (User) req.getSession().getAttribute("user");
-        Periodical per = PeriodicalService.getInstance().getPeriodicalById(Integer.parseInt(perId));
-        if (subsService.isSubscribed(user, per)) {
-//            List<PeriodicalIssue> issues = issueService.getIssuesByPeriodical(per.getId());
-//            req.setAttribute("issues", issues);
+        Periodical periodical = periodicalService.getPeriodicalById(Integer.parseInt(perId));
+        if (subsService.isSubscribed(user, periodical)) {
+            List<PeriodicalIssue> issues = issueService.getIssuesByPeriodical(periodical);
+            req.setAttribute("issues", issues);
             return new CommandResult(req, resp, FORWARD, PERIODICAL_ISSUES_PAGE);
         } else {
             return new CommandResult(req, resp, FORWARD, ERROR_PAGE);

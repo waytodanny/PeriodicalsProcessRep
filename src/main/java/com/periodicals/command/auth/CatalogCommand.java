@@ -65,7 +65,7 @@ public class CatalogCommand implements Command {
     private PeriodicalsRequestData getPeriodicalsRequestDataByGenre(HttpServletRequest req, Genre genre) {
         PeriodicalsRequestData data = new PeriodicalsRequestData();
         data.currentPage = getPageFromRequest(req);
-        data.periodicals = perService.getGenrePeriodicalsDtoSublist
+        data.periodicals = perService.getGenrePeriodicalsSublist
                 (genre, (data.currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
         data.recordsCount = perService.getGenrePeriodicalCount(genre);
         data.pageLink = CATALOG_PAGE + "?genre=" + genre.getName() + "?page=" + data.currentPage;

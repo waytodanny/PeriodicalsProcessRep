@@ -91,14 +91,14 @@ public class PeriodicalService {
         return result;
     }
 
-    public List<Periodical> getGenrePeriodicalsDtoSublist(Genre genre, int skip, int take) {
-        List<Periodical> dtoList = new ArrayList<>();
+    public List<Periodical> getGenrePeriodicalsSublist(Genre genre, int skip, int take) {
+        List<Periodical> periodicals = new ArrayList<>();
         try {
-            List<Periodical> entityList = perDao.getGenrePeriodicalsSublist(genre, skip, take);
+            periodicals = perDao.getGenrePeriodicalsSublist(genre, skip, take);
         } catch (DaoException e) {
             /*TODO log*/
         }
-        return dtoList;
+        return periodicals;
     }
 
     public List<Periodical> getPaymentPeriodicals(Payment payment) throws ServiceException {
