@@ -42,9 +42,9 @@ public class IssuesEditingCommand implements Command {
             periodicalId = Integer.parseInt(req.getParameter("id"));
         }
 
-        List<PeriodicalIssue> issues = issueService.getByPeriodicalId(periodicalId);
-
-        req.setAttribute("issues", issues);
+//        List<PeriodicalIssue> issues = issueService.getByPeriodical(periodicalId);
+//
+//        req.setAttribute("issues", issues);
         return new CommandResult(req, resp, FORWARD, ADMIN_PERIODICAL_ISSUE_EDIT_PAGE + "?id=" + periodicalId);
     }
 

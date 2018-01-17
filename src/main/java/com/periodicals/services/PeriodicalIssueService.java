@@ -1,5 +1,6 @@
 package com.periodicals.services;
 
+import com.periodicals.dao.entities.Periodical;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PeriodicalIssuesJdbcDao;
 import com.periodicals.dao.entities.PeriodicalIssue;
@@ -22,10 +23,10 @@ public class PeriodicalIssueService {
         return issuesService;
     }
 
-    public List<PeriodicalIssue> getByPeriodicalId(int id) {
+    public List<PeriodicalIssue> getByPeriodical(Periodical periodical) {
         List<PeriodicalIssue> result = null;
         try {
-           result = dao.getIssuesByPeriodicalId(id);
+           result = dao.getIssuesByPeriodical(periodical);
         } catch (DaoException e) {
             /*logger*/
         }
@@ -66,10 +67,10 @@ public class PeriodicalIssueService {
         }
     }
 
-    public List<PeriodicalIssue> getIssuesByPeriodicalId(int i) {
+    public List<PeriodicalIssue> getIssuesByPeriodical(Periodical periodical) {
         List<PeriodicalIssue> issues = new ArrayList<>();
         try {
-            issues = dao.getIssuesByPeriodicalId(i);
+            issues = dao.getIssuesByPeriodical(periodical);
         } catch (DaoException e) {
             e.printStackTrace();
         }

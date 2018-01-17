@@ -4,7 +4,6 @@ import com.periodicals.authentification.AuthenticationHelper;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.dao.entities.User;
-import com.periodicals.dto.UserDto;
 import com.periodicals.dao.entities.Periodical;
 import com.periodicals.dao.entities.PeriodicalIssue;
 import com.periodicals.services.PeriodicalIssueService;
@@ -39,8 +38,8 @@ public class PeriodicalIssuesCommand implements Command {
         User user = (User) req.getSession().getAttribute("user");
         Periodical per = PeriodicalService.getInstance().getPeriodicalById(Integer.parseInt(perId));
         if (subsService.isSubscribed(user, per)) {
-            List<PeriodicalIssue> issues = issueService.getIssuesByPeriodicalId(per.getId());
-            req.setAttribute("issues", issues);
+//            List<PeriodicalIssue> issues = issueService.getIssuesByPeriodical(per.getId());
+//            req.setAttribute("issues", issues);
             return new CommandResult(req, resp, FORWARD, PERIODICAL_ISSUES_PAGE);
         } else {
             return new CommandResult(req, resp, FORWARD, ERROR_PAGE);

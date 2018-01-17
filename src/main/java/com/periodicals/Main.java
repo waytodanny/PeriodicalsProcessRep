@@ -3,10 +3,7 @@ package com.periodicals;
 import com.periodicals.dao.entities.*;
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
-import com.periodicals.dao.jdbc.GenresJdbcDao;
-import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
-import com.periodicals.dao.jdbc.PublishersJdbcDao;
-import com.periodicals.dao.jdbc.UsersJdbcDao;
+import com.periodicals.dao.jdbc.*;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.utils.encryption.MD5_Cryptographer;
@@ -76,22 +73,22 @@ public class Main {
 //        GenresJdbcDao perGenres =
 //                (GenresJdbcDao) factory.getGenresDao();
 //
-//        List<Genre> genres = perGenres.getAll();
-//        System.out.println(genres.size());
+//        List<Genre> periodical_issues = perGenres.getAll();
+//        System.out.println(periodical_issues.size());
 //
 //        Genre periodical = new Genre();
 //        periodical.setName("fantastic1");
 //        short id2 = perGenres.add(periodical);
 //
-//        Genre genre2 = perGenres.getById(id2);
+//        Genre periodical_issue2 = perGenres.getById(id2);
 //
-//        List<Genre> genres2 = perGenres.getAll();
-//        System.out.println(genres2.size());
+//        List<Genre> periodical_issues2 = perGenres.getAll();
+//        System.out.println(periodical_issues2.size());
 //
-//        perGenres.delete(genre2.getId());
+//        perGenres.delete(periodical_issue2.getId());
 //
-//        List<Genre> genres3 = perGenres.getAll();
-//        System.out.println(genres3.size());
+//        List<Genre> periodical_issues3 = perGenres.getAll();
+//        System.out.println(periodical_issues3.size());
 ////
 //        PeriodicalsJdbcDao persDao =
 //               (PeriodicalsJdbcDao) factory.getPeriodicalsDao();
@@ -108,23 +105,24 @@ public class Main {
 //        System.out.println(pers3.size());
 
 //        PeriodicalIssuesJdbcDao persIssDao =
-//              (PeriodicalIssuesJdbcDao) factory.getDaoByClass(PeriodicalIssue.class);
-////
-////        List<PeriodicalIssue> issues = persIssDao.getAll();
-////        System.out.println(issues.size());
-////
-////        PeriodicalIssue grp = new PeriodicalIssue("rhino in town", 1);
-////        int id4 = persIssDao.add(grp);
-////
-////        List<PeriodicalIssue> issues2 = persIssDao.getAll();
-////        System.out.println(issues2.size());
-////
-////        PeriodicalIssue grp2 = persIssDao.getById(id4);
-////
-////        persIssDao.delete(grp2);
-////
-////        List<PeriodicalIssue> issues3 = persIssDao.getAll();
-////        System.out.println(issues3.size());
+//              (PeriodicalIssuesJdbcDao) factory.getPeriodicalIssuesDao();
+
+//        List<PeriodicalIssue> issues = persIssDao.getAll();
+//        System.out.println(issues.size());
+//
+//        PeriodicalIssue grp = new PeriodicalIssue("rhino in town", 1);
+//        grp.setIssueNo(2);
+//        long id4 = persIssDao.add(grp);
+//
+//        List<PeriodicalIssue> issues2 = persIssDao.getAll();
+//        System.out.println(issues2.size());
+//
+//        PeriodicalIssue grp2 = persIssDao.getById(id4);
+//
+//        persIssDao.delete(grp2.getId());
+//
+//        List<PeriodicalIssue> issues3 = persIssDao.getAll();
+//        System.out.println(issues3.size());
 ////
 ////        PaymentsJdbcDao paysDao =
 ////                (PaymentsJdbcDao) factory.getDaoByClass(Payment.class, conn);

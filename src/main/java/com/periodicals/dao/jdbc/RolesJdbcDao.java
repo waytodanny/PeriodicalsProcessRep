@@ -12,18 +12,13 @@ import java.util.List;import static com.periodicals.utils.JdbcQueriesHolder.*;
 public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDao {
 
     @Override
-    public Role getByName(String name) throws DaoException {
-        return super.selectObject(ROLE_SELECT_BY_NAME, name);
+    public Role getById(Byte id) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_NAME, id);
     }
 
     @Override
     public Byte add(Role role) throws DaoException {
         return super.insert(ROLE_INSERT, getInsertObjectParams(role));
-    }
-
-    @Override
-    public Role getById(Byte id) throws DaoException {
-        return super.selectObject(ROLE_SELECT_BY_NAME, id);
     }
 
     @Override
@@ -34,6 +29,11 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
     @Override
     public void delete(Byte key) throws DaoException {
         super.delete(USER_DELETE, key);
+    }
+
+    @Override
+    public Role getByName(String name) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_NAME, name);
     }
 
     @Override

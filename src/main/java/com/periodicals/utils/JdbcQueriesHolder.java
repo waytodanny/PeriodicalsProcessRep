@@ -65,6 +65,16 @@ public class JdbcQueriesHolder {
     public static final String SUBSCRIPTIONS_USER_SUBSCRIPTIONS_COUNT = JdbcQueriesPropertyManager.getProperty("periodical.user.subscriptions.count");
     public static final String SELECT_PAYMENT_PERIODICALS = JdbcQueriesPropertyManager.getProperty("periodical.select.payment.periodicals");
 
+    /*periodical_issues table*/
+    public static final String PERIODICAL_ISSUE_INSERT = JdbcQueriesPropertyManager.getProperty("periodical_issues.insert");
+    public static final String PERIODICAL_ISSUE_SELECT_BY_ID = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.one.id");
+    public static final String PERIODICAL_ISSUE_UPDATE = JdbcQueriesPropertyManager.getProperty("periodical_issues.update");
+    public static final String PERIODICAL_ISSUE_DELETE = JdbcQueriesPropertyManager.getProperty("periodical_issues.delete");
+    public static final String PERIODICAL_ISSUE_SELECT_ALL = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.all");
+    public static final String PERIODICAL_ISSUE_SELECT_BY_PERIODICAL= JdbcQueriesPropertyManager.getProperty("periodical_issues.select.by.periodical");
+    public static final String PERIODICAL_ISSUE_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("periodical_issues.entries.count");
+    public static final String PERIODICAL_ISSUE_SELECT_SUBLIST = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.sublist");
+
     private JdbcQueriesHolder() {
 
     }

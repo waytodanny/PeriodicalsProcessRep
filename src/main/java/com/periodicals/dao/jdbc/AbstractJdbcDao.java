@@ -25,7 +25,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
 
     protected abstract List<T> parseResultSet(ResultSet rs) throws DaoException;
 
-    public K insert(String insertQuery, Object[] params) throws DaoException {
+    K insert(String insertQuery, Object[] params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -44,7 +44,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
         }
     }
 
-     List<T> selectObjects(String query, Object... params) throws DaoException {
+    List<T> selectObjects(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -60,7 +60,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     }
 
 
-     T selectObject(String query, Object... params) throws DaoException {
+    T selectObject(String query, Object... params) throws DaoException {
         List<T> objects = selectObjects(query, params);
         if(objects.size() > 0){
             return objects.get(0);
@@ -69,11 +69,11 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     }
 
 
-    public void update(String query, Object... params) throws DaoException {
+    void update(String query, Object... params) throws DaoException {
         executeUpdate(query, params);
     }
 
-    public void delete(String query, Object... params) throws DaoException {
+    void delete(String query, Object... params) throws DaoException {
         executeUpdate(query, params);
     }
 
@@ -92,7 +92,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
         }
     }
 
-    public Long getEntriesCount(String query, Object... params) throws DaoException {
+    Long getEntriesCount(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
