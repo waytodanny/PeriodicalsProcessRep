@@ -14,13 +14,11 @@
 </head>
 <body class="no-header">
 <%--<jsp:include page="additional/header.jsp"/>--%>
-<div class="login-wrapper">
+<div class="login-wrapper centered-flex-column">
     <form class="form-signin" method="post" action="/app/registration">
         <h2 class="form-signin-heading">
             <fmt:message key="page.registration.title" bundle="${rb}"/>
         </h2>
-        <hr class="colorgraph">
-        <br>
         <input type="text" class="form-control" name="login" required="" maxlength="50" autofocus=""
                placeholder="<fmt:message key="page.registration.placeholder.login" bundle="${rb}"/>"/>
         <input type="email" class="form-control" name="email" required="" maxlength="254" autofocus=""

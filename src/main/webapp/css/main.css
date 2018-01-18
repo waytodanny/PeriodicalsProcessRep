@@ -5,7 +5,7 @@
  *
  */
 
-.login-wrapper {
+.centered-flex-column {
     min-height: 100vh;
     display: -webkit-flex;
     display: -moz-box;
@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background: #f2f2f2;
 }
 
@@ -129,13 +130,13 @@
     background: #fafafa;
 }
 
-@media (max-width: 992px) {
+@media (max-width: var(--breakpoint-lg)) {
     .item {
         border: 7px solid #fff;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--breakpoint-md)) {
     .item {
         border: 0;
         margin-bottom: 15px;
@@ -196,11 +197,10 @@ header {
 
 #hamburger-menu,
 #cart-button {
-    position: absolute;
-    top: 0;
     height: 100%;
     background: #26292f;
     width: 60px;
+    cursor: pointer;
 }
 
 #hamburger-menu i,
@@ -216,16 +216,88 @@ header {
 }
 
 #hamburger-menu {
-    left: 0;
+    float: left;
 }
 
 #cart-button {
-    right: 0;
+    float: right;
 }
 
 /*
  *
  * ENDREGION HEADER
+ *
+ */
+
+/*
+ *
+ * REGION MAIN NAVBAR
+ *
+ */
+
+#header #main-nav {
+    display: inline-block;
+    float: right;
+}
+
+#header #main-nav ul {
+    margin-bottom: 0;
+}
+
+#header #main-nav li{
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+}
+
+#header #main-nav li:hover{
+    background: var(--secondary);
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    -ms-transition: background 0.3s;
+    -o-transition: background 0.3s;
+    transition: background 0.3s;
+}
+
+#main-nav a,
+#main-nav a:hover,
+#main-nav a:focus,
+#main-nav a:active {
+    background: none;
+    border: 0;
+    box-shadow: none;
+}
+
+#header #main-nav a {
+    color: var(--light);
+}
+
+#sidebar #main-nav a {
+    color: var(--dark);
+}
+
+#sidebar #main-nav ul {
+    margin-top: 1rem;
+}
+
+#sidebar #main-nav li {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+#sidebar #main-nav li:hover a{
+    color: var(--orange);
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+/*
+ *
+ * ENDREGION MAIN NAVBAR
  *
  */
 
@@ -509,5 +581,21 @@ body.no-header {
 /*
  *
  * ENDREGION SIDEBAR
+ *
+ */
+
+/*
+ *
+ * REGION ERROR
+ *
+ */
+
+.error-image {
+    max-width: 200px;
+}
+
+/*
+ *
+ * ENDREGION ERROR
  *
  */

@@ -44,11 +44,12 @@ public class ProcessSubscriptionCommand implements Command {
                     List<Periodical> userSubs = subsService.getUserSubscriptions(user);
                     subsService.siftAlreadySubscribed(upToSubs, userSubs);
                     subsService.processSubscriptions(user, upToSubs, paySum);
-                    cart.cleanUp();
                     return new CommandResult(req, resp, REDIRECT, USER_SUBSCRIPTIONS_PAGE);
                 } catch (ServiceException e) {
                     LOGGER.error(e.getMessage());
                     return new CommandResult(req, resp, REDIRECT, referer);
+                } finally {
+                    cart.cleanUp();
                 }
             } else {
                 LOGGER.error("payments or payment sum were nullable");

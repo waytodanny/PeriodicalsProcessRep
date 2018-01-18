@@ -1,15 +1,35 @@
 package com.periodicals;
 
+import com.periodicals.dao.connection.ConnectionManager;
+import com.periodicals.dao.connection.ConnectionPool;
+import com.periodicals.dao.connection.ConnectionWrapper;
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.dao.jdbc.UsersJdbcDao;
+import com.periodicals.dao.transactions.Transaction;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
+import com.periodicals.exceptions.TransactionException;
 
 
 public class Main {
 
     public static void main(String[] args) throws DaoException, ServiceException {
 
+        AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
+//        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
+//        for (int i = 0; i < 10; i++) {
+//            new Thread( ()->{
+//                try {
+//                    Transaction.doTransaction( ()->{
+//                        System.out.println(ConnectionManager.getConnectionWrapper().getConnection().hashCode());
+//                        System.out.println(ConnectionManager.getConnectionWrapper().getConnection().hashCode());
+//                    });
+//                } catch (TransactionException e) {
+//                    e.printStackTrace();
+//                }
+//            }).run();
+//        }
 //        UserSubscriptionsService service = UserSubscriptionsService.getInstance();
 //        String uuid = "1f940bd3-f7a5-11e7-93e6-a30f6152aa28";
 //        Genre periodical = JdbcDaoFactory.getInstance().getGenresDao().getGenreByName("comics");
@@ -26,9 +46,9 @@ public class Main {
 
 //
 
-        AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
 
-//        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
+
+//
 //        List<User> users = usersJdbcDAO.getAll();
 //        System.out.println(users.size());
 //

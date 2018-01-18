@@ -13,13 +13,11 @@
     <link rel="stylesheet" href="<c:url value='/css/main.css'/>" type="text/css"/>
 </head>
 <body class="no-header">
-<div class="login-wrapper">
+<div class="login-wrapper centered-flex-column">
     <form id="login" class="form-signin" method="post" action="/app/login">
         <h2 class="form-signin-heading">
             <fmt:message key="page.login.title" bundle="${rb}"/>
         </h2>
-        <hr class="colorgraph">
-        <br>
         <input type="text" class="form-control" name="login" required="" maxlength="50" autofocus=""
                placeholder="<fmt:message key="page.login.placeholder.login" bundle="${rb}"/>"/>
         <input type="password" class="form-control" name="password" required="" maxlength="50"

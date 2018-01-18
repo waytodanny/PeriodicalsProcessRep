@@ -53,10 +53,10 @@ public class ConnectionPool {
 
     Connection getConnection() {
         Connection conn = null;
-        log.info("Trying to get connection form dataSource");
+        log.debug("Trying to get connection form dataSource...");
         try {
             conn = dataSource.getConnection();
-            log.info("Got connection from dataSource");
+            log.debug("Got connection from dataSource");
         } catch (SQLException e) {
             log.error("Failed to get connection from dataSource: " + e.getMessage());
         }
