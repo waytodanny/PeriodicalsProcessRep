@@ -5,6 +5,7 @@ import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.services.GenresService;
 import com.periodicals.services.LoginService;
 import com.periodicals.services.PeriodicalService;
+import com.periodicals.services.RoleService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -20,6 +21,7 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ConnectionPool.getInstance();
         LoginService.getInstance();
+        RoleService.getInstance();
         PeriodicalService.getInstance();
         GenresService.getInstance();
     }

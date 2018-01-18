@@ -49,7 +49,7 @@ public class PeriodicalService {
 
     public void delete(int id) {
         try {
-            perDao.delete(id);
+            perDao.delete(new Periodical()/*id*/);
         } catch (DaoException e) {
             e.printStackTrace();
         }

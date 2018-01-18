@@ -44,7 +44,7 @@ public final class AttributesHolder {
 
     public static final String ATTR_LOGIN = AttributesPropertyManager.getProperty("attr.login");
     public static final String ATTR_PASSWORD= AttributesPropertyManager.getProperty("attr.pass");
-
+    public static final String ATTR_EMAIL= AttributesPropertyManager.getProperty("attr.email");
 
     private AttributesHolder() {
 
