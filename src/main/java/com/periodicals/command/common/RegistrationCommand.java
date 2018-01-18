@@ -20,6 +20,9 @@ import static com.periodicals.utils.ResourceHolders.MessagesHolder.REGISTRATION_
 import static com.periodicals.utils.ResourceHolders.PagesHolder.LOGIN_PAGE;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.REGISTRATION_PAGE;
 
+/**
+ * Command that handles registration requests
+ */
 public class RegistrationCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(RegistrationCommand.class.getSimpleName());
     private RegistrationService regService = RegistrationService.getInstance();

@@ -16,7 +16,7 @@ public class CommandHelper {
         return request.getMethod().equals(GET);
     }
 
-    public static boolean requiredFieldsNotEmpty(String[] fields) {
+    public static boolean requiredFieldsNotEmpty(String... fields) {
         for (String field : fields) {
             if (!paramIsNotEmpty(field)) {
                 return false;
@@ -38,16 +38,18 @@ public class CommandHelper {
         return (int) Math.ceil(recordsCount * 1.0 / recordsPerPage);
     }
 
+    /*TODO test*/
     public static String getRefererWithoutServletPath(HttpServletRequest req) {
         String referer = DEFAULT;
         try {
-            String path = new URI(req.getHeader("referer")).getPath();
-            String query = new URI(req.getHeader("referer")).getQuery();
+            String header = req.getHeader("referer");
+            String path = new URI(header).getPath();
+            String query = new URI(header).getQuery();
             referer = Objects.isNull(query) ? path : path + "?" + query;
-            if(referer.contains(SERVLET_ROOT)){
+            if(referer.startsWith(SERVLET_ROOT)){
                 referer = referer.substring(SERVLET_ROOT.length());
             }
-        } catch (URISyntaxException e) {
+        } catch (Exception e) {
             /*TODO log*/
         }
         return referer;

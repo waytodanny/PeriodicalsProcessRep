@@ -21,6 +21,7 @@ public class SecurityConfiguration {
         permissions.put(PERIODICAL_ISSUES, "ALL");
         permissions.put(SUBSCRIPTIONS, "AUTH");
         permissions.put(SUBSCRIBE, "AUTH");
+        permissions.put(REMOVE_FROM_CART, "AUTH");
 
         /*common for redirecting to login page in case of unauthorized user
         wants to buy something, instead of redirecting to error page due to filter logic*/

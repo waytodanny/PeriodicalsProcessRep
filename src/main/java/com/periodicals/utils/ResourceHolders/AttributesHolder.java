@@ -17,6 +17,7 @@ public final class AttributesHolder {
 
     public static final String SUBSCRIPTIONS = AttributesPropertyManager.getProperty("command.user.subscriptions");
     public static final String ADD_TO_CART = AttributesPropertyManager.getProperty("command.add_to_cart");
+    public static final String REMOVE_FROM_CART = AttributesPropertyManager.getProperty("command.remove_from_cart");
     public static final String SUBSCRIBE = AttributesPropertyManager.getProperty("command.subscribe");
 
     public static final String ADMIN_MAIN = AttributesPropertyManager.getProperty("command.admin.main");

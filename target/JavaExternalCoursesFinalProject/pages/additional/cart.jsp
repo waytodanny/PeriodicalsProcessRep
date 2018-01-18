@@ -10,7 +10,7 @@
     <h2>
         <fmt:message key="page.cart.title" bundle="${rb}"/>
     </h2>
-    <form method="post" action="add_to_cart">
+    <form method="post" action="remove_from_cart">
         <ul class="cart-items list-unstyled">
             <c:forEach var="periodical" items="${sessionScope.cart.periodicals}">
                 <li>

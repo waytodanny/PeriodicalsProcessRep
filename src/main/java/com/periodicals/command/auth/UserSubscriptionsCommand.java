@@ -16,9 +16,9 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.USER_SUBSCRIPTIO
 /**
  * Command that uses pagination to display user subscriptions(periodicals)
  *
- * @see CatalogCommand
+ * @see ZCatalogCommand
  */
-public class UserSubscriptionsCommand extends CatalogCommand {
+public class UserSubscriptionsCommand extends ZCatalogCommand {
     private UserSubscriptionsService subsService = UserSubscriptionsService.getInstance();
     private HttpSession session;
 
