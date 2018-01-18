@@ -35,13 +35,13 @@ public final class AttributesHolder {
     public static final String POST = AttributesPropertyManager.getProperty("method.type.post");
     public static final String PAGE_SUFFIX = AttributesPropertyManager.getProperty("page.suffix");
 
+    public static final String ROLE_ATTR = AttributesPropertyManager.getProperty("attr.role");
     public static final String ROLE_ADMIN = AttributesPropertyManager.getProperty("role.admin");
     public static final String ROLE_USER = AttributesPropertyManager.getProperty("role.user");
 
     /*Request attributes*/
     public static final String COMMAND = "command";
-    public static final String ROLE_ATTR = AttributesPropertyManager.getProperty("attr.role");
-    public static final String USER = AttributesPropertyManager.getProperty("attr.user");
+    public static final String ATTR_USER = AttributesPropertyManager.getProperty("attr.user");
 
     public static final String ATTR_LOGIN = AttributesPropertyManager.getProperty("attr.login");
     public static final String ATTR_PASSWORD= AttributesPropertyManager.getProperty("attr.pass");

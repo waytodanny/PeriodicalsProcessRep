@@ -67,7 +67,7 @@ public class ZCatalogCommand implements Command {
         data.currentPage = getPageFromRequest(req);
         data.periodicals = perService.getGenrePeriodicalsSublist
                 (genre, (data.currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
-        data.recordsCount = perService.getGenrePeriodicalCount(genre);
+        data.recordsCount = perService.getGenrePeriodicalsCount(genre);
         data.pageLink = CATALOG_PAGE + "?genre=" + genre.getName() + "?page=" + data.currentPage;
         return data;
     }

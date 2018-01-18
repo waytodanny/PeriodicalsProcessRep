@@ -21,7 +21,6 @@ public class CommandFactory {
         commandMap.put(LOGOUT, new LogoutCommand());
         commandMap.put(REGISTER, new RegistrationCommand());
         commandMap.put(CATALOG, new ZCatalogCommand());
-        commandMap.put(PERIODICAL, new PeriodicalCommand());
         commandMap.put(PERIODICAL_ISSUES, new PeriodicalIssuesCommand());
         commandMap.put(ADD_TO_CART, new CartAddCommand());
         commandMap.put(REMOVE_FROM_CART, new CartRemoveCommand());

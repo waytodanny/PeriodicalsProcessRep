@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.Set;
 
 import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_USER;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.PAGE_SUFFIX;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.USER;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
 @WebFilter(urlPatterns = {"/*"})
@@ -52,7 +52,7 @@ public class AccessFilter implements Filter {
 
         }
         if ("ADMIN".equals(securityType)) {
-            User user = (User) request.getSession().getAttribute(USER);
+            User user = (User) request.getSession().getAttribute(ATTR_USER);
             if (AuthenticationHelper.isAdmin(user)) {
                 request.setAttribute("command", command);
                 filterChain.doFilter(servletRequest, servletResponse);

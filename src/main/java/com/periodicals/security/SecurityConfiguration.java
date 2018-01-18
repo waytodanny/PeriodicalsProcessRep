@@ -17,7 +17,6 @@ public class SecurityConfiguration {
         permissions.put(LOGOUT, "AUTH");
         permissions.put(REGISTER, "ALL");
         permissions.put(CATALOG, "ALL");
-        permissions.put(PERIODICAL, "AUTH");
         permissions.put(PERIODICAL_ISSUES, "ALL");
         permissions.put(SUBSCRIPTIONS, "AUTH");
         permissions.put(SUBSCRIBE, "AUTH");

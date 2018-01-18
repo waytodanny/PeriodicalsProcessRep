@@ -11,7 +11,15 @@
 <div id ="error" class="centered-flex-column">
     <img class="error-image" src="<c:url value='/img/error-icon.png'/>">
     <h1 class="error-title">Oops, error!</h1>
-    <span>This is place where error message should be</span>
+    <span>
+        <%--<c:when test="${not empty errorMessage}">--%>
+            <%--${errorMessage}--%>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+            <%--Something went wrong--%>
+        <%--</c:otherwise>--%>
+        Something went wrong
+    </span>
 </div>
 </body>
 </html>
