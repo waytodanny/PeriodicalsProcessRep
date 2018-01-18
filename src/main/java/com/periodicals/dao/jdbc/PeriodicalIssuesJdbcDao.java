@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.periodicals.utils.JdbcQueriesHolder.*;
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, Long> implements PeriodicalIssuesDao {
 
@@ -30,8 +30,8 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, Lo
     }
 
     @Override
-    public void delete(Long id) throws DaoException {
-        super.delete(PERIODICAL_ISSUE_DELETE, id);
+    public void delete(PeriodicalIssue issue) throws DaoException {
+        super.delete(PERIODICAL_ISSUE_DELETE, issue.getId());
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.Objects;
 
 import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.PagesHolder.LOGIN_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.LOGIN_PAGE;
 
 public class CartCommand implements Command {
 

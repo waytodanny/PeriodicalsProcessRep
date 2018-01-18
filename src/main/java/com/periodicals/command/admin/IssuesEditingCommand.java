@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ADMIN_PERIODICAL_ISSUE_EDIT_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICAL_ISSUE_EDIT_PAGE;
 
 public class IssuesEditingCommand implements Command {
     private PeriodicalIssueService issueService = PeriodicalIssueService.getInstance();

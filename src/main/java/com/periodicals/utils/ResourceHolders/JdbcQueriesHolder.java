@@ -1,4 +1,4 @@
-package com.periodicals.utils;
+package com.periodicals.utils.ResourceHolders;
 
 import com.periodicals.utils.propertyManagers.JdbcQueriesPropertyManager;
 

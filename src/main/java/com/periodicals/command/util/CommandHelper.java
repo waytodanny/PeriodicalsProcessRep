@@ -5,11 +5,17 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
-import static com.periodicals.utils.AttributesHolder.DEFAULT;
-import static com.periodicals.utils.AttributesHolder.SERVLET_ROOT;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.DEFAULT;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.GET;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.SERVLET_ROOT;
 
 /*TODO divide not to let class have lot of responsibilities*/
 public class CommandHelper {
+
+    public static boolean isGetMethod(HttpServletRequest request){
+        return request.getMethod().equals(GET);
+    }
+
     public static boolean requiredFieldsNotEmpty(String[] fields) {
         for (String field : fields) {
             if (!paramIsNotEmpty(field)) {

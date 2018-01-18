@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ERROR_PAGE;
-import static com.periodicals.utils.PagesHolder.PERIODICAL_ISSUES_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.PERIODICAL_ISSUES_PAGE;
 
 public class PeriodicalIssuesCommand implements Command {
     private PeriodicalIssueService issueService = PeriodicalIssueService.getInstance();

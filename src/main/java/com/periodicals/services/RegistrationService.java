@@ -11,7 +11,7 @@ import com.periodicals.utils.uuid.UuidGenerator;
 import org.apache.log4j.Logger;
 
 import static com.periodicals.command.util.CommandHelper.requiredFieldsNotEmpty;
-import static com.periodicals.utils.AttributesHolder.ROLE_USER;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_USER;
 
 /**
  * Service responsible for user registration

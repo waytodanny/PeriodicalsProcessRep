@@ -1,18 +1,16 @@
 package com.periodicals.services;
 
-import com.periodicals.dao.factories.JdbcDaoFactory;
-import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.entities.User;
-import com.periodicals.exceptions.DaoException;
 import com.periodicals.utils.encryption.MD5_Cryptographer;
+import org.apache.log4j.Logger;
 
 import java.util.Objects;
 
 public class LoginService {
+    private static final Logger LOGGER = Logger.getLogger(LoginService.class.getSimpleName());
+
     private static LoginService loginService = new LoginService();
-    private static RoleService roleService = RoleService.getInstance();
-    private static UsersJdbcDao usersDao =
-            (UsersJdbcDao) JdbcDaoFactory.getInstance().getUsersDao();
+    private final static UserService userService = UserService.getInstance();
 
     private LoginService() {
 
@@ -22,29 +20,30 @@ public class LoginService {
         return loginService;
     }
 
+    /**
+     * @return user object from DB if he was verified by incoming data or null if not
+     */
     public User getUserIfVerified(String login, String pass) {
-        User user = getUser(login);
-        if (isVerified(user, pass)) {
+        User user = userService.getUserByLogin(login);
+        if (Objects.nonNull(user) && passwordsMatch(user, pass)) {
+            LOGGER.debug("user has been verified");
             return user;
         }
         return null;
     }
 
-    private User getUser(String login) {
-        User user = null;
-        try {
-            user = usersDao.getByLogin(login);
-        } catch (DaoException e) {
-            /*TODO LOG*/
-        }
-        return user;
-    }
-
-    private boolean isVerified(User user, String password) {
+    /**
+     * Checks that user brought from DB has same password that client passed
+     *
+     * @param user     user from DB taken by login
+     * @param password password that was entered by client
+     */
+    private boolean passwordsMatch(User user, String password) {
         boolean result = false;
         if (Objects.nonNull(password) && Objects.nonNull(user) && Objects.nonNull(user.getPassword())) {
             String encrypted = new MD5_Cryptographer().encrypt(password);
             result = Objects.nonNull(encrypted) && encrypted.equals(user.getPassword());
+            LOGGER.debug("passwords match");
         }
         return result;
     }

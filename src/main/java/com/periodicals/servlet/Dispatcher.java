@@ -3,19 +3,13 @@ package com.periodicals.servlet;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandFactory;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.services.PeriodicalService;
-import com.periodicals.utils.PagesHolder;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-
-import static com.periodicals.utils.AttributesHolder.COMMAND;
-import static com.periodicals.utils.PagesHolder.ERROR_PAGE;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.COMMAND;
 
 //@WebServlet("/")
 public class Dispatcher extends HttpServlet {

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ADMIN_ADD_ISSUE_PAGE;
-import static com.periodicals.utils.PagesHolder.ADMIN_MAIN_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_ADD_ISSUE_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_MAIN_PAGE;
 
 public class AddIssueCommand implements Command {
 

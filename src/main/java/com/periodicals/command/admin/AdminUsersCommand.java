@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ADMIN_EDIT_USERS_PAGE;
-import static com.periodicals.utils.PagesHolder.ERROR_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_EDIT_USERS_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
 public class AdminUsersCommand implements Command {
     private static final int RECORDS_PER_PAGE = 5;
@@ -27,7 +27,7 @@ public class AdminUsersCommand implements Command {
         String updUserId = req.getParameter("updId");
 
         if (CommandHelper.paramIsNotEmpty(delUserId)) {
-            userService.delete(delUserId);
+//            userService.delete(delUserId);
 
         } else if (CommandHelper.paramIsNotEmpty(updUserId)) {
             try {
@@ -55,16 +55,16 @@ public class AdminUsersCommand implements Command {
         if (req.getParameter("page") != null)
             page = Integer.parseInt(req.getParameter("page"));
 
-        int entriesCount = userService.getUsersCount();
-        int pagesCount = (int) Math.ceil(entriesCount * 1.0 / RECORDS_PER_PAGE);
-
-        int skip = (page - 1) * RECORDS_PER_PAGE;
-        List<User> users = userService.getUsersSublist(skip, RECORDS_PER_PAGE);
-
-
-        req.setAttribute("users", users);
-        req.setAttribute("pagesCount", pagesCount);
-        req.setAttribute("currentPage", page);
+//        int entriesCount = userService.getUsersCount();
+//        int pagesCount = (int) Math.ceil(entriesCount * 1.0 / RECORDS_PER_PAGE);
+//
+//        int skip = (page - 1) * RECORDS_PER_PAGE;
+//        List<User> users = userService.getUsersSublist(skip, RECORDS_PER_PAGE);
+//
+//
+//        req.setAttribute("users", users);
+//        req.setAttribute("pagesCount", pagesCount);
+//        req.setAttribute("currentPage", page);
 
         return new CommandResult(req, resp, FORWARD, ADMIN_EDIT_USERS_PAGE + "?page=" + page);
     }

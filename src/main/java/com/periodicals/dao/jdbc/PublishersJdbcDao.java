@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.periodicals.utils.JdbcQueriesHolder.*;
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> implements PublishersDao {
 
@@ -29,8 +29,8 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> imple
     }
 
     @Override
-    public void delete(Integer key) throws DaoException {
-        super.delete(PUBLISHER_DELETE, key);
+    public void delete(Publisher publisher) throws DaoException {
+        super.delete(PUBLISHER_DELETE, publisher.getId());
     }
 
     @Override

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.periodicals.command.util.RedirectType.*;
-import static com.periodicals.utils.PagesHolder.LOGIN_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.LOGIN_PAGE;
 
 public class LogoutCommand implements Command {
 

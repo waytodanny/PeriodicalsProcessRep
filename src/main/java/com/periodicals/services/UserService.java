@@ -1,19 +1,25 @@
 package com.periodicals.services;
 
-import com.periodicals.entities.User;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
+import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
-import com.periodicals.exceptions.ServiceException;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service for communicating with UsersDao implementors to obtain from or provide data to DB
+ *
+ * @see UsersJdbcDao
+ */
 public class UserService {
+    private static final Logger LOGGER = Logger.getLogger(UserService.class.getSimpleName());
+
     private static UserService userService = new UserService();
     private static UsersJdbcDao usersDao =
             (UsersJdbcDao) JdbcDaoFactory.getInstance().getUsersDao();
-    private static RoleService roleService = RoleService.getInstance();
 
     private UserService() {
 
@@ -23,11 +29,25 @@ public class UserService {
         return userService;
     }
 
-    public void delete(String uuid) {
+    /**
+     * Gets user from DB by login and returns it or null if it's not found
+     */
+    public User getUserByLogin(String login) {
+        User user = null;
         try {
-            usersDao.delete(uuid);
+            user = usersDao.getByLogin(login);
+            LOGGER.debug("Succeed to find user by login: " + login);
         } catch (DaoException e) {
-            /*TODO log*/
+            LOGGER.debug("Failed to find user by login: " + login + ", " + e.getMessage());
+        }
+        return user;
+    }
+
+    public void delete(User user) {
+        try {
+            usersDao.delete(user);
+        } catch (DaoException e) {
+            LOGGER.debug("Failed to find user: " + e.getMessage());
         }
     }
 
@@ -35,38 +55,37 @@ public class UserService {
         try {
             usersDao.update(user);
         } catch (DaoException e) {
-            /*TODO log*/
+            LOGGER.debug("Failed to update user" + e.getMessage());
         }
     }
 
-    public User getUserById(String id) throws ServiceException {
+    public User getUserById(String id) {
         User result = null;
         try {
             result = usersDao.getById(id);
         } catch (DaoException e) {
-            throw new ServiceException("not found user by id");
+            LOGGER.debug("Failed to get user by id: " + id + e.getMessage());
         }
         return result;
     }
 
-    public int getUsersCount() {
-        int result = 0;
-//        try {
-////            result = usersDao.getUsersCount();
-//        } catch (DaoException e) {
-//            /*TODO log*/
-//        }
+    public long getUsersCount() {
+        long result = 0;
+        try {
+            result = usersDao.getEntriesCount();
+        } catch (DaoException e) {
+            LOGGER.debug("Failed to get users count: " + e.getMessage());
+        }
         return result;
     }
 
     public List<User> getUsersSublist(int skip, int take) {
-        List<User> dtoList = new ArrayList<>();
-//        try {
-//            List<User> entityList = usersDao.getSublist(skip, take);
-//            fillPeriodicals(entityList, dtoList);
-//        } catch (DaoException e) {
-//            /*TODO log*/
-//        }
-        return dtoList;
+        List<User> sublist = new ArrayList<>();
+        try {
+            sublist = usersDao.getSublist(skip, take);
+        } catch (DaoException e) {
+            LOGGER.debug("Failed to get users sublist: " + e.getMessage());
+        }
+        return sublist;
     }
 }

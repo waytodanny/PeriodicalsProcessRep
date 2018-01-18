@@ -1,17 +1,16 @@
 package com.periodicals.dao.jdbc;
 
+import com.periodicals.dao.interfaces.UsersDao;
 import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
-import com.periodicals.dao.interfaces.UsersDao;
 import com.periodicals.exceptions.DaoException;
-
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.periodicals.utils.JdbcQueriesHolder.*;
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements UsersDao {
 
@@ -46,8 +45,8 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
     }
 
     @Override
-    public void delete(String key) throws DaoException {
-        super.delete(USER_DELETE, key);
+    public void delete(User user) throws DaoException {
+        super.delete(USER_DELETE, user.getId());
     }
 
     @Override
@@ -57,24 +56,24 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
 
     @Override
     protected Object[] getInsertObjectParams(User user) {
-        String id = user.getId();
-        String login = user.getLogin();
-        String pass = user.getPassword();
-        String email = user.getEmail();
-        Byte roleId = user.getRole().getId();
-
-        return new Object[]{id, login, pass, email, roleId};
+        return new Object[]{
+                user.getId(),
+                user.getLogin(),
+                user.getPassword(),
+                user.getEmail(),
+                user.getRole().getId()
+        };
     }
 
     @Override
     protected Object[] getObjectUpdateParams(User user) {
-        String id = user.getId();
-        String login = user.getLogin();
-        String pass = user.getPassword();
-        String email = user.getEmail();
-        Byte roleId = user.getRole().getId();
-
-        return new Object[]{login, pass, email, roleId, id};
+        return new Object[]{
+                user.getLogin(),
+                user.getPassword(),
+                user.getEmail(),
+                user.getRole().getId(),
+                user.getId()
+        };
     }
 
     @Override

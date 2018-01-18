@@ -20,7 +20,6 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ConnectionPool.getInstance();
         LoginService.getInstance();
-        JdbcDaoFactory.getInstance();
         PeriodicalService.getInstance();
         GenresService.getInstance();
     }

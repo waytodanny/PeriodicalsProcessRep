@@ -1,4 +1,4 @@
-package com.periodicals.utils;
+package com.periodicals.utils.ResourceHolders;
 
 public class MessagesHolder {
     public static final String LOGIN_ERROR_MESSAGE = "loginErrorMessage";

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.periodicals.utils.JdbcQueriesHolder.*;
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class GenresJdbcDao extends AbstractJdbcDao<Genre, Short> implements GenresDao {
 
@@ -34,8 +34,8 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, Short> implements Genr
     }
 
     @Override
-    public void delete(Short id) throws DaoException {
-        super.delete(GENRE_DELETE, id);
+    public void delete(Genre genre) throws DaoException {
+        super.delete(GENRE_DELETE, genre.getId());
     }
 
     @Override

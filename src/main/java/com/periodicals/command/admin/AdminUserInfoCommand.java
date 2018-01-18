@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ADMIN_USER_INFO_PAGE;
-import static com.periodicals.utils.PagesHolder.ERROR_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_USER_INFO_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
 public class AdminUserInfoCommand implements Command {
     private static final int RECORDS_PER_PAGE = 5;

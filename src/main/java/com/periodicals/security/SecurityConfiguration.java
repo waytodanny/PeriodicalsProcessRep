@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static com.periodicals.utils.AttributesHolder.*;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
 
 public class SecurityConfiguration {
     private static final SecurityConfiguration SECURITY_CONFIG = new SecurityConfiguration();

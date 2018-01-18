@@ -16,7 +16,7 @@ import java.util.List;
 
 import static com.periodicals.command.util.CommandHelper.paramClarifiedInQuery;
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.CATALOG_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.CATALOG_PAGE;
 
 public class CatalogCommand implements Command {
     protected static final int RECORDS_PER_PAGE = 10;

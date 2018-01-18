@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.periodicals.utils.JdbcQueriesHolder.*;
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> implements PeriodicalsDao {
 
@@ -39,8 +39,8 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> imp
     }
 
     @Override
-    public void delete(Integer key) throws DaoException {
-        super.delete(PERIODICAL_DELETE, key);
+    public void delete(Periodical periodical) throws DaoException {
+        super.delete(PERIODICAL_DELETE, periodical.getId());
     }
 
     @Override

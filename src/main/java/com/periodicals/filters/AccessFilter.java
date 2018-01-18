@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-import static com.periodicals.utils.AttributesHolder.PAGE_SUFFIX;
-import static com.periodicals.utils.AttributesHolder.USER;
-import static com.periodicals.utils.PagesHolder.ERROR_PAGE;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.PAGE_SUFFIX;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.USER;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
 @WebFilter(urlPatterns = {"/*"})
 public class AccessFilter implements Filter {

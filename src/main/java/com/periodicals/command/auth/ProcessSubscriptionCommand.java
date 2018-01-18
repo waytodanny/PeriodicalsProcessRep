@@ -19,7 +19,7 @@ import java.util.Objects;
 
 import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.PagesHolder.*;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.*;
 
 public class ProcessSubscriptionCommand implements Command {
     public static final Logger LOGGER = Logger.getLogger(ProcessSubscriptionCommand.class.getSimpleName());

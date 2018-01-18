@@ -1,4 +1,4 @@
-package com.periodicals.utils;
+package com.periodicals.utils.ResourceHolders;
 
 import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
@@ -41,6 +41,10 @@ public final class AttributesHolder {
     public static final String COMMAND = "command";
     public static final String ROLE_ATTR = AttributesPropertyManager.getProperty("attr.role");
     public static final String USER = AttributesPropertyManager.getProperty("attr.user");
+
+    public static final String ATTR_LOGIN = AttributesPropertyManager.getProperty("attr.login");
+    public static final String ATTR_PASSWORD= AttributesPropertyManager.getProperty("attr.pass");
+
 
     private AttributesHolder() {
 

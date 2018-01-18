@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ADMIN_PERIODICALS_EDIT_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICALS_EDIT_PAGE;
 
 public class CatalogEditingCommand implements Command {
     private PeriodicalService perService = PeriodicalService.getInstance();

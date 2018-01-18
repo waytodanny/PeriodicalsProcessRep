@@ -20,7 +20,7 @@ public interface GenericDao<T, K> {
 
     void update(T object) throws DaoException;
 
-    void delete(K key) throws DaoException;
+    void delete(T object) throws DaoException;
 
     List<T> getAll() throws DaoException;
 }

@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ADMIN_ADD_PERIODICAL_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_ADD_PERIODICAL_PAGE;
 
 public class AddPeriodicalCommand implements Command {
 

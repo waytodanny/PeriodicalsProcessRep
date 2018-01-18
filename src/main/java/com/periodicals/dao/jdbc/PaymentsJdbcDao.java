@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.periodicals.utils.JdbcQueriesHolder.*;
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, Long> implements PaymentsDao {
 
@@ -36,8 +36,8 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, Long> implements P
     }
 
     @Override
-    public void delete(Long id) throws DaoException {
-        super.delete(PAYMENT_DELETE, id);
+    public void delete(Payment payment) throws DaoException {
+        super.delete(PAYMENT_DELETE, payment.getId());
     }
 
     @Override

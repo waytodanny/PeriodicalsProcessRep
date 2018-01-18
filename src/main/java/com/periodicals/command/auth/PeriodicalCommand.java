@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.periodicals.command.util.RedirectType.*;
-import static com.periodicals.utils.PagesHolder.PERIODICAL_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.PERIODICAL_PAGE;
 
 
 public class PeriodicalCommand implements Command {

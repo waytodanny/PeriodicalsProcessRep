@@ -7,8 +7,8 @@ import com.periodicals.services.RoleService;
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
-import static com.periodicals.utils.AttributesHolder.ROLE_ADMIN;
-import static com.periodicals.utils.AttributesHolder.USER;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.USER;
 
 /**
  * Class that contains method that help to get some authentication info

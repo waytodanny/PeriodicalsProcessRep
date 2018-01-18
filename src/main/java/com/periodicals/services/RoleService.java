@@ -8,8 +8,8 @@ import com.periodicals.exceptions.ServiceException;
 
 import java.util.List;
 
-import static com.periodicals.utils.AttributesHolder.ROLE_ADMIN;
-import static com.periodicals.utils.AttributesHolder.ROLE_USER;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_USER;
 
 public class RoleService {
     private static RoleService roleService = new RoleService();

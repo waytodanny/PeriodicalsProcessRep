@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import static com.periodicals.utils.JdbcQueriesHolder.COUNT_PARAM;
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.COUNT_PARAM;
 
 public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     private static final Logger LOGGER = Logger.getLogger(AbstractJdbcDao.class);
@@ -25,6 +25,9 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
 
     protected abstract List<T> parseResultSet(ResultSet rs) throws DaoException;
 
+    /**
+     * Builds insert query by incoming query and params for it and executes it
+     */
     K insert(String insertQuery, Object[] params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
@@ -32,18 +35,23 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             for (int i = 0; i < params.length; i++) {
                 stmt.setObject(i + 1, params[i]);
             }
+
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
+                LOGGER.debug("Successful insert, returns generated key");
                 return getGeneratedKey(rs);
             }
             return null;
         } catch (Exception e) {
-            LOGGER.error("Can't insert into DB");
+            LOGGER.error("Failed to insert data to DB: " + e);
             throw new DaoException(e);
         }
     }
 
+    /**
+     * Select list of object building select query  by incoming query and params
+     */
     List<T> selectObjects(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -51,18 +59,21 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             for (int i = 0; i < params.length; i++) {
                 stmt.setObject(i + 1, params[i]);
             }
+
             ResultSet rs = stmt.executeQuery();
             return parseResultSet(rs);
         } catch (Exception e) {
-            LOGGER.error("Can't get object DB");
+            LOGGER.error("Failed to get objects from DB: " + e.getMessage());
             throw new DaoException(e);
         }
     }
 
-
+    /**
+     * Selects one object from list of objects given by selectsObjects()
+     */
     T selectObject(String query, Object... params) throws DaoException {
         List<T> objects = selectObjects(query, params);
-        if(objects.size() > 0){
+        if (objects.size() > 0) {
             return objects.get(0);
         }
         throw new DaoException("No object founded by given params");
@@ -70,13 +81,18 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
 
 
     void update(String query, Object... params) throws DaoException {
+        LOGGER.debug("Beginning update query");
         executeUpdate(query, params);
     }
 
     void delete(String query, Object... params) throws DaoException {
+        LOGGER.debug("Beginning delete query");
         executeUpdate(query, params);
     }
 
+    /**
+     * Generic method for delete/update queries
+     */
     private void executeUpdate(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -86,12 +102,16 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             }
 
             stmt.executeUpdate();
+            LOGGER.debug("DB successfully updated");
         } catch (Exception e) {
-            LOGGER.error("Cannot parse update query", e);
+            LOGGER.error("Failed to process DB updating: " + e.getMessage());
             throw new DaoException(e);
         }
     }
 
+    /**
+     * Generic method for queries that intend to obtain count value from DB
+     */
     Long getEntriesCount(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -101,11 +121,13 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             }
 
             ResultSet rs = stmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
+                LOGGER.debug("successfully got count from DB");
                 return rs.getLong(COUNT_PARAM);
             }
-            throw new DaoException("failed to obtain count");
+            throw new DaoException("Failed to obtain count from DB");
         } catch (Exception e) {
+            LOGGER.error(e.getMessage());
             throw new DaoException(e);
         }
     }

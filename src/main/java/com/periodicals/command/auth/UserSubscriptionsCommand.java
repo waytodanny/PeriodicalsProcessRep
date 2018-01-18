@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.LOGIN_PAGE;
-import static com.periodicals.utils.PagesHolder.USER_SUBSCRIPTIONS_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.LOGIN_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.USER_SUBSCRIPTIONS_PAGE;
 
 /**
  * Command that uses pagination to display user subscriptions(periodicals)

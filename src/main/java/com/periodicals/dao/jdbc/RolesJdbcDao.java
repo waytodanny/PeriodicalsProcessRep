@@ -7,7 +7,7 @@ import com.periodicals.exceptions.DaoException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;import static com.periodicals.utils.JdbcQueriesHolder.*;
+import java.util.List;import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDao {
 
@@ -27,8 +27,8 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
     }
 
     @Override
-    public void delete(Byte key) throws DaoException {
-        super.delete(USER_DELETE, key);
+    public void delete(Role role) throws DaoException {
+        super.delete(USER_DELETE, role.getId());
     }
 
     @Override
