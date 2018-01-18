@@ -3,11 +3,15 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
+import com.periodicals.entities.Periodical;
 import com.periodicals.entities.PeriodicalIssue;
+import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.PeriodicalIssueService;
+import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
@@ -15,12 +19,18 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICAL
 
 public class IssuesEditingCommand implements Command {
     private PeriodicalIssueService issueService = PeriodicalIssueService.getInstance();
+    private PeriodicalService periodicalService = PeriodicalService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
         if (isDeleteCommand(req)) {
-            int id = Integer.parseInt(req.getParameter("deletedIssueId"));
-            issueService.delete(id);
+            long id = Long.parseLong(req.getParameter("deletedIssueId"));
+            PeriodicalIssue upToDelete = issueService.getByPk(id);
+            try {
+                issueService.delete(upToDelete);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
 
         } else if (isUpdateCommand(req)) {
             int id = Integer.parseInt(req.getParameter("updatedIssueId"));
@@ -32,7 +42,11 @@ public class IssuesEditingCommand implements Command {
                 PeriodicalIssue updIssue = PeriodicalIssueService.getInstance().getByPk(id);
                 updIssue.setName(name);
                 updIssue.setIssueNo(Integer.parseInt(issueNo));
-                PeriodicalIssueService.update(updIssue);
+                try {
+                    PeriodicalIssueService.update(updIssue);
+                } catch (ServiceException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -41,9 +55,10 @@ public class IssuesEditingCommand implements Command {
             periodicalId = Integer.parseInt(req.getParameter("id"));
         }
 
-//        List<PeriodicalIssue> issues = issueService.getIsuesByPeriodical(periodicalId);
-//
-//        req.setAttribute("issues", issues);
+        Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
+        List<PeriodicalIssue> issues = issueService.getIssuesByPeriodical(periodical);
+
+        req.setAttribute("issues", issues);
         return new CommandResult(req, resp, FORWARD, ADMIN_PERIODICAL_ISSUE_EDIT_PAGE + "?id=" + periodicalId);
     }
 

@@ -28,7 +28,7 @@ public class CommandFactory {
         commandMap.put(SUBSCRIPTIONS, new UserSubscriptionsCommand());
 
         commandMap.put(ADMIN_MAIN, new AdminMainCommand());
-        commandMap.put(ADMIN_USERS, new AdminUsersCommand());
+        commandMap.put(ADMIN_USERS_EDIT, new AdminUsersCommand());
         commandMap.put(ADMIN_USER_INFO, new AdminUserInfoCommand());
         commandMap.put(ADMIN_CATALOG, new CatalogEditingCommand());
         commandMap.put(ADMIN_ADD_PERIODICAL, new AddPeriodicalCommand());

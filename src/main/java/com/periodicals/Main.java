@@ -7,9 +7,13 @@ import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.dao.transactions.Transaction;
+import com.periodicals.entities.Role;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.exceptions.TransactionException;
+import com.periodicals.services.RoleService;
+
+import java.util.List;
 
 
 public class Main {
@@ -17,6 +21,7 @@ public class Main {
     public static void main(String[] args) throws DaoException, ServiceException {
 
         AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
+
 //        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
 //        for (int i = 0; i < 10; i++) {
 //            new Thread( ()->{

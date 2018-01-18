@@ -3,8 +3,11 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
+import com.periodicals.entities.Genre;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.Publisher;
+import com.periodicals.exceptions.ServiceException;
+import com.periodicals.services.GenresService;
 import com.periodicals.services.PeriodicalService;
 import com.periodicals.services.PublisherService;
 
@@ -19,34 +22,47 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICAL
 
 public class CatalogEditingCommand implements Command {
     private PeriodicalService perService = PeriodicalService.getInstance();
+    private GenresService genresService = GenresService.getInstance();
+    private PublisherService publisherService = PublisherService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
         if (isDeleteCommand(req)) {
             int id = Integer.parseInt(req.getParameter("deleteId"));
-            perService.delete(id);
+            Periodical upToDelete = perService.getPeriodicalById(id);
+            try {
+                perService.delete(upToDelete);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
 
         } else if (isUpdateCommand(req)) {
             int id = Integer.parseInt(req.getParameter("updateId"));
 
-            Periodical upToEdit = PeriodicalService.getInstance().getPeriodicalById(id);
+            Periodical upToEdit = perService.getPeriodicalById(id);
             upToEdit.setName(req.getParameter("updatedName"));
             upToEdit.setDescription(req.getParameter("updatedDesc"));
             upToEdit.setSubscriptionCost(new BigDecimal(req.getParameter("updatedSubscrCost")));
             upToEdit.setIssuesPerYear(Short.parseShort(req.getParameter("updatedIssuesPerYear")));
             upToEdit.setLimited(Boolean.valueOf(req.getParameter("updatedIsLimited")));
 
-//            if (isGenreChanged(upToEdit.getGenreId(), req)) {
-//                short newGenreId = Short.parseShort(req.getParameter("genreId"));
-//                upToEdit.setGenreId(newGenreId);
-//            }
-//
-//            if (isPublisherChanged(upToEdit.getPublisherId(), req)) {
-//                int newPublId = Integer.parseInt(req.getParameter("publisherId"));
-//                upToEdit.setPublisherId(newPublId);
-//            }
+            if (isGenreChanged(upToEdit.getGenre(), req)) {
+                short newGenreId = Short.parseShort(req.getParameter("genreId"));
+                Genre newGenre = genresService.getGenreById(newGenreId);
+                upToEdit.setGenre(newGenre);
+            }
 
-            PeriodicalService.getInstance().update(upToEdit);
+            if (isPublisherChanged(upToEdit.getPublisher(), req)) {
+                int newPublId = Integer.parseInt(req.getParameter("publisherId"));
+                Publisher newPublisher = publisherService.getPublisherById(newPublId);
+                upToEdit.setPublisher(newPublisher);
+            }
+
+            try {
+                perService.update(upToEdit);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
         }
 
         createGenresList(req);
@@ -71,16 +87,16 @@ public class CatalogEditingCommand implements Command {
         return new CommandResult(req, resp, FORWARD, ADMIN_PERIODICALS_EDIT_PAGE + "?page=" + page);
     }
 
-    private boolean isPublisherChanged(int oldId, HttpServletRequest request) {
+    private boolean isPublisherChanged(Publisher oldPublisher, HttpServletRequest request) {
         String selectedId = request.getParameter("publisherId");
         return CommandHelper.paramIsNotEmpty(selectedId)
-                && !Objects.equals(oldId, Integer.parseInt(selectedId));
+                && !Objects.equals(oldPublisher.getId(), Integer.parseInt(selectedId));
     }
 
-    private boolean isGenreChanged(short olId, HttpServletRequest request) {
+    private boolean isGenreChanged(Genre oldGenre, HttpServletRequest request) {
         String selectedId = request.getParameter("genreId");
         return CommandHelper.paramIsNotEmpty(selectedId)
-                && !Objects.equals(olId, Short.parseShort(selectedId));
+                && !Objects.equals(oldGenre.getId(), Short.parseShort(selectedId));
     }
 
     private boolean isDeleteCommand(HttpServletRequest request) {

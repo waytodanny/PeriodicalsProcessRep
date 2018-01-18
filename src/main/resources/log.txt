@@ -276,3 +276,4 @@ INFO - Trying to get connection form dataSource
 INFO - Got connection from dataSource
 INFO - Trying to get connection form dataSource
 INFO - Got connection from dataSource
+ERROR - Failed to get objects from DB: For input string: "156638d4-fab3-11e7-ad94-2b2421f23a42"

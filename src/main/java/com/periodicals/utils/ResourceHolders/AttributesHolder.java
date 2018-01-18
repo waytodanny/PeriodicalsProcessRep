@@ -21,7 +21,7 @@ public final class AttributesHolder {
     public static final String SUBSCRIBE = AttributesPropertyManager.getProperty("command.subscribe");
 
     public static final String ADMIN_MAIN = AttributesPropertyManager.getProperty("command.admin.main");
-    public static final String ADMIN_USERS  = AttributesPropertyManager.getProperty("command.admin.users.edit");
+    public static final String ADMIN_USERS_EDIT = AttributesPropertyManager.getProperty("command.admin.users.edit");
     public static final String ADMIN_USER_INFO  = AttributesPropertyManager.getProperty("command.admin.user.info");
     public static final String ADMIN_CATALOG = AttributesPropertyManager.getProperty("command.admin.catalog");
     public static final String ADMIN_PERIODICAL_ISSUES = AttributesPropertyManager.getProperty("command.admin.issues");

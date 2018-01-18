@@ -38,7 +38,7 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
 
     @Override
     public List<Role> getAll() throws DaoException {
-        return super.selectObjects(USER_SELECT_ALL);
+        return super.selectObjects(ROLE_SELECT_ALL);
     }
 
     @Override

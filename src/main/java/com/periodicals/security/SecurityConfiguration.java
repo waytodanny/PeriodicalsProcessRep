@@ -26,13 +26,13 @@ public class SecurityConfiguration {
         wants to buy something, instead of redirecting to error page due to filter logic*/
         permissions.put(ADD_TO_CART, "ALL");
 
-        permissions.put(ADMIN_MAIN, "ADMIN");
-        permissions.put(ADMIN_USERS, "ADMIN");
-        permissions.put(ADMIN_USER_INFO, "ADMIN");
-        permissions.put(ADMIN_CATALOG, "ADMIN");
-        permissions.put(ADMIN_ADD_PERIODICAL, "ADMIN");
-        permissions.put(ADMIN_PERIODICAL_ISSUES, "ADMIN");
-        permissions.put(ADMIN_ADD_ISSUE, "ADMIN");
+        permissions.put(ADMIN_MAIN, /*"ADMIN"*/"ALL");
+        permissions.put(ADMIN_USERS_EDIT, /*"ADMIN"*/"ALL");
+        permissions.put(ADMIN_USER_INFO, /*"ADMIN"*/"ALL");
+        permissions.put(ADMIN_CATALOG, /*"ADMIN"*/"ALL");
+        permissions.put(ADMIN_ADD_PERIODICAL, /*"ADMIN"*/"ALL");
+        permissions.put(ADMIN_PERIODICAL_ISSUES, /*"ADMIN"*/"ALL");
+        permissions.put(ADMIN_ADD_ISSUE, /*"ADMIN"*/"ALL");
 
         permissions.put(DEFAULT, "ALL");
     }

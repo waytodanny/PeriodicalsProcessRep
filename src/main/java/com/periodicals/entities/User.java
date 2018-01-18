@@ -9,7 +9,7 @@ public class User implements Identified<String> {
     private static final int MAX_LOGIN_LENGTH = 50;
     private static final int EMAIL_MAX_LENGTH = 254;
 
-    private String uuid;
+    private String id;
     private String login;
     private String password;
     private String email;
@@ -32,14 +32,14 @@ public class User implements Identified<String> {
 
     @Override
     public String getId() {
-        return uuid;
+        return id;
     }
 
     public void setId(String uuid) throws IllegalArgumentException {
         if (uuid.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid uuid length: " + uuid.length());
+            throw new IllegalArgumentException("Invalid id length: " + uuid.length());
         }
-        this.uuid = uuid;
+        this.id = uuid;
     }
 
     public String getLogin() {
@@ -88,7 +88,7 @@ public class User implements Identified<String> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(uuid, user.uuid) &&
+        return Objects.equals(id, user.id) &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
@@ -97,6 +97,6 @@ public class User implements Identified<String> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, login, password, email, role);
+        return Objects.hash(id, login, password, email, role);
     }
 }
