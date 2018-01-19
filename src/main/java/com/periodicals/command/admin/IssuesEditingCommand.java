@@ -56,7 +56,7 @@ public class IssuesEditingCommand implements Command {
         }
 
         Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
-        List<PeriodicalIssue> issues = issueService.getIssuesByPeriodical(periodical);
+        List<PeriodicalIssue> issues = issueService.getPeriodicalIssues(periodical);
 
         req.setAttribute("issues", issues);
         return new CommandResult(req, resp, FORWARD, ADMIN_PERIODICAL_ISSUE_EDIT_PAGE + "?id=" + periodicalId);

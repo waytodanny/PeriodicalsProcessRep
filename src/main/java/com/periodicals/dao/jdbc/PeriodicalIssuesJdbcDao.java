@@ -64,6 +64,28 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, Lo
     }
 
     @Override
+    public long getPeriodicalIssuesCount(Periodical periodical) throws DaoException {
+        return super.getEntriesCount(PERIODICAL_ISSUE_PERIODICAL_ENTRIES_COUNT);
+
+    }
+
+    @Override
+    public long getAllIssuesCount() throws DaoException {
+        return super.getEntriesCount(PERIODICAL_ISSUE_ALL_ENTRIES_COUNT);
+    }
+
+    @Override
+    public List<PeriodicalIssue> getAllIssuesLimited(long skip, long limit) throws DaoException {
+        return super.selectObjects(PERIODICAL_ISSUE_ALL_SELECT_LIMITED, skip, limit);
+    }
+
+
+    @Override
+    public List<PeriodicalIssue> getPeriodicalIssuesLimited(Periodical periodical, long skip, long limit) throws DaoException {
+        return super.selectObjects(PERIODICAL_ISSUE_SELECT_LIMITED, periodical.getId(), skip, limit);
+    }
+
+    @Override
     protected Long getGeneratedKey(ResultSet rs) throws SQLException {
         return rs.getLong(1);
     }

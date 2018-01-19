@@ -72,8 +72,10 @@ public class JdbcQueriesHolder {
     public static final String PERIODICAL_ISSUE_DELETE = JdbcQueriesPropertyManager.getProperty("periodical_issues.delete");
     public static final String PERIODICAL_ISSUE_SELECT_ALL = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.all");
     public static final String PERIODICAL_ISSUE_SELECT_BY_PERIODICAL = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.by.periodical");
-    public static final String PERIODICAL_ISSUE_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("periodical_issues.entries.count");
-    public static final String PERIODICAL_ISSUE_SELECT_SUBLIST = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.sublist");
+    public static final String PERIODICAL_ISSUE_ALL_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("periodical_issues.entries.count");
+    public static final String PERIODICAL_ISSUE_PERIODICAL_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("periodical_issues.periodical.issues.count");
+    public static final String PERIODICAL_ISSUE_ALL_SELECT_LIMITED = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.sublist");
+    public static final String PERIODICAL_ISSUE_SELECT_LIMITED = JdbcQueriesPropertyManager.getProperty("periodical_issues.select.limited");
 
     /*role table*/
     public static final String PAYMENT_INSERT = JdbcQueriesPropertyManager.getProperty("payments.insert");

@@ -54,4 +54,16 @@ public class CommandHelper {
         }
         return referer;
     }
+
+
+    /**
+     * Gets page from request query or returns default if page param is not found
+     */
+    public static int getPageFromRequest(HttpServletRequest req) {
+        int page = 1;
+        if (paramClarifiedInQuery(req, "page")) {
+            page = java.lang.Integer.parseInt(req.getParameter("page"));
+        }
+        return page;
+    }
 }

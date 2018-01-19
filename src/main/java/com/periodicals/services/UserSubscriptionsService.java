@@ -47,7 +47,7 @@ public class UserSubscriptionsService {
         }
     }
 
-    public List<Periodical> getUserSubscriptionsDtoSublist(User user, int skip, int take) {
+    public List<Periodical> getUserSubscriptionsSublist(User user, int skip, int take) {
         List<Periodical> periodicals = new ArrayList<>();
         try {
             periodicals = perDao.getUserSubscriptions(user);

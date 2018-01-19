@@ -9,7 +9,7 @@
     <c:choose>
         <c:when test="${currentPage != 1}">
             <li class="page-item">
-                <a class="page-link" href="catalog?page=${currentPage - 1}">
+                <a class="page-link" href="${pageLink}?page=${currentPage - 1}">
                     <fmt:message key="pagination.btn.prev" bundle="${rb}"/>
                 </a>
             </li>
@@ -35,7 +35,7 @@
             </c:when>
             <c:otherwise>
                 <li class="page-item">
-                    <a class="page-link" href="catalog?page=${i}">${i}</a>
+                    <a class="page-link" href="${pageLink}?page=${i}">${i}</a>
                 </li>
             </c:otherwise>
         </c:choose>
@@ -44,7 +44,7 @@
     <c:choose>
         <c:when test="${currentPage lt pagesCount}">
             <li class="page-item">
-                <a class="page-link" href="catalog?page=${currentPage + 1}">
+                <a class="page-link" href="${pageLink}?page=${currentPage + 1}">
                     <fmt:message key="pagination.btn.next" bundle="${rb}"/>
                 </a>
             </li>

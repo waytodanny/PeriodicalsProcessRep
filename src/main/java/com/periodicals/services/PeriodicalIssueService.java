@@ -68,13 +68,57 @@ public class PeriodicalIssueService {
         }
     }
 
-    public List<PeriodicalIssue> getIssuesByPeriodical(Periodical periodical) {
+    public List<PeriodicalIssue> getPeriodicalIssues(Periodical periodical) {
         List<PeriodicalIssue> issues = new ArrayList<>();
         try {
             issues = issuesDao.getIssuesByPeriodical(periodical);
             LOGGER.debug("Obtained issues by periodical");
         } catch (DaoException e) {
             LOGGER.error("Failed to obtain issues by periodical");
+        }
+        return issues;
+    }
+
+    public long getAllIssuesCount() {
+        long result = 0;
+        try {
+            result = issuesDao.getAllIssuesCount();
+            LOGGER.debug("Obtained periodical issues count: " + result);
+        } catch (DaoException e) {
+            LOGGER.error("Failed to get periodical issues count using DAO: " + e.getMessage());
+        }
+        return result;
+    }
+
+    public long getPeriodicalIssuesCount(Periodical periodical) {
+        long result = 0;
+        try {
+            result = issuesDao.getPeriodicalIssuesCount(periodical);
+            LOGGER.debug("Obtained periodical issues count: " + result);
+        } catch (DaoException e) {
+            LOGGER.error("Failed to get periodical issues count using DAO: " + e.getMessage());
+        }
+        return result;
+    }
+
+    public List<PeriodicalIssue> getAllIssuesLimited(long skip, long limit) {
+        List<PeriodicalIssue> issues = new ArrayList<>();
+        try {
+            issues = issuesDao.getAllIssuesLimited(skip, limit);
+            LOGGER.debug("Obtained genre periodicals count");
+        } catch (DaoException e) {
+            LOGGER.error("Failed to get periodical issues sublist using DAO: " + e.getMessage());
+        }
+        return issues;
+    }
+
+    public List<PeriodicalIssue> getPeriodicalIssuesLimited(Periodical periodical, long skip, long limit) {
+        List<PeriodicalIssue> issues = new ArrayList<>();
+        try {
+            issues = issuesDao.getPeriodicalIssuesLimited(periodical, skip, limit);
+            LOGGER.debug("Obtained periodicals count");
+        } catch (DaoException e) {
+            LOGGER.error("Failed to get periodical issues sublist using DAO: " + e.getMessage());
         }
         return issues;
     }

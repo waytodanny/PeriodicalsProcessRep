@@ -1,6 +1,5 @@
 package com.periodicals.services;
 
-import com.periodicals.command.auth.PeriodicalIssuesCommand;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
 import com.periodicals.entities.Genre;
