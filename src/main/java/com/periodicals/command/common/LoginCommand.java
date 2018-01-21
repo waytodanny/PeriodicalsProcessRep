@@ -2,6 +2,8 @@ package com.periodicals.command.common;
 
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
+import com.periodicals.command.util.CommandUtils;
+import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
 import com.periodicals.services.LoginService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
@@ -9,18 +11,20 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.Objects;
 
-import static com.periodicals.command.util.CommandHelper.isGetMethod;
-import static com.periodicals.command.util.CommandHelper.requiredFieldsNotEmpty;
+
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
 import static com.periodicals.services.RoleService.ADMIN_ROLE;
+import static com.periodicals.services.RoleService.USER_ROLE;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_LOGIN;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_PASSWORD;
 import static com.periodicals.utils.ResourceHolders.MessagesHolder.LOGIN_ERROR_MESSAGE;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.*;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
 /**
  * Command that is responsible to handle user-identifying data
@@ -36,34 +40,55 @@ public class LoginCommand implements Command {
     private static final LoginService loginService = LoginService.getInstance();
 
     @Override
-    public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        if(CommandUtils.isPostMethod(request)) {
+            //String referer = CommandUtils.getRefererWithoutServletPath(request);
 
-        if (isGetMethod(req)) {
-            return new CommandResult(req, resp, FORWARD, LOGIN_PAGE);
-        }
+            Locale locale = request.getLocale();
+            String login = request.getParameter(ATTR_LOGIN);
+            String password = request.getParameter(ATTR_PASSWORD);
 
-        Locale locale = req.getLocale();
+            String[] requiredFields = {
+                    login,
+                    password
+            };
 
-        String enterLogin = req.getParameter(ATTR_LOGIN);
-        String enterPass = req.getParameter(ATTR_PASSWORD);
-
-        String[] requiredFields = {enterLogin, enterPass};
-        if (requiredFieldsNotEmpty(requiredFields)) {
-            User user = loginService.getUserIfVerified(enterLogin, enterPass);
-            if (Objects.nonNull(user)) {
-                req.getSession().setAttribute("user", user);
-                if (user.getRole().equals(ADMIN_ROLE)) {
-                    LOGGER.info("User " + user.getLogin() + " entered as an admin");
-                    return new CommandResult(req, resp, REDIRECT, ADMIN_MAIN_PAGE);
+            if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
+                User user = loginService.getUserIfVerified(login, password);
+                if (Objects.nonNull(user)) {
+                    this.setUserSession(request, user);
+                    return new CommandResult(REDIRECT, this.getUserRedirectPageByRole(user));
                 } else {
-                    LOGGER.info("User " + user.getLogin() + " entered as an user");
-                    return new CommandResult(req, resp, REDIRECT, CATALOG_PAGE);
+                    request.setAttribute(LOGIN_ERROR_MESSAGE,
+                            LanguagePropsManager.getProperty("login.error.incorrect", locale));
                 }
+            } else {
+                request.setAttribute(LOGIN_ERROR_MESSAGE,
+                        LanguagePropsManager.getProperty("login.error.empty", locale));
             }
-            req.setAttribute(LOGIN_ERROR_MESSAGE, LanguagePropsManager.getProperty("login.error.incorrect", locale));
-            return new CommandResult(req, resp, FORWARD, LOGIN_PAGE);
         }
-        req.setAttribute(LOGIN_ERROR_MESSAGE, LanguagePropsManager.getProperty("login.error.empty", locale));
-        return new CommandResult(req, resp, FORWARD, LOGIN_PAGE);
+
+        return new CommandResult(FORWARD, LOGIN_PAGE);
+    }
+
+    private void setUserSession(HttpServletRequest request, User user) {
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+    }
+
+    private String getUserRedirectPageByRole(User user) {
+        String redirectPage = null;
+        Role role = user.getRole();
+
+        if(role.equals(ADMIN_ROLE)) {
+            redirectPage = ADMIN_DEFAULT_PAGE;
+            LOGGER.info("User " + user.getLogin() + " entered as an admin");
+        }
+        if (role.equals(USER_ROLE)) {
+            redirectPage = CATALOG_PAGE;
+            LOGGER.info("User " + user.getLogin() + " entered as an user");
+        }
+
+        return redirectPage;
     }
 }
