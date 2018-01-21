@@ -5,9 +5,10 @@ import java.util.Map;
 import java.util.Set;
 
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ADMIN_USER_PAYMENTS;
 
 public class SecurityConfiguration {
-    private static final SecurityConfiguration SECURITY_CONFIG = new SecurityConfiguration();
+    private static final SecurityConfiguration SECURITY_CONFIGURATION = new SecurityConfiguration();
 
     /*Linked to save order*/
     private Map<String, String> permissions = new LinkedHashMap<>();
@@ -28,7 +29,7 @@ public class SecurityConfiguration {
 
         permissions.put(ADMIN_MAIN, /*"ADMIN"*/"ALL");
         permissions.put(ADMIN_USERS_EDIT, /*"ADMIN"*/"ALL");
-        permissions.put(ADMIN_USER_INFO, /*"ADMIN"*/"ALL");
+        permissions.put(ADMIN_USER_PAYMENTS, /*"ADMIN"*/"ALL");
         permissions.put(ADMIN_CATALOG, /*"ADMIN"*/"ALL");
         permissions.put(ADMIN_ADD_PERIODICAL, /*"ADMIN"*/"ALL");
         permissions.put(ADMIN_PERIODICAL_ISSUES, /*"ADMIN"*/"ALL");
@@ -38,10 +39,10 @@ public class SecurityConfiguration {
     }
 
     public static SecurityConfiguration getInstance() {
-        return SECURITY_CONFIG;
+        return SECURITY_CONFIGURATION;
     }
 
-    public String getSecurityType(String command) {
+    public String getCommandSecurityType(String command) {
         return permissions.get(command);
     }
 

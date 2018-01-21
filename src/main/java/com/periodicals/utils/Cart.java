@@ -8,18 +8,18 @@ import java.util.List;
 
 public class Cart {
     private List<Periodical> periodicals;
-    private BigDecimal quantity;
+    private BigDecimal totalValue;
 
     public Cart() {
         periodicals = new LinkedList<>();
-        quantity = new BigDecimal(0)
+        totalValue = new BigDecimal(0)
                 .setScale(2, BigDecimal.ROUND_DOWN);
     }
 
     public void addItem(Periodical periodical) {
         if (!isInCart(periodical)) {
             periodicals.add(periodical);
-            quantity = quantity.add(periodical.getSubscriptionCost())
+            totalValue = totalValue.add(periodical.getSubscriptionCost())
                     .setScale(2, BigDecimal.ROUND_DOWN);
         }
     }
@@ -27,22 +27,22 @@ public class Cart {
     public void removeItem(Periodical periodical) {
         if (isInCart(periodical)) {
             periodicals.remove(periodical);
-            quantity = quantity.subtract(periodical.getSubscriptionCost())
+            totalValue = totalValue.subtract(periodical.getSubscriptionCost())
                     .setScale(2, BigDecimal.ROUND_DOWN);
         }
     }
 
     public void cleanUp() {
-       this.periodicals = new LinkedList<>();
-       this.quantity = new BigDecimal(0);
+        this.periodicals = new LinkedList<>();
+        this.totalValue = new BigDecimal(0);
     }
 
     public List<Periodical> getPeriodicals() {
         return periodicals;
     }
 
-    public BigDecimal getQuantity() {
-        return quantity;
+    public BigDecimal getTotalValue() {
+        return totalValue;
     }
 
     private boolean isInCart(Periodical periodical) {

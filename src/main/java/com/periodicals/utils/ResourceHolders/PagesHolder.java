@@ -13,11 +13,12 @@ public final class PagesHolder {
     public static final String PERIODICAL_PAGE = PagesPropertyManager.getProperty("page.periodical");
     public static final String PERIODICAL_ISSUES_PAGE = PagesPropertyManager.getProperty("page.user.issues");
 
-    public static final String ADMIN_MAIN_PAGE = PagesPropertyManager.getProperty("page.admin.main");
+    public static final String ADMIN_DEFAULT_PAGE = PagesPropertyManager.getProperty("page.admin.default");
     public static final String ADMIN_PERIODICALS_EDIT_PAGE = PagesPropertyManager.getProperty("page.admin.periodicals");
     public static final String ADMIN_ADD_PERIODICAL_PAGE = PagesPropertyManager.getProperty("page.admin.add.periodical");
     public static final String ADMIN_PERIODICAL_ISSUE_EDIT_PAGE = PagesPropertyManager.getProperty("page.admin.edit.issue");
     public static final String ADMIN_ADD_ISSUE_PAGE = PagesPropertyManager.getProperty("page.admin.add.issue");
+    public static final String ADMIN_USERS_PAGE = PagesPropertyManager.getProperty("page.admin.users");
     public static final String ADMIN_EDIT_USERS_PAGE = PagesPropertyManager.getProperty("page.admin.users.edit");
-    public static final String ADMIN_USER_INFO_PAGE = PagesPropertyManager.getProperty("page.admin.user.info");
+    public static final String ADMIN_USER_PAYMENTS_PAGE = PagesPropertyManager.getProperty("page.admin.user.payments");
 }

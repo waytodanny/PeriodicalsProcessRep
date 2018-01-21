@@ -1,7 +1,6 @@
 package com.periodicals.filters;
 
 import com.periodicals.authentification.AuthenticationHelper;
-import com.periodicals.entities.User;
 import com.periodicals.security.SecurityConfiguration;
 
 import javax.servlet.*;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_USER;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.PAGE_SUFFIX;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
@@ -28,62 +25,64 @@ public class AccessFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+        SecurityConfiguration securityConfiguration = SecurityConfiguration.getInstance();
 
-        SecurityConfiguration config = SecurityConfiguration.getInstance();
+        String requestURI = this.getCorrectedRequestURI(request);
+        String command = this.getCommandFromRequestURI(requestURI, securityConfiguration);
+        String securityType = securityConfiguration.getCommandSecurityType(command);
 
-        String path = getCorrectPath(request);
-        String command = getStringCommand(path, config.getEndPoints());
-        String securityType = config.getSecurityType(command);
-
-        if ("ALL".equals(securityType)) {
-            request.setAttribute("command", command);
-            filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        }
-        if ("AUTH".equals(securityType)) {
-            if (isUserLoggedIn(request.getSession())) {
+        switch (securityType) {
+            case "ALL":
                 request.setAttribute("command", command);
                 filterChain.doFilter(servletRequest, servletResponse);
-                return;
-            }
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            response.sendRedirect(ERROR_PAGE);
-            return;
+                break;
 
+            case "AUTH":
+                if (AuthenticationHelper.isUserLoggedIn(request.getSession())) {
+                    request.setAttribute("command", command);
+                    filterChain.doFilter(servletRequest, servletResponse);
+                } else {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.sendRedirect(ERROR_PAGE);
+                }
+                break;
+
+            case "ADMIN":
+                if (AuthenticationHelper.isCurrentUserAdmin(request.getSession())) {
+                    request.setAttribute("command", command);
+                    filterChain.doFilter(servletRequest, servletResponse);
+                } else {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.sendRedirect(ERROR_PAGE);
+                }
+                break;
+
+            default:
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.sendRedirect(ERROR_PAGE);
         }
-        if ("ADMIN".equals(securityType)) {
-            User user = (User) request.getSession().getAttribute(ATTR_USER);
-            if (AuthenticationHelper.isAdmin(user)) {
-                request.setAttribute("command", command);
-                filterChain.doFilter(servletRequest, servletResponse);
-                return;
-            }
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            response.sendRedirect(ERROR_PAGE);
-            return;
-        }
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        response.sendRedirect(ERROR_PAGE);
     }
 
-    private String getCorrectPath(HttpServletRequest request) {
-        String path = request.getRequestURI();
-        if (path == null) {
-            path = "/";
+    private String getCorrectedRequestURI(HttpServletRequest request) {
+        String requestURI = request.getRequestURI();
+        if (requestURI != null && !requestURI.isEmpty()) {
+            requestURI = requestURI.toLowerCase();
+            if (requestURI.endsWith(PAGE_SUFFIX)) {
+                requestURI = requestURI.substring(0, requestURI.lastIndexOf(PAGE_SUFFIX));
+            }
+            if(requestURI.endsWith("/")) {
+                requestURI = requestURI.substring(0, requestURI.lastIndexOf("/"));
+            }
         } else {
-            path = path.toLowerCase();
-            int index = path.lastIndexOf(PAGE_SUFFIX);
-            if (index != -1 && index + PAGE_SUFFIX.length() == path.length()) {
-                path = path.substring(0, index);
-            }
+            requestURI = "/";
         }
-        return path;
+        return requestURI;
     }
 
-    /**TODO ЗАМЕНИТЬ НА ПРОВЕРКУ ОКРУЖЕНИЯ ЭНДПОИНТА СЛЕШАМИ*/
-    private String getStringCommand(String path, Set<String> endPoints) {
+    private String getCommandFromRequestURI(String path, SecurityConfiguration securityConfiguration) {
+        Set<String> endPoints = securityConfiguration.getEndPoints();
         for (String endPoint : endPoints) {
-            if (path.contains(endPoint))
+            if (path.endsWith(endPoint))
                 return endPoint;
         }
         return null;

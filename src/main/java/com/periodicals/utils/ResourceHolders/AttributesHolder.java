@@ -21,13 +21,18 @@ public final class AttributesHolder {
     public static final String SUBSCRIBE = AttributesPropertyManager.getProperty("command.subscribe");
 
     public static final String ADMIN_MAIN = AttributesPropertyManager.getProperty("command.admin.main");
+    public static final String ADMIN_USERS = AttributesPropertyManager.getProperty("command.admin.users");
     public static final String ADMIN_USERS_EDIT = AttributesPropertyManager.getProperty("command.admin.users.edit");
-    public static final String ADMIN_USER_INFO  = AttributesPropertyManager.getProperty("command.admin.user.info");
+    public static final String ADMIN_USERS_DELETE = AttributesPropertyManager.getProperty("command.admin.users.delete");
+    public static final String ADMIN_USER_PAYMENTS = AttributesPropertyManager.getProperty("command.admin.user.payments");
     public static final String ADMIN_CATALOG = AttributesPropertyManager.getProperty("command.admin.catalog");
     public static final String ADMIN_PERIODICAL_ISSUES = AttributesPropertyManager.getProperty("command.admin.issues");
     public static final String ADMIN_ADD_PERIODICAL = AttributesPropertyManager.getProperty("command.admin.add.periodical");
     public static final String ADMIN_ADD_ISSUE = AttributesPropertyManager.getProperty("command.admin.add.issue");
-
+    public static final String ADMIN_EDIT_PERIODICAL = AttributesPropertyManager.getProperty("command.admin.edit.periodical");
+    public static final String ADMIN_EDIT_ISSUE = AttributesPropertyManager.getProperty("command.admin.edit.issue");
+    public static final String ADMIN_DELETE_PERIODICAL = AttributesPropertyManager.getProperty("command.admin.delete.periodical");
+    public static final String ADMIN_DELETE_ISSUE = AttributesPropertyManager.getProperty("command.admin.delete.issue");
     public static final String DEFAULT = "/";
 
     /*additional*/
@@ -36,7 +41,7 @@ public final class AttributesHolder {
     public static final String PAGE_SUFFIX = AttributesPropertyManager.getProperty("page.suffix");
 
     public static final String ROLE_ATTR = AttributesPropertyManager.getProperty("attr.role");
-    public static final String ROLE_ADMIN_ATTRIBUTE = AttributesPropertyManager.getProperty("role.admin");
+    public static final String ROLE_ADMIN = AttributesPropertyManager.getProperty("role.admin");
     public static final String ROLE_USER = AttributesPropertyManager.getProperty("role.user");
 
     /*Request attributes*/
@@ -44,8 +49,10 @@ public final class AttributesHolder {
     public static final String ATTR_USER = AttributesPropertyManager.getProperty("attr.user");
 
     public static final String ATTR_LOGIN = AttributesPropertyManager.getProperty("attr.login");
-    public static final String ATTR_PASSWORD= AttributesPropertyManager.getProperty("attr.pass");
-    public static final String ATTR_EMAIL= AttributesPropertyManager.getProperty("attr.email");
+    public static final String ATTR_PASSWORD = AttributesPropertyManager.getProperty("attr.pass");
+    public static final String ATTR_EMAIL = AttributesPropertyManager.getProperty("attr.email");
+
+    public static final String ATTR_PAGE = AttributesPropertyManager.getProperty("attr.page");
 
     private AttributesHolder() {
 

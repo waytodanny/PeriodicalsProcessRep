@@ -1,16 +1,10 @@
 package com.periodicals.servlet;
 
 import com.periodicals.dao.connection.ConnectionPool;
-import com.periodicals.dao.factories.JdbcDaoFactory;
-import com.periodicals.entities.Genre;
-import com.periodicals.services.GenresService;
-import com.periodicals.services.LoginService;
-import com.periodicals.services.PeriodicalService;
-import com.periodicals.services.RoleService;
+import com.periodicals.services.*;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.util.List;
 
 /**
  * Initializes some components before app starts and do something before it ends
@@ -25,9 +19,19 @@ public class ContextListener implements ServletContextListener {
         LoginService.getInstance();
         RoleService.getInstance();
         PeriodicalService.getInstance();
-        GenresService genresService = GenresService.getInstance();
-        servletContextEvent.getServletContext().setAttribute("genres", genresService.getAll());
+        GenresService.getInstance();
     }
+
+    /* TODO think of where would be better to do it*/
+    /*private void createGenresList(HttpServletRequest request) {
+        List<Genre> genres = GenresService.getInstance().getAll();
+        request.setAttribute("genres", genres);
+    }
+
+    private void createPublishersList(HttpServletRequest request) {
+        List<Publisher> publishers = PublisherService.getInstance().getAll();
+        request.setAttribute("publishers", publishers);
+    }*/
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
