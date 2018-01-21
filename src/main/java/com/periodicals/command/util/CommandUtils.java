@@ -18,7 +18,7 @@ public class CommandUtils {
         return request.getMethod().equals(GET);
     }
 
-    public static boolean requiredFieldsNotEmpty(Object... fields) {
+    public static boolean requiredFieldsNotEmpty(Object[] fields) {
         for (Object field : fields) {
             if (stringIsNullOrEmpty(field)) {
                 return false;

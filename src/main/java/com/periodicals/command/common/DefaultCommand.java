@@ -13,6 +13,6 @@ public class DefaultCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
-        return new CommandResult(req, resp, REDIRECT, CATALOG_PAGE);
+        return new CommandResult(REDIRECT, CATALOG_PAGE);
     }
 }

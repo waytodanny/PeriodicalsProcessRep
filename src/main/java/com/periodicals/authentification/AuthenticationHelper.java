@@ -8,14 +8,14 @@ import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_USER;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN_ATTRIBUTE;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN;
 
 /**
  * Class that contains methods that help to get some authentication info from session
  */
 public class AuthenticationHelper {
     /*TODO think of is it appropriate to make such variable*/
-    private static final Role ADMIN_ROLE = RoleService.getInstance().getRole(ROLE_ADMIN_ATTRIBUTE);
+    private static final Role ADMIN_ROLE = RoleService.getInstance().getRole(ROLE_ADMIN);
 
     public static User getUserFromSession(HttpSession session) {
         return (User) session.getAttribute(ATTR_USER);

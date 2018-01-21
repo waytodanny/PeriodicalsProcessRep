@@ -3,11 +3,11 @@ package com.periodicals.utils.encryption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5_Cryptographer implements Cryptographer {
+public class MD5Cryptographer implements Cryptographer {
     private static final String MD5_NAME = "MD5";
 
     @Override
-    public String encrypt(String str) {
+    public String encrypt(String str) throws NoSuchAlgorithmException {
         try {
             MessageDigest md5 = MessageDigest.getInstance(MD5_NAME);
             byte[] bytes = md5.digest(str.getBytes());
@@ -17,7 +17,7 @@ public class MD5_Cryptographer implements Cryptographer {
             }
             return builder.toString();
         } catch (NoSuchAlgorithmException e) {
-            return null;
+            throw e;
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.periodicals.services;
 
 import com.periodicals.entities.User;
-import com.periodicals.utils.encryption.MD5_Cryptographer;
+import com.periodicals.utils.encryption.MD5Cryptographer;
 import org.apache.log4j.Logger;
 
 import java.util.Objects;
@@ -10,7 +10,7 @@ public class LoginService {
     private static final Logger LOGGER = Logger.getLogger(LoginService.class.getSimpleName());
 
     private static LoginService loginService = new LoginService();
-    private final static UserService userService = UserService.getInstance();
+    private static UserService userService = UserService.getInstance();
 
     private LoginService() {
 
@@ -41,7 +41,7 @@ public class LoginService {
     private boolean passwordsMatch(User user, String password) {
         boolean result = false;
         if (Objects.nonNull(password) && Objects.nonNull(user) && Objects.nonNull(user.getPassword())) {
-            String encrypted = new MD5_Cryptographer().encrypt(password);
+            String encrypted = new MD5Cryptographer().encrypt(password);
             result = Objects.nonNull(encrypted) && encrypted.equals(user.getPassword());
             LOGGER.debug("passwords match");
         }

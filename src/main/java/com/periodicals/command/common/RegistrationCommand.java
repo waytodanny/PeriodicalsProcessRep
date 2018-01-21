@@ -23,7 +23,6 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.REGISTRATION_PAG
  * Command that handles registration requests
  */
 public class RegistrationCommand implements Command {
-    private static final Logger LOGGER = Logger.getLogger(RegistrationCommand.class.getSimpleName());
     private RegistrationService registrationService = RegistrationService.getInstance();
 
     @Override
@@ -32,6 +31,7 @@ public class RegistrationCommand implements Command {
             //String referer = CommandUtils.getRefererWithoutServletPath(request);
 
             Locale locale = request.getLocale();
+
             String login = request.getParameter(ATTR_LOGIN);
             String password = request.getParameter(ATTR_PASSWORD);
             String email = request.getParameter(ATTR_EMAIL);
@@ -45,10 +45,8 @@ public class RegistrationCommand implements Command {
             if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
                 try {
                     registrationService.register(login, password, email);
-                    LOGGER.debug("Registration succeed");
                     return new CommandResult(REDIRECT, CATALOG_PAGE);
                 } catch (RegistrationException e) {
-                    LOGGER.debug("Registration failed: " + e.getMessage());
                     request.setAttribute(REGISTRATION_ERROR_MESSAGE,
                             LanguagePropsManager.getProperty("registration.error.exists", locale));
                 }
@@ -57,7 +55,6 @@ public class RegistrationCommand implements Command {
                         LanguagePropsManager.getProperty("registration.error.empty", locale));
             }
         }
-
         return new CommandResult(FORWARD, REGISTRATION_PAGE);
     }
 }

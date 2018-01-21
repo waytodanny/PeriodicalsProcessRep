@@ -1,6 +1,7 @@
 package com.periodicals.utils.encryption;
 
 import javax.naming.OperationNotSupportedException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author Daniel Volnitsky
@@ -10,5 +11,5 @@ public interface Cryptographer {
     /**
      * @return encrypted string
      */
-    String encrypt(String str);
+    String encrypt(String str) throws NoSuchAlgorithmException;
 }

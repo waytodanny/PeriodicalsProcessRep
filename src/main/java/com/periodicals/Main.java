@@ -1,21 +1,10 @@
 package com.periodicals;
 
-import com.periodicals.dao.connection.ConnectionManager;
-import com.periodicals.dao.connection.ConnectionPool;
-import com.periodicals.dao.connection.ConnectionWrapper;
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
-import com.periodicals.dao.jdbc.UsersJdbcDao;
-import com.periodicals.dao.transactions.Transaction;
-import com.periodicals.entities.Role;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.exceptions.TransactionException;
-import com.periodicals.services.RoleService;
-import com.periodicals.utils.encryption.MD5_Cryptographer;
 import com.periodicals.utils.uuid.UuidGenerator;
-
-import java.util.List;
 
 
 public class Main {
@@ -66,7 +55,7 @@ public class Main {
 //        user.setLogin("batman");
 //        user.setEmail("batman@gmail.com");
 //        user.setRole(new Role((byte)1, ""));
-//        user.setPassword(new MD5_Cryptographer().encrypt("batman"));
+//        user.setPassword(new MD5Cryptographer().encrypt("batman"));
 //
 //        usersJdbcDAO.add(user);
 //

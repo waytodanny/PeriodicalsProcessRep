@@ -22,6 +22,7 @@ import static com.periodicals.services.RoleService.ADMIN_ROLE;
 import static com.periodicals.services.RoleService.USER_ROLE;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_LOGIN;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_PASSWORD;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_USER;
 import static com.periodicals.utils.ResourceHolders.MessagesHolder.LOGIN_ERROR_MESSAGE;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.*;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
@@ -45,6 +46,7 @@ public class LoginCommand implements Command {
             //String referer = CommandUtils.getRefererWithoutServletPath(request);
 
             Locale locale = request.getLocale();
+
             String login = request.getParameter(ATTR_LOGIN);
             String password = request.getParameter(ATTR_PASSWORD);
 
@@ -67,17 +69,16 @@ public class LoginCommand implements Command {
                         LanguagePropsManager.getProperty("login.error.empty", locale));
             }
         }
-
         return new CommandResult(FORWARD, LOGIN_PAGE);
     }
 
     private void setUserSession(HttpServletRequest request, User user) {
         HttpSession session = request.getSession();
-        session.setAttribute("user", user);
+        session.setAttribute(ATTR_USER, user);
     }
 
     private String getUserRedirectPageByRole(User user) {
-        String redirectPage = null;
+        String redirectPage = DEFAULT_PAGE;
         Role role = user.getRole();
 
         if(role.equals(ADMIN_ROLE)) {
@@ -88,7 +89,6 @@ public class LoginCommand implements Command {
             redirectPage = CATALOG_PAGE;
             LOGGER.info("User " + user.getLogin() + " entered as an user");
         }
-
         return redirectPage;
     }
 }

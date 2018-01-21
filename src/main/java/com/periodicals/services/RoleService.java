@@ -8,6 +8,7 @@ import com.periodicals.exceptions.ServiceException;
 
 import java.util.List;
 
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN_ATTRIBUTE;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_USER;
 
@@ -17,7 +18,7 @@ public class RoleService {
             (RolesJdbcDao) JdbcDaoFactory.getInstance().getRolesDao();
 
     public static final Role USER_ROLE = roleService.getRole(ROLE_USER);
-    public static final Role ADMIN_ROLE = roleService.getRole(ROLE_ADMIN_ATTRIBUTE);
+    public static final Role ADMIN_ROLE = roleService.getRole(ROLE_ADMIN);
 
     private RoleService() {
 
