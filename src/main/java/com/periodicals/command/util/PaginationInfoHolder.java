@@ -66,7 +66,7 @@ public class PaginationInfoHolder<E> {
         return (int) Math.ceil(this.recordsCount / this.recordsPerPage);
     }
 
-    public int getSkippedRecodrsCount() {
+    public int getSkippedRecordsCount() {
         return (this.currentPage - 1) * this.recordsPerPage;
     }
 

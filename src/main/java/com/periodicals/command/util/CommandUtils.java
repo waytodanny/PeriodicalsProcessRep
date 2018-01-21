@@ -15,7 +15,7 @@ public class CommandUtils {
     }
 
     public static boolean isPostMethod(HttpServletRequest request){
-        return request.getMethod().equals(GET);
+        return request.getMethod().equals(POST);
     }
 
     public static boolean requiredFieldsNotEmpty(Object[] fields) {
@@ -36,7 +36,6 @@ public class CommandUtils {
         return !stringIsNullOrEmpty(param);
     }
 
-    /*TODO test*/
     public static String getRefererWithoutServletPath(HttpServletRequest request) {
         String referer = DEFAULT;
 

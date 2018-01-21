@@ -42,7 +42,7 @@ public class UserSubscriptionsCommand extends PagedCommand<Periodical> {
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
         List<Periodical> displayedObjects = subscriptionsService.getUserSubscriptionsSublist
-                (user, holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+                (user, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 
         holder.setPageHrefTemplate(USER_SUBSCRIPTIONS_PAGE);

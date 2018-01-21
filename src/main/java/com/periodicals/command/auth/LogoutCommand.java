@@ -1,6 +1,6 @@
 package com.periodicals.command.auth;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import org.apache.log4j.Logger;
 

@@ -31,7 +31,7 @@ public class CatalogEditingCommand extends PagedCommand<Periodical> {
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
         List<Periodical> displayedObjects = periodicalService.getPeriodicalsSublist
-                (holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+                (holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 
         holder.setPageHrefTemplate(ADMIN_PERIODICALS_EDIT_PAGE);

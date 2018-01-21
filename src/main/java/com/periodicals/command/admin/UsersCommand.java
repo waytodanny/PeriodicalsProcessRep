@@ -31,7 +31,7 @@ public class UsersCommand extends PagedCommand<User> {
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
         List<User> displayedObjects = userService.getUsersSublist
-                (holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+                (holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 
         holder.setPageHrefTemplate(ADMIN_USERS_PAGE);

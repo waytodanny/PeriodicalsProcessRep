@@ -1,6 +1,6 @@
 package com.periodicals.command.admin;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Periodical;
@@ -49,7 +49,7 @@ public class AddPeriodicalCommand implements Command {
                     /*TODO придумать, как загружать список publisher'ов
                     /*if (isGenreChanged(upToEdit.getGenre(), req)) {
                         short newGenreId = Short.parseShort(req.getParameter("genreId"));
-                        Genre newGenre = genresService.getGenreById(newGenreId);
+                        Genre newGenre = genresService.addItemToCart(newGenreId);
                         upToEdit.setGenre(newGenre);
                     }
 

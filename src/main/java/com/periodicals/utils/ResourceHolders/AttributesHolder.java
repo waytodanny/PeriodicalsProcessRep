@@ -53,6 +53,9 @@ public final class AttributesHolder {
     public static final String ATTR_EMAIL = AttributesPropertyManager.getProperty("attr.email");
 
     public static final String ATTR_PAGE = AttributesPropertyManager.getProperty("attr.page");
+    public static final String ATTR_CART = AttributesPropertyManager.getProperty("attr.cart");
+
+    public static final String ATTR_GENRE = AttributesPropertyManager.getProperty("attr.genre");
 
     private AttributesHolder() {
 

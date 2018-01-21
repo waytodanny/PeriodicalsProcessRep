@@ -44,7 +44,7 @@ public class IssuesEditingCommand extends PagedCommand<PeriodicalIssue> {
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
         List<PeriodicalIssue> displayedObjects = periodicalIssueService.getPeriodicalIssuesLimited
-                (periodical, holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+                (periodical, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 
         holder.setPageHrefTemplate(ADMIN_PERIODICAL_ISSUE_EDIT_PAGE + "?periodical=" + periodical.getId());

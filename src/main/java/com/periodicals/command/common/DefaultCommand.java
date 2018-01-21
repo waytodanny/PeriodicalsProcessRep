@@ -1,6 +1,6 @@
 package com.periodicals.command.common;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 
 import javax.servlet.http.HttpServletRequest;

@@ -11,6 +11,7 @@ import com.periodicals.services.PeriodicalService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_GENRE;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.CATALOG_PAGE;
 
 public class CatalogCommand extends PagedCommand<Periodical> {
@@ -22,8 +23,8 @@ public class CatalogCommand extends PagedCommand<Periodical> {
     @Override
     public PaginationInfoHolder<Periodical> getPaginationInfoHolderInstance(HttpServletRequest request) {
         Genre genre = null;
-        if (CommandUtils.paramClarifiedInQuery(request, "genre")) {
-            genre = genresService.getGenre(request.getParameter("genre"));
+        if (CommandUtils.paramClarifiedInQuery(request, ATTR_GENRE)) {
+            genre = genresService.getGenre(request.getParameter(ATTR_GENRE));
         }
         if (genre != null) {
             return getPeriodicalsByGenrePaginationInfoHolder(request, genre);
@@ -42,7 +43,7 @@ public class CatalogCommand extends PagedCommand<Periodical> {
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
         List<Periodical> displayedObjects = periodicalService.getPeriodicalsSublist
-                (holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+                (holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 
         holder.setPageHrefTemplate(CATALOG_PAGE);
@@ -66,7 +67,7 @@ public class CatalogCommand extends PagedCommand<Periodical> {
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
         List<Periodical> displayedObjects = periodicalService.getGenrePeriodicalsSublist
-                (genre, holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+                (genre, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 
         holder.setPageHrefTemplate(CATALOG_PAGE + "?genre=" + genre.getId());

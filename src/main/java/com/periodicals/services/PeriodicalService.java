@@ -39,7 +39,7 @@ public class PeriodicalService {
         return result;
     }
 
-    public Periodical getPeriodicalById(int id) {
+    public Periodical getPeriodicalById(String id) {
         Periodical result = null;
         try {
             result = perDao.getById(id);

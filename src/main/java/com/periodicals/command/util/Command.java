@@ -1,4 +1,4 @@
-package com.periodicals.command;
+package com.periodicals.command.util;
 
 import com.periodicals.Main;
 import com.periodicals.command.util.CommandResult;

@@ -1,6 +1,6 @@
 package com.periodicals.command.admin;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.services.PeriodicalIssueService;

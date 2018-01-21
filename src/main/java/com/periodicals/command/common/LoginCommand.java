@@ -1,6 +1,6 @@
 package com.periodicals.command.common;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Role;
@@ -81,14 +81,14 @@ public class LoginCommand implements Command {
         String redirectPage = DEFAULT_PAGE;
         Role role = user.getRole();
 
-        if(role.equals(ADMIN_ROLE)) {
-            redirectPage = ADMIN_DEFAULT_PAGE;
-            LOGGER.info("User " + user.getLogin() + " entered as an admin");
-        }
         if (role.equals(USER_ROLE)) {
             redirectPage = CATALOG_PAGE;
             LOGGER.info("User " + user.getLogin() + " entered as an user");
+        } else if(role.equals(ADMIN_ROLE)) {
+            redirectPage = ADMIN_DEFAULT_PAGE;
+            LOGGER.info("User " + user.getLogin() + " entered as an admin");
         }
+
         return redirectPage;
     }
 }

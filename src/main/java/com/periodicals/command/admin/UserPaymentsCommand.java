@@ -40,7 +40,7 @@ public class UserPaymentsCommand extends PagedCommand<Payment> {
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
         List<Payment> displayedObjects = paymentService.getUserPaymentsSublist
-                (user, holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+                (user, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 
         holder.setPageHrefTemplate(ADMIN_USER_PAYMENTS_PAGE + "?user_id=" + user.getId());

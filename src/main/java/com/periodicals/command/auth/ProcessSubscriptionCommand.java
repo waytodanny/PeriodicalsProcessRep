@@ -1,7 +1,7 @@
 package com.periodicals.command.auth;
 
 import com.periodicals.authentification.AuthenticationHelper;
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.User;

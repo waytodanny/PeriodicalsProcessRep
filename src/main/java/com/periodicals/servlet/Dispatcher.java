@@ -1,6 +1,6 @@
 package com.periodicals.servlet;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandFactory;
 import com.periodicals.command.util.CommandResult;
 

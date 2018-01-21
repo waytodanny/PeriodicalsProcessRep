@@ -1,12 +1,11 @@
 package com.periodicals.command.common;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.exceptions.RegistrationException;
 import com.periodicals.services.RegistrationService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
-import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

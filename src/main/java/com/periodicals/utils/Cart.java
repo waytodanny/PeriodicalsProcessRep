@@ -49,7 +49,7 @@ public class Cart {
         return periodicals.contains(periodical);
     }
 
-    public Periodical getPeriodicalById(Integer id) {
+    public Periodical getPeriodicalById(String id) {
         for (Periodical per : periodicals) {
             if(per.getId().equals(id))
                 return per;
