@@ -1,14 +1,13 @@
 package com.periodicals.command.auth;
 
+import com.periodicals.authentification.AuthenticationHelper;
 import com.periodicals.command.Command;
-import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.User;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.UserSubscriptionsService;
 import com.periodicals.utils.Cart;
-import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,47 +16,46 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.*;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.LOGIN_PAGE;
 
 public class ProcessSubscriptionCommand implements Command {
-    public static final Logger LOGGER = Logger.getLogger(ProcessSubscriptionCommand.class.getSimpleName());
-    private UserSubscriptionsService subsService = UserSubscriptionsService.getInstance();
+    private UserSubscriptionsService userSubscriptionsService = UserSubscriptionsService.getInstance();
 
     @Override
-    public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
-        HttpSession session = req.getSession();
-        if (!isUserLoggedIn(session)) {
-            return new CommandResult(req, resp, REDIRECT, LOGIN_PAGE);
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+
+        if (!AuthenticationHelper.isUserLoggedIn(session)) {
+            return new CommandResult(REDIRECT, LOGIN_PAGE);
         }
 
-        String referer = CommandHelper.getRefererWithoutServletPath(req);
-
-        Cart cart = (Cart) session.getAttribute("cart");
+        Cart cart = this.getCartFromSession(session);
         if (Objects.nonNull(cart)) {
-            List<Periodical> upToSubs = cart.getPeriodicals();
+            List<Periodical> cartItems = cart.getPeriodicals();
             BigDecimal paySum = cart.getQuantity();
-            if (Objects.nonNull(upToSubs) && Objects.nonNull(paySum)) {
-                User user = (User) session.getAttribute("user");
+            if (Objects.nonNull(cartItems) && Objects.nonNull(paySum)) {
                 try {
-                    List<Periodical> userSubs = subsService.getUserSubscriptions(user);
-                    subsService.siftAlreadySubscribed(upToSubs, userSubs);
-                    subsService.processSubscriptions(user, upToSubs, paySum);
-                    return new CommandResult(req, resp, REDIRECT, USER_SUBSCRIPTIONS_PAGE);
+                    User user = AuthenticationHelper.getUserFromSession(session);
+                    userSubscriptionsService.processSubscriptions(user, cartItems, paySum);
+                    /*
+                    List<Periodical> userSubs = userSubscriptionsService.getUserSubscriptions(user);
+                    userSubscriptionsService.siftAlreadySubscribed(upToSubs, userSubs);
+                    */
+                    request.setAttribute("resultMessage", "Successfully processed subscriptions");
                 } catch (ServiceException e) {
-                    LOGGER.error(e.getMessage());
-                    return new CommandResult(req, resp, REDIRECT, referer);
+                    request.setAttribute("resultMessage", "Failed to process subscriptions");
                 } finally {
                     cart.cleanUp();
                 }
-            } else {
-                LOGGER.error("payments or payment sum were nullable");
-                return new CommandResult(req, resp, REDIRECT, referer);
             }
-        } else {
-            LOGGER.error("user cart is nullable");
-            return new CommandResult(req, resp, REDIRECT, referer);
         }
+
+        return null;
+    }
+
+    private Cart getCartFromSession(HttpSession session) {
+        Cart cart = (Cart) session.getAttribute("cart");
+        return cart;
     }
 }

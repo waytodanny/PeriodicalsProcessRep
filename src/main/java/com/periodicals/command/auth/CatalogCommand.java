@@ -1,8 +1,6 @@
 package com.periodicals.command.auth;
 
-import com.periodicals.command.Command;
-import com.periodicals.command.util.CommandHelper;
-import com.periodicals.command.util.CommandResult;
+import com.periodicals.command.util.CommandUtils;
 import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.Genre;
@@ -11,61 +9,43 @@ import com.periodicals.services.GenresService;
 import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-import static com.periodicals.command.util.CommandHelper.getPageFromRequest;
-import static com.periodicals.command.util.CommandHelper.paramClarifiedInQuery;
-import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.CATALOG_PAGE;
 
-public class CatalogCommand implements Command, PagedCommand {
+public class CatalogCommand extends PagedCommand<Periodical> {
     private static final int RECORDS_PER_PAGE = 10;
 
-    private PeriodicalService perService = PeriodicalService.getInstance();
-    private GenresService genresService = GenresService.getInstance();
+    private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
+    private static final GenresService genresService = GenresService.getInstance();
 
     @Override
-    public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
-        PaginationInfoHolder<Periodical, Integer> holder = getPaginationInfo(req);
-        setPaginationRequestAttributes(req, holder);
-        return new CommandResult(req, resp, FORWARD, holder.getRedirectedPageLink());
-    }
-
-    public PaginationInfoHolder<Periodical, Integer> getPaginationInfo(HttpServletRequest req) {
+    public PaginationInfoHolder<Periodical> getPaginationInfoHolderInstance(HttpServletRequest request) {
         Genre genre = null;
-        if (paramClarifiedInQuery(req, "genre")) {
-            genre = genresService.getGenre(req.getParameter("genre"));
+        if (CommandUtils.paramClarifiedInQuery(request, "genre")) {
+            genre = genresService.getGenre(request.getParameter("genre"));
         }
         if (genre != null) {
-            return getGenrePaginationInfo(req, genre);
+            return getPeriodicalsByGenrePaginationInfoHolder(request, genre);
         }
-        return getPeriodicalsPaginationInfo(req);
+        return getPeriodicalsPaginationInfoHolder(request);
     }
 
-    private void setPaginationRequestAttributes(HttpServletRequest req, PaginationInfoHolder<Periodical, Integer> holder) {
-        int pagesCount = CommandHelper.getPagesCount(holder.getRecordsCount(), RECORDS_PER_PAGE);
+    private PaginationInfoHolder<Periodical> getPeriodicalsPaginationInfoHolder(HttpServletRequest request) {
+        PaginationInfoHolder<Periodical> holder = new PaginationInfoHolder<>();
 
-        req.setAttribute("periodicals", holder.getDisplayedObjects());
-        req.setAttribute("pagesCount", pagesCount);
-        req.setAttribute("currentPage", holder.getCurrentPage());
-        req.setAttribute("pageLink", holder.getNextPageHrefLink());
-    }
-
-    protected PaginationInfoHolder<Periodical, Integer> getPeriodicalsPaginationInfo(HttpServletRequest req) {
-        PaginationInfoHolder<Periodical, Integer> holder = new PaginationInfoHolder<>();
-        int currentPage = getPageFromRequest(req);
+        int currentPage = PaginationInfoHolder.getPageFromRequest(request);
         holder.setCurrentPage(currentPage);
 
-        int recordsCount = Math.toIntExact(perService.getPeriodicalsCount());
+        int recordsCount = Math.toIntExact(periodicalService.getPeriodicalsCount());
         holder.setRecordsCount(recordsCount);
+        holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
-        List<Periodical> displayedSublist = perService.getPeriodicalsSublist
-                ((currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
-        holder.setDisplayedObjects(displayedSublist);
+        List<Periodical> displayedObjects = periodicalService.getPeriodicalsSublist
+                (holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+        holder.setDisplayedObjects(displayedObjects);
 
-        holder.setRedirectedPageLink(CATALOG_PAGE + "?page=" + currentPage);
-        holder.setNextPageHrefLink(CATALOG_PAGE/* + "?page=" + currentPage + 1*/);
+        holder.setPageHrefTemplate(CATALOG_PAGE);
 
         return holder;
     }
@@ -75,20 +55,21 @@ public class CatalogCommand implements Command, PagedCommand {
      *
      * @see
      */
-    private PaginationInfoHolder<Periodical, Integer> getGenrePaginationInfo(HttpServletRequest req, Genre genre) {
-        PaginationInfoHolder<Periodical, Integer> holder = new PaginationInfoHolder<>();
-        int currentPage = getPageFromRequest(req);
+    private PaginationInfoHolder<Periodical> getPeriodicalsByGenrePaginationInfoHolder(HttpServletRequest request, Genre genre) {
+        PaginationInfoHolder<Periodical> holder = new PaginationInfoHolder<>();
+
+        int currentPage = PaginationInfoHolder.getPageFromRequest(request);
         holder.setCurrentPage(currentPage);
 
-        int recordsCount = Math.toIntExact(perService.getGenrePeriodicalsCount(genre));
+        int recordsCount = Math.toIntExact(periodicalService.getGenrePeriodicalsCount(genre));
         holder.setRecordsCount(recordsCount);
+        holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
-        List<Periodical> displayedSublist = perService.getGenrePeriodicalsSublist
-                (genre, (currentPage - 1) * RECORDS_PER_PAGE, RECORDS_PER_PAGE);
-        holder.setDisplayedObjects(displayedSublist);
+        List<Periodical> displayedObjects = periodicalService.getGenrePeriodicalsSublist
+                (genre, holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+        holder.setDisplayedObjects(displayedObjects);
 
-        holder.setRedirectedPageLink(CATALOG_PAGE + "?genre=" + genre.getName() + "?page=" + currentPage);
-        holder.setNextPageHrefLink(CATALOG_PAGE + "?genre=" + genre.getName()/* + "?page=" + currentPage + 1*/);
+        holder.setPageHrefTemplate(CATALOG_PAGE + "?genre=" + genre.getId());
 
         return holder;
     }

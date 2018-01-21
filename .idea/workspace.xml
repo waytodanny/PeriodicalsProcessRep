@@ -7,58 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de233fcb-9b4f-4b67-b303-f82ebe6967e2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteIssueCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeletePeriodicalCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteUserCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditIssueCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditPeriodicalCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditUserCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/UserPaymentsCommand.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/UsersCommand.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminMainCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminMainCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminDefaultCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUsersCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/CatalogEditingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/CatalogEditingCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/RoleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/RoleService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/AttributesHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/AttributesHolder.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/attributes.properties" afterPath="$PROJECT_DIR$/target/classes/attributes.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/Main.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/factories/JdbcDaoFactory.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/GenericDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/GenericDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/GenresDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/GenresDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PaymentsDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalsDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalsDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PublishersDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/RolesDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/RolesDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/UsersDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/AbstractJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/AbstractJdbcDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/GenresJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PaymentsJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PublishersJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/RolesJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/RolesJdbcDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/UsersJdbcDao.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Genre.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Genre.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Payment.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Payment.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Periodical.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Periodical.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/entities/PeriodicalIssue.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/entities/PeriodicalIssue.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Publisher.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Publisher.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Role.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/entities/Role.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/entities/User.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/entities/User.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalIssueService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/utils/ResourceHolders/AttributesHolder.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mySQL_CreateDB(after uuid).sql" afterPath="$PROJECT_DIR$/target/classes/mySQL_CreateDB(after uuid).sql" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartAddItemCommand.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartRemoveItemCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartAddCommand.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartRemoveCommand.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/LogoutCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/LogoutCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -83,8 +40,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AdminDefaultCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminDefaultCommand.java">
+      <file leaf-file-name="CatalogCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -93,8 +50,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsersCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/UsersCommand.java">
+      <file leaf-file-name="CartRemoveItemCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartRemoveItemCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -103,18 +60,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddIssueCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IssuesEditingCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java">
+      <file leaf-file-name="CartAddItemCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartAddItemCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -123,8 +70,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditIssueCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditIssueCommand.java">
+      <file leaf-file-name="LogoutCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/LogoutCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -133,18 +80,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddPeriodicalCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeleteUserCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteUserCommand.java">
+      <file leaf-file-name="ProcessSubscriptionCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -153,8 +90,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeleteIssueCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteIssueCommand.java">
+      <file leaf-file-name="UserSubscriptionsCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -163,21 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditPeriodicalCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditPeriodicalCommand.java">
+      <file leaf-file-name="PeriodicalIssuesCommand.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeletePeriodicalCommand.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeletePeriodicalCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -259,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/pages/additional/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/ContextListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" />
@@ -293,6 +219,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeletePeriodicalCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" />
       </list>
     </option>
   </component>
@@ -321,7 +248,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-13" />
     <option name="y" value="5" />
     <option name="width" value="1424" />
@@ -403,16 +330,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
               <item name="command" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="periodicals" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -1024,16 +941,15 @@
       <workItem from="1516283548106" duration="30512000" />
       <workItem from="1516459156893" duration="3076000" />
       <workItem from="1516479136168" duration="11494000" />
-      <workItem from="1516553629519" duration="845000" />
+      <workItem from="1516553629519" duration="1007000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="461649000" />
+    <option name="totallyTimeSpent" value="461811000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="5" width="1424" height="1060" extended-state="1" />
-    <editor active="true" />
+    <frame x="-13" y="5" width="1424" height="1060" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1049,7 +965,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3221906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3221906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1131,58 +1047,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mySQL_CreateDB(before uuid).sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="91" column="2" lean-forward="false" selection-start-line="91" selection-start-column="2" selection-end-line="91" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2050">
-          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mySQL_CreateDB(after uuid).sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3740">
-          <caret line="170" column="26" lean-forward="false" selection-start-line="170" selection-start-column="26" selection-end-line="170" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Publisher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1188">
@@ -1214,10 +1078,10 @@
         <state relative-caret-position="198">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding>
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#2137#2138#0" expanded="true" />
-            <element signature="e#2173#2174#0" expanded="true" />
+            <element signature="e#703#704#0" expanded="false" />
+            <element signature="e#728#729#0" expanded="false" />
+            <element signature="e#2137#2138#0" expanded="false" />
+            <element signature="e#2173#2174#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1457,55 +1321,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminDefaultCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeletePeriodicalCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="462">
+          <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/UsersCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditIssueCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteUserCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditPeriodicalCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1521,7 +1345,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditPeriodicalCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteUserCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1529,10 +1353,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeletePeriodicalCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        <state relative-caret-position="22">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/EditIssueCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddIssueCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/UsersCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminDefaultCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartRemoveItemCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartAddItemCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/LogoutCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
