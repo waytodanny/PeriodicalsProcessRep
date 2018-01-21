@@ -72,7 +72,7 @@ public class UserService {
     public long getUsersCount() {
         long result = 0;
         try {
-            result = usersDao.getEntriesCount();
+            result = usersDao.getUsersCount();
         } catch (DaoException e) {
             LOGGER.debug("Failed to get users count: " + e.getMessage());
         }
@@ -82,7 +82,7 @@ public class UserService {
     public List<User> getUsersSublist(int skip, int take) {
         List<User> sublist = new ArrayList<>();
         try {
-            sublist = usersDao.getSublist(skip, take);
+            sublist = usersDao.geUsersLimited(skip, take);
         } catch (DaoException e) {
             LOGGER.debug("Failed to get users sublist: " + e.getMessage());
         }

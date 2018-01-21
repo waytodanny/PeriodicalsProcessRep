@@ -20,12 +20,12 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
     }
 
     @Override
-    public long getEntriesCount() throws DaoException {
+    public long getUsersCount() throws DaoException {
         return super.getEntriesCount(USER_ENTRIES_COUNT);
     }
 
     @Override
-    public List<User> getSublist(int skip, int take) throws DaoException {
+    public List<User> geUsersLimited(int skip, int take) throws DaoException {
         return super.selectObjects(USER_SELECT_SUBLIST, skip, take);
     }
 

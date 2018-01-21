@@ -54,17 +54,17 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> imp
     }
 
     @Override
-    public List<Periodical> getGenrePeriodicalsSublist(Genre genre, int skip, int take) throws DaoException {
-        return super.selectObjects(PERIODICAL_SELECT_SUBLIST_BY_GENRE, genre.getId(), skip, take);
+    public List<Periodical> getGenrePeriodicalsLimited(Genre genre, int skip, int limit) throws DaoException {
+        return super.selectObjects(PERIODICAL_SELECT_SUBLIST_BY_GENRE, genre.getId(), skip, limit);
     }
 
     @Override
-    public long getGenrePeriodicalCount(Genre genre) throws DaoException {
+    public long getGenrePeriodicalsCount(Genre genre) throws DaoException {
         return super.getEntriesCount(PERIODICAL_ENTRIES_BY_GENRE_COUNT, genre.getId());
     }
 
     @Override
-    public List<Periodical> getPeriodicalSubList(int skip, int take) throws DaoException {
+    public List<Periodical> getPeriodicalsLimited(int skip, int take) throws DaoException {
         return super.selectObjects(PERIODICAL_SELECT_SUBLIST, skip, take);
     }
 

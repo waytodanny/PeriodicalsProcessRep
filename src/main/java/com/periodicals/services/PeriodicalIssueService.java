@@ -71,7 +71,7 @@ public class PeriodicalIssueService {
     public List<PeriodicalIssue> getPeriodicalIssues(Periodical periodical) {
         List<PeriodicalIssue> issues = new ArrayList<>();
         try {
-            issues = issuesDao.getIssuesByPeriodical(periodical);
+            issues = issuesDao.getPeriodicalIssues(periodical);
             LOGGER.debug("Obtained issues by periodical");
         } catch (DaoException e) {
             LOGGER.error("Failed to obtain issues by periodical");

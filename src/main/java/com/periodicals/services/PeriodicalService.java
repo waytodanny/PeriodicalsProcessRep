@@ -83,7 +83,7 @@ public class PeriodicalService {
     public List<Periodical> getPeriodicalsSublist(int skip, int take) {
         List<Periodical> periodicals = new ArrayList<>();
         try {
-            periodicals = perDao.getPeriodicalSubList(skip, take);
+            periodicals = perDao.getPeriodicalsLimited(skip, take);
             LOGGER.debug("Obtained periodicals sublist");
         } catch (DaoException e) {
             LOGGER.error("Failed to get periodicals sublist using DAO: " + e.getMessage());
@@ -105,7 +105,7 @@ public class PeriodicalService {
     public List<Periodical> getGenrePeriodicalsSublist(Genre genre, int skip, int take) {
         List<Periodical> periodicals = new ArrayList<>();
         try {
-            periodicals = perDao.getGenrePeriodicalsSublist(genre, skip, take);
+            periodicals = perDao.getGenrePeriodicalsLimited(genre, skip, take);
             LOGGER.debug("Obtained genre periodicals count");
         } catch (DaoException e) {
             LOGGER.error("Failed to get genre periodicals sublist using DAO: " + e.getMessage());
@@ -127,7 +127,7 @@ public class PeriodicalService {
     public long getGenrePeriodicalsCount(Genre genre) {
         long result = 0;
         try {
-            result = perDao.getGenrePeriodicalCount(genre);
+            result = perDao.getGenrePeriodicalsCount(genre);
             LOGGER.debug("Obtained genre periodicals count: " + result);
         } catch (DaoException e) {
             LOGGER.error("Failed to get genre periodicals count using DAO: " + e.getMessage());

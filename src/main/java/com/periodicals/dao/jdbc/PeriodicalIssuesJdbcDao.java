@@ -59,7 +59,7 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, Lo
     }
 
     @Override
-    public List<PeriodicalIssue> getIssuesByPeriodical(Periodical periodical) throws DaoException {
+    public List<PeriodicalIssue> getPeriodicalIssues(Periodical periodical) throws DaoException {
         return super.selectObjects(PERIODICAL_ISSUE_SELECT_BY_PERIODICAL, periodical.getId());
     }
 

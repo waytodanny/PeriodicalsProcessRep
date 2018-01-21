@@ -42,7 +42,7 @@ public class Main {
 //        UserSubscriptionsService service = UserSubscriptionsService.getInstance();
 //        String uuid = "1f940bd3-f7a5-11e7-93e6-a30f6152aa28";
 //        Genre periodical = JdbcDaoFactory.getInstance().getGenresDao().getGenreByName("comics");
-//        List<Periodical> subs = JdbcDaoFactory.getInstance().getPeriodicalsDao().getGenrePeriodicalsSublist(periodical, 0, 5);
+//        List<Periodical> subs = JdbcDaoFactory.getInstance().getPeriodicalsDao().getGenrePeriodicalsLimited(periodical, 0, 5);
 //        try {
 //            Payment payment1 = new Payment(uuid, new BigDecimal("22.2"));
 ////            JdbcDaoFactory.getInstance().getPaymentsDao().add(payment);

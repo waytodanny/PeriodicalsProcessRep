@@ -14,13 +14,11 @@ import java.util.List;
 public interface GenericDao<T, K> {
     K add(T element) throws DaoException;
 
-//    K addWithKeyReturn(T element) throws DaoException;
-
     T getById(K key) throws DaoException;
 
     void update(T object) throws DaoException;
 
-    void delete(T object) throws DaoException;
+    void delete(K key) throws DaoException;
 
     List<T> getAll() throws DaoException;
 }

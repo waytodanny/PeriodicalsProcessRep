@@ -20,9 +20,6 @@ public class JdbcDaoFactory extends AbstractDaoFactory {
     private static PeriodicalsDao periodicalsDao = new PeriodicalsJdbcDao();
     private static PublishersDao publishersDao = new PublishersJdbcDao();
 
-    /*TODO delete*/
-//    private static ComplexQueryJdbcDao complexQueryDAO = new ComplexQueryJdbcDao();
-
     private JdbcDaoFactory() {
 
     }
@@ -65,9 +62,5 @@ public class JdbcDaoFactory extends AbstractDaoFactory {
     public PaymentsDao getPaymentsDao() {
         return paymentsDao;
     }
-
-//    public ComplexQueryJdbcDao getComplexQueryDAO() {
-//        return complexQueryDAO;
-//    }
 }
 
