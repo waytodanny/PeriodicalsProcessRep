@@ -1,26 +1,29 @@
 package com.periodicals.entities;
 
 import com.periodicals.entities.util.Identified;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
-public class Payment implements Identified<Long> {
-    private Long id;
+public class Payment implements Identified<String> {
+    private static final int UUID_DEFAULT_LENGTH = 36;
+
+    private String id;
     private Timestamp paymentTime;
     private String userId;
     private BigDecimal paymentSum;
     private List<Periodical> periodicals;
 
     @Override
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) throws IllegalArgumentException {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
+    public void setId(String id) throws IllegalArgumentException {
+        if (id.length() != UUID_DEFAULT_LENGTH) {
+            throw new IllegalArgumentException("Invalid id length: " + id.length());
         }
         this.id = id;
     }
@@ -72,11 +75,12 @@ public class Payment implements Identified<Long> {
         return Objects.equals(id, payment.id) &&
                 Objects.equals(paymentTime, payment.paymentTime) &&
                 Objects.equals(userId, payment.userId) &&
-                Objects.equals(paymentSum, payment.paymentSum);
+                Objects.equals(paymentSum, payment.paymentSum) &&
+                Objects.equals(periodicals, payment.periodicals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, paymentTime, userId, paymentSum);
+        return Objects.hash(id, paymentTime, userId, paymentSum, periodicals);
     }
 }

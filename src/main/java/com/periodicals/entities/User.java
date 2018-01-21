@@ -35,11 +35,11 @@ public class User implements Identified<String> {
         return id;
     }
 
-    public void setId(String uuid) throws IllegalArgumentException {
-        if (uuid.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid id length: " + uuid.length());
+    public void setId(String id) throws IllegalArgumentException {
+        if (id.length() != UUID_DEFAULT_LENGTH) {
+            throw new IllegalArgumentException("Invalid id length: " + id.length());
         }
-        this.id = uuid;
+        this.id = id;
     }
 
     public String getLogin() {

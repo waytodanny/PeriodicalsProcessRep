@@ -4,10 +4,11 @@ import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
 
-public class Publisher implements Identified<Integer> {
+public class Publisher implements Identified<String> {
+    private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int PUBLISHER_NAME_MAX_LENGTH = 100;
 
-    private Integer id;
+    private String id;
     private String name;
 
     public Publisher() {
@@ -20,11 +21,14 @@ public class Publisher implements Identified<Integer> {
     }
 
     @Override
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
+        if (id.length() != UUID_DEFAULT_LENGTH) {
+            throw new IllegalArgumentException("Invalid id length: " + id.length());
+        }
         this.id = id;
     }
 

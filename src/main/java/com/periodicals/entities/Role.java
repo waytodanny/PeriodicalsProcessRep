@@ -4,34 +4,25 @@ import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
 
-public class Role implements Identified<Byte> {
+public class Role implements Identified<String> {
+    private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int MAX_ROLE_NAME_LENGTH = 50;
 
-    private Byte id;
+    private String id;
     private String name;
 
     public Role() {
 
     }
 
-    public Role(String name) throws IllegalArgumentException {
-        this();
-        setName(name);
-    }
-
-    public Role(Byte id, String name) throws IllegalArgumentException {
-        this(name);
-        setId(id);
-    }
-
     @Override
-    public Byte getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(byte id) throws IllegalArgumentException  {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
+    public void setId(String id) throws IllegalArgumentException  {
+        if (id.length() != UUID_DEFAULT_LENGTH) {
+            throw new IllegalArgumentException("Invalid id length: " + id.length());
         }
         this.id = id;
 

@@ -4,29 +4,25 @@ import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
 
-public class Genre implements Identified<Short> {
+public class Genre implements Identified<String> {
+    private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int GENRE_NAME_MAX_LENGTH = 100;
 
-    private Short id;
+    private String id;
     private String name;
 
     public Genre() {
 
     }
 
-    public Genre(String name) throws IllegalArgumentException {
-        this();
-        this.name = name;
-    }
-
     @Override
-    public Short getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Short id) throws IllegalArgumentException {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
+    public void setId(String id) throws IllegalArgumentException {
+        if (id.length() != UUID_DEFAULT_LENGTH) {
+            throw new IllegalArgumentException("Invalid id length: " + id.length());
         }
         this.id = id;
     }
@@ -46,10 +42,10 @@ public class Genre implements Identified<Short> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Genre)) return false;
-        Genre that = (Genre) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name);
+        if (o == null || getClass() != o.getClass()) return false;
+        Genre genre = (Genre) o;
+        return Objects.equals(id, genre.id) &&
+                Objects.equals(name, genre.name);
     }
 
     @Override

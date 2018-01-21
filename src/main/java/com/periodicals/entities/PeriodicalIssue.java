@@ -5,44 +5,39 @@ import com.periodicals.entities.util.Identified;
 import java.sql.Date;
 import java.util.Objects;
 
-public class PeriodicalIssue implements Identified<Long> {
+public class PeriodicalIssue implements Identified<String> {
+    private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int ISSUE_NAME_MAX_LENGTH = 100;
 
-    private Long id;
-    private Integer issueNo;
+    private String id;
+    private int issueNo;
     private String name;
     private Date publishDate;
-    private Integer periodicalId;
+    private String periodicalId;
 
     public PeriodicalIssue() {
 
     }
 
-    public PeriodicalIssue(String name, int periodicalId) throws IllegalArgumentException {
-        this();
-        setName(name);
-        setPeriodicalId(periodicalId);
-    }
-
     @Override
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) throws IllegalArgumentException {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
+    public void setId(String id) {
+        if (id.length() != UUID_DEFAULT_LENGTH) {
+            throw new IllegalArgumentException("Invalid id length: " + id.length());
         }
         this.id = id;
     }
 
-    public Integer getIssueNo() {
+    public int getIssueNo() {
         return issueNo;
     }
 
-    public void setIssueNo(int issueNo) {
+    public void setIssueNo(int issueNo) throws IllegalArgumentException {
         if (issueNo <= 0) {
-            throw new IllegalArgumentException("number of issue must be greater than 0");
+            throw new IllegalArgumentException("Number of issue must be greater than 0");
         }
         this.issueNo = issueNo;
     }
@@ -59,12 +54,12 @@ public class PeriodicalIssue implements Identified<Long> {
         this.name = name;
     }
 
-    public Integer getPeriodicalId() {
+    public String getPeriodicalId() {
         return periodicalId;
     }
 
     /*TODO decide whether is right to check here*/
-    public void setPeriodicalId(Integer periodicalId) {
+    public void setPeriodicalId(String periodicalId) {
         this.periodicalId = periodicalId;
     }
 
@@ -82,8 +77,8 @@ public class PeriodicalIssue implements Identified<Long> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PeriodicalIssue that = (PeriodicalIssue) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(issueNo, that.issueNo) &&
+        return issueNo == that.issueNo &&
+                Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(publishDate, that.publishDate) &&
                 Objects.equals(periodicalId, that.periodicalId);
