@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_MAIN_PAGE;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
-public class AdminMainCommand implements Command {
+public class AdminDefaultCommand implements Command {
 
     @Override
-    public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
-        return new CommandResult(req, resp, FORWARD, ADMIN_MAIN_PAGE);
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        return new CommandResult(FORWARD, ADMIN_DEFAULT_PAGE);
     }
 }

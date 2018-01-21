@@ -36,7 +36,7 @@ public final class AttributesHolder {
     public static final String PAGE_SUFFIX = AttributesPropertyManager.getProperty("page.suffix");
 
     public static final String ROLE_ATTR = AttributesPropertyManager.getProperty("attr.role");
-    public static final String ROLE_ADMIN = AttributesPropertyManager.getProperty("role.admin");
+    public static final String ROLE_ADMIN_ATTRIBUTE = AttributesPropertyManager.getProperty("role.admin");
     public static final String ROLE_USER = AttributesPropertyManager.getProperty("role.user");
 
     /*Request attributes*/

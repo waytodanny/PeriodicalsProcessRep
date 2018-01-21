@@ -1,76 +1,54 @@
 package com.periodicals.command.admin;
 
-import com.periodicals.command.Command;
-import com.periodicals.command.util.CommandHelper;
-import com.periodicals.command.util.CommandResult;
+import com.periodicals.command.util.CommandUtils;
+import com.periodicals.command.util.PagedCommand;
+import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.PeriodicalIssue;
-import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Objects;
 
-import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICAL_ISSUE_EDIT_PAGE;
 
-public class IssuesEditingCommand implements Command {
-    private PeriodicalIssueService issueService = PeriodicalIssueService.getInstance();
-    private PeriodicalService periodicalService = PeriodicalService.getInstance();
+public class IssuesEditingCommand extends PagedCommand<PeriodicalIssue> {
+    private static final int RECORDS_PER_PAGE = 10;
+
+    private static final PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
+    private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
 
     @Override
-    public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
-        if (isDeleteCommand(req)) {
-            long id = Long.parseLong(req.getParameter("deletedIssueId"));
-            PeriodicalIssue upToDelete = issueService.getByPk(id);
-            try {
-                issueService.delete(upToDelete);
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            }
-
-        } else if (isUpdateCommand(req)) {
-            int id = Integer.parseInt(req.getParameter("updatedIssueId"));
-            String name = req.getParameter("updatedIssueName");
-            String issueNo = req.getParameter("updatedIssueNo");
-
-            String [] reqFields = {name, issueNo};
-            if (CommandHelper.requiredFieldsNotEmpty(reqFields)) {
-                PeriodicalIssue updIssue = PeriodicalIssueService.getInstance().getByPk(id);
-                updIssue.setName(name);
-                updIssue.setIssueNo(Integer.parseInt(issueNo));
-                try {
-                    PeriodicalIssueService.update(updIssue);
-                } catch (ServiceException e) {
-                    e.printStackTrace();
-                }
+    protected PaginationInfoHolder<PeriodicalIssue> getPaginationInfoHolderInstance(HttpServletRequest request) {
+        if (CommandUtils.paramClarifiedInQuery(request,"periodical")) {
+            int periodicalId = Integer.parseInt(request.getParameter("periodical"));
+            Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
+            if (Objects.nonNull(periodical)) {
+                return getIssuesPaginationInfoHolder(request, periodical);
             }
         }
 
-        int periodicalId = 1;
-        if (req.getParameter("id") != null && !Objects.equals(req.getParameter("id"), "")) {
-            periodicalId = Integer.parseInt(req.getParameter("id"));
-        }
-
-        Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
-        List<PeriodicalIssue> issues = issueService.getPeriodicalIssues(periodical);
-
-        req.setAttribute("issues", issues);
-        return new CommandResult(req, resp, FORWARD, ADMIN_PERIODICAL_ISSUE_EDIT_PAGE + "?id=" + periodicalId);
+        return null;
     }
 
-    /*POVTOP*/
-    private boolean isDeleteCommand(HttpServletRequest request) {
-        String parameter = request.getParameter("deletedIssueId");
-        return CommandHelper.requiredFieldsNotEmpty(new String[]{parameter});
-    }
+    private PaginationInfoHolder<PeriodicalIssue> getIssuesPaginationInfoHolder(HttpServletRequest request, Periodical periodical) {
+        PaginationInfoHolder<PeriodicalIssue> holder = new PaginationInfoHolder<>();
 
-    /*POVTOP*/
-    private boolean isUpdateCommand(HttpServletRequest request) {
-        String parameter = request.getParameter("updatedIssueId");
-        return CommandHelper.requiredFieldsNotEmpty(new String[]{parameter});
+        int currentPage = PaginationInfoHolder.getPageFromRequest(request);
+        holder.setCurrentPage(currentPage);
+
+        int recordsCount = Math.toIntExact(periodicalIssueService.getPeriodicalIssuesCount(periodical));
+        holder.setRecordsCount(recordsCount);
+        holder.setRecordsPerPage(RECORDS_PER_PAGE);
+
+        List<PeriodicalIssue> displayedObjects = periodicalIssueService.getPeriodicalIssuesLimited
+                (periodical, holder.getSkippedRecodrsCount(), holder.getRecordsPerPage());
+        holder.setDisplayedObjects(displayedObjects);
+
+        holder.setPageHrefTemplate(ADMIN_PERIODICAL_ISSUE_EDIT_PAGE + "?periodical=" + periodical.getId());
+
+        return holder;
     }
 }

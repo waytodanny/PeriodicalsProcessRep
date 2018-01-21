@@ -3,23 +3,23 @@ package com.periodicals.command.admin;
 import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
-import com.periodicals.entities.Periodical;
 import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.math.BigDecimal;
+import java.util.UUID;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_ADD_PERIODICAL_PAGE;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
-public class AddPeriodicalCommand implements Command {
+public class EditPeriodicalCommand implements Command {
     private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        if(CommandUtils.isPostMethod(request)) {
+        if (CommandUtils.paramClarifiedInQuery(request,"id")) {
+            UUID id = UUID.fromString(request.getParameter("id"));
             String name = request.getParameter("name");
             String description = request.getParameter("description");
             String subscriptionCost = request.getParameter("subscription_cost");
@@ -40,14 +40,14 @@ public class AddPeriodicalCommand implements Command {
 
             if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
                 try {
-                    Periodical periodical = new Periodical();
-                    periodical.setName(name);
-                    periodical.setDescription(description);
-                    periodical.setLimited(Boolean.valueOf(isLimited));
-                    periodical.setSubscriptionCost(new BigDecimal(subscriptionCost));
-                    periodical.setIssuesPerYear(Short.parseShort(issuesPerYear));
-                    /*TODO придумать, как загружать список publisher'ов
-                    /*if (isGenreChanged(upToEdit.getGenre(), req)) {
+                    /*Periodical upToEdit = perService.getPeriodicalById(id);
+                    upToEdit.setName(name);
+                    upToEdit.setDescription(description);
+                    upToEdit.setSubscriptionCost(new BigDecimal(subscriptionCost));
+                    upToEdit.setIssuesPerYear(Short.parseShort(issuesPerYear));
+                    upToEdit.setLimited(Boolean.valueOf(isLimited));
+
+                    if (isGenreChanged(upToEdit.getGenre(), req)) {
                         short newGenreId = Short.parseShort(req.getParameter("genreId"));
                         Genre newGenre = genresService.getGenreById(newGenreId);
                         upToEdit.setGenre(newGenre);
@@ -57,11 +57,11 @@ public class AddPeriodicalCommand implements Command {
                         int newPublId = Integer.parseInt(req.getParameter("publisherId"));
                         Publisher newPublisher = publisherService.getPublisherById(newPublId);
                         upToEdit.setPublisher(newPublisher);
-                    }*/
-                    periodicalService.add(periodical);
-                    request.setAttribute("resultMessage", "Successfully added periodical");
+                    }
+                    periodicalService.update(upToEdit);*/
+                    request.setAttribute("resultMessage", "Successfully changed periodical info");
                 } catch (Exception e) {
-                    request.setAttribute("resultMessage", "Failed to add periodical: " + e.getMessage());
+                    request.setAttribute("resultMessage", "Failed to modify periodical");
                 }
                 return new CommandResult(FORWARD, ADMIN_DEFAULT_PAGE);
             }
