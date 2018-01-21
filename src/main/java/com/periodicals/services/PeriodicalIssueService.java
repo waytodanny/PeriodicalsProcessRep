@@ -6,6 +6,7 @@ import com.periodicals.entities.Periodical;
 import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
+import com.periodicals.utils.uuid.UuidGenerator;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class PeriodicalIssueService {
         return issuesService;
     }
 
-    public static void update(PeriodicalIssue issue) throws ServiceException {
+    public void update(PeriodicalIssue issue) throws ServiceException {
         try {
             issuesDao.update(issue);
             LOGGER.debug("Issue successfully updated");
@@ -37,17 +38,17 @@ public class PeriodicalIssueService {
         }
     }
 
-    public void delete(PeriodicalIssue periodicalIssue) throws ServiceException {
+    public void deleteById(String periodicalIssueId) throws ServiceException {
         try {
-            issuesDao.delete(periodicalIssue);
+            issuesDao.delete(periodicalIssueId);
             LOGGER.debug("Issue successfully deleted");
         } catch (DaoException e) {
-            LOGGER.error("Failed to delete issue: " + e.getMessage());
+            LOGGER.error("Failed to deleteUserById issue: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
 
-    public PeriodicalIssue getByPk(long id) {
+    public PeriodicalIssue getPeriodicalById(String id) {
         PeriodicalIssue result = null;
         try {
             result = issuesDao.getById(id);
@@ -58,12 +59,17 @@ public class PeriodicalIssueService {
         return result;
     }
 
-    public void add(PeriodicalIssue issue) throws ServiceException {
+    public void addNewIssue(String name, int issueNo, String periodicalId) throws ServiceException {
+        PeriodicalIssue newIssue = new PeriodicalIssue();
+        newIssue.setId(UuidGenerator.generateUuid());
+        newIssue.setName(name);
+        newIssue.setIssueNo(issueNo);
+        newIssue.setPeriodicalId(periodicalId);
         try {
-            issuesDao.add(issue);
+            issuesDao.add(newIssue);
             LOGGER.debug("Issue has been successfully added");
         } catch (DaoException e) {
-            LOGGER.error("Failed to add issue: " + e.getMessage());
+            LOGGER.error("Failed to addNewIssue issue: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -101,7 +107,7 @@ public class PeriodicalIssueService {
         return result;
     }
 
-    public List<PeriodicalIssue> getAllIssuesLimited(long skip, long limit) {
+    public List<PeriodicalIssue> getAllIssuesLimited(int skip, int limit) {
         List<PeriodicalIssue> issues = new ArrayList<>();
         try {
             issues = issuesDao.getAllIssuesLimited(skip, limit);
@@ -112,7 +118,7 @@ public class PeriodicalIssueService {
         return issues;
     }
 
-    public List<PeriodicalIssue> getPeriodicalIssuesLimited(Periodical periodical, long skip, long limit) {
+    public List<PeriodicalIssue> getPeriodicalIssuesLimited(Periodical periodical, int skip, int limit) {
         List<PeriodicalIssue> issues = new ArrayList<>();
         try {
             issues = issuesDao.getPeriodicalIssuesLimited(periodical, skip, limit);

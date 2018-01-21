@@ -6,6 +6,7 @@ import com.periodicals.entities.Payment;
 import com.periodicals.entities.User;
 import com.periodicals.services.PaymentService;
 import com.periodicals.services.UserService;
+import com.periodicals.services.util.PageableCollectionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Objects;
 
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_USER_PAYMENTS_PAGE;
 
-public class UserPaymentsCommand extends PagedCommand<Payment> {
+public class DisplayUserPaymentsCommand extends PagedCommand<Payment> {
     private static final int RECORDS_PER_PAGE = 10;
 
     private static final UserService userService = UserService.getInstance();
@@ -29,6 +30,21 @@ public class UserPaymentsCommand extends PagedCommand<Payment> {
         return null;
     }
 
+    @Override
+    protected PageableCollectionService<Payment> getPageableCollectionService() {
+        return null;
+    }
+
+    @Override
+    protected int getRecordsPerPage() {
+        return 0;
+    }
+
+    @Override
+    protected String getPageHrefTemplate() {
+        return null;
+    }
+
     private PaginationInfoHolder<Payment> getUserPaymentsPaginationInfoHolder(HttpServletRequest request, User user) {
         PaginationInfoHolder<Payment> holder = new PaginationInfoHolder<>();
 
@@ -39,7 +55,7 @@ public class UserPaymentsCommand extends PagedCommand<Payment> {
         holder.setRecordsCount(recordsCount);
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
-        List<Payment> displayedObjects = paymentService.getUserPaymentsSublist
+        List<Payment> displayedObjects = paymentService.getUserPaymentsLimited
                 (user, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 

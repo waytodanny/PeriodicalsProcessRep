@@ -69,7 +69,7 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
         if (Objects.isNull(payment) ||
                 Objects.isNull(periodicals) ||
                 (payment.getPeriodicals().size() < 1)) {
-            throw new DaoException("Attempt to add nullable payment periodicals or payment without id");
+            throw new DaoException("Attempt to addNewIssue nullable payment periodicals or payment without id");
         }
 
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();

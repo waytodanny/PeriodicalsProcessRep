@@ -17,17 +17,15 @@ public class DeleteUserCommand implements Command {
         if(CommandUtils.isPostMethod(request)) {
             if (CommandUtils.paramClarifiedInQuery(request, "id")) {
                 UUID id = UUID.fromString(request.getParameter("id"));
-
+                String removableId = request.getParameter("id");
                 try {
-                    /*User deleted = userService.getUserById(id);
-                    userService.delete(deleted);*/
+                    userService.deleteUserById(removableId);
                     request.setAttribute("resultMessage", "Successfully deleted periodical");
                 } catch (Exception e) {
-                    request.setAttribute("resultMessage", "Failed to delete periodical");
+                    request.setAttribute("resultMessage", "Failed to deleteUserById periodical");
                 }
             }
         }
-
         return null;
     }
 }

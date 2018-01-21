@@ -3,6 +3,8 @@ package com.periodicals.command.admin;
 import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
+import com.periodicals.entities.User;
+import com.periodicals.services.RoleService;
 import com.periodicals.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_USERS_PAGE
 
 public class EditUserCommand implements Command {
     private static final UserService userService = UserService.getInstance();
+    private static final RoleService roleService = RoleService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -29,9 +32,9 @@ public class EditUserCommand implements Command {
 
                 if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
                     try {
-                        /*User updated = userService.getUserById(updUserId);
-                        updated.setRole(roleService.getRoleById(Byte.parseByte(roleId)));
-                        userService.update(updated);*/
+                        User updated = userService.getUserById(id.toString());
+                        updated.setRole(roleService.getRoleById(roleId));
+                        userService.update(updated);
                         request.setAttribute("resultMessage", "Successfully changed user info");
                     } catch (Exception e) {
                         request.setAttribute("resultMessage", "Failed to modify user");
@@ -40,7 +43,6 @@ public class EditUserCommand implements Command {
                 }
             }
         }
-
         return new CommandResult(FORWARD, ADMIN_EDIT_USERS_PAGE);
     }
 }

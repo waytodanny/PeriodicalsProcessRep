@@ -5,7 +5,8 @@ import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.User;
-import com.periodicals.services.UserSubscriptionsService;
+import com.periodicals.services.SubscriptionsService;
+import com.periodicals.services.util.PageableCollectionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -18,16 +19,31 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.USER_SUBSCRIPTIO
  *
  * @see
  */
-public class UserSubscriptionsCommand extends PagedCommand<Periodical> {
+public class UserSubscriptionsDisplayCommand extends PagedCommand<Periodical> {
     private static final int RECORDS_PER_PAGE = 10;
 
-    private UserSubscriptionsService subscriptionsService = UserSubscriptionsService.getInstance();
+    private SubscriptionsService subscriptionsService = SubscriptionsService.getInstance();
 
     public PaginationInfoHolder<Periodical> getPaginationInfoHolderInstance(HttpServletRequest request) {
         User user = AuthenticationHelper.getUserFromSession(request.getSession());
         if(Objects.nonNull(user)) {
             return getPeriodicalsByUserPaginationInfoHolder(request, user);
         }
+        return null;
+    }
+
+    @Override
+    protected PageableCollectionService<Periodical> getPageableCollectionService() {
+        return null;
+    }
+
+    @Override
+    protected int getRecordsPerPage() {
+        return 0;
+    }
+
+    @Override
+    protected String getPageHrefTemplate() {
         return null;
     }
 
@@ -41,7 +57,7 @@ public class UserSubscriptionsCommand extends PagedCommand<Periodical> {
         holder.setRecordsCount(recordsCount);
         holder.setRecordsPerPage(RECORDS_PER_PAGE);
 
-        List<Periodical> displayedObjects = subscriptionsService.getUserSubscriptionsSublist
+        List<Periodical> displayedObjects = subscriptionsService.getUserSubscriptionsLimited
                 (user, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
         holder.setDisplayedObjects(displayedObjects);
 

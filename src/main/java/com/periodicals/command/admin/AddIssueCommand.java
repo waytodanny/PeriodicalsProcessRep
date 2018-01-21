@@ -4,7 +4,6 @@ import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Periodical;
-import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.services.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 
@@ -34,27 +33,22 @@ public class AddIssueCommand implements Command {
 
             if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
                 try {
-                    PeriodicalIssue periodicalIssue = new PeriodicalIssue();
-                    periodicalIssue.setName(name);
-                    periodicalIssue.setIssueNo(Integer.parseUnsignedInt(issueNo));
-                    periodicalIssue.setPeriodicalId(Integer.parseUnsignedInt(periodicalId));
-                    periodicalIssueService.add(periodicalIssue);
+                    periodicalIssueService.addNewIssue(name, Integer.parseInt(issueNo), periodicalId);
                     request.setAttribute("resultMessage", "Successfully added issue");
                 } catch (Exception e) {
-                    request.setAttribute("resultMessage", "Failed to add issue: " + e.getMessage());
+                    request.setAttribute("resultMessage", "Failed to addNewIssue issue: " + e.getMessage());
                 }
                 return new CommandResult(FORWARD, ADMIN_DEFAULT_PAGE);
             } else {
                 this.initializePageAttributes(request);
             }
         }
-
         return new CommandResult(FORWARD, ADMIN_ADD_ISSUE_PAGE);
     }
 
     private void initializePageAttributes (HttpServletRequest request) {
         if(CommandUtils.paramClarifiedInQuery(request,"periodical_id")) {
-            int periodicalId = Integer.parseUnsignedInt(request.getParameter("periodical_id"));
+            String periodicalId = request.getParameter("periodical_id");
             Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
             request.setAttribute("periodical_name", periodical.getName());
         }

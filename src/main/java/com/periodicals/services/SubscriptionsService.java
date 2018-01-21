@@ -10,44 +10,46 @@ import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.exceptions.TransactionException;
 import com.periodicals.dao.transactions.Transaction;
+import com.periodicals.utils.uuid.UuidGenerator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSubscriptionsService {
-    private static UserSubscriptionsService userSubsService = new UserSubscriptionsService();
+public class SubscriptionsService {
+    private static SubscriptionsService userSubsService = new SubscriptionsService();
     private static PeriodicalsJdbcDao perDao =
             (PeriodicalsJdbcDao) JdbcDaoFactory.getInstance().getPeriodicalsDao();
     private static PaymentsJdbcDao payDao =
             (PaymentsJdbcDao) JdbcDaoFactory.getInstance().getPaymentsDao();
 
-    private UserSubscriptionsService() {
+    private SubscriptionsService() {
 
     }
 
-    public static UserSubscriptionsService getInstance() {
+    public static SubscriptionsService getInstance() {
         return userSubsService;
     }
 
-    public void processSubscriptions(User user, List<Periodical> subs, BigDecimal paymentSum) throws ServiceException {
+    public void processSubscriptions(User user, List<Periodical> subscriptions, BigDecimal paymentSum) throws ServiceException {
         try {
             Payment payment = new Payment();
+            payment.setId(UuidGenerator.generateUuid());
             payment.setUserId(user.getId());
             payment.setPaymentSum(paymentSum);
-            payment.setPeriodicals(subs);
+            payment.setPeriodicals(subscriptions);
 
             Transaction.doTransaction(() -> {
-                payment.setId(payDao.add(payment));
-                payDao.addPaymentPeriodicals(payment);
-                perDao.addUserSubscriptions(user, subs);
+                payDao.add(payment);
+                payDao.addPaymentPeriodicals(payment, subscriptions);
+                perDao.addUserSubscriptions(user, subscriptions);
             });
         } catch (TransactionException e) {
             throw new ServiceException("failed to process subscriptions: " + e.getMessage());
         }
     }
 
-    public List<Periodical> getUserSubscriptionsSublist(User user, int skip, int take) {
+    public List<Periodical> getUserSubscriptionsLimited(User user, int skip, int take) {
         List<Periodical> periodicals = new ArrayList<>();
         try {
             periodicals = perDao.getUserSubscriptions(user);

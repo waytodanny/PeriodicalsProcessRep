@@ -50,12 +50,12 @@ public class PeriodicalService {
         return result;
     }
 
-    public void delete(Periodical periodical) throws ServiceException {
+    public void deletePeriodicalById(String periodicalId) throws ServiceException {
         try {
-            perDao.delete(periodical);
-            LOGGER.debug("Successful deletion of periodical with id " + periodical.getId());
+            perDao.delete(periodicalId);
+            LOGGER.debug("Successful deletion of periodical with id " + periodicalId);
         } catch (DaoException e) {
-            LOGGER.error("Failed to delete periodical using DAO: " + e.getMessage());
+            LOGGER.error("Failed to deleteUserById periodical using DAO: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -75,7 +75,7 @@ public class PeriodicalService {
             perDao.add(periodical);
             LOGGER.debug("Successful periodical adding");
         } catch (DaoException e) {
-            LOGGER.error("Failed to add periodical using DAO: " + e.getMessage());
+            LOGGER.error("Failed to addNewIssue periodical using DAO: " + e.getMessage());
             throw new ServiceException(e);
         }
     }

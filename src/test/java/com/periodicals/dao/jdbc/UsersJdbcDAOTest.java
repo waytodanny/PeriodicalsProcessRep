@@ -80,11 +80,11 @@
 //    @Test
 //    void addUser() {
 //        try {
-//            List<User> usersBefore = usersDAO.getAll();
+//            List<User> usersBefore = usersDAO.getAllGenres();
 //            assertTrue(usersBefore.size() == 0);
 //
-//            usersDAO.add(testUser1);
-//            List<User> usersAfter = usersDAO.getAll();
+//            usersDAO.addNewIssue(testUser1);
+//            List<User> usersAfter = usersDAO.getAllGenres();
 //
 //            assertTrue(testUser1.getId() != 0);
 //            sameUserFromDB = usersDAO.getById(testUser1.getId());
@@ -103,7 +103,7 @@
 //    @Test
 //    void addNullableUser() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            usersDAO.add(null);
+//            usersDAO.addNewIssue(null);
 //        });
 //    }
 //
@@ -111,30 +111,30 @@
 //    void addUserWithNonNullKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
 //            testUser1.setId(1);
-//            usersDAO.add(testUser1);
+//            usersDAO.addNewIssue(testUser1);
 //        });
 //    }
 //
 //    @Test
 //    void addUserWithSameLogin() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            usersDAO.add(testUser1);
-//            usersDAO.add(new User(testUser1.getLogin(), "pass"));
+//            usersDAO.addNewIssue(testUser1);
+//            usersDAO.addNewIssue(new User(testUser1.getLogin(), "pass"));
 //        });
 //    }
 //
 //    @Test
 //    void addSameUserTwice() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            usersDAO.add(testUser1);
-//            usersDAO.add(testUser1);
+//            usersDAO.addNewIssue(testUser1);
+//            usersDAO.addNewIssue(testUser1);
 //        });
 //    }
 //
 //    @Test
 //    void getByValidPK() {
 //        try {
-//            usersDAO.add(testUser1);
+//            usersDAO.addNewIssue(testUser1);
 //            assertNotNull(testUser1.getId());
 //
 //            sameUserFromDB = usersDAO.getById(testUser1.getId());
@@ -164,7 +164,7 @@
 //    @Test
 //    void updateExistingUser() {
 //        try {
-//            genId = usersDAO.add(testUser1);
+//            genId = usersDAO.addNewIssue(testUser1);
 //            assertTrue(genId != 0);
 //
 //            sameUserFromDB = usersDAO.getById(genId);
@@ -200,20 +200,20 @@
 //    @Test
 //    void deleteExistingUser() {
 //        try {
-//            genId = usersDAO.add(testUser1);
+//            genId = usersDAO.addNewIssue(testUser1);
 //            assertTrue(genId != 0);
 //
 //            int expectedTableSize = 1;
-//            int resultTableSize = usersDAO.getAll().size();
+//            int resultTableSize = usersDAO.getAllGenres().size();
 //            assertEquals(expectedTableSize, resultTableSize);
 //
 //            sameUserFromDB = usersDAO.getById(genId);
 //            assertEquals(testUser1, sameUserFromDB);
 //
-//            usersDAO.delete(sameUserFromDB.getId());
+//            usersDAO.deletePeriodicalById(sameUserFromDB.getId());
 //
 //            expectedTableSize = 0;
-//            resultTableSize = usersDAO.getAll().size();
+//            resultTableSize = usersDAO.getAllGenres().size();
 //            assertEquals(expectedTableSize, resultTableSize);
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
@@ -224,28 +224,28 @@
 //    @Test
 //    void deleteNonExistingUser() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            usersDAO.delete(nonExistingUser.getId());
+//            usersDAO.deletePeriodicalById(nonExistingUser.getId());
 //        });
 //    }
 //
 //    @Test
 //    void deleteNullableUser() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            usersDAO.delete(null);
+//            usersDAO.deletePeriodicalById(null);
 //        });
 //    }
 //
 //    @Test
 //    void deleteNotIdentifiedUser() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            usersDAO.delete(testUser2.getId());
+//            usersDAO.deletePeriodicalById(testUser2.getId());
 //        });
 //    }
 //
 //    @Test
 //    void getExistingUserByLogin() {
 //        try {
-//            genId = usersDAO.add(testUser1);
+//            genId = usersDAO.addNewIssue(testUser1);
 //            assertTrue(genId != 0);
 //
 //            sameUserFromDB = usersDAO.getByLogin(testUser1.getLogin());
@@ -259,7 +259,7 @@
 //    @Test
 //    void getNonExistingUserByLogin() {
 //        try {
-//            int tableSize = usersDAO.getAll().size();
+//            int tableSize = usersDAO.getAllGenres().size();
 //            assertTrue(tableSize == 0);
 //
 //            Assertions.assertThrows(DaoException.class, () -> {

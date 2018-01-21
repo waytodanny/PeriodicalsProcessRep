@@ -85,12 +85,12 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     }
 
     protected void delete(String query, Object... params) throws DaoException {
-        LOGGER.debug("Beginning delete query");
+        LOGGER.debug("Beginning deleteUserById query");
         executeUpdate(query, params);
     }
 
     /**
-     * Generic method for delete/update queries
+     * Generic method for deleteUserById/update queries
      */
     private void executeUpdate(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();

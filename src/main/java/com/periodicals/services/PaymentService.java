@@ -25,7 +25,7 @@ public class PaymentService {
         return paymentService;
     }
 
-    public List<Payment> getUserPaymentsSublist(User user, int skip, int limit) {
+    public List<Payment> getUserPaymentsLimited(User user, int skip, int limit) {
         List<Payment> userPayments = new ArrayList<>();
         try {
             userPayments = payDao.getUserPaymentsSublist(user, skip, limit);

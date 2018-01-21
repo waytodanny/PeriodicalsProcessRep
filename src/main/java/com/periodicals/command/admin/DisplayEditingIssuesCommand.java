@@ -7,6 +7,7 @@ import com.periodicals.entities.Periodical;
 import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.services.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
+import com.periodicals.services.util.PageableCollectionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Objects;
 
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICAL_ISSUE_EDIT_PAGE;
 
-public class IssuesEditingCommand extends PagedCommand<PeriodicalIssue> {
+public class DisplayEditingIssuesCommand extends PagedCommand<PeriodicalIssue> {
     private static final int RECORDS_PER_PAGE = 10;
 
     private static final PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
@@ -23,13 +24,27 @@ public class IssuesEditingCommand extends PagedCommand<PeriodicalIssue> {
     @Override
     protected PaginationInfoHolder<PeriodicalIssue> getPaginationInfoHolderInstance(HttpServletRequest request) {
         if (CommandUtils.paramClarifiedInQuery(request,"periodical")) {
-            int periodicalId = Integer.parseInt(request.getParameter("periodical"));
+            String periodicalId = request.getParameter("periodical");
             Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
             if (Objects.nonNull(periodical)) {
                 return getIssuesPaginationInfoHolder(request, periodical);
             }
         }
+        return null;
+    }
 
+    @Override
+    protected PageableCollectionService<PeriodicalIssue> getPageableCollectionService() {
+        return null;
+    }
+
+    @Override
+    protected int getRecordsPerPage() {
+        return 0;
+    }
+
+    @Override
+    protected String getPageHrefTemplate() {
         return null;
     }
 

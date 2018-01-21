@@ -46,27 +46,15 @@ public class AddPeriodicalCommand implements Command {
                     periodical.setLimited(Boolean.valueOf(isLimited));
                     periodical.setSubscriptionCost(new BigDecimal(subscriptionCost));
                     periodical.setIssuesPerYear(Short.parseShort(issuesPerYear));
-                    /*TODO придумать, как загружать список publisher'ов
-                    /*if (isGenreChanged(upToEdit.getGenre(), req)) {
-                        short newGenreId = Short.parseShort(req.getParameter("genreId"));
-                        Genre newGenre = genresService.addItemToCart(newGenreId);
-                        upToEdit.setGenre(newGenre);
-                    }
 
-                    if (isPublisherChanged(upToEdit.getPublisher(), req)) {
-                        int newPublId = Integer.parseInt(req.getParameter("publisherId"));
-                        Publisher newPublisher = publisherService.getPublisherById(newPublId);
-                        upToEdit.setPublisher(newPublisher);
-                    }*/
                     periodicalService.add(periodical);
                     request.setAttribute("resultMessage", "Successfully added periodical");
                 } catch (Exception e) {
-                    request.setAttribute("resultMessage", "Failed to add periodical: " + e.getMessage());
+                    request.setAttribute("resultMessage", "Failed to addNewIssue periodical: " + e.getMessage());
                 }
                 return new CommandResult(FORWARD, ADMIN_DEFAULT_PAGE);
             }
         }
-
         return new CommandResult(FORWARD, ADMIN_ADD_PERIODICAL_PAGE);
     }
 }

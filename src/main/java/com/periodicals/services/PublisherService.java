@@ -20,7 +20,7 @@ public class PublisherService {
         return publisherService;
     }
 
-    public Publisher getPublisherById(Integer id) {
+    public Publisher getPublisherById(String id) {
         Publisher publisher = null;
         try {
             publisher = dao.getById(id);

@@ -28,13 +28,13 @@ public class Main {
 //                }
 //            }).run();
 //        }
-//        UserSubscriptionsService service = UserSubscriptionsService.getInstance();
+//        SubscriptionsService service = SubscriptionsService.getInstance();
 //        String uuid = "1f940bd3-f7a5-11e7-93e6-a30f6152aa28";
 //        Genre periodical = JdbcDaoFactory.getInstance().getGenresDao().getGenreByName("comics");
 //        List<Periodical> subs = JdbcDaoFactory.getInstance().getPeriodicalsDao().getGenrePeriodicalsLimited(periodical, 0, 5);
 //        try {
 //            Payment payment1 = new Payment(uuid, new BigDecimal("22.2"));
-////            JdbcDaoFactory.getInstance().getPaymentsDao().add(payment);
+////            JdbcDaoFactory.getInstance().getPaymentsDao().addNewIssue(payment);
 //            Payment payment = JdbcDaoFactory.getInstance().getPaymentsDao().getById(1L);
 //            JdbcDaoFactory.getInstance().getPaymentsDao().addPaymentPeriodicals(payment, subs);
 ////            service.processSubscriptions(uuid, subs, new BigDecimal("22.2"));
@@ -47,7 +47,7 @@ public class Main {
 
 
 //
-//        List<User> users = usersJdbcDAO.getAll();
+//        List<User> users = usersJdbcDAO.getAllGenres();
 //        System.out.println(users.size());
 //
 //        User user = new User();
@@ -57,89 +57,89 @@ public class Main {
 //        user.setRole(new Role((byte)1, ""));
 //        user.setPassword(new MD5Cryptographer().encrypt("batman"));
 //
-//        usersJdbcDAO.add(user);
+//        usersJdbcDAO.addNewIssue(user);
 //
-//        users = usersJdbcDAO.getAll();
+//        users = usersJdbcDAO.getAllGenres();
 //        System.out.println(users.size());
 //
 //        User same = usersJdbcDAO.getByLogin("batman");
-//        usersJdbcDAO.delete(same.getId());
+//        usersJdbcDAO.deletePeriodicalById(same.getId());
 //
-//        users = usersJdbcDAO.getAll();
+//        users = usersJdbcDAO.getAllGenres();
 //        System.out.println(users.size());
 
 //        PublishersJdbcDao publsDao = (PublishersJdbcDao) factory.getPublishersDao();
 //
-//        List<Publisher> publs = publsDao.getAll();
+//        List<Publisher> publs = publsDao.getAllGenres();
 //        System.out.println(publs.size());
 //
 //        Publisher periodical = new Publisher();
 //        periodical.setName("Dark Horse");
 //
-//        publsDao.add(periodical);
+//        publsDao.addNewIssue(periodical);
 //
-//        publs = publsDao.getAll();
+//        publs = publsDao.getAllGenres();
 //        System.out.println(publs.size());
 
 
 //        GenresJdbcDao perGenres =
 //                (GenresJdbcDao) factory.getGenresDao();
 //
-//        List<Genre> periodical_issues = perGenres.getAll();
+//        List<Genre> periodical_issues = perGenres.getAllGenres();
 //        System.out.println(periodical_issues.size());
 //
 //        Genre periodical = new Genre();
 //        periodical.setName("fantastic1");
-//        short id2 = perGenres.add(periodical);
+//        short id2 = perGenres.addNewIssue(periodical);
 //
 //        Genre periodical_issue2 = perGenres.getById(id2);
 //
-//        List<Genre> periodical_issues2 = perGenres.getAll();
+//        List<Genre> periodical_issues2 = perGenres.getAllGenres();
 //        System.out.println(periodical_issues2.size());
 //
-//        perGenres.delete(periodical_issue2.getId());
+//        perGenres.deletePeriodicalById(periodical_issue2.getId());
 //
-//        List<Genre> periodical_issues3 = perGenres.getAll();
+//        List<Genre> periodical_issues3 = perGenres.getAllGenres();
 //        System.out.println(periodical_issues3.size());
 ////
 //        PeriodicalsJdbcDao persDao =
 //               (PeriodicalsJdbcDao) factory.getPeriodicalsDao();
 //
 //        System.out.println(persDao.getUserSubscriptionsCount(user));
-//        List<Periodical> pers = persDao.getAll();
+//        List<Periodical> pers = persDao.getAllGenres();
 //        System.out.println(pers.size());
 //
 //        Periodical per2 = persDao.getById(1);
 //
 //        System.out.println(per2);
 //
-//        List<Periodical> pers3 = persDao.getAll();
+//        List<Periodical> pers3 = persDao.getAllGenres();
 //        System.out.println(pers3.size());
 
 //        PeriodicalIssuesJdbcDao persIssDao =
 //              (PeriodicalIssuesJdbcDao) factory.getPeriodicalIssuesDao();
 
-//        List<PeriodicalIssue> issues = persIssDao.getAll();
+//        List<PeriodicalIssue> issues = persIssDao.getAllGenres();
 //        System.out.println(issues.size());
 //
 //        PeriodicalIssue grp = new PeriodicalIssue("rhino in town", 1);
 //        grp.setIssueNo(2);
-//        long id4 = persIssDao.add(grp);
+//        long id4 = persIssDao.addNewIssue(grp);
 //
-//        List<PeriodicalIssue> issues2 = persIssDao.getAll();
+//        List<PeriodicalIssue> issues2 = persIssDao.getAllGenres();
 //        System.out.println(issues2.size());
 //
 //        PeriodicalIssue grp2 = persIssDao.getById(id4);
 //
-//        persIssDao.delete(grp2.getId());
+//        persIssDao.deletePeriodicalById(grp2.getId());
 //
-//        List<PeriodicalIssue> issues3 = persIssDao.getAll();
+//        List<PeriodicalIssue> issues3 = persIssDao.getAllGenres();
 //        System.out.println(issues3.size());
 ////
 //        PaymentsJdbcDao paysDao =
 //                (PaymentsJdbcDao) factory.getPaymentsDao();
 //
-//        List<Payment> pays2 = paysDao.getAll();
+//        List<Payment> pays2 = paysDao.getAllGenres();
 //        System.out.println(pays2.size());
 //
 
@@ -149,10 +149,10 @@ public class Main {
 ////            @Override
 ////            public void pass() throws DaoException {
 ////                paysDao.deletePaymentPeriodicals(payment.getId());
-////                paysDao.delete(payment);
+////                paysDao.deletePeriodicalById(payment);
 ////            }
 ////        }, conn);
-////        pays2 = paysDao.getAll();
+////        pays2 = paysDao.getAllGenres();
 ////        System.out.println(pays2.size());
     }
 }

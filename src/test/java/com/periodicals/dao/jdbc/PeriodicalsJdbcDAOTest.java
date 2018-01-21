@@ -83,7 +83,7 @@
 //    @Test
 //    void addPeriodical() {
 //        try {
-//            persDAO.add(testPeriodical);
+//            persDAO.addNewIssue(testPeriodical);
 //            assertTrue(testPeriodical.getId() != 0);
 //
 //            samePeriodicalFromDB = persDAO.getById(testPeriodical.getId());
@@ -91,7 +91,7 @@
 //            assertNotNull(samePeriodicalFromDB);
 //            assertEquals(testPeriodical, samePeriodicalFromDB);
 //
-//            assertTrue(persDAO.delete(testPeriodical.getId()));
+//            assertTrue(persDAO.deletePeriodicalById(testPeriodical.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -101,7 +101,7 @@
 //    @Test
 //    void addNullablePeriodical() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.add(null);
+//            persDAO.addNewIssue(null);
 //        });
 //    }
 //
@@ -109,19 +109,19 @@
 //    void addPeriodicalWithNonNullKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
 //            testPeriodical.setId(111);
-//            persDAO.add(testPeriodical);
+//            persDAO.addNewIssue(testPeriodical);
 //        });
 //    }
 //
 //    @Test
 //    void addSamePeriodicalTwice() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.add(testPeriodical);
-//            persDAO.add(testPeriodical);
+//            persDAO.addNewIssue(testPeriodical);
+//            persDAO.addNewIssue(testPeriodical);
 //        });
 //
 //        try {
-//            assertTrue(persDAO.delete(testPeriodical.getId()));
+//            assertTrue(persDAO.deletePeriodicalById(testPeriodical.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -204,17 +204,17 @@
 //    @Test
 //    void deleteExistingPeriodicalWithForeignConstraints() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.delete(insertedPeriodical.getId());
+//            persDAO.deletePeriodicalById(insertedPeriodical.getId());
 //        });
 //    }
 //
 //    @Test
 //    void deleteExistingPeriodicalWithoutForeignConstraints() {
 //        try {
-//            persDAO.add(testPeriodical);
+//            persDAO.addNewIssue(testPeriodical);
 //            assertTrue(testPeriodical.getId() != 0);
 //
-//            boolean deleted = persDAO.delete(testPeriodical.getId());
+//            boolean deleted = persDAO.deletePeriodicalById(testPeriodical.getId());
 //            assertTrue(deleted);
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
@@ -225,14 +225,14 @@
 //    @Test
 //    void deleteNonExistingPeriodical() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.delete(nonExistingPeriodical.getId());
+//            persDAO.deletePeriodicalById(nonExistingPeriodical.getId());
 //        });
 //    }
 //
 //    @Test
 //    void deleteNullablePeriodical() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.delete(null);
+//            persDAO.deletePeriodicalById(null);
 //        });
 //    }
 //
@@ -240,7 +240,7 @@
 //    void deleteNotIdentifiedPeriodical() {
 //        assertNull(testPeriodical.getId());
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            persDAO.delete(testPeriodical.getId());
+//            persDAO.deletePeriodicalById(testPeriodical.getId());
 //        });
 //    }
 //

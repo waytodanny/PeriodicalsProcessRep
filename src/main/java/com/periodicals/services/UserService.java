@@ -43,9 +43,9 @@ public class UserService {
         return user;
     }
 
-    public void delete(User user) {
+    public void deleteUserById(String userId) {
         try {
-            usersDao.delete(user);
+            usersDao.delete(userId);
         } catch (DaoException e) {
             LOGGER.debug("Failed to find user: " + e.getMessage());
         }

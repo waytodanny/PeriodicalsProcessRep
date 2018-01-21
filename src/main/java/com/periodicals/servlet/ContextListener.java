@@ -24,12 +24,12 @@ public class ContextListener implements ServletContextListener {
 
     /* TODO think of where would be better to do it*/
     /*private void createGenresList(HttpServletRequest request) {
-        List<Genre> genres = GenresService.getInstance().getAll();
+        List<Genre> genres = GenresService.getInstance().getAllGenres();
         request.setAttribute("genres", genres);
     }
 
     private void createPublishersList(HttpServletRequest request) {
-        List<Publisher> publishers = PublisherService.getInstance().getAll();
+        List<Publisher> publishers = PublisherService.getInstance().getAllGenres();
         request.setAttribute("publishers", publishers);
     }*/
 

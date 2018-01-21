@@ -9,7 +9,6 @@ import com.periodicals.exceptions.ServiceException;
 import java.util.List;
 
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN_ATTRIBUTE;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_USER;
 
 public class RoleService {
@@ -28,7 +27,7 @@ public class RoleService {
         return roleService;
     }
 
-    public Role getRoleById(Byte roleId) throws ServiceException {
+    public Role getRoleById(String roleId) throws ServiceException {
         try {
             Role role;
             if (USER_ROLE.getId().equals(roleId)) { /*надо ли клон?*/

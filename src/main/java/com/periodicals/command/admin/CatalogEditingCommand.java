@@ -4,6 +4,7 @@ import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.Periodical;
 import com.periodicals.services.PeriodicalService;
+import com.periodicals.services.util.PageableCollectionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -18,6 +19,21 @@ public class CatalogEditingCommand extends PagedCommand<Periodical> {
     @Override
     protected PaginationInfoHolder<Periodical> getPaginationInfoHolderInstance(HttpServletRequest request) {
         return getPeriodicalsPaginationInfoHolder(request);
+    }
+
+    @Override
+    protected PageableCollectionService<Periodical> getPageableCollectionService() {
+        return null;
+    }
+
+    @Override
+    protected int getRecordsPerPage() {
+        return 0;
+    }
+
+    @Override
+    protected String getPageHrefTemplate() {
+        return null;
     }
 
     private PaginationInfoHolder<Periodical> getPeriodicalsPaginationInfoHolder(HttpServletRequest request) {

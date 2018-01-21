@@ -9,33 +9,33 @@ import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.entities.User;
 import com.periodicals.services.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
-import com.periodicals.services.UserSubscriptionsService;
+import com.periodicals.services.SubscriptionsService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_PERIODICAL;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.PERIODICAL_ISSUES_PAGE;
 
-public class PeriodicalIssuesCommand extends PagedCommand<PeriodicalIssue> {
+public class PeriodicalIssuesDisplayCommand extends PagedCommand<PeriodicalIssue> {
     private static final int RECORDS_PER_PAGE = 10;
 
     private PeriodicalService periodicalService = PeriodicalService.getInstance();
     private PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
-    private UserSubscriptionsService subscriptionsService = UserSubscriptionsService.getInstance();
+    private SubscriptionsService subscriptionsService = SubscriptionsService.getInstance();
 
     @Override
     public PaginationInfoHolder<PeriodicalIssue> getPaginationInfoHolderInstance(HttpServletRequest request) {
         User currentUser = AuthenticationHelper.getUserFromSession(request.getSession());
 
-        if (Objects.nonNull(currentUser) && CommandUtils.paramClarifiedInQuery(request,"periodical")) {
-            int periodicalId = Integer.parseInt(request.getParameter("periodical"));
+        if (Objects.nonNull(currentUser) && CommandUtils.paramClarifiedInQuery(request,ATTR_PERIODICAL)) {
+            String periodicalId = request.getParameter(ATTR_PERIODICAL);
             Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
             if (Objects.nonNull(periodical) && subscriptionsService.isSubscribed(currentUser, periodical)) {
                 return getIssuesPaginationInfoHolder(request, periodical);
             }
         }
-
         return null;
     }
 

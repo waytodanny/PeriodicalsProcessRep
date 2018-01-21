@@ -99,11 +99,11 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
     @Override
     public void addUserSubscriptions(User user, List<Periodical> subs) throws DaoException {
         if (Objects.isNull(user) || Objects.isNull(user.getId())) {
-            throw new DaoException("Attempt to add subscriptions to nullable user or with empty id.");
+            throw new DaoException("Attempt to addNewIssue subscriptions to nullable user or with empty id.");
         }
 
         if (Objects.isNull(subs) || subs.size() < 1) {
-            throw new DaoException("Attempt to add subs without periodicals");
+            throw new DaoException("Attempt to addNewIssue subs without periodicals");
         }
 
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();

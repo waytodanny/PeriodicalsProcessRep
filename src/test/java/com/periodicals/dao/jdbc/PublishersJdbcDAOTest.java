@@ -78,11 +78,11 @@
 //    @Test
 //    void addPublisher() {
 //        try {
-//            List<Publisher> publsBefore = publsDAO.getAll();
+//            List<Publisher> publsBefore = publsDAO.getAllGenres();
 //            assertTrue(publsBefore.size() == 0);
 //
-//            publsDAO.add(testPublisher1);
-//            List<Publisher> publsAfter = publsDAO.getAll();
+//            publsDAO.addNewIssue(testPublisher1);
+//            List<Publisher> publsAfter = publsDAO.getAllGenres();
 //
 //            assertTrue(testPublisher1.getId() != 0);
 //            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
@@ -100,7 +100,7 @@
 //    @Test
 //    void addNullablePublisher() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            publsDAO.add(null);
+//            publsDAO.addNewIssue(null);
 //        });
 //    }
 //
@@ -108,30 +108,30 @@
 //    void addPublisherWithNonNullKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
 //            testPublisher1.setId(1);
-//            publsDAO.add(testPublisher1);
+//            publsDAO.addNewIssue(testPublisher1);
 //        });
 //    }
 //
 //    @Test
 //    void addPublisherWithSameName() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            publsDAO.add(testPublisher1);
-//            publsDAO.add(new Publisher(testPublisher1.getName()));
+//            publsDAO.addNewIssue(testPublisher1);
+//            publsDAO.addNewIssue(new Publisher(testPublisher1.getName()));
 //        });
 //    }
 //
 //    @Test
 //    void addSamePublisherTwice() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            publsDAO.add(testPublisher1);
-//            publsDAO.add(testPublisher1);
+//            publsDAO.addNewIssue(testPublisher1);
+//            publsDAO.addNewIssue(testPublisher1);
 //        });
 //    }
 //
 //    @Test
 //    void getByValidPK() {
 //        try {
-//            publsDAO.add(testPublisher1);
+//            publsDAO.addNewIssue(testPublisher1);
 //            assertNotNull(testPublisher1.getId());
 //
 //            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
@@ -161,7 +161,7 @@
 //    @Test
 //    void updateExistingPublisher() {
 //        try {
-//            publsDAO.add(testPublisher1);
+//            publsDAO.addNewIssue(testPublisher1);
 //            assertTrue(testPublisher1.getId() != 0);
 //
 //            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
@@ -197,20 +197,20 @@
 //    @Test
 //    void deleteExistingPublisher() {
 //        try {
-//            publsDAO.add(testPublisher1);
+//            publsDAO.addNewIssue(testPublisher1);
 //            assertTrue(testPublisher1.getId() != 0);
 //
 //            int expectedTableSize = 1;
-//            int resultTableSize = publsDAO.getAll().size();
+//            int resultTableSize = publsDAO.getAllGenres().size();
 //            assertEquals(expectedTableSize, resultTableSize);
 //
 //            samePublisherFromDB = publsDAO.getById(testPublisher1.getId());
 //            assertEquals(testPublisher1, samePublisherFromDB);
 //
-//            publsDAO.delete(samePublisherFromDB.getId());
+//            publsDAO.deletePeriodicalById(samePublisherFromDB.getId());
 //
 //            expectedTableSize = 0;
-//            resultTableSize = publsDAO.getAll().size();
+//            resultTableSize = publsDAO.getAllGenres().size();
 //            assertEquals(expectedTableSize, resultTableSize);
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
@@ -221,21 +221,21 @@
 //    @Test
 //    void deleteNonExistingPublisher() {
 //        assertThrows(DaoException.class, () -> {
-//            assertFalse(publsDAO.delete(nonExistingPublisher.getId()));
+//            assertFalse(publsDAO.deletePeriodicalById(nonExistingPublisher.getId()));
 //        });
 //    }
 //
 //    @Test
 //    void deleteNullablePublisher() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            publsDAO.delete(null);
+//            publsDAO.deletePeriodicalById(null);
 //        });
 //    }
 //
 //    @Test
 //    void deleteNotIdentifiedPublisher() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            publsDAO.delete(testPublisher2.getId());
+//            publsDAO.deletePeriodicalById(testPublisher2.getId());
 //        });
 //    }
 //}

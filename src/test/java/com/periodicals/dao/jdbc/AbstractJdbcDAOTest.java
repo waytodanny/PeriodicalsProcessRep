@@ -39,7 +39,7 @@
 //    }
 //
 //    @Test
-//    void getAll() {
+//    void getAllGenres() {
 //    }
 //
 //    @Test

@@ -79,7 +79,7 @@
 //    @Test
 //    void addPeriodicalIssue() {
 //        try {
-//            issuesDao.add(testIssue);
+//            issuesDao.addNewIssue(testIssue);
 //            assertTrue(testIssue.getId() != 0);
 //
 //            sameIssueFromDB = issuesDao.getById(testIssue.getId());
@@ -89,7 +89,7 @@
 //            testIssue.setPublishDate(sameIssueFromDB.getPublishDate());
 //            assertEquals(sameIssueFromDB, testIssue);
 //
-//            assertTrue(issuesDao.delete(testIssue.getId()));
+//            assertTrue(issuesDao.deletePeriodicalById(testIssue.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -99,7 +99,7 @@
 //    @Test
 //    void addNullablePeriodicalIssue() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            issuesDao.add(null);
+//            issuesDao.addNewIssue(null);
 //        });
 //    }
 //
@@ -107,19 +107,19 @@
 //    void addPeriodicalIssueWithNonNullKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
 //            testIssue.setId(111);
-//            issuesDao.add(testIssue);
+//            issuesDao.addNewIssue(testIssue);
 //        });
 //    }
 //
 //    @Test
 //    void addSamePeriodicalIssueTwice() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            issuesDao.add(testIssue);
-//            issuesDao.add(testIssue);
+//            issuesDao.addNewIssue(testIssue);
+//            issuesDao.addNewIssue(testIssue);
 //        });
 //
 //        try {
-//            assertTrue(issuesDao.delete(testIssue.getId()));
+//            assertTrue(issuesDao.deletePeriodicalById(testIssue.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -198,10 +198,10 @@
 //    @Test
 //    void deleteExistingPeriodicalIssue() {
 //        try {
-//            issuesDao.add(testIssue);
+//            issuesDao.addNewIssue(testIssue);
 //            assertTrue(testIssue.getId() != 0);
 //
-//            boolean deleted = issuesDao.delete(testIssue.getId());
+//            boolean deleted = issuesDao.deletePeriodicalById(testIssue.getId());
 //            assertTrue(deleted);
 //        } catch (DaoException e) {
 //            e.printStackTrace();
@@ -212,7 +212,7 @@
 //    @Test
 //    void deleteNonExistingPeriodicalIssue() {
 //        try {
-//            assertFalse(issuesDao.delete(nonExistingIssue.getId()));
+//            assertFalse(issuesDao.deletePeriodicalById(nonExistingIssue.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -222,7 +222,7 @@
 //    @Test
 //    void deleteNullablePeriodicalIssue() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            issuesDao.delete(null);
+//            issuesDao.deletePeriodicalById(null);
 //        });
 //    }
 //
@@ -230,7 +230,7 @@
 //    void deleteNotIdentifiedPeriodicalIssue() {
 //        assertNull(testIssue.getId());
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            issuesDao.delete(testIssue.getId());
+//            issuesDao.deletePeriodicalById(testIssue.getId());
 //        });
 //    }
 //}

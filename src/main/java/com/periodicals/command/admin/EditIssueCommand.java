@@ -4,6 +4,7 @@ import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Periodical;
+import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.services.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 
@@ -16,19 +17,21 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_ADD_ISSUE_
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
 public class EditIssueCommand implements Command {
-    private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
-    private static final PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
+    private static PeriodicalService periodicalService = PeriodicalService.getInstance();
+    private static PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         if(CommandUtils.isPostMethod(request)) {
             if (CommandUtils.paramClarifiedInQuery(request, "id")) {
-                UUID id = UUID.fromString(request.getParameter("id"));
+//                UUID id = UUID.fromString(request.getParameter("id"));
+                String id = request.getParameter("id");
                 String name = request.getParameter("name");
                 String issueNo = request.getParameter("issue_no");
                 String periodicalId = request.getParameter("periodical_id");
 
                 Object[] requiredFields = {
+                        id,
                         name,
                         issueNo,
                         periodicalId
@@ -36,10 +39,11 @@ public class EditIssueCommand implements Command {
 
                 if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
                     try {
-                        /*PeriodicalIssue periodicalIssue = new PeriodicalIssue();
-                         periodicalIssue.setName(name);
+                        PeriodicalIssue periodicalIssue = new PeriodicalIssue();
+                        periodicalIssue.setId(id);
+                        periodicalIssue.setName(name);
                         periodicalIssue.setIssueNo(Integer.parseUnsignedInt(issueNo));
-                        periodicalIssueService.update(periodicalIssue);*/
+                        periodicalIssueService.update(periodicalIssue);
                         request.setAttribute("resultMessage", "Successfully changed issue info");
                     } catch (Exception e) {
                         request.setAttribute("resultMessage", "Failed to modify issue");
@@ -50,13 +54,12 @@ public class EditIssueCommand implements Command {
                 }
             }
         }
-
         return new CommandResult(FORWARD, ADMIN_ADD_ISSUE_PAGE);
     }
 
     private void initializePageAttributes (HttpServletRequest request) {
         if(CommandUtils.paramClarifiedInQuery(request,"periodical_id")) {
-            int periodicalId = Integer.parseUnsignedInt(request.getParameter("periodical_id"));
+            String periodicalId = request.getParameter("periodical_id");
             Periodical periodical = periodicalService.getPeriodicalById(periodicalId);
             request.setAttribute("periodical_name", periodical.getName());
         }

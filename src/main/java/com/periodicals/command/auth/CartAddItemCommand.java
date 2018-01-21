@@ -31,7 +31,7 @@ public class CartAddItemCommand implements Command {
                     Periodical added = periodicalService.getPeriodicalById(addedItemId);
                     cartService.addItemToCart(this.getCartFromSession(session), added);
                 } catch (Exception e) {
-//                    request.setAttribute("resultMessage", "Failed to add item to cart");
+//                    request.setAttribute("resultMessage", "Failed to addNewIssue item to cart");
                 }
             }
         }

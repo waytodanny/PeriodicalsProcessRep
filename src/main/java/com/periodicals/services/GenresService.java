@@ -20,7 +20,7 @@ public class GenresService {
         return genresService;
     }
 
-    public Genre getGenreById(Short genreId) {
+    public Genre getGenreById(String genreId) {
         Genre genre = null;
         try {
             genre = dao.getById(genreId);
@@ -30,7 +30,7 @@ public class GenresService {
         return genre;
     }
 
-    public List<Genre> getAll() {
+    public List<Genre> getAllGenres() {
         List<Genre> entityList = null;
         try {
             entityList = dao.getAll();
