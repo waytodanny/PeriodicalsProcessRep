@@ -1,14 +1,28 @@
 package com.periodicals.command.util;
 
-import com.periodicals.entities.Periodical;
+import com.periodicals.command.Command;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public interface PagedCommand {
-//    PaginationInfoHolder getPaginationInfo(HttpServletRequest req);
+import java.util.Objects;
 
-    /**
-     * Sets request attributes that are needed for view to display
-     */
-//    void setPaginationRequestAttributes(HttpServletRequest request, PaginationInfoHolder<T, U> holder);
+import static com.periodicals.command.util.RedirectType.*;
+import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
+
+public abstract class PagedCommand<T> implements Command {
+    @Override
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        PaginationInfoHolder<T> paginationInfoHolder = this.getPaginationInfoHolderInstance(request);
+
+        if(Objects.nonNull(paginationInfoHolder)) {
+            paginationInfoHolder.setAttributesToRequest(request);
+        } else {
+            return new CommandResult(FORWARD, ERROR_PAGE);
+        }
+
+        return new CommandResult(FORWARD, paginationInfoHolder.getCurrentPageHref());
+    }
+
+    protected abstract PaginationInfoHolder<T> getPaginationInfoHolderInstance(HttpServletRequest request);
 }

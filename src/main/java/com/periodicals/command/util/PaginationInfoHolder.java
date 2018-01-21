@@ -1,27 +1,26 @@
 package com.periodicals.command.util;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+
+import static sun.plugin.dom.css.CSSConstants.ATTR_PAGE;
 
 /**
  * Class that is needed to carry some info for pages that use objects pagination
  * E - collection of elements that is to be divided on pages
- * T - variable that corresponding for covering max. objects count
  */
-public class PaginationInfoHolder<E, T extends Number> {
+public class PaginationInfoHolder<E> {
     private List<E> displayedObjects;
-    private T recordsCount;
-    private T currentPage;
+    private int recordsCount;
+    private int recordsPerPage;
+    private int currentPage;
+    private String pageHrefTemplate;
 
-    /**
-     * link to the next page of objects set
-     */
-    private String nextPageHrefLink;
-
-    /**
-     * link to the next page for servlet
-     * TODO think of where to place
-     */
-    private String redirectedPageLink;
+    public static int getPageFromRequest(HttpServletRequest request) {
+        return CommandUtils.paramClarifiedInQuery(request, ATTR_PAGE) ?
+                Integer.parseInt(request.getParameter(ATTR_PAGE)) :
+                1;
+    }
 
     public List<E> getDisplayedObjects() {
         return displayedObjects;
@@ -31,35 +30,55 @@ public class PaginationInfoHolder<E, T extends Number> {
         this.displayedObjects = displayedObjects;
     }
 
-    public T getRecordsCount() {
+    public int getRecordsCount() {
         return recordsCount;
     }
 
-    public void setRecordsCount(T recordsCount) {
+    public void setRecordsCount(int recordsCount) {
         this.recordsCount = recordsCount;
     }
 
-    public T getCurrentPage() {
+    public int getRecordsPerPage() {
+        return recordsPerPage;
+    }
+
+    public void setRecordsPerPage(int recordsPerPage) {
+        this.recordsPerPage = recordsPerPage;
+    }
+
+    public int getCurrentPage() {
         return currentPage;
     }
 
-    public void setCurrentPage(T currentPage) {
+    public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
     }
 
-    public String getNextPageHrefLink() {
-        return nextPageHrefLink;
+    public String getPageHrefTemplate() {
+        return pageHrefTemplate;
     }
 
-    public void setNextPageHrefLink(String nextPageHrefLink) {
-        this.nextPageHrefLink = nextPageHrefLink;
+    public void setPageHrefTemplate(String pageHref) {
+        this.pageHrefTemplate = pageHref + "?" + ATTR_PAGE + "=";
     }
 
-    public String getRedirectedPageLink() {
-        return redirectedPageLink;
+    public int getPagesCount() {
+        return (int) Math.ceil(this.recordsCount / this.recordsPerPage);
     }
 
-    public void setRedirectedPageLink(String redirectedPageLink) {
-        this.redirectedPageLink = redirectedPageLink;
+    public int getSkippedRecodrsCount() {
+        return (this.currentPage - 1) * this.recordsPerPage;
+    }
+
+    public String getCurrentPageHref() {
+        return this.pageHrefTemplate + this.currentPage;
+    }
+
+    public void setAttributesToRequest(HttpServletRequest request) {
+        request.setAttribute("displayedObjects", this.getDisplayedObjects());
+        request.setAttribute("pagesCount", this.getPagesCount());
+        request.setAttribute("currentPage", this.getCurrentPage());
+        request.setAttribute("pageHrefTemplate", this.getPageHrefTemplate());
     }
 }
+
