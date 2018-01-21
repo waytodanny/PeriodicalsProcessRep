@@ -3,23 +3,25 @@ package com.periodicals.dao.jdbc;
 import com.periodicals.dao.interfaces.PublishersDao;
 import com.periodicals.entities.Publisher;
 import com.periodicals.exceptions.DaoException;
+import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
-public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> implements PublishersDao {
+public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implements PublishersDao {
+    private static final String ID = AttributesPropertyManager.getProperty("publisher.id");
+    private static final String NAME = AttributesPropertyManager.getProperty("publisher.name");
 
     @Override
-    public Integer add(Publisher publisher) throws DaoException {
-        return super.insert(PUBLISHER_INSERT, getInsertObjectParams(publisher));
+    public void add(Publisher publisher) throws DaoException {
+        super.insert(PUBLISHER_INSERT, getInsertObjectParams(publisher));
     }
 
     @Override
-    public Publisher getById(Integer id) throws DaoException {
+    public Publisher getById(String id) throws DaoException {
         return super.selectObject(PUBLISHER_SELECT_BY_ID, id);
     }
 
@@ -29,8 +31,8 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> imple
     }
 
     @Override
-    public void delete(Publisher publisher) throws DaoException {
-        super.delete(PUBLISHER_DELETE, publisher.getId());
+    public void delete(String id) throws DaoException {
+        super.delete(PUBLISHER_DELETE, id);
     }
 
     @Override
@@ -39,23 +41,19 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> imple
     }
 
     @Override
-    protected Object[] getInsertObjectParams(Publisher object) throws DaoException {
-        String name = object.getName();
-
-        return new Object[]{name};
+    protected Object[] getInsertObjectParams(Publisher publisher) {
+        return new Object[]{
+                publisher.getId(),
+                publisher.getName()
+        };
     }
 
     @Override
-    protected Object[] getObjectUpdateParams(Publisher object) throws DaoException {
-        Integer id = object.getId();
-        String name = object.getName();
-
-        return new Object[]{name, id};
-    }
-
-    @Override
-    protected Integer getGeneratedKey(ResultSet rs) throws SQLException {
-        return rs.getInt(1);
+    protected Object[] getObjectUpdateParams(Publisher publisher) {
+        return new Object[]{
+                publisher.getName(),
+                publisher.getId()
+        };
     }
 
     @Override
@@ -63,15 +61,20 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> imple
         List<Publisher> result = new ArrayList<>();
         try {
             while (rs.next()) {
-                Publisher publ = new Publisher();
-                publ.setId(rs.getInt("id"));
-                publ.setName(rs.getString("name"));
+                Publisher publisher = new Publisher();
+                publisher.setId(rs.getString(ID));
+                publisher.setName(rs.getString(NAME));
 
-                result.add(publ);
+                result.add(publisher);
             }
         } catch (Exception e) {
             throw new DaoException(e);
         }
         return result;
     }
+
+//    @Override
+//    protected Integer getGeneratedKey(ResultSet rs) throws SQLException {
+//        return rs.getInt(1);
+//    }
 }

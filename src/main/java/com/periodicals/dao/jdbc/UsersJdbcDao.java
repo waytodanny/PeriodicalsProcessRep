@@ -4,6 +4,7 @@ import com.periodicals.dao.interfaces.UsersDao;
 import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
+import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,30 +14,21 @@ import java.util.List;
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements UsersDao {
-
-    @Override
-    public User getByLogin(String login) throws DaoException {
-        return super.selectObject(USER_SELECT_BY_LOGIN, login);
-    }
-
-    @Override
-    public long getUsersCount() throws DaoException {
-        return super.getEntriesCount(USER_ENTRIES_COUNT);
-    }
-
-    @Override
-    public List<User> geUsersLimited(int skip, int take) throws DaoException {
-        return super.selectObjects(USER_SELECT_SUBLIST, skip, take);
-    }
-
-    @Override
-    public String add(User user) throws DaoException {
-        return super.insert(USER_INSERT, getInsertObjectParams(user));
-    }
+    private static final String ID = AttributesPropertyManager.getProperty("user.id");
+    private static final String NAME = AttributesPropertyManager.getProperty("user.name");
+    private static final String PASSWORD = AttributesPropertyManager.getProperty("user.password");
+    private static final String EMAIL = AttributesPropertyManager.getProperty("user.email");
+    private static final String ROLE_ID = AttributesPropertyManager.getProperty("user.role_id");
+    private static final String ROLE_NAME = AttributesPropertyManager.getProperty("user.role_name");
 
     @Override
     public User getById(String id) throws DaoException {
         return super.selectObject(USER_SELECT_BY_ID, id);
+    }
+
+    @Override
+    public void add(User user) throws DaoException {
+        super.insert(USER_INSERT, getInsertObjectParams(user));
     }
 
     @Override
@@ -45,13 +37,28 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
     }
 
     @Override
-    public void delete(User user) throws DaoException {
-        super.delete(USER_DELETE, user.getId());
+    public void delete(String key) throws DaoException {
+        super.delete(USER_DELETE, key);
     }
 
     @Override
     public List<User> getAll() throws DaoException {
         return super.selectObjects(USER_SELECT_ALL);
+    }
+
+    @Override
+    public User getByLogin(String login) throws DaoException {
+        return super.selectObject(USER_SELECT_BY_LOGIN, login);
+    }
+
+    @Override
+    public int getUsersCount() throws DaoException {
+        return super.getEntriesCount(USER_ENTRIES_COUNT);
+    }
+
+    @Override
+    public List<User> geUsersLimited(int skip, int limit) throws DaoException {
+        return super.selectObjects(USER_SELECT_LIMITED, skip, limit);
     }
 
     @Override
@@ -77,26 +84,20 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
     }
 
     @Override
-    protected String getGeneratedKey(ResultSet rs) throws SQLException {
-        return rs.getString(1);
-    }
-
-    @Override
     protected List<User> parseResultSet(ResultSet rs) throws DaoException {
         List<User> result = new ArrayList<>();
         try {
             while (rs.next()) {
                 User user = new User();
-                user.setId(rs.getString("id"));
-                user.setLogin(rs.getString("login"));
-                user.setPassword(rs.getString("pass"));
-                user.setEmail(rs.getString("email"));
+                user.setId(rs.getString(ID));
+                user.setLogin(rs.getString(NAME));
+                user.setPassword(rs.getString(PASSWORD));
+                user.setEmail(rs.getString(EMAIL));
 
-                Byte roleId = rs.getByte("role_id");
-                String roleName = rs.getString("role_name");
-                Role role = new Role(roleId, roleName);
+                String roleId = rs.getString(ROLE_ID);
+                String roleName = rs.getString(ROLE_NAME);
 
-                user.setRole(role);
+                user.setRole(new Role(roleId, roleName));
 
                 result.add(user);
             }
@@ -105,4 +106,9 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
         }
         return result;
     }
+
+//    @Override
+//    protected String getGeneratedKey(ResultSet rs) throws SQLException {
+//        return rs.getString(1);
+//    }
 }

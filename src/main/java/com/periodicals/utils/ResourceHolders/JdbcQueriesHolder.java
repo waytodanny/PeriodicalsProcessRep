@@ -16,7 +16,7 @@ public class JdbcQueriesHolder {
     public static final String USER_DELETE = JdbcQueriesPropertyManager.getProperty("user.delete");
     public static final String USER_SELECT_ALL = JdbcQueriesPropertyManager.getProperty("user.select.all");
     public static final String USER_ENTRIES_COUNT = JdbcQueriesPropertyManager.getProperty("user.entries.count");
-    public static final String USER_SELECT_SUBLIST = JdbcQueriesPropertyManager.getProperty("user.select.sublist");
+    public static final String USER_SELECT_LIMITED = JdbcQueriesPropertyManager.getProperty("user.select.sublist");
 
     /*role table*/
     public static final String ROLE_INSERT = JdbcQueriesPropertyManager.getProperty("role.insert");

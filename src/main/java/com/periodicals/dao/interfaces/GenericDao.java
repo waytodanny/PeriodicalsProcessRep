@@ -12,7 +12,7 @@ import java.util.List;
  * @K primary key type
  */
 public interface GenericDao<T, K> {
-    K add(T element) throws DaoException;
+    void add(T element) throws DaoException;
 
     T getById(K key) throws DaoException;
 

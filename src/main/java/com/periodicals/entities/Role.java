@@ -15,6 +15,11 @@ public class Role implements Identified<String> {
 
     }
 
+    public Role(String id, String name) throws IllegalArgumentException  {
+        setId(id);
+        setName(name);
+    }
+
     @Override
     public String getId() {
         return id;

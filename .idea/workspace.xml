@@ -7,22 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de233fcb-9b4f-4b67-b303-f82ebe6967e2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/factories/JdbcDaoFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/factories/JdbcDaoFactory.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenresDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenresDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PaymentsDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PaymentsDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalsDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalsDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PublishersDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PublishersDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/RolesDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/RolesDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/UsersDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/UsersDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/AbstractJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/AbstractJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/GenresJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/GenresJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PaymentsJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PaymentsJdbcDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PublishersJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PublishersJdbcDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Role.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Role.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.java" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/attributes.properties" afterPath="$PROJECT_DIR$/src/main/resources/attributes.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -47,18 +43,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="attributes.properties" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/attributes.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -98,6 +83,8 @@
       <find>ADMIN_MAIN</find>
       <find>Long</find>
       <find>page-link</find>
+      <find>public static final String ID = AttributesPropertyManager.getProperty(&quot;</find>
+      <find>PAYMENT</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,15 +102,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/CatalogEditingCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUsersCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/security/SecurityConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/pages/admin_main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/pages/admin_users_edit.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/Paginable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/Paged.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserSubscriptionsService.java" />
@@ -136,7 +115,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ExactPeriodicalIssuesCommand.java" />
         <option value="$PROJECT_DIR$/src/main/resources/queries.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB.sql" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/additional/pagination.jsp" />
@@ -150,15 +128,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB(after uuid).sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Publisher.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/PeriodicalIssue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Periodical.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Payment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Genre.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/attributes.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/factories/JdbcDaoFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenresDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PublishersDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/RolesDao.java" />
@@ -166,6 +141,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalsDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/UsersDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/Role.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/attributes.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/GenresJdbcDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PaymentsJdbcDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PublishersJdbcDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/AttributesHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/AbstractJdbcDao.java" />
       </list>
     </option>
   </component>
@@ -281,7 +268,26 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
+              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="periodicals" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="periodicals" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="ResourceHolders" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -901,19 +907,18 @@
       <workItem from="1516274133939" duration="6624000" />
       <workItem from="1516283548106" duration="30512000" />
       <workItem from="1516459156893" duration="3076000" />
-      <workItem from="1516479136168" duration="5468000" />
+      <workItem from="1516479136168" duration="10171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="454778000" />
+    <option name="totallyTimeSpent" value="459481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27952328" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1744312" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.283857" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -932,7 +937,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15276273" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23697917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23697917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -967,9 +972,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15276273" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15276273" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.234375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23697917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1014,70 +1019,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="58" column="84" lean-forward="false" selection-start-line="58" selection-start-column="84" selection-end-line="58" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/issues.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="37" column="58" lean-forward="true" selection-start-line="37" selection-start-column="58" selection-end-line="37" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/util/PagedCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/UserSubscriptionsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="75" column="72" lean-forward="false" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="95" column="66" lean-forward="false" selection-start-line="95" selection-start-column="66" selection-end-line="95" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="67" column="62" lean-forward="false" selection-start-line="67" selection-start-column="61" selection-end-line="67" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/util/PaginationInfoHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="983">
@@ -1252,33 +1193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/AbstractJdbcDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-832">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="14" column="60" lean-forward="false" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="54" />
-          <folding>
-            <element signature="e#1388#1389#0" expanded="true" />
-            <element signature="e#1433#1434#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Publisher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1188">
@@ -1401,14 +1315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenresDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -1465,11 +1371,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/GenericDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="17" column="73" lean-forward="false" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
+          <folding>
+            <element signature="e#1512#1513#0" expanded="true" />
+            <element signature="e#1557#1558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/utils/propertyManagers/AttributesPropertyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/GenresJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="16" column="52" lean-forward="false" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1141">
+          <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PublishersJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1210">
+          <caret line="64" column="50" lean-forward="false" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PaymentsJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2662">
+          <caret line="121" column="38" lean-forward="true" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/UsersJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2134">
+          <caret line="97" column="56" lean-forward="false" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1342">
+          <caret line="71" column="46" lean-forward="false" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/AttributesHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="39" column="94" lean-forward="false" selection-start-line="39" selection-start-column="94" selection-end-line="39" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/attributes.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="795">
+          <caret line="69" column="28" lean-forward="true" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/AbstractJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2486">
+          <caret line="113" column="14" lean-forward="false" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

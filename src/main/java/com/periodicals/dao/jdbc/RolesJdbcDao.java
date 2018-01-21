@@ -1,24 +1,29 @@
 package com.periodicals.dao.jdbc;
 
-import com.periodicals.entities.Role;
 import com.periodicals.dao.interfaces.RolesDao;
+import com.periodicals.entities.Role;
 import com.periodicals.exceptions.DaoException;
+import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+import java.util.List;
 
-public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDao {
+import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+
+public class RolesJdbcDao extends AbstractJdbcDao<Role, String> implements RolesDao {
+    private static final String ID = AttributesPropertyManager.getProperty("role.id");
+    private static final String NAME = AttributesPropertyManager.getProperty("role.name");
 
     @Override
-    public Role getById(Byte id) throws DaoException {
-        return super.selectObject(ROLE_SELECT_BY_NAME, id);
+    public Role getById(String id) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_ID, id);
     }
 
     @Override
-    public Byte add(Role role) throws DaoException {
-        return super.insert(ROLE_INSERT, getInsertObjectParams(role));
+    public void add(Role role) throws DaoException {
+        super.insert(ROLE_INSERT, getInsertObjectParams(role));
     }
 
     @Override
@@ -27,13 +32,8 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
     }
 
     @Override
-    public void delete(Role role) throws DaoException {
-        super.delete(USER_DELETE, role.getId());
-    }
-
-    @Override
-    public Role getByName(String name) throws DaoException {
-        return super.selectObject(ROLE_SELECT_BY_NAME, name);
+    public void delete(String id) throws DaoException {
+        super.delete(USER_DELETE, id);
     }
 
     @Override
@@ -42,23 +42,24 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
     }
 
     @Override
-    protected Object[] getInsertObjectParams(Role role) throws DaoException {
-        String name = role.getName();
+    public Role getByName(String name) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_NAME, name);
+    }
 
-        return new Object[]{name};
+    @Override
+    protected Object[] getInsertObjectParams(Role role) throws DaoException {
+        return new Object[]{
+                role.getId(),
+                role.getName()
+        };
     }
 
     @Override
     protected Object[] getObjectUpdateParams(Role role) throws DaoException {
-        Byte id = role.getId();
-        String name = role.getName();
-
-        return new Object[]{name, id};
-    }
-
-    @Override
-    protected Byte getGeneratedKey(ResultSet rs) throws SQLException {
-        return rs.getByte(1);
+        return new Object[]{
+                role.getName(),
+                role.getId()
+        };
     }
 
     @Override
@@ -67,8 +68,8 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
         try {
             while (rs.next()) {
                 Role role = new Role();
-                role.setId(rs.getByte("id"));
-                role.setName(rs.getString("name"));
+                role.setId(rs.getString(ID));
+                role.setName(rs.getString(NAME));
 
                 result.add(role);
             }
@@ -77,4 +78,9 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
         }
         return result;
     }
+
+//    @Override
+//    protected Byte getGeneratedKey(ResultSet rs) throws SQLException {
+//        return rs.getByte(1);
+//    }
 }
