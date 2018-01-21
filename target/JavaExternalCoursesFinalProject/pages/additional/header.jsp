@@ -62,7 +62,7 @@
         <fmt:message key="page.header.sidebar.genres" bundle="${rb}"/>
     </h2>
     <ul class="nav sidebar-nav">
-        <c:forEach var="genre" items="${genres}">
+        <c:forEach var="genre" items="${applicationScope.genres}">
             <li><a href="catalog?genre=${genre.name}">${genre.name}</a></li>
         </c:forEach>
     </ul>

@@ -7,6 +7,7 @@ import com.periodicals.dao.jdbc.PaymentsJdbcDao;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentService {
@@ -24,14 +25,14 @@ public class PaymentService {
         return paymentService;
     }
 
-    public List<Payment> getUserPaymentsSublist(User user, int skip, int take) throws ServiceException {
+    public List<Payment> getUserPaymentsSublist(User user, int skip, int limit) {
+        List<Payment> userPayments = new ArrayList<>();
         try {
-            List<Payment> entityList = payDao.getUserPaymentsSublist(user, skip, take);
-            return entityList;
+            userPayments = payDao.getUserPaymentsSublist(user, skip, limit);
         } catch (Exception e) {
             /*TODO log*/
-            throw new ServiceException(e.getMessage());
         }
+        return userPayments;
     }
 
     public long getUserPaymentsCount(User user) {

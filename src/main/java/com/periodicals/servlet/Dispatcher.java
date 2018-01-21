@@ -4,6 +4,7 @@ import com.periodicals.command.Command;
 import com.periodicals.command.util.CommandFactory;
 import com.periodicals.command.util.CommandResult;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

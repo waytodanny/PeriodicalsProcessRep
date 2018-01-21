@@ -6,7 +6,6 @@ import com.periodicals.command.util.CommandHelper;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
-import com.periodicals.entities.Genre;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.entities.User;
@@ -50,12 +49,6 @@ public class PeriodicalIssuesCommand implements Command, PagedCommand {
                     int perIdValue = Integer.parseInt(perId);
                     Periodical periodical = periodicalService.getPeriodicalById(perIdValue);
                     if (Objects.nonNull(periodical) && subsService.isSubscribed(user, periodical)) {
-
-                        /*TODO think of where would be better to do it*/
-                        List<Genre> genres = genresService.getAll();
-                        req.setAttribute("genres", genres);
-                        /*TODO*/
-
                         PaginationInfoHolder<PeriodicalIssue, Long> holder = getPaginationInfo(req, periodical);
                         setPaginationRequestAttributes(req, holder);
                         return new CommandResult(req, resp, FORWARD, PERIODICAL_ISSUES_PAGE);

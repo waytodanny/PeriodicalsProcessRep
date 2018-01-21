@@ -35,7 +35,7 @@ public class AdminUserInfoCommand implements Command {
         if (req.getParameter("page") != null)
             page = Integer.parseInt(req.getParameter("page"));
 
-        try {
+
             User user = userService.getUserById(userId);
 
             long entriesCount = paymentService.getUserPaymentsCount(user);
@@ -49,9 +49,6 @@ public class AdminUserInfoCommand implements Command {
             req.setAttribute("currentPage", page);
 
             return new CommandResult(req, resp, FORWARD, ADMIN_USER_INFO_PAGE + "?id=" + userId + "&page=" + page);
-        } catch (ServiceException e) {
-            /*todo msg*/
-            return new CommandResult(req, resp, FORWARD, ERROR_PAGE);
-        }
+
     }
 }

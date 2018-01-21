@@ -2,6 +2,7 @@ package com.periodicals.servlet;
 
 import com.periodicals.dao.connection.ConnectionPool;
 import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.entities.Genre;
 import com.periodicals.services.GenresService;
 import com.periodicals.services.LoginService;
 import com.periodicals.services.PeriodicalService;
@@ -9,6 +10,7 @@ import com.periodicals.services.RoleService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.util.List;
 
 /**
  * Initializes some components before app starts and do something before it ends
@@ -23,7 +25,8 @@ public class ContextListener implements ServletContextListener {
         LoginService.getInstance();
         RoleService.getInstance();
         PeriodicalService.getInstance();
-        GenresService.getInstance();
+        GenresService genresService = GenresService.getInstance();
+        servletContextEvent.getServletContext().setAttribute("genres", genresService.getAll());
     }
 
     @Override

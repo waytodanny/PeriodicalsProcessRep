@@ -29,12 +29,6 @@ public class CatalogCommand implements Command, PagedCommand {
     public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
         PaginationInfoHolder<Periodical, Integer> holder = getPaginationInfo(req);
         setPaginationRequestAttributes(req, holder);
-
-        /*TODO think of where would be better to do it*/
-        List<Genre> genres = genresService.getAll();
-        req.setAttribute("genres", genres);
-        /*TODO*/
-
         return new CommandResult(req, resp, FORWARD, holder.getRedirectedPageLink());
     }
 

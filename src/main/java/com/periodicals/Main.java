@@ -12,6 +12,8 @@ import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.exceptions.TransactionException;
 import com.periodicals.services.RoleService;
+import com.periodicals.utils.encryption.MD5_Cryptographer;
+import com.periodicals.utils.uuid.UuidGenerator;
 
 import java.util.List;
 
@@ -21,7 +23,9 @@ public class Main {
     public static void main(String[] args) throws DaoException, ServiceException {
 
         AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
-
+        for (int i = 0; i < 10; i++) {
+            System.out.println(UuidGenerator.generateUuid());
+        }
 //        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
 //        for (int i = 0; i < 10; i++) {
 //            new Thread( ()->{

@@ -7,51 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de233fcb-9b4f-4b67-b303-f82ebe6967e2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ZCatalogCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandFactory.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserSubscriptionsService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/UserSubscriptionsService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB.sql" afterPath="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB.sql" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/queries.properties" afterPath="$PROJECT_DIR$/src/main/resources/queries.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/additional/pagination.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/additional/pagination.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/IssuesEditingCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/admin/IssuesEditingCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/ZCatalogCommand$PeriodicalsRequestData.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/ZCatalogCommand.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandFactory.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandFactory.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandHelper.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/util/CommandHelper.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalIssueService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalIssueService.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/PeriodicalService.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/UserSubscriptionsService.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/services/UserSubscriptionsService.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.class" />
-      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/queries.properties" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/queries.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/IssuesEditingCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/admin/IssuesEditingCommand.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/ContextListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/ContextListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/Dispatcher.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/Dispatcher.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB.sql" afterPath="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB(before uuid).sql" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/additional/header.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/additional/header.jsp" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/servlet/ContextListener.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/servlet/ContextListener.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/servlet/Dispatcher.class" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/WEB-INF/classes/com/periodicals/servlet/Dispatcher.class" />
+      <change beforePath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/pages/additional/header.jsp" afterPath="$PROJECT_DIR$/target/JavaExternalCoursesFinalProject/pages/additional/header.jsp" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/PeriodicalIssuesCommand.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/UserSubscriptionsCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/ZCatalogCommand$PeriodicalsRequestData.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/auth/ZCatalogCommand.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/util/CommandFactory.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/util/CommandFactory.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/command/util/CommandHelper.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/command/util/CommandHelper.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/interfaces/PeriodicalIssuesDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/dao/jdbc/PeriodicalIssuesJdbcDao.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalIssueService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalIssueService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/PeriodicalService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserSubscriptionsService.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/services/UserSubscriptionsService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/utils/ResourceHolders/JdbcQueriesHolder.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/queries.properties" afterPath="$PROJECT_DIR$/target/classes/queries.properties" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/servlet/ContextListener.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/servlet/ContextListener.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/servlet/Dispatcher.class" afterPath="$PROJECT_DIR$/target/classes/com/periodicals/servlet/Dispatcher.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -76,36 +49,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="pagination.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/additional/pagination.jsp">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            <state relative-caret-position="220">
+              <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CatalogCommand.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="54" column="70" lean-forward="true" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PeriodicalIssuesCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
-              <caret line="96" column="7" lean-forward="true" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="67" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -167,12 +116,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PaymentsJdbcDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/ContextListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/RegistrationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/RegistrationCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/pages/additional/cart.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/RemoveFromCartCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/AddToCartCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/AddItemCartCommand.java" />
@@ -196,7 +139,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/entities/User.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/admin_users_edit.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/RolesJdbcDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/util/Paginable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/jdbc/PeriodicalsJdbcDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java" />
@@ -215,9 +157,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/dao/interfaces/PeriodicalIssuesDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalIssueService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/additional/pagination.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/Dispatcher.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/pages/additional/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/servlet/ContextListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mySQL_CreateDB(after uuid).sql" />
       </list>
     </option>
   </component>
@@ -246,11 +195,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="980" />
-    <option name="height" value="1092" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-13" />
+    <option name="y" value="5" />
+    <option name="width" value="998" />
+    <option name="height" value="1060" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -283,8 +232,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,6 +282,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
               <item name="command" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="periodicals" type="462c0819:PsiDirectoryNode" />
+              <item name="command" type="462c0819:PsiDirectoryNode" />
               <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -364,25 +321,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="periodicals" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="periodicals" type="462c0819:PsiDirectoryNode" />
               <item name="filters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -402,6 +340,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Periodicalzz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="periodicals" type="462c0819:PsiDirectoryNode" />
+              <item name="servlet" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Periodicalzz" type="b2602c69:ProjectViewProjectNode" />
@@ -457,14 +404,16 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Periodicals" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="project.structure.last.edited" value="Project" />
@@ -485,8 +434,8 @@
       <recent name="com.periodicals.dao" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\webapp\img" />
       <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\resources" />
+      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\webapp\img" />
       <recent name="C:\Users\Daniel\Desktop\FinalProject\src\main\webapp" />
       <recent name="C:\Users\Daniel\Desktop\FinalProject\src\main\resources" />
       <recent name="D:\Idea_projects\JavaExternalCoursesFinalProject\src\main\java\com\periodicals\command" />
@@ -518,7 +467,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Server">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -1054,45 +1003,48 @@
       <workItem from="1516227363092" duration="5531000" />
       <workItem from="1516274133939" duration="6624000" />
       <workItem from="1516283548106" duration="30512000" />
+      <workItem from="1516459156893" duration="3076000" />
+      <workItem from="1516479136168" duration="3533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="446234000" />
+    <option name="totallyTimeSpent" value="452843000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27952328" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.283857" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18634886" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09859155" sideWeight="0.49270833" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27952328" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.283857" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46045503" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15276273" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.234375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18634886" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1109,20 +1061,20 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4637053" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18634886" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13217768" sideWeight="0.49270833" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09859155" sideWeight="0.49270833" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16251354" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15276273" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22083333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.234375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5005417" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -1165,65 +1117,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartAddCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="44" column="18" lean-forward="false" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/common/RegistrationCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/PagesHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/errors/error.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/exceptions/ServiceException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <element signature="e#248#249#0" expanded="false" />
-            <element signature="e#276#277#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/util/CommandFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/utils/ResourceHolders/AttributesHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1236,7 +1129,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1244,7 +1136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1260,7 +1151,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1277,12 +1167,12 @@
         <state relative-caret-position="274">
           <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding>
-            <element signature="e#1555#1556#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
-            <element signature="e#1646#1647#0" expanded="true" />
-            <element signature="e#1693#1694#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
-            <element signature="e#1777#1778#0" expanded="true" />
+            <element signature="e#1555#1556#0" expanded="false" />
+            <element signature="e#1593#1594#0" expanded="false" />
+            <element signature="e#1646#1647#0" expanded="false" />
+            <element signature="e#1693#1694#0" expanded="false" />
+            <element signature="e#1734#1735#0" expanded="false" />
+            <element signature="e#1777#1778#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1295,19 +1185,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/dao/connection/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1315,7 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1323,7 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1331,7 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="40" column="50" lean-forward="false" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1363,7 +1241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="64" column="13" lean-forward="false" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1371,7 +1248,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="682">
           <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1390,21 +1266,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="76" column="16" lean-forward="false" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/common/LoginCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/filters/AccessFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-616">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
@@ -1418,16 +1285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/admin_users_edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="946">
@@ -1436,35 +1293,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/catalog.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-940">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/subscriptions.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-452">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/IssuesEditingCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="58" column="84" lean-forward="false" selection-start-line="58" selection-start-column="84" selection-end-line="58" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="113" column="27" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="113" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1481,18 +1313,7 @@
         <state relative-caret-position="132">
           <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/servlet/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#782#783#0" expanded="false" />
-            <element signature="e#817#818#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1517,7 +1338,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="73" column="113" lean-forward="false" selection-start-line="73" selection-start-column="113" selection-end-line="73" selection-end-column="113" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1533,7 +1353,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1549,7 +1368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="67" column="62" lean-forward="false" selection-start-line="67" selection-start-column="61" selection-end-line="67" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1558,62 +1376,172 @@
         <state relative-caret-position="983">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#742#743#0" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#863#864#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#932#933#0" expanded="true" />
-            <element signature="e#983#984#0" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1098#1099#0" expanded="true" />
-            <element signature="e#1193#1194#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1275#1276#0" expanded="true" />
-            <element signature="e#1339#1340#0" expanded="true" />
-            <element signature="e#1395#1396#0" expanded="true" />
-            <element signature="e#1440#1441#0" expanded="true" />
-            <element signature="e#1481#1482#0" expanded="true" />
-            <element signature="e#1549#1550#0" expanded="true" />
-            <element signature="e#1609#1610#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mySQL_CreateDB.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2002">
-          <caret line="91" column="2" lean-forward="false" selection-start-line="91" selection-start-column="2" selection-end-line="91" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="96" column="7" lean-forward="true" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#703#704#0" expanded="false" />
+            <element signature="e#742#743#0" expanded="false" />
+            <element signature="e#807#808#0" expanded="false" />
+            <element signature="e#863#864#0" expanded="false" />
+            <element signature="e#897#898#0" expanded="false" />
+            <element signature="e#932#933#0" expanded="false" />
+            <element signature="e#983#984#0" expanded="false" />
+            <element signature="e#1031#1032#0" expanded="false" />
+            <element signature="e#1064#1065#0" expanded="false" />
+            <element signature="e#1098#1099#0" expanded="false" />
+            <element signature="e#1193#1194#0" expanded="false" />
+            <element signature="e#1236#1237#0" expanded="false" />
+            <element signature="e#1275#1276#0" expanded="false" />
+            <element signature="e#1339#1340#0" expanded="false" />
+            <element signature="e#1395#1396#0" expanded="false" />
+            <element signature="e#1440#1441#0" expanded="false" />
+            <element signature="e#1481#1482#0" expanded="false" />
+            <element signature="e#1549#1550#0" expanded="false" />
+            <element signature="e#1609#1610#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/additional/pagination.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        <state relative-caret-position="0">
+          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/filters/AccessFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1694">
+          <caret line="91" column="13" lean-forward="true" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/servlet/Dispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/additional/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="66" column="20" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/catalog.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-184">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/additional/cart.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/servlet/ContextListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="66" lean-forward="false" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="54" column="70" lean-forward="true" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
+        <state relative-caret-position="660">
+          <caret line="30" column="52" lean-forward="false" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/subscriptions.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/UserSubscriptionsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="35" column="96" lean-forward="false" selection-start-line="35" selection-start-column="96" selection-end-line="35" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AddPeriodicalCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-392">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mySQL_CreateDB(before uuid).sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="846">
+          <caret line="91" column="2" lean-forward="false" selection-start-line="91" selection-start-column="2" selection-end-line="91" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PaymentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/PeriodicalService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2050">
+          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/PeriodicalIssuesCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserInfoCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mySQL_CreateDB(after uuid).sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3740">
+          <caret line="170" column="26" lean-forward="false" selection-start-line="170" selection-start-column="26" selection-end-line="170" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
