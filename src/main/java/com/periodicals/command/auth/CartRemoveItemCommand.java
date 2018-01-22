@@ -5,7 +5,7 @@ import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.services.CartService;
-import com.periodicals.utils.Cart;
+import com.periodicals.utils.entities.Cart;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

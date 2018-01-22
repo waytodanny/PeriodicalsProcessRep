@@ -6,7 +6,7 @@ import com.periodicals.command.util.CommandResult;
 import com.periodicals.entities.User;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.entity.SubscriptionsService;
-import com.periodicals.utils.Cart;
+import com.periodicals.utils.entities.Cart;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

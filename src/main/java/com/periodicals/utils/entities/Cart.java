@@ -1,4 +1,4 @@
-package com.periodicals.utils;
+package com.periodicals.utils.entities;
 
 import com.periodicals.entities.Periodical;
 
