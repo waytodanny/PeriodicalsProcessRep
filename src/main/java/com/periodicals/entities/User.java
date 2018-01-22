@@ -5,8 +5,14 @@ import com.periodicals.entities.util.Identified;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents user of system;
+ * Each user has definite role
+ * @see Role
+ */
 public class User implements Identified<UUID> {
-    private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int MAX_LOGIN_LENGTH = 50;
     private static final int EMAIL_MAX_LENGTH = 254;
 

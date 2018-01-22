@@ -6,6 +6,12 @@ import java.sql.Date;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents periodical issue
+ * @see Periodical
+ */
 public class PeriodicalIssue implements Identified<UUID> {
     private static final int ISSUE_NAME_MAX_LENGTH = 100;
 

@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ *
+ * Class that represents payment made by some user purchasing some periodicals
+ * @see User
+ * @see Periodical
+ */
 public class Payment implements Identified<UUID> {
     private UUID id;
     private Timestamp paymentTime;

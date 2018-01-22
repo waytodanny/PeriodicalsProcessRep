@@ -6,8 +6,14 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents periodical of some genre published by some publisher
+ * @see Genre
+ * @see Publisher
+ */
 public class Periodical implements Identified<UUID> {
-    private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int PERIODICAL_NAME_MAX_LENGTH = 100;
     private static final int PERIODICAL_DESCRIPTION_MAX_LENGTH = 1000;
 
@@ -16,6 +22,10 @@ public class Periodical implements Identified<UUID> {
     private String description;
     private BigDecimal subscriptionCost;
     private int issuesPerYear;
+
+    /**
+     * Variable that shows whether periodical is limited or not
+     */
     private boolean isLimited;
     private Genre genre;
     private Publisher publisher;

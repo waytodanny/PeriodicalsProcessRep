@@ -5,6 +5,10 @@ import com.periodicals.entities.util.Identified;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ * Class that represents periodical genre
+ */
 public class Genre implements Identified<UUID> {
     private static final int GENRE_NAME_MAX_LENGTH = 100;
 

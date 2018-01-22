@@ -11,10 +11,10 @@ public class Main {
 
     public static void main(String[] args) throws DaoException, ServiceException {
 
-        AbstractDaoFactory factory = JdbcDaoFactory.getInstance();
-        for (int i = 0; i < 10; i++) {
-            System.out.println(UuidGenerator.generateUuid());
-        }
+        String requestURI = "admin.jsp";
+        requestURI = requestURI.substring(0, requestURI.lastIndexOf(".jsp"));
+
+        System.out.println(requestURI);
 //        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
 //        for (int i = 0; i < 10; i++) {
 //            new Thread( ()->{

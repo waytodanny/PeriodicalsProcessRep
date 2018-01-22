@@ -13,16 +13,29 @@ import java.util.Set;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.PAGE_SUFFIX;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Filter that:
+ * 1) checks incoming request;
+ * 2) pulls out command value;
+ * 3) due to command access level decides what to do with request.
+ * Uses SecurityConfiguration class to get commands access levels
+ * @see SecurityConfiguration
+ * @see com.periodicals.command.util.Command
+ */
 @WebFilter(urlPatterns = {"/*"})
 public class AccessFilter implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         SecurityConfiguration securityConfiguration = SecurityConfiguration.getInstance();
@@ -48,7 +61,7 @@ public class AccessFilter implements Filter {
                 break;
 
             case "ADMIN":
-                if (AuthenticationHelper.isCurrentUserAdmin(request.getSession())) {
+                if (AuthenticationHelper.isSessionUserAdmin(request.getSession())) {
                     request.setAttribute("command", command);
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else {
@@ -63,14 +76,23 @@ public class AccessFilter implements Filter {
         }
     }
 
+    /**
+     * Method reorganize incoming URI from request in
+     * understandable for Command seeking method state
+     *
+     * @see this.getCommandFromRequestURI
+     */
     private String getCorrectedRequestURI(HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         if (requestURI != null && !requestURI.isEmpty()) {
             requestURI = requestURI.toLowerCase();
+
+            /*gets rid of pages suffix*/
             if (requestURI.endsWith(PAGE_SUFFIX)) {
                 requestURI = requestURI.substring(0, requestURI.lastIndexOf(PAGE_SUFFIX));
             }
-            if(requestURI.endsWith("/")) {
+            /*gets rid of pages last '/' character*/
+            if (requestURI.endsWith("/")) {
                 requestURI = requestURI.substring(0, requestURI.lastIndexOf("/"));
             }
         } else {
@@ -79,6 +101,11 @@ public class AccessFilter implements Filter {
         return requestURI;
     }
 
+    /**
+     * Finds command in requested path in possible command list
+     *
+     * @see SecurityConfiguration
+     */
     private String getCommandFromRequestURI(String path, SecurityConfiguration securityConfiguration) {
         Set<String> endPoints = securityConfiguration.getEndPoints();
         for (String endPoint : endPoints) {

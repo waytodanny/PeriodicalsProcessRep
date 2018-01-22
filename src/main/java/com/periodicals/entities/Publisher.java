@@ -5,6 +5,11 @@ import com.periodicals.entities.util.Identified;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents publisher
+ */
 public class Publisher implements Identified<UUID> {
     private static final int PUBLISHER_NAME_MAX_LENGTH = 100;
 

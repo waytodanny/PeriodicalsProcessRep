@@ -5,6 +5,11 @@ import com.periodicals.entities.util.Identified;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents user role in system
+ */
 public class Role implements Identified<UUID> {
     private static final int MAX_ROLE_NAME_LENGTH = 50;
 

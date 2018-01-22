@@ -2,10 +2,13 @@ package com.periodicals.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Filter that converts incoming data in given encoding format
+ */
 @WebFilter(urlPatterns = {"/*"})
 public class CharsetFilter implements Filter {
     private static final String ENCODING = "UTF-8";
@@ -17,8 +20,6 @@ public class CharsetFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
-        // Respect the client-specified character ENCODING
-        // (see HTTP specification section 3.4.1)
         if (null == req.getCharacterEncoding()) {
             req.setCharacterEncoding(ENCODING);
         }
