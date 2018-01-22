@@ -4,13 +4,14 @@ import com.periodicals.entities.util.Identified;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.UUID;
 
-public class Periodical implements Identified<String> {
+public class Periodical implements Identified<UUID> {
     private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int PERIODICAL_NAME_MAX_LENGTH = 100;
     private static final int PERIODICAL_DESCRIPTION_MAX_LENGTH = 1000;
 
-    private String id;
+    private UUID id;
     private String name;
     private String description;
     private BigDecimal subscriptionCost;
@@ -24,14 +25,11 @@ public class Periodical implements Identified<String> {
     }
 
     @Override
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
-        if (id.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid id length: " + id.length());
-        }
+    public void setId(UUID id) {
         this.id = id;
     }
 

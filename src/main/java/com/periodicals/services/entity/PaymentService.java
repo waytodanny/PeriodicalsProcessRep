@@ -28,7 +28,8 @@ public class PaymentService implements PageableCollectionService<Payment> {
     private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
 
 
-    private PaymentService() { }
+    private PaymentService() {
+    }
 
     public static PaymentService getInstance() {
         return paymentService;
@@ -51,7 +52,7 @@ public class PaymentService implements PageableCollectionService<Payment> {
             result = paymentDao.getEntityByPrimaryKey(id);
             LOGGER.debug("Obtained payment by id " + id);
         } catch (DaoException e) {
-            LOGGER.debug("Failed to obtain payment by id "+ id +" using DAO: " + e.getMessage());
+            LOGGER.debug("Failed to obtain payment by id " + id + " using DAO: " + e.getMessage());
         }
         return result;
     }
@@ -64,16 +65,16 @@ public class PaymentService implements PageableCollectionService<Payment> {
             added.setPaymentSum(paymentSum);
 
             User addedUser = userService.getEntityByPrimaryKey(userId);
-            if(Objects.nonNull(addedUser)) {
-                added.setUser(addedUser);
+            if (Objects.nonNull(addedUser)) {
+                added.setUserId(addedUser.getId());
             } else {
                 throw new NullPointerException("User with id " + userId + " doesn't exist");
             }
 
             List<Periodical> addedPeriodicals = new ArrayList<>();
             for (UUID periodicalId : periodicals) {
-                Periodical periodical  = periodicalService.getEntityByPrimaryKey(periodicalId);
-                if(Objects.nonNull(periodical)) {
+                Periodical periodical = periodicalService.getEntityByPrimaryKey(periodicalId);
+                if (Objects.nonNull(periodical)) {
                     addedPeriodicals.add(periodical);
                 } else {
                     throw new NullPointerException("Periodical with id " + periodicalId + " doesn't exist");
@@ -89,9 +90,9 @@ public class PaymentService implements PageableCollectionService<Payment> {
         }
     }
 
-   /*
-    *   UPDATE and DELETE methods are not available for entity PAYMENT
-    */
+    /*
+     *   UPDATE and DELETE methods are not available for entity PAYMENT
+     */
 
     @Override
     public int getEntitiesCount() {
@@ -109,7 +110,7 @@ public class PaymentService implements PageableCollectionService<Payment> {
     public List<Payment> getEntitiesListBounded(int skip, int limit) {
         List<Payment> entities = new ArrayList<>();
         try {
-            entities = paymentDao.getEntitiesListBounded(skip, limit);
+            entities = paymentDao.getPaymentsListBounded(skip, limit);
             LOGGER.debug("Obtained payments bounded list");
         } catch (DaoException e) {
             LOGGER.error("Failed to get payments bounded list using DAO: " + e.getMessage());
@@ -117,13 +118,29 @@ public class PaymentService implements PageableCollectionService<Payment> {
         return entities;
     }
 
-    public List<Periodical> getPaymentsByUserListBounded(int skip, int take, UUID userId) throws ServiceException {
-        List<Periodical> entities = new ArrayList<>();
+    public List<Payment> getUserPaymentsListBounded(int skip, int take, UUID userId) {
+        List<Payment> payments = new ArrayList<>();
         try {
             User user = userService.getEntityByPrimaryKey(userId);
-            if(Objects.nonNull(user)) {
-                entities = paymentDao.getPaymentsByUserListBounded(skip, take, user);
+            if (Objects.nonNull(user)) {
+                payments = paymentDao.getUserPaymentsListBounded(user, skip, take);
                 LOGGER.debug("Obtained user payments bounded list");
+            } else {
+                throw new NullPointerException("User with id " + userId + " doesn't exist");
+            }
+        } catch (DaoException | NullPointerException e) {
+            LOGGER.error(e.getMessage());
+        }
+        return payments;
+    }
+
+    public int getUserPaymentsCount(UUID userId) throws ServiceException {
+        try {
+            User user = userService.getEntityByPrimaryKey(userId);
+            if (Objects.nonNull(user)) {
+                int result = paymentDao.getUserPaymentsCount(user);
+                LOGGER.debug("Obtained user payments count");
+                return result;
             } else {
                 throw new NullPointerException("User with id " + userId + " doesn't exist");
             }
@@ -131,23 +148,5 @@ public class PaymentService implements PageableCollectionService<Payment> {
             LOGGER.error(e.getMessage());
             throw new ServiceException(e);
         }
-        return entities;
-    }
-
-    public int getPaymentsByUserCount(UUID userId) throws ServiceException {
-        int result = 0;
-        try {
-            User user = userService.getEntityByPrimaryKey(userId);
-            if(Objects.nonNull(user)) {
-                result = paymentDao.getPaymentsByUserCount(genre);
-                LOGGER.debug("Obtained user payments count");
-            } else {
-                throw new NullPointerException("User with id " + genreId + " doesn't exist");
-            }
-        } catch (DaoException | NullPointerException e) {
-            LOGGER.error(e.getMessage());
-            throw new ServiceException(e);
-        }
-        return result;
     }
 }

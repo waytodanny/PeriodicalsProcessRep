@@ -8,10 +8,11 @@ import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
-public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implements PublishersDao {
+public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, UUID> implements PublishersDao {
     private static final String ID = AttributesPropertyManager.getProperty("publisher.id");
     private static final String NAME = AttributesPropertyManager.getProperty("publisher.name");
 
@@ -21,8 +22,8 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implem
     }
 
     @Override
-    public Publisher getEntityByPrimaryKey(String id) throws DaoException {
-        return super.selectObject(PUBLISHER_SELECT_BY_ID, id);
+    public Publisher getEntityByPrimaryKey(UUID id) throws DaoException {
+        return super.selectObject(PUBLISHER_SELECT_BY_ID, id.toString());
     }
 
     @Override
@@ -31,8 +32,8 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implem
     }
 
     @Override
-    public void deleteEntity(String id) throws DaoException {
-        super.delete(PUBLISHER_DELETE, id);
+    public void deleteEntity(UUID id) throws DaoException {
+        super.delete(PUBLISHER_DELETE, id.toString());
     }
 
     @Override
@@ -48,7 +49,7 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implem
     @Override
     protected Object[] getInsertObjectParams(Publisher publisher) {
         return new Object[]{
-                publisher.getId(),
+                publisher.getId().toString(),
                 publisher.getName()
         };
     }
@@ -57,7 +58,7 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implem
     protected Object[] getObjectUpdateParams(Publisher publisher) {
         return new Object[]{
                 publisher.getName(),
-                publisher.getId()
+                publisher.getId().toString()
         };
     }
 
@@ -67,7 +68,7 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implem
         try {
             while (rs.next()) {
                 Publisher publisher = new Publisher();
-                publisher.setId(rs.getString(ID));
+                publisher.setId(UUID.fromString(rs.getString(ID)));
                 publisher.setName(rs.getString(NAME));
 
                 result.add(publisher);

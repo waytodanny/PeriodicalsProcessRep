@@ -14,10 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
-public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> implements PeriodicalsDao {
+public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, UUID> implements PeriodicalsDao {
     private static final String ID = AttributesPropertyManager.getProperty("periodical.id");
     private static final String NAME = AttributesPropertyManager.getProperty("periodical.name");
     private static final String DESCRIPTION = AttributesPropertyManager.getProperty("periodical.description");
@@ -35,8 +36,8 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
     }
 
     @Override
-    public Periodical getEntityByPrimaryKey(String key) throws DaoException {
-        return super.selectObject(PERIODICAL_SELECT_BY_ID, key);
+    public Periodical getEntityByPrimaryKey(UUID key) throws DaoException {
+        return super.selectObject(PERIODICAL_SELECT_BY_ID, key.toString());
     }
 
     @Override
@@ -45,7 +46,7 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
     }
 
     @Override
-    public void deleteEntity(String id) throws DaoException {
+    public void deleteEntity(UUID id) throws DaoException {
         super.delete(PERIODICAL_DELETE, id);
     }
 
@@ -60,11 +61,6 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
     }
 
     @Override
-    public List<Periodical> getUserSubscriptions(User user) throws DaoException {
-        return super.selectObjects(SUBSCRIPTIONS_SELECT_USER_SUBSCRIPTIONS, user.getId());
-    }
-
-    @Override
     public List<Periodical> getGenrePeriodicalsLimited(Genre genre, int skip, int limit) throws DaoException {
         return super.selectObjects(PERIODICAL_SELECT_SUBLIST_BY_GENRE, genre.getId(), skip, limit);
     }
@@ -75,13 +71,18 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
     }
 
     @Override
-    public List<Periodical> getPeriodicalsLimited(int skip, int take) throws DaoException {
+    public List<Periodical> getPeriodicalListBounded(int skip, int take) throws DaoException {
         return super.selectObjects(PERIODICAL_SELECT_SUBLIST, skip, take);
     }
 
     @Override
-    public int getPeriodicalsCount() throws DaoException {
-        return super.getEntriesCount(PERIODICAL_ENTRIES_COUNT);
+    public List<Periodical> getUserSubscriptions(User user) throws DaoException {
+        return super.selectObjects(SUBSCRIPTIONS_SELECT_USER_SUBSCRIPTIONS, user.getId());
+    }
+
+    @Override
+    public List<Periodical> getUserSubscriptionsLimited(User user, int skip, int limit) throws DaoException {
+        return super.selectObjects(SUBSCRIPTIONS_SELECT_USER_SUBSCRIPTIONS_LIMIT, skip, limit);
     }
 
     @Override
@@ -115,8 +116,8 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
              PreparedStatement stmt = conn.prepareStatement(SUBSCRIPTIONS_ADD_USER_SUBSCRIPTION)) {
 
             for (Periodical sub : subs) {
-                stmt.setString(1, user.getId());
-                stmt.setString(2, sub.getId());
+                stmt.setString(1, user.getId().toString());
+                stmt.setString(2, sub.getId().toString());
                 stmt.addBatch();
             }
             stmt.executeBatch();
@@ -159,7 +160,7 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
         try {
             while (rs.next()) {
                 Periodical per = new Periodical();
-                per.setId(rs.getString(ID));
+                per.setId(UUID.fromString(rs.getString(ID)));
                 per.setName(rs.getString(NAME));
                 per.setDescription(rs.getString(DESCRIPTION));
                 per.setSubscriptionCost(rs.getBigDecimal(SUBSCRIPTION_COST));
@@ -167,12 +168,12 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
                 per.setLimited(rs.getBoolean(IS_LIMITED));
 
                 Genre genre = new Genre();
-                genre.setId(rs.getString(GENRE_ID));
+                genre.setId(UUID.fromString(rs.getString(GENRE_ID)));
                 genre.setName(rs.getString(GENRE_NAME));
                 per.setGenre(genre);
 
                 Publisher publisher = new Publisher();
-                publisher.setId(rs.getString(PUBLISHER_ID));
+                publisher.setId(UUID.fromString(rs.getString(PUBLISHER_ID)));
                 publisher.setName(rs.getString(PUBLISHER_NAME));
                 per.setPublisher(publisher);
 

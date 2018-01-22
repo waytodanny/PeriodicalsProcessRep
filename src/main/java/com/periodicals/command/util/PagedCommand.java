@@ -12,7 +12,7 @@ import static com.periodicals.command.util.RedirectType.*;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
 public abstract class PagedCommand<T> implements Command {
-    public static final int DEFAULT_RECORDS_PER_PAGE = 10;
+    protected static final int DEFAULT_RECORDS_PER_PAGE = 10;
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -26,6 +26,7 @@ public abstract class PagedCommand<T> implements Command {
 
         return new CommandResult(FORWARD, paginationInfoHolder.getCurrentPageHref());
     }
+
     protected PaginationInfoHolder<T> getPaginationInfoHolderInstance(HttpServletRequest request) {
         return getBaseEntityPaginationHolder(request);
     }

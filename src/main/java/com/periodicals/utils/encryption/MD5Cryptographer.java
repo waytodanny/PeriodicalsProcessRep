@@ -8,16 +8,12 @@ public class MD5Cryptographer implements Cryptographer {
 
     @Override
     public String encrypt(String str) throws NoSuchAlgorithmException {
-        try {
-            MessageDigest md5 = MessageDigest.getInstance(MD5_NAME);
-            byte[] bytes = md5.digest(str.getBytes());
-            StringBuilder builder = new StringBuilder();
-            for (byte b : bytes) {
-                builder.append(String.format("%02X", b));
-            }
-            return builder.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw e;
+        MessageDigest md5 = MessageDigest.getInstance(MD5_NAME);
+        byte[] bytes = md5.digest(str.getBytes());
+        StringBuilder builder = new StringBuilder();
+        for (byte b : bytes) {
+            builder.append(String.format("%02X", b));
         }
+        return builder.toString();
     }
 }

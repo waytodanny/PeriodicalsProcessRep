@@ -6,7 +6,7 @@ import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.services.RoleService;
+import com.periodicals.services.lookup.RoleService;
 import com.periodicals.services.util.PageableCollectionService;
 import com.periodicals.utils.encryption.Cryptographer;
 import com.periodicals.utils.encryption.MD5Cryptographer;
@@ -55,7 +55,7 @@ public class UserService implements PageableCollectionService<User> {
         return result;
     }
 
-    public void createEntity(String login, String password, String email) throws ServiceException {
+    public void createEntity(String login, String password, String email, UUID roleId) throws ServiceException {
         try {
             User added = new User();
             added.setId(UuidGenerator.generateUuid());
@@ -65,7 +65,7 @@ public class UserService implements PageableCollectionService<User> {
             Cryptographer cryptographer = new MD5Cryptographer();
             added.setPassword(cryptographer.encrypt(password));
 
-            Role addedRole = RoleService.USER_ROLE;
+            Role addedRole = roleService.getEntityByPrimaryKey(roleId);
             if(Objects.nonNull(addedRole)) {
                 added.setRole(addedRole);
             } else {
@@ -106,7 +106,7 @@ public class UserService implements PageableCollectionService<User> {
         try {
             User deleted = this.getEntityByPrimaryKey(id);
             if(Objects.nonNull(deleted)) {
-                userDao.deleteEntity(deleted);
+                userDao.deleteEntity(deleted.getId());
                 LOGGER.debug("Successful deletion of user with id " + id);
             } else {
                 throw new NullPointerException("User with id " + id + " doesn't exist");
@@ -121,7 +121,7 @@ public class UserService implements PageableCollectionService<User> {
     public List<User> getEntitiesListBounded(int skip, int limit) {
         List<User> entities = new ArrayList<>();
         try {
-            entities = userDao.getEntitiesListBounded(skip, limit);
+            entities = userDao.geUsersLimitedList(skip, limit);
             LOGGER.debug("Obtained users bounded list");
         } catch (DaoException e) {
             LOGGER.error("Failed to get users bounded list using DAO: " + e.getMessage());
@@ -141,7 +141,7 @@ public class UserService implements PageableCollectionService<User> {
         return result;
     }
 
-    public User getUserByLogin(String login) throws ServiceException {
+    public User getUserByLogin(String login) {
         User user = null;
         try {
             user = userDao.getByLogin(login);
@@ -152,7 +152,6 @@ public class UserService implements PageableCollectionService<User> {
             }
         } catch (DaoException | NullPointerException e) {
             LOGGER.error(e.getMessage());
-            throw new ServiceException(e);
         }
         return user;
     }

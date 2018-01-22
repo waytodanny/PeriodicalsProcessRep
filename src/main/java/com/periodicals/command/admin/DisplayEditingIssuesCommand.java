@@ -5,7 +5,7 @@ import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.PeriodicalIssue;
-import com.periodicals.services.PeriodicalIssueService;
+import com.periodicals.services.entity.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 import com.periodicals.services.util.PageableCollectionService;
 

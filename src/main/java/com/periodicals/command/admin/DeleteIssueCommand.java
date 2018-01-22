@@ -3,7 +3,7 @@ package com.periodicals.command.admin;
 import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
-import com.periodicals.services.PeriodicalIssueService;
+import com.periodicals.services.entity.PeriodicalIssueService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -9,10 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
-public class GenresJdbcDao extends AbstractJdbcDao<Genre, String> implements GenresDao {
+public class GenresJdbcDao extends AbstractJdbcDao<Genre, UUID> implements GenresDao {
     private static final String ID = AttributesPropertyManager.getProperty("genre.id");
     private static final String NAME = AttributesPropertyManager.getProperty("genre.name");
 
@@ -27,13 +28,13 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, String> implements Gen
     }
 
     @Override
-    public void deleteEntity(String key) throws DaoException {
-        super.delete(GENRE_DELETE, key);
+    public void deleteEntity(UUID key) throws DaoException {
+        super.delete(GENRE_DELETE, key.toString());
     }
 
     @Override
-    public Genre getEntityByPrimaryKey(String key) throws DaoException {
-        return super.selectObject(GENRE_SELECT_BY_ID, key);
+    public Genre getEntityByPrimaryKey(UUID key) throws DaoException {
+        return super.selectObject(GENRE_SELECT_BY_ID, key.toString());
     }
 
     @Override
@@ -53,18 +54,18 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, String> implements Gen
 
     @Override
     protected Object[] getInsertObjectParams(Genre genre) {
-        String id = genre.getId();
-        String name = genre.getName();
-
-        return new Object[]{id, name};
+        return new Object[]{
+                genre.getId().toString(),
+                genre.getName()
+        };
     }
 
     @Override
     protected Object[] getObjectUpdateParams(Genre genre) {
-        String id = genre.getId();
-        String name = genre.getName();
-
-        return new Object[]{name, id};
+        return new Object[]{
+                genre.getName(),
+                genre.getId().toString()
+        };
     }
 
     @Override
@@ -73,7 +74,7 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, String> implements Gen
         try {
             while (rs.next()) {
                 Genre genre = new Genre();
-                genre.setId(rs.getString(ID));
+                genre.setId(UUID.fromString(rs.getString(ID)));
                 genre.setName(rs.getString(NAME));
 
                 result.add(genre);

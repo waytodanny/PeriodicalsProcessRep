@@ -4,7 +4,7 @@ import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.User;
-import com.periodicals.services.RoleService;
+import com.periodicals.services.lookup.RoleService;
 import com.periodicals.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;

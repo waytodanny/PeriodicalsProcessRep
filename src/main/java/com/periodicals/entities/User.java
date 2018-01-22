@@ -3,13 +3,14 @@ package com.periodicals.entities;
 import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class User implements Identified<String> {
+public class User implements Identified<UUID> {
     private static final int UUID_DEFAULT_LENGTH = 36;
     private static final int MAX_LOGIN_LENGTH = 50;
     private static final int EMAIL_MAX_LENGTH = 254;
 
-    private String id;
+    private UUID id;
     private String login;
     private String password;
     private String email;
@@ -31,14 +32,11 @@ public class User implements Identified<String> {
     }
 
     @Override
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) throws IllegalArgumentException {
-        if (id.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid id length: " + id.length());
-        }
+    public void setId(UUID id) throws IllegalArgumentException {
         this.id = id;
     }
 

@@ -5,6 +5,7 @@ import com.periodicals.services.entity.UserService;
 import com.periodicals.utils.encryption.MD5Cryptographer;
 import org.apache.log4j.Logger;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class LoginService {
@@ -25,12 +26,17 @@ public class LoginService {
      * @return user object from DB if he was verified by incoming data or null if not
      */
     public User getUserIfVerified(String login, String pass) {
-        User user = userService.getUserByLogin(login);
-        if (Objects.nonNull(user) && passwordsMatch(user, pass)) {
-            LOGGER.debug("user has been verified");
-            return user;
+        User user = null;
+        try {
+            user = userService.getUserByLogin(login);
+            if (Objects.nonNull(user) && passwordsMatch(user, pass)) {
+                LOGGER.debug("user has been verified");
+                return user;
+            }
+        } catch (NoSuchAlgorithmException e) {
+            LOGGER.error("Failed to obtain encryption algorithm: " + e.getMessage());
         }
-        return null;
+        return user;
     }
 
     /**
@@ -39,7 +45,7 @@ public class LoginService {
      * @param user     user from DB taken by login
      * @param password password that was entered by client
      */
-    private boolean passwordsMatch(User user, String password) {
+    private boolean passwordsMatch(User user, String password) throws NoSuchAlgorithmException {
         boolean result = false;
         if (Objects.nonNull(password) && Objects.nonNull(user) && Objects.nonNull(user.getPassword())) {
             String encrypted = new MD5Cryptographer().encrypt(password);

@@ -3,16 +3,14 @@ package com.periodicals.command.common;
 import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
-import com.periodicals.exceptions.RegistrationException;
-import com.periodicals.services.RegistrationService;
-import com.periodicals.services.UserService;
+import com.periodicals.exceptions.ServiceException;
+import com.periodicals.services.lookup.RoleService;
 import com.periodicals.services.entity.UserService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
-import java.util.UUID;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
@@ -49,9 +47,11 @@ public class RegistrationCommand implements Command {
                     userService.createEntity(
                             login,
                             password,
-                            email)
+                            email,
+                            RoleService.USER_ROLE_ID);
+
                     return new CommandResult(REDIRECT, CATALOG_PAGE);
-                } catch (RegistrationException e) {
+                } catch (ServiceException e) {
                     request.setAttribute(REGISTRATION_ERROR_MESSAGE,
                             LanguagePropsManager.getProperty("registration.error.exists", locale));
                 }

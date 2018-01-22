@@ -61,6 +61,8 @@ public class JdbcQueriesHolder {
     public static final String PERIODICAL_ENTRIES_BY_GENRE_COUNT = JdbcQueriesPropertyManager.getProperty("periodical.entries.by.genre.count");
     public static final String SUBSCRIPTIONS_IS_USER_SUBSCRIBED = JdbcQueriesPropertyManager.getProperty("periodical.user.is.subscribed");
     public static final String SUBSCRIPTIONS_SELECT_USER_SUBSCRIPTIONS = JdbcQueriesPropertyManager.getProperty("periodical.select.user.subscriptions");
+    public static final String SUBSCRIPTIONS_SELECT_USER_SUBSCRIPTIONS_LIMIT = JdbcQueriesPropertyManager.getProperty("periodical.select.user.subscriptions.limit");
+
     public static final String SUBSCRIPTIONS_ADD_USER_SUBSCRIPTION = JdbcQueriesPropertyManager.getProperty("periodical.insert.user.subscription");
     public static final String SUBSCRIPTIONS_USER_SUBSCRIPTIONS_COUNT = JdbcQueriesPropertyManager.getProperty("periodical.user.subscriptions.count");
     public static final String SELECT_PAYMENT_PERIODICALS = JdbcQueriesPropertyManager.getProperty("periodical.select.payment.periodicals");

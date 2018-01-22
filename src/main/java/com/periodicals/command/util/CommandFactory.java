@@ -20,15 +20,15 @@ public class CommandFactory {
         commandMap.put(LOGOUT, new LogoutCommand());
         commandMap.put(REGISTER, new RegistrationCommand());
         commandMap.put(CATALOG, new CatalogCommand());
-        commandMap.put(PERIODICAL_ISSUES, new PeriodicalIssuesDisplayCommand());
+        commandMap.put(PERIODICAL_ISSUES, new DisplayPeriodicalIssuesCommand());
         commandMap.put(ADD_TO_CART, new CartAddItemCommand());
         commandMap.put(REMOVE_FROM_CART, new CartRemoveItemCommand());
         commandMap.put(SUBSCRIBE, new ProcessSubscriptionCommand());
-        commandMap.put(SUBSCRIPTIONS, new UserSubscriptionsDisplayCommand());
+        commandMap.put(SUBSCRIPTIONS, new DisplayUserSubscriptionsCommand());
 
         commandMap.put(ADMIN_MAIN, new AdminDefaultCommand());
 
-        commandMap.put(ADMIN_USERS, new UsersCommand());
+        commandMap.put(ADMIN_USERS, new DisplayUsersCommand());
         commandMap.put(ADMIN_USERS_EDIT, new EditUserCommand());
         commandMap.put(ADMIN_USERS_DELETE, new DeleteUserCommand());
         commandMap.put(ADMIN_USER_PAYMENTS, new DisplayUserPaymentsCommand());

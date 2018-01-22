@@ -5,7 +5,7 @@ import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.User;
-import com.periodicals.services.SubscriptionsService;
+import com.periodicals.services.entity.SubscriptionsService;
 import com.periodicals.services.util.PageableCollectionService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.USER_SUBSCRIPTIO
  *
  * @see
  */
-public class UserSubscriptionsDisplayCommand extends PagedCommand<Periodical> {
+public class DisplayUserSubscriptionsCommand extends PagedCommand<Periodical> {
     private static final int RECORDS_PER_PAGE = 10;
 
     private SubscriptionsService subscriptionsService = SubscriptionsService.getInstance();

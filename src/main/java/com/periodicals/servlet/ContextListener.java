@@ -2,6 +2,8 @@ package com.periodicals.servlet;
 
 import com.periodicals.dao.connection.ConnectionPool;
 import com.periodicals.services.*;
+import com.periodicals.services.entity.PeriodicalService;
+import com.periodicals.services.lookup.RoleService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -19,7 +21,6 @@ public class ContextListener implements ServletContextListener {
         LoginService.getInstance();
         RoleService.getInstance();
         PeriodicalService.getInstance();
-        GenresService.getInstance();
     }
 
     /* TODO think of where would be better to do it*/

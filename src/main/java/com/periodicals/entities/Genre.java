@@ -3,12 +3,12 @@ package com.periodicals.entities;
 import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class Genre implements Identified<String> {
-    private static final int UUID_DEFAULT_LENGTH = 36;
+public class Genre implements Identified<UUID> {
     private static final int GENRE_NAME_MAX_LENGTH = 100;
 
-    private String id;
+    private UUID id;
     private String name;
 
     public Genre() {
@@ -16,14 +16,11 @@ public class Genre implements Identified<String> {
     }
 
     @Override
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) throws IllegalArgumentException {
-        if (id.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid id length: " + id.length());
-        }
+    public void setId(UUID id) throws IllegalArgumentException {
         this.id = id;
     }
 

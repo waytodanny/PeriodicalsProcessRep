@@ -4,7 +4,7 @@ import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Periodical;
-import com.periodicals.services.PeriodicalIssueService;
+import com.periodicals.services.entity.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;

@@ -6,6 +6,9 @@ public final class AttributesHolder {
 
     public static final String SERVLET_ROOT = AttributesPropertyManager.getProperty("servlet.root");
 
+    public static final String ROLE_ADMIN_ID = AttributesPropertyManager.getProperty("role.admin.id");
+    public static final String ROLE_USER_ID = AttributesPropertyManager.getProperty("role.user.id");
+
     /*Commands*/
     public static final String LOGIN = AttributesPropertyManager.getProperty("command.login");
     public static final String REGISTER = AttributesPropertyManager.getProperty("command.registration");

@@ -65,7 +65,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
             added.setName(name);
             added.setDescription(description);
             added.setSubscriptionCost(subscriptionCost);
-            added.setIsLimited(isLimited);
+            added.setLimited(isLimited);
             added.setIssuesPerYear(issuesPerYear);
 
             Genre addedGenre = genreService.getEntityByPrimaryKey(genreId);
@@ -97,7 +97,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
                 updated.setName(name);
                 updated.setDescription(description);
                 updated.setSubscriptionCost(subscriptionCost);
-                updated.setIsLimited(isLimited);
+                updated.setLimited(isLimited);
                 updated.setIssuesPerYear(issuesPerYear);
 
                 Genre updatedGenre = genreService.getEntityByPrimaryKey(genreId);
@@ -129,7 +129,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
         try {
             Periodical deleted = this.getEntityByPrimaryKey(id);
             if(Objects.nonNull(deleted)) {
-                periodicalDao.deleteEntity(deleted);
+                periodicalDao.deleteEntity(deleted.getId());
                 LOGGER.debug("Successful deletion of periodical with id " + id);
             } else {
                 throw new NullPointerException("Periodical with id " + id + " doesn't exist");
@@ -144,7 +144,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
     public List<Periodical> getEntitiesListBounded(int skip, int limit) {
         List<Periodical> entities = new ArrayList<>();
         try {
-            entities = periodicalDao.getEntitiesListBounded(skip, limit);
+            entities = periodicalDao.getPeriodicalListBounded(skip, limit);
             LOGGER.debug("Obtained periodicals bounded list");
         } catch (DaoException e) {
             LOGGER.error("Failed to get periodicals bounded list using DAO: " + e.getMessage());
@@ -164,54 +164,51 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
         return result;
     }
 
-    public List<Periodical> getPeriodicalsByGenreListBounded(int skip, int take, UUID genreId) throws ServiceException {
+    public List<Periodical> getPeriodicalsByGenreListBounded(UUID genreId, int skip, int limit) {
         List<Periodical> entities = new ArrayList<>();
         try {
             Genre genre = genreService.getEntityByPrimaryKey(genreId);
             if(Objects.nonNull(genre)) {
-                entities = periodicalDao.getPeriodicalsByGenreListBounded(skip, take, genre);
+                entities = periodicalDao.getGenrePeriodicalsLimited(genre, skip, limit);
                 LOGGER.debug("Obtained genre periodicals bounded list");
             } else {
                 throw new NullPointerException("Genre with id " + genreId + " doesn't exist");
             }
         } catch (DaoException | NullPointerException e) {
             LOGGER.error(e.getMessage());
-            throw new ServiceException(e);
         }
         return entities;
     }
 
-    public int getPeriodicalsByGenreCount(UUID genreId) throws ServiceException {
+    public int getPeriodicalsByGenreCount(UUID genreId) {
         int result = 0;
         try {
             Genre genre = genreService.getEntityByPrimaryKey(genreId);
             if(Objects.nonNull(genre)) {
-                result = periodicalDao.getPeriodicalsByGenreCount(genre);
+                result = periodicalDao.getGenrePeriodicalsCount(genre);
                 LOGGER.debug("Obtained genre periodicals count");
             } else {
                 throw new NullPointerException("Genre with id " + genreId + " doesn't exist");
             }
         } catch (DaoException | NullPointerException e) {
             LOGGER.error(e.getMessage());
-            throw new ServiceException(e);
         }
         return result;
     }
 
     public List<Periodical> getPeriodicalsByPaymentList(UUID paymentId) throws ServiceException {
-        List<Periodical> entities = new ArrayList<>();
+        List<Periodical> periodicals = new ArrayList<>();
         try {
             Payment payment = paymentService.getEntityByPrimaryKey(paymentId);
             if(Objects.nonNull(payment)) {
-                entities = periodicalDao.getPeriodicalsByPaymentList(payment);
+                periodicals = periodicalDao.getPaymentPeriodicals(payment);
                 LOGGER.debug("Obtained payment periodicals");
             } else {
                 throw new NullPointerException("Payment with id " + paymentId + " doesn't exist");
             }
         } catch (DaoException | NullPointerException e) {
             LOGGER.error(e.getMessage());
-            throw new ServiceException(e);
         }
-        return entities;
+        return periodicals;
     }
 }

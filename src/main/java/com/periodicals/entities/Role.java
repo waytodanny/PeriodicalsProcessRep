@@ -3,34 +3,30 @@ package com.periodicals.entities;
 import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class Role implements Identified<String> {
-    private static final int UUID_DEFAULT_LENGTH = 36;
+public class Role implements Identified<UUID> {
     private static final int MAX_ROLE_NAME_LENGTH = 50;
 
-    private String id;
+    private UUID id;
     private String name;
 
     public Role() {
 
     }
 
-    public Role(String id, String name) throws IllegalArgumentException  {
+    public Role(UUID id, String name) throws IllegalArgumentException {
         setId(id);
         setName(name);
     }
 
     @Override
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) throws IllegalArgumentException  {
-        if (id.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid id length: " + id.length());
-        }
+    public void setId(UUID id) throws IllegalArgumentException {
         this.id = id;
-
     }
 
     public String getName() {

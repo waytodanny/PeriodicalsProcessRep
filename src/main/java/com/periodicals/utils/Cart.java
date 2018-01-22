@@ -5,20 +5,21 @@ import com.periodicals.entities.Periodical;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 public class Cart {
-    private List<Periodical> periodicals;
+    private List<Periodical> items;
     private BigDecimal totalValue;
 
     public Cart() {
-        periodicals = new LinkedList<>();
+        items = new LinkedList<>();
         totalValue = new BigDecimal(0)
                 .setScale(2, BigDecimal.ROUND_DOWN);
     }
 
     public void addItem(Periodical periodical) {
         if (!isInCart(periodical)) {
-            periodicals.add(periodical);
+            items.add(periodical);
             totalValue = totalValue.add(periodical.getSubscriptionCost())
                     .setScale(2, BigDecimal.ROUND_DOWN);
         }
@@ -26,19 +27,19 @@ public class Cart {
 
     public void removeItem(Periodical periodical) {
         if (isInCart(periodical)) {
-            periodicals.remove(periodical);
+            items.remove(periodical);
             totalValue = totalValue.subtract(periodical.getSubscriptionCost())
                     .setScale(2, BigDecimal.ROUND_DOWN);
         }
     }
 
     public void cleanUp() {
-        this.periodicals = new LinkedList<>();
+        this.items = new LinkedList<>();
         this.totalValue = new BigDecimal(0);
     }
 
-    public List<Periodical> getPeriodicals() {
-        return periodicals;
+    public List<Periodical> getItems() {
+        return items;
     }
 
     public BigDecimal getTotalValue() {
@@ -46,14 +47,6 @@ public class Cart {
     }
 
     private boolean isInCart(Periodical periodical) {
-        return periodicals.contains(periodical);
-    }
-
-    public Periodical getPeriodicalById(String id) {
-        for (Periodical per : periodicals) {
-            if(per.getId().equals(id))
-                return per;
-        }
-        return null;
+        return items.contains(periodical);
     }
 }

@@ -5,12 +5,11 @@ import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Periodical;
 import com.periodicals.entities.PeriodicalIssue;
-import com.periodicals.services.PeriodicalIssueService;
+import com.periodicals.services.entity.PeriodicalIssueService;
 import com.periodicals.services.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.UUID;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_ADD_ISSUE_PAGE;

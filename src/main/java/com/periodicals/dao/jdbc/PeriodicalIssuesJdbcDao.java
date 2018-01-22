@@ -10,10 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
-public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, String> implements PeriodicalIssuesDao {
+public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UUID> implements PeriodicalIssuesDao {
     private static final String ID = AttributesPropertyManager.getProperty("periodical_issue.id");
     private static final String NAME = AttributesPropertyManager.getProperty("periodical_issue.name");
     private static final String ISSUE_NO = AttributesPropertyManager.getProperty("periodical_issue.no");
@@ -103,11 +104,11 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, St
         try {
             while (rs.next()) {
                 PeriodicalIssue issue = new PeriodicalIssue();
-                issue.setId(rs.getString(ID));
+                issue.setId(UUID.fromString(rs.getString(ID)));
                 issue.setIssueNo(rs.getInt(ISSUE_NO));
                 issue.setName(rs.getString(NAME));
                 issue.setPublishDate(rs.getDate(PUBLISHING_DATE));
-                issue.setPeriodicalId(rs.getString(PERIODICAL_ID));
+                issue.setPeriodicalId(UUID.fromString(rs.getString(PERIODICAL_ID)));
 
                 result.add(issue);
             }

@@ -6,6 +6,7 @@ import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
 import com.periodicals.services.LoginService;
+import com.periodicals.services.lookup.RoleService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
 import org.apache.log4j.Logger;
 
@@ -15,17 +16,11 @@ import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.Objects;
 
-
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.services.RoleService.ADMIN_ROLE;
-import static com.periodicals.services.RoleService.USER_ROLE;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_LOGIN;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_PASSWORD;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_USER;
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
 import static com.periodicals.utils.ResourceHolders.MessagesHolder.LOGIN_ERROR_MESSAGE;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.*;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
 /**
  * Command that is responsible to handle user-identifying data
@@ -42,7 +37,7 @@ public class LoginCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        if(CommandUtils.isPostMethod(request)) {
+        if (CommandUtils.isPostMethod(request)) {
             //String referer = CommandUtils.getRefererWithoutServletPath(request);
 
             Locale locale = request.getLocale();
@@ -81,10 +76,10 @@ public class LoginCommand implements Command {
         String redirectPage = DEFAULT_PAGE;
         Role role = user.getRole();
 
-        if (role.equals(USER_ROLE)) {
+        if (role.getId().equals(RoleService.USER_ROLE_ID)) {
             redirectPage = CATALOG_PAGE;
             LOGGER.info("User " + user.getLogin() + " entered as an user");
-        } else if(role.equals(ADMIN_ROLE)) {
+        } else if (role.getId().equals(RoleService.ADMIN_ROLE_ID)) {
             redirectPage = ADMIN_DEFAULT_PAGE;
             LOGGER.info("User " + user.getLogin() + " entered as an admin");
         }

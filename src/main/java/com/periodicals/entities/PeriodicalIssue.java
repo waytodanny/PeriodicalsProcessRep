@@ -4,30 +4,27 @@ import com.periodicals.entities.util.Identified;
 
 import java.sql.Date;
 import java.util.Objects;
+import java.util.UUID;
 
-public class PeriodicalIssue implements Identified<String> {
-    private static final int UUID_DEFAULT_LENGTH = 36;
+public class PeriodicalIssue implements Identified<UUID> {
     private static final int ISSUE_NAME_MAX_LENGTH = 100;
 
-    private String id;
+    private UUID id;
     private int issueNo;
     private String name;
     private Date publishDate;
-    private String periodicalId;
+    private UUID periodicalId;
 
     public PeriodicalIssue() {
 
     }
 
     @Override
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
-        if (id.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid id length: " + id.length());
-        }
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -54,12 +51,12 @@ public class PeriodicalIssue implements Identified<String> {
         this.name = name;
     }
 
-    public String getPeriodicalId() {
+    public UUID getPeriodicalId() {
         return periodicalId;
     }
 
     /*TODO decide whether is right to check here*/
-    public void setPeriodicalId(String periodicalId) {
+    public void setPeriodicalId(UUID periodicalId) {
         this.periodicalId = periodicalId;
     }
 

@@ -6,25 +6,21 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
-public class Payment implements Identified<String> {
-    private static final int UUID_DEFAULT_LENGTH = 36;
-
-    private String id;
+public class Payment implements Identified<UUID> {
+    private UUID id;
     private Timestamp paymentTime;
-    private String userId;
+    private UUID userId;
     private BigDecimal paymentSum;
     private List<Periodical> periodicals;
 
     @Override
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) throws IllegalArgumentException {
-        if (id.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid id length: " + id.length());
-        }
+    public void setId(UUID id) throws IllegalArgumentException {
         this.id = id;
     }
 
@@ -39,12 +35,12 @@ public class Payment implements Identified<String> {
         this.paymentTime = paymentTime;
     }
 
-    public String getUserId() {
+    public UUID getUserId() {
         return userId;
     }
 
     /*TODO decide whether is right to check here*/
-    public void setUserId(String userId) {
+    public void setUserId(UUID userId) {
         this.userId = userId;
     }
 

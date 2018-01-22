@@ -14,10 +14,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
-public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements PaymentsDao {
+public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, UUID> implements PaymentsDao {
     private static final String ID = AttributesPropertyManager.getProperty("payment.id");
     private static final String TIME = AttributesPropertyManager.getProperty("payment.time");
     private static final String SUM = AttributesPropertyManager.getProperty("payment.sum");
@@ -34,12 +35,12 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
     }
 
     @Override
-    public void deleteEntity(String key) throws DaoException {
+    public void deleteEntity(UUID key) throws DaoException {
         super.delete(PAYMENT_DELETE, key);
     }
 
     @Override
-    public Payment getEntityByPrimaryKey(String key) throws DaoException {
+    public Payment getEntityByPrimaryKey(UUID key) throws DaoException {
         return super.selectObject(PAYMENT_SELECT_BY_ID, key);
     }
 
@@ -59,13 +60,18 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
     }
 
     @Override
-    public List<Payment> getUserPaymentsSublist(User user, int skip, int limit) throws DaoException {
+    public List<Payment> getUserPaymentsListBounded(User user, int skip, int limit) throws DaoException {
         return super.selectObjects(PAYMENT_SELECT_USER_PAYMENTS_SUBLIST, user.getId(), skip, limit);
     }
 
     @Override
     public int getUserPaymentsCount(User user) throws DaoException {
         return super.getEntriesCount(PAYMENT_SELECT_USER_PAYMENTS_COUNT, user.getId());
+    }
+
+    @Override
+    public List<Payment> getPaymentsListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(PAYMENT_SELECT_SUBLIST, skip, limit);
     }
 
     /*TODO make generic*/
@@ -80,10 +86,10 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(PAYMENT_INSERT_PAYMENT_PERIODICALS)) {
 
-            String paymentId = payment.getId();
+            String paymentId = payment.getId().toString();
             for (Periodical subscription : periodicals) {
                 stmt.setString(1, paymentId);
-                stmt.setString(2, subscription.getId());
+                stmt.setString(2, subscription.getId().toString());
                 stmt.addBatch();
             }
             stmt.executeBatch();
@@ -95,9 +101,9 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
     @Override
     protected Object[] getInsertObjectParams(Payment payment) {
         return new Object[]{
-                payment.getId(),
+                payment.getId().toString(),
                 payment.getPaymentSum(),
-                payment.getUserId()
+                payment.getUserId().toString()
         };
     }
 
@@ -105,8 +111,8 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
     protected Object[] getObjectUpdateParams(Payment payment) {
         return new Object[]{
                 payment.getPaymentSum(),
-                payment.getUserId(),
-                payment.getId()
+                payment.getUserId().toString(),
+                payment.getId().toString()
         };
     }
 
@@ -116,10 +122,10 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
         try {
             while (rs.next()) {
                 Payment pay = new Payment();
-                pay.setId(rs.getString(ID));
+                pay.setId(UUID.fromString(rs.getString(ID)));
                 pay.setPaymentTime(rs.getTimestamp(TIME));
                 pay.setPaymentSum(rs.getBigDecimal(SUM));
-                pay.setUserId(rs.getString(USER_ID));
+                pay.setUserId(UUID.fromString(rs.getString(USER_ID)));
 
                 result.add(pay);
             }

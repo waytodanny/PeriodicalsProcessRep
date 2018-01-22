@@ -9,16 +9,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
-public class RolesJdbcDao extends AbstractJdbcDao<Role, String> implements RolesDao {
+public class RolesJdbcDao extends AbstractJdbcDao<Role, UUID> implements RolesDao {
     private static final String ID = AttributesPropertyManager.getProperty("role.id");
     private static final String NAME = AttributesPropertyManager.getProperty("role.name");
 
     @Override
-    public Role getEntityByPrimaryKey(String key) throws DaoException {
-        return super.selectObject(ROLE_SELECT_BY_ID, key);
+    public Role getEntityByPrimaryKey(UUID key) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_ID, key.toString());
     }
 
     @Override
@@ -32,7 +33,7 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, String> implements Roles
     }
 
     @Override
-    public void deleteEntity(String key) throws DaoException {
+    public void deleteEntity(UUID key) throws DaoException {
         super.delete(USER_DELETE, key);
     }
 
@@ -54,7 +55,7 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, String> implements Roles
     @Override
     protected Object[] getInsertObjectParams(Role role) throws DaoException {
         return new Object[]{
-                role.getId(),
+                role.getId().toString(),
                 role.getName()
         };
     }
@@ -63,7 +64,7 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, String> implements Roles
     protected Object[] getObjectUpdateParams(Role role) throws DaoException {
         return new Object[]{
                 role.getName(),
-                role.getId()
+                role.getId().toString()
         };
     }
 
@@ -73,7 +74,7 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, String> implements Roles
         try {
             while (rs.next()) {
                 Role role = new Role();
-                role.setId(rs.getString(ID));
+                role.setId(UUID.fromString(rs.getString(ID)));
                 role.setName(rs.getString(NAME));
 
                 result.add(role);
