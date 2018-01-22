@@ -12,13 +12,10 @@ import java.util.List;
  * @K primary key type
  */
 public interface GenericDao<T, K> {
-    void add(T element) throws DaoException;
-
-    T getById(K key) throws DaoException;
-
-    void update(T object) throws DaoException;
-
-    void delete(K key) throws DaoException;
-
-    List<T> getAll() throws DaoException;
+    void createEntity(T entity) throws DaoException;
+    void updateEntity(T entity) throws DaoException;
+    void deleteEntity(K key) throws DaoException;
+    T getEntityByPrimaryKey(K key) throws DaoException;
+    List<T> getEntityCollection() throws DaoException;
+    int getEntitiesCount() throws DaoException;
 }

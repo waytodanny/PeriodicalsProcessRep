@@ -5,11 +5,14 @@ import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.exceptions.RegistrationException;
 import com.periodicals.services.RegistrationService;
+import com.periodicals.services.UserService;
+import com.periodicals.services.entity.UserService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
+import java.util.UUID;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
@@ -22,7 +25,7 @@ import static com.periodicals.utils.ResourceHolders.PagesHolder.REGISTRATION_PAG
  * Command that handles registration requests
  */
 public class RegistrationCommand implements Command {
-    private RegistrationService registrationService = RegistrationService.getInstance();
+    private static UserService userService = UserService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -43,7 +46,10 @@ public class RegistrationCommand implements Command {
 
             if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
                 try {
-                    registrationService.register(login, password, email);
+                    userService.createEntity(
+                            login,
+                            password,
+                            email)
                     return new CommandResult(REDIRECT, CATALOG_PAGE);
                 } catch (RegistrationException e) {
                     request.setAttribute(REGISTRATION_ERROR_MESSAGE,

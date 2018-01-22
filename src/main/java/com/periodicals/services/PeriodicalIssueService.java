@@ -15,18 +15,33 @@ import java.util.List;
 public class PeriodicalIssueService {
     private static final Logger LOGGER = Logger.getLogger(PeriodicalIssueService.class.getSimpleName());
 
-    private static PeriodicalIssueService issuesService = new PeriodicalIssueService();
+    private static final PeriodicalIssueService periodicalIssueService = new PeriodicalIssueService();
 
     private static PeriodicalIssuesJdbcDao issuesDao =
             (PeriodicalIssuesJdbcDao) JdbcDaoFactory.getInstance().getPeriodicalIssuesDao();
 
-    private PeriodicalIssueService() {
-
-    }
+    private PeriodicalIssueService() { }
 
     public static PeriodicalIssueService getInstance() {
-        return issuesService;
+        return periodicalIssueService;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void update(PeriodicalIssue issue) throws ServiceException {
         try {

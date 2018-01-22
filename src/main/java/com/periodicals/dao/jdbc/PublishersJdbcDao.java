@@ -16,28 +16,33 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, String> implem
     private static final String NAME = AttributesPropertyManager.getProperty("publisher.name");
 
     @Override
-    public void add(Publisher publisher) throws DaoException {
+    public void createEntity(Publisher publisher) throws DaoException {
         super.insert(PUBLISHER_INSERT, getInsertObjectParams(publisher));
     }
 
     @Override
-    public Publisher getById(String id) throws DaoException {
+    public Publisher getEntityByPrimaryKey(String id) throws DaoException {
         return super.selectObject(PUBLISHER_SELECT_BY_ID, id);
     }
 
     @Override
-    public void update(Publisher object) throws DaoException {
+    public void updateEntity(Publisher object) throws DaoException {
         super.update(PUBLISHER_UPDATE, getObjectUpdateParams(object));
     }
 
     @Override
-    public void delete(String id) throws DaoException {
+    public void deleteEntity(String id) throws DaoException {
         super.delete(PUBLISHER_DELETE, id);
     }
 
     @Override
-    public List<Publisher> getAll() throws DaoException {
+    public List<Publisher> getEntityCollection() throws DaoException {
         return super.selectObjects(PUBLISHER_SELECT_ALL);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(PUBLISHER_ENTRIES_COUNT);
     }
 
     @Override

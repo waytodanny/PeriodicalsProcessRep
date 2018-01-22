@@ -1,6 +1,7 @@
 package com.periodicals.services;
 
 import com.periodicals.entities.User;
+import com.periodicals.services.entity.UserService;
 import com.periodicals.utils.encryption.MD5Cryptographer;
 import org.apache.log4j.Logger;
 

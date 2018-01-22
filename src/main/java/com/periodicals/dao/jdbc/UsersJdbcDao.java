@@ -22,28 +22,33 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, String> implements Users
     private static final String ROLE_NAME = AttributesPropertyManager.getProperty("user.role_name");
 
     @Override
-    public User getById(String id) throws DaoException {
-        return super.selectObject(USER_SELECT_BY_ID, id);
+    public User getEntityByPrimaryKey(String key) throws DaoException {
+        return super.selectObject(USER_SELECT_BY_ID, key);
     }
 
     @Override
-    public void add(User user) throws DaoException {
+    public void createEntity(User user) throws DaoException {
         super.insert(USER_INSERT, getInsertObjectParams(user));
     }
 
     @Override
-    public void update(User user) throws DaoException {
+    public void updateEntity(User user) throws DaoException {
         super.update(USER_UPDATE, getObjectUpdateParams(user));
     }
 
     @Override
-    public void delete(String key) throws DaoException {
+    public void deleteEntity(String key) throws DaoException {
         super.delete(USER_DELETE, key);
     }
 
     @Override
-    public List<User> getAll() throws DaoException {
+    public List<User> getEntityCollection() throws DaoException {
         return super.selectObjects(USER_SELECT_ALL);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(PAYMENT_ENTRIES_COUNT);
     }
 
     @Override

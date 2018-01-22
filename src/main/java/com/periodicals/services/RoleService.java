@@ -1,17 +1,19 @@
 package com.periodicals.services;
 
-import com.periodicals.entities.Role;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.RolesJdbcDao;
+import com.periodicals.entities.Role;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
+import com.periodicals.services.util.LookupService;
 
 import java.util.List;
+import java.util.UUID;
 
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_USER;
 
-public class RoleService {
+public class RoleService implements LookupService<Role, UUID> {
     private static RoleService roleService = new RoleService();
     private static RolesJdbcDao rolesDao =
             (RolesJdbcDao) JdbcDaoFactory.getInstance().getRolesDao();
@@ -41,15 +43,6 @@ public class RoleService {
         }
     }
 
-    public Role getRole(String roleName) {
-        Role role = null;
-        try {
-            role = rolesDao.getByName(roleName);
-        } catch (DaoException e) {
-            e.printStackTrace();
-        }
-        return role;
-    }
 
     public List<Role> getAll() {
         List<Role> roles = null;

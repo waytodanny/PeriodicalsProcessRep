@@ -30,28 +30,33 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, String> impl
     private static final String PUBLISHER_NAME = AttributesPropertyManager.getProperty("periodical.publisher.name");
 
     @Override
-    public void add(Periodical periodical) throws DaoException {
-         super.insert(PERIODICAL_INSERT, getInsertObjectParams(periodical));
+    public void createEntity(Periodical entity) throws DaoException {
+         super.insert(PERIODICAL_INSERT, getInsertObjectParams(entity));
     }
 
     @Override
-    public Periodical getById(String id) throws DaoException {
-        return super.selectObject(PERIODICAL_SELECT_BY_ID, id);
+    public Periodical getEntityByPrimaryKey(String key) throws DaoException {
+        return super.selectObject(PERIODICAL_SELECT_BY_ID, key);
     }
 
     @Override
-    public void update(Periodical periodical) throws DaoException {
+    public void updateEntity(Periodical periodical) throws DaoException {
         super.update(PERIODICAL_UPDATE, getObjectUpdateParams(periodical));
     }
 
     @Override
-    public void delete(String id) throws DaoException {
+    public void deleteEntity(String id) throws DaoException {
         super.delete(PERIODICAL_DELETE, id);
     }
 
     @Override
-    public List<Periodical> getAll() throws DaoException {
+    public List<Periodical> getEntityCollection() throws DaoException {
         return super.selectObjects(PERIODICAL_SELECT_ALL);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(PERIODICAL_ENTRIES_COUNT);
     }
 
     @Override

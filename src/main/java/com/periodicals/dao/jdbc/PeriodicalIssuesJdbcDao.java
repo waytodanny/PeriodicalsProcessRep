@@ -21,28 +21,33 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, St
     private static final String PERIODICAL_ID = AttributesPropertyManager.getProperty("periodical_issue.periodical_id");
 
     @Override
-    public void add(PeriodicalIssue issue) throws DaoException {
-        super.insert(PERIODICAL_ISSUE_INSERT, getInsertObjectParams(issue));
+    public void createEntity(PeriodicalIssue entity) throws DaoException {
+        super.insert(PERIODICAL_ISSUE_INSERT, getInsertObjectParams(entity));
     }
 
     @Override
-    public PeriodicalIssue getById(String id) throws DaoException {
-        return super.selectObject(PERIODICAL_ISSUE_SELECT_BY_ID, id);
+    public PeriodicalIssue getEntityByPrimaryKey(String key) throws DaoException {
+        return super.selectObject(PERIODICAL_ISSUE_SELECT_BY_ID, key);
     }
 
     @Override
-    public void update(PeriodicalIssue issue) throws DaoException {
-        super.update(PERIODICAL_ISSUE_UPDATE, getObjectUpdateParams(issue));
+    public void updateEntity(PeriodicalIssue entity) throws DaoException {
+        super.update(PERIODICAL_ISSUE_UPDATE, getObjectUpdateParams(entity));
     }
 
     @Override
-    public void delete(String id) throws DaoException {
-        super.delete(PERIODICAL_ISSUE_DELETE, id);
+    public void deleteEntity(String key) throws DaoException {
+        super.delete(PERIODICAL_ISSUE_DELETE, key);
     }
 
     @Override
-    public List<PeriodicalIssue> getAll() throws DaoException {
+    public List<PeriodicalIssue> getEntityCollection() throws DaoException {
         return super.selectObjects(PERIODICAL_ISSUE_SELECT_ALL);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(PERIODICAL_ISSUE_ALL_ENTRIES_COUNT);
     }
 
     @Override

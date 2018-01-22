@@ -24,28 +24,33 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, String> implements
     private static final String USER_ID = AttributesPropertyManager.getProperty("payment.user_id");
 
     @Override
-    public void add(Payment payment) throws DaoException {
-        super.insert(PAYMENT_INSERT, getInsertObjectParams(payment));
+    public void createEntity(Payment entity) throws DaoException {
+        super.insert(PAYMENT_INSERT, getInsertObjectParams(entity));
     }
 
     @Override
-    public Payment getById(String id) throws DaoException {
-        return super.selectObject(PAYMENT_SELECT_BY_ID, id);
+    public void updateEntity(Payment entity) throws DaoException {
+        super.update(PAYMENT_UPDATE, getObjectUpdateParams(entity));
     }
 
     @Override
-    public void update(Payment payment) throws DaoException {
-        super.update(PAYMENT_UPDATE, getObjectUpdateParams(payment));
+    public void deleteEntity(String key) throws DaoException {
+        super.delete(PAYMENT_DELETE, key);
     }
 
     @Override
-    public void delete(String id) throws DaoException {
-        super.delete(PAYMENT_DELETE, id);
+    public Payment getEntityByPrimaryKey(String key) throws DaoException {
+        return super.selectObject(PAYMENT_SELECT_BY_ID, key);
     }
 
     @Override
-    public List<Payment> getAll() throws DaoException {
+    public List<Payment> getEntityCollection() throws DaoException {
         return super.selectObjects(PAYMENT_SELECT_ALL);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(PAYMENT_ENTRIES_COUNT);
     }
 
     @Override

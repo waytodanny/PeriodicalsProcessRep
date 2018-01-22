@@ -17,28 +17,33 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, String> implements Roles
     private static final String NAME = AttributesPropertyManager.getProperty("role.name");
 
     @Override
-    public Role getById(String id) throws DaoException {
-        return super.selectObject(ROLE_SELECT_BY_ID, id);
+    public Role getEntityByPrimaryKey(String key) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_ID, key);
     }
 
     @Override
-    public void add(Role role) throws DaoException {
+    public void createEntity(Role role) throws DaoException {
         super.insert(ROLE_INSERT, getInsertObjectParams(role));
     }
 
     @Override
-    public void update(Role role) throws DaoException {
+    public void updateEntity(Role role) throws DaoException {
         super.update(USER_UPDATE, getObjectUpdateParams(role));
     }
 
     @Override
-    public void delete(String id) throws DaoException {
-        super.delete(USER_DELETE, id);
+    public void deleteEntity(String key) throws DaoException {
+        super.delete(USER_DELETE, key);
     }
 
     @Override
-    public List<Role> getAll() throws DaoException {
+    public List<Role> getEntityCollection() throws DaoException {
         return super.selectObjects(ROLE_SELECT_ALL);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(ROLE_ENTRIES_COUNT);
     }
 
     @Override

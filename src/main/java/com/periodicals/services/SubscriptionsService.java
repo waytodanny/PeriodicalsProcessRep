@@ -1,15 +1,15 @@
 package com.periodicals.services;
 
-import com.periodicals.entities.User;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PaymentsJdbcDao;
 import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
+import com.periodicals.dao.transactions.Transaction;
 import com.periodicals.entities.Payment;
 import com.periodicals.entities.Periodical;
+import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.exceptions.TransactionException;
-import com.periodicals.dao.transactions.Transaction;
 import com.periodicals.utils.uuid.UuidGenerator;
 
 import java.math.BigDecimal;

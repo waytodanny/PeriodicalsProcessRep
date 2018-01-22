@@ -17,28 +17,33 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, String> implements Gen
     private static final String NAME = AttributesPropertyManager.getProperty("genre.name");
 
     @Override
-    public void add(Genre element) throws DaoException {
-        super.insert(GENRE_INSERT, getInsertObjectParams(element));
+    public void createEntity(Genre entity) throws DaoException {
+        super.insert(GENRE_INSERT, getInsertObjectParams(entity));
     }
 
     @Override
-    public void update(Genre object) throws DaoException {
-        super.update(GENRE_UPDATE, getObjectUpdateParams(object));
+    public void updateEntity(Genre entity) throws DaoException {
+        super.update(GENRE_UPDATE, getObjectUpdateParams(entity));
     }
 
     @Override
-    public void delete(String key) throws DaoException {
+    public void deleteEntity(String key) throws DaoException {
         super.delete(GENRE_DELETE, key);
     }
 
     @Override
-    public Genre getById(String id) throws DaoException {
-        return super.selectObject(GENRE_SELECT_BY_ID, id);
+    public Genre getEntityByPrimaryKey(String key) throws DaoException {
+        return super.selectObject(GENRE_SELECT_BY_ID, key);
     }
 
     @Override
-    public List<Genre> getAll() throws DaoException {
+    public List<Genre> getEntityCollection() throws DaoException {
         return super.selectObjects(GENRE_SELECT_ALL);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(GENRE_ENTRIES_COUNT);
     }
 
     @Override
