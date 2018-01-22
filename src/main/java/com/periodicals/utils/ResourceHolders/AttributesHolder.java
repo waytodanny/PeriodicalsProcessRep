@@ -2,6 +2,9 @@ package com.periodicals.utils.ResourceHolders;
 
 import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
+/**
+ * Holds attributes values from attributes.properties file
+ */
 public final class AttributesHolder {
 
     public static final String SERVLET_ROOT = AttributesPropertyManager.getProperty("servlet.root");

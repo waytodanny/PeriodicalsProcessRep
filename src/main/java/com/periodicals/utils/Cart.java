@@ -5,10 +5,16 @@ import com.periodicals.entities.Periodical;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
+/**
+ * Represents virtual cart for storing items
+ */
 public class Cart {
     private List<Periodical> items;
+
+    /**
+     * Total sum of items prices
+     */
     private BigDecimal totalValue;
 
     public Cart() {

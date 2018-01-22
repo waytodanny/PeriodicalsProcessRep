@@ -3,7 +3,7 @@ package com.periodicals.utils.propertyManagers;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/*TODO переписать*/
+/*TODO rearrange logic*/
 public class LanguagePropsManager {
     private static final String PARAM_RESOURCES = "resources";
     private static final String LOCALE_RU = "ru";

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
+import static com.periodicals.utils.ResourceHolders.AttributesHolder.COMMAND;
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.PAGE_SUFFIX;
 import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
 
@@ -46,13 +47,13 @@ public class AccessFilter implements Filter {
 
         switch (securityType) {
             case "ALL":
-                request.setAttribute("command", command);
+                request.setAttribute(COMMAND, command);
                 filterChain.doFilter(servletRequest, servletResponse);
                 break;
 
             case "AUTH":
                 if (AuthenticationHelper.isUserLoggedIn(request.getSession())) {
-                    request.setAttribute("command", command);
+                    request.setAttribute(COMMAND, command);
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else {
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -62,7 +63,7 @@ public class AccessFilter implements Filter {
 
             case "ADMIN":
                 if (AuthenticationHelper.isSessionUserAdmin(request.getSession())) {
-                    request.setAttribute("command", command);
+                    request.setAttribute(COMMAND, command);
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else {
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);

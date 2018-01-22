@@ -14,7 +14,7 @@ public class CharsetFilter implements Filter {
     private static final String ENCODING = "UTF-8";
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
@@ -23,13 +23,16 @@ public class CharsetFilter implements Filter {
         if (null == req.getCharacterEncoding()) {
             req.setCharacterEncoding(ENCODING);
         }
-        // Set the default response content type and ENCODING
+
+        /* Sets the default response content type and ENCODING*/
         resp.setContentType("text/html; charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
         filterChain.doFilter(req, resp);
     }
 
+    @Override
     public void destroy() {
+
     }
 }

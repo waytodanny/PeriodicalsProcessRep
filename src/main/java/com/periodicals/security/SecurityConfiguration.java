@@ -5,8 +5,12 @@ import java.util.Map;
 import java.util.Set;
 
 import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ADMIN_USER_PAYMENTS;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class responsible for keeping list of possible commands and their access type
+ */
 public class SecurityConfiguration {
     private static final SecurityConfiguration SECURITY_CONFIGURATION = new SecurityConfiguration();
 
