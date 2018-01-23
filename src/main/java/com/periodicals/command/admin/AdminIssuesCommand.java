@@ -28,7 +28,7 @@ public class AdminIssuesCommand extends PagedCommand<PeriodicalIssue> {
     protected PaginationInfoHolder<PeriodicalIssue> getPaginationInfoHolderInstance(HttpServletRequest request) {
         if (CommandUtils.paramClarifiedInQuery(request, "periodical")) {
             String periodicalIdParam = request.getParameter("periodical");
-            if (UUIDHelper.checkIsUUID(periodicalIdParam)) {
+            if (UUIDHelper.isUUID(periodicalIdParam)) {
                 UUID periodicalId = UUID.fromString(periodicalIdParam);
                 return getIssuesPaginationInfoHolder(request, periodicalId);
             }

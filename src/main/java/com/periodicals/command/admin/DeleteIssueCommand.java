@@ -26,11 +26,11 @@ public class DeleteIssueCommand implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         if (CommandUtils.isPostMethod(request)) {
             if (CommandUtils.paramClarifiedInQuery(request, "id")) {
-                String userIdParam = request.getParameter("id");
-                if (UUIDHelper.checkIsUUID(userIdParam)) {
+                String issueIdParam = request.getParameter("id");
+                if (UUIDHelper.isUUID(issueIdParam)) {
                     try {
                         periodicalIssueService.deleteEntity(
-                                UUID.fromString(userIdParam)
+                                UUID.fromString(issueIdParam)
                         );
                         request.setAttribute("resultMessage", "Successfully deleted issue");
                     } catch (Exception e) {

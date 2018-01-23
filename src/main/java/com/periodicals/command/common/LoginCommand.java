@@ -6,7 +6,7 @@ import com.periodicals.command.util.CommandUtils;
 import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
 import com.periodicals.services.LoginService;
-import com.periodicals.services.lookup.RoleService;
+import com.periodicals.services.lookups.RoleService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
 import org.apache.log4j.Logger;
 
@@ -51,7 +51,7 @@ public class LoginCommand implements Command {
             };
 
             if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
-                User user = loginService.getUserIfVerified(login, password);
+                User user = loginService.getUserByCredentials(login, password);
                 if (Objects.nonNull(user)) {
                     this.setUserSession(request, user);
                     return new CommandResult(REDIRECT, this.getUserRedirectPageByRole(user));

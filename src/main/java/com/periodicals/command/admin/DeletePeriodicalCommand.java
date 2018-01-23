@@ -27,7 +27,7 @@ public class DeletePeriodicalCommand implements Command {
         if (CommandUtils.isPostMethod(request)) {
             if (CommandUtils.paramClarifiedInQuery(request, "id")) {
                 String periodicalIdParam = request.getParameter("id");
-                if(UUIDHelper.checkIsUUID(periodicalIdParam)){
+                if(UUIDHelper.isUUID(periodicalIdParam)){
                     try {
                         periodicalService.deleteEntity(
                                 UUID.fromString(periodicalIdParam)

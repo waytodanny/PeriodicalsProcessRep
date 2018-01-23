@@ -6,32 +6,36 @@ import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.PeriodicalIssue;
 import com.periodicals.entities.User;
-import com.periodicals.services.entity.PeriodicalIssueService;
-import com.periodicals.services.entity.SubscriptionsService;
-import com.periodicals.services.util.PageableCollectionService;
+import com.periodicals.services.SubscriptionService;
+import com.periodicals.services.entities.PeriodicalIssueService;
+import com.periodicals.services.interfaces.PageableCollectionService;
+import com.periodicals.utils.uuid.UUIDHelper;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ADMIN_PERIODICAL_ISSUES;
 import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_PERIODICAL;
-import static com.periodicals.utils.resourceHolders.PagesHolder.PERIODICAL_ISSUES_PAGE;
 
 public class DisplayPeriodicalIssuesCommand extends PagedCommand<PeriodicalIssue> {
-    private static final int RECORDS_PER_PAGE = 10;
-
     private PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
-    private SubscriptionsService subscriptionsService = SubscriptionsService.getInstance();
+    private SubscriptionService subscriptionService = SubscriptionService.getInstance();
 
     @Override
     public PaginationInfoHolder<PeriodicalIssue> getPaginationInfoHolderInstance(HttpServletRequest request) {
-        User currentUser = AuthenticationHelper.getUserFromSession(request.getSession());
+        HttpSession session = request.getSession();
+        User currentUser = AuthenticationHelper.getUserFromSession(session);
 
         if (Objects.nonNull(currentUser) && CommandUtils.paramClarifiedInQuery(request, ATTR_PERIODICAL)) {
-            UUID periodicalId = UUID.fromString(request.getParameter(ATTR_PERIODICAL));
-            if (subscriptionsService.isSubscribed(currentUser, periodicalId)) {
-                return getPeriodicalIssuesPaginationInfoHolder(request, periodicalId);
+            String periodicalIdParameter = request.getParameter(ATTR_PERIODICAL);
+            if (UUIDHelper.isUUID(periodicalIdParameter)) {
+                UUID periodicalId = UUID.fromString(periodicalIdParameter);
+                if (subscriptionService.getIsUserSubscribedForPeriodical(currentUser.getId(), periodicalId)) {
+                    return getPeriodicalIssuesPaginationInfoHolder(request, periodicalId);
+                }
             }
         }
         return null;
@@ -44,7 +48,7 @@ public class DisplayPeriodicalIssuesCommand extends PagedCommand<PeriodicalIssue
 
     @Override
     protected String getPageHrefTemplate() {
-        return null;
+        return ADMIN_PERIODICAL_ISSUES;
     }
 
     private PaginationInfoHolder<PeriodicalIssue> getPeriodicalIssuesPaginationInfoHolder(HttpServletRequest request, UUID periodicalId) {
@@ -53,15 +57,15 @@ public class DisplayPeriodicalIssuesCommand extends PagedCommand<PeriodicalIssue
         int currentPage = PaginationInfoHolder.getPageFromRequest(request);
         holder.setCurrentPage(currentPage);
 
-        int recordsCount = periodicalIssueService.getPeriodicalIssuesCount(periodicalId);
+        int recordsCount = periodicalIssueService.getIssuesByPeriodicalCount(periodicalId);
         holder.setRecordsCount(recordsCount);
-        holder.setRecordsPerPage(RECORDS_PER_PAGE);
+        holder.setRecordsPerPage(this.getRecordsPerPage());
 
-        List<PeriodicalIssue> displayedObjects = periodicalIssueService.getPeriodicalIssuesLimited
-                (periodicalId, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
+        List<PeriodicalIssue> displayedObjects = periodicalIssueService.getIssuesByPeriodicalListBounded
+                (holder.getSkippedRecordsCount(), holder.getRecordsPerPage(), periodicalId);
         holder.setDisplayedObjects(displayedObjects);
 
-        holder.setPageHrefTemplate(PERIODICAL_ISSUES_PAGE + "?periodical=" + periodicalId);
+        holder.setPageHrefTemplate(this.getPageHrefTemplate() + "?periodical=" + periodicalId);
 
         return holder;
     }

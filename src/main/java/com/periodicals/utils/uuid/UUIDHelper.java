@@ -14,7 +14,7 @@ public class UUIDHelper {
         return Generators.timeBasedGenerator().generate();
     }
 
-    public static boolean checkIsUUID(String str){
+    public static boolean isUUID(String str){
         Pattern pattern = Pattern.compile("[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}");
         Matcher matcher = pattern.matcher(str);
         return matcher.matches();

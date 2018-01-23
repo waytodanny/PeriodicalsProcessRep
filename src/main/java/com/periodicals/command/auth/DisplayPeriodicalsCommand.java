@@ -4,8 +4,9 @@ import com.periodicals.command.util.CommandUtils;
 import com.periodicals.command.util.PagedCommand;
 import com.periodicals.command.util.PaginationInfoHolder;
 import com.periodicals.entities.Periodical;
-import com.periodicals.services.entity.PeriodicalService;
-import com.periodicals.services.util.PageableCollectionService;
+import com.periodicals.services.entities.PeriodicalService;
+import com.periodicals.services.interfaces.PageableCollectionService;
+import com.periodicals.utils.uuid.UUIDHelper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -14,23 +15,20 @@ import java.util.UUID;
 import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_GENRE;
 import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
 
-public class CatalogCommand extends PagedCommand<Periodical> {
-    private static final int RECORDS_PER_PAGE = 10;
+// TODO НЕ ВЫВОДИТЬ КНОПКУ ПОКУПКИ ДЛЯ ИЗДАНИЙ, НА КОТОРЫЕ ПОЛЬЗОВАТЕЛЬ УЖЕ ПОДПИСАН
 
+public class DisplayPeriodicalsCommand extends PagedCommand<Periodical> {
     private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
 
     @Override
     public PaginationInfoHolder<Periodical> getPaginationInfoHolderInstance(HttpServletRequest request) {
-        try {
-            if (CommandUtils.paramClarifiedInQuery(request, ATTR_GENRE)) {
-                UUID genreId = UUID.fromString(request.getParameter(ATTR_GENRE));
-                return getPeriodicalsByGenrePaginationInfoHolder(request, genreId);
+        if (CommandUtils.paramClarifiedInQuery(request, ATTR_GENRE)) {
+            String genreId = request.getParameter(ATTR_GENRE);
+            if (UUIDHelper.isUUID(genreId)) {
+                return getPeriodicalsByGenrePaginationInfoHolder(request, UUID.fromString(genreId));
             }
-            return super.getPaginationInfoHolderInstance(request);
-
-        } catch (IllegalArgumentException e) {
-            return super.getPaginationInfoHolderInstance(request);
         }
+        return super.getPaginationInfoHolderInstance(request);
     }
 
     @Override
@@ -38,7 +36,6 @@ public class CatalogCommand extends PagedCommand<Periodical> {
         return periodicalService;
     }
 
-    /*TODO  no query params?*/
     @Override
     protected String getPageHrefTemplate() {
         return CATALOG_PAGE;
@@ -57,13 +54,13 @@ public class CatalogCommand extends PagedCommand<Periodical> {
 
         int recordsCount = periodicalService.getPeriodicalsByGenreCount(genreId);
         holder.setRecordsCount(recordsCount);
-        holder.setRecordsPerPage(RECORDS_PER_PAGE);
+        holder.setRecordsPerPage(this.getRecordsPerPage());
 
         List<Periodical> displayedObjects = periodicalService.getPeriodicalsByGenreListBounded(
-                genreId, holder.getSkippedRecordsCount(), holder.getRecordsPerPage());
+                holder.getSkippedRecordsCount(), holder.getRecordsPerPage(), genreId);
         holder.setDisplayedObjects(displayedObjects);
 
-        holder.setPageHrefTemplate(CATALOG_PAGE + "?genre=" + genreId);
+        holder.setPageHrefTemplate(this.getPageHrefTemplate() + "?genre=" + genreId);
 
         return holder;
     }

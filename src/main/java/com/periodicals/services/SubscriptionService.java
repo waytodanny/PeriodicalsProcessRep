@@ -7,6 +7,7 @@ import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.services.entities.PeriodicalService;
 import com.periodicals.services.entities.UserService;
+import com.periodicals.services.interfaces.PageableCollectionService;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.UUID;
  * <p>
  * Service responsible for providing information about user subscriptions
  */
-public class SubscriptionService {
+public class SubscriptionService extends PeriodicalService {
     private static final Logger LOGGER = Logger.getLogger(SubscriptionService.class.getSimpleName());
 
     private static final SubscriptionService subscriptionService = new SubscriptionService();

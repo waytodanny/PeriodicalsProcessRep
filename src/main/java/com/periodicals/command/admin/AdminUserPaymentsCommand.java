@@ -28,7 +28,7 @@ public class AdminUserPaymentsCommand extends PagedCommand<Payment> {
     public PaginationInfoHolder<Payment> getPaginationInfoHolderInstance(HttpServletRequest request) {
         if (CommandUtils.paramClarifiedInQuery(request, "user")) {
             String userIdParam = request.getParameter("user");
-            if (UUIDHelper.checkIsUUID(userIdParam)) {
+            if (UUIDHelper.isUUID(userIdParam)) {
                 UUID userId = UUID.fromString(request.getParameter("user"));
                 return getUserPaymentsPaginationInfoHolder(request, userId);
             }

@@ -1,7 +1,7 @@
 package com.periodicals.authentification;
 
 import com.periodicals.entities.User;
-import com.periodicals.services.lookup.RoleService;
+import com.periodicals.services.lookups.RoleService;
 
 import javax.servlet.http.HttpSession;
 import java.util.Objects;

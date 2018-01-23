@@ -30,7 +30,7 @@ public class LoginService {
     /**
      * @return user object from DB if it has been verified or null if not
      */
-    public User getUserByLogin(String login, String password) {
+    public User getUserByCredentials(String login, String password) {
         User user = null;
         try {
             user = usersDao.getUserByLogin(login);

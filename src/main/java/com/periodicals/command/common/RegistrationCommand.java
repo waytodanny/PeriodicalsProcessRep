@@ -4,8 +4,8 @@ import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.command.util.CommandUtils;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.services.lookup.RoleService;
-import com.periodicals.services.entity.UserService;
+import com.periodicals.services.entities.UserService;
+import com.periodicals.services.lookups.RoleService;
 import com.periodicals.utils.propertyManagers.LanguagePropsManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +27,7 @@ public class RegistrationCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        if(CommandUtils.isPostMethod(request)) {
+        if (CommandUtils.isPostMethod(request)) {
             //String referer = CommandUtils.getRefererWithoutServletPath(request);
 
             Locale locale = request.getLocale();

@@ -5,7 +5,7 @@ import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
 import com.periodicals.entities.User;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.services.entity.SubscriptionsService;
+import com.periodicals.services.entities.PaymentService;
 import com.periodicals.utils.entities.Cart;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import static com.periodicals.command.util.RedirectType.REDIRECT;
 import static com.periodicals.utils.resourceHolders.PagesHolder.LOGIN_PAGE;
 
 public class ProcessSubscriptionCommand implements Command {
-    private SubscriptionsService subscriptionsService = SubscriptionsService.getInstance();
+    private PaymentService paymentService = PaymentService.getInstance();
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -31,10 +31,16 @@ public class ProcessSubscriptionCommand implements Command {
         if (Objects.nonNull(cart)) {
             try {
                 User user = AuthenticationHelper.getUserFromSession(session);
-                subscriptionsService.processSubscriptions(user, cart.getItems(), cart.getTotalValue());
-//                    request.setAttribute("resultMessage", "Successfully processed subscriptions");
+                if (Objects.nonNull(user)) {
+                    paymentService.createEntity(
+                            user,
+                            cart.getTotalValue(),
+                            cart.getItems()
+                    );
+                    request.setAttribute("resultMessage", "Successfully processed subscriptions");
+                }
             } catch (ServiceException e) {
-//                    request.setAttribute("resultMessage", "Failed to process subscriptions");
+                request.setAttribute("resultMessage", "Failed to process subscriptions");
             } finally {
                 cart.cleanUp();
             }

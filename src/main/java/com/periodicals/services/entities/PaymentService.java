@@ -9,14 +9,13 @@ import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
+import com.periodicals.utils.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author Daniel Volnitsky
@@ -66,16 +65,17 @@ public class PaymentService implements PageableCollectionService<Payment>, Looku
      *
      * @param periodicals list of periodicals that were included in payment
      */
-    public void createEntity(Timestamp paymentTime, UUID userId, BigDecimal paymentSum, List<UUID> periodicals)
+    public void createEntity(User user, BigDecimal paymentSum, List<Periodical> periodicals)
             throws ServiceException {
         try {
             Payment added = new Payment();
-            UUID id = UUID.randomUUID();
+            UUID id = UUIDHelper.generateSequentialUuid();
 
             added.setId(id);
-            added.setPaymentTime(paymentTime);
+            added.setPaymentTime(new Timestamp(System.currentTimeMillis()));
             added.setPaymentSum(paymentSum);
 
+            /*
             User addedUser = userService.getEntityByPrimaryKey(userId);
             if (Objects.nonNull(addedUser)) {
                 added.setUser(addedUser);
@@ -92,7 +92,9 @@ public class PaymentService implements PageableCollectionService<Payment>, Looku
                     throw new NullPointerException("Periodical with id " + periodicalId + " doesn't exist");
                 }
             }
-            added.setPeriodicals(addedPeriodicals);
+            */
+
+            added.setPeriodicals(periodicals);
             paymentsDao.createEntity(added);
             LOGGER.debug("Payment with id " + id + " has been successfully created");
         } catch (DaoException | NullPointerException e) {
@@ -134,7 +136,7 @@ public class PaymentService implements PageableCollectionService<Payment>, Looku
         try {
             User user = userService.getEntityByPrimaryKey(userId);
             if (Objects.nonNull(user)) {
-                entities = paymentsDao.getUserPaymentsListBounded(skip, limit, user);
+                entities = paymentsDao.getPaymentsByUserListBounded(skip, limit, user);
                 LOGGER.debug("Obtained payments bounded list with userId " + userId);
             } else {
                 throw new NullPointerException("User with id " + userId + " doesn't exist");
@@ -154,7 +156,7 @@ public class PaymentService implements PageableCollectionService<Payment>, Looku
         try {
             User user = userService.getEntityByPrimaryKey(userId);
             if (Objects.nonNull(user)) {
-                result = paymentsDao.getUserPaymentsCount(user);
+                result = paymentsDao.getPaymentsByUserCount(user);
                 LOGGER.debug("Obtained payments list count with userId " + userId);
             } else {
                 throw new NullPointerException("User with id " + userId + " doesn't exist");
