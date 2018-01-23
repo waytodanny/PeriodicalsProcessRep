@@ -4,33 +4,42 @@ import com.periodicals.entities.util.Identified;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.UUID;
 
-public class Periodical implements Identified<Integer> {
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents periodical of some genre published by some publisher
+ * @see Genre
+ * @see Publisher
+ */
+public class Periodical implements Identified<UUID> {
     private static final int PERIODICAL_NAME_MAX_LENGTH = 100;
     private static final int PERIODICAL_DESCRIPTION_MAX_LENGTH = 1000;
 
-    private Integer id;
+    private UUID id;
     private String name;
     private String description;
     private BigDecimal subscriptionCost;
-    private short issuesPerYear;
+    private int issuesPerYear;
+
+    /**
+     * Variable that shows whether periodical is limited or not
+     */
     private boolean isLimited;
-    private Short genreId;
-    private Integer publisherId;
+    private Genre genre;
+    private Publisher publisher;
 
     public Periodical() {
 
     }
 
     @Override
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) throws IllegalArgumentException{
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
-        }
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -38,7 +47,7 @@ public class Periodical implements Identified<Integer> {
         return name;
     }
 
-    public void setName(String name) throws IllegalArgumentException{
+    public void setName(String name) throws IllegalArgumentException {
         if (Objects.isNull(name) || name.length() > PERIODICAL_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(
                     "periodical name must not be null and have length less than : " + PERIODICAL_NAME_MAX_LENGTH);
@@ -50,7 +59,7 @@ public class Periodical implements Identified<Integer> {
         return description;
     }
 
-    public void setDescription(String description) throws IllegalArgumentException{
+    public void setDescription(String description) throws IllegalArgumentException {
         if (Objects.isNull(name) || name.length() > PERIODICAL_DESCRIPTION_MAX_LENGTH) {
             throw new IllegalArgumentException(
                     "periodical description must not be null and have length less than : " + PERIODICAL_DESCRIPTION_MAX_LENGTH);
@@ -67,18 +76,18 @@ public class Periodical implements Identified<Integer> {
         this.subscriptionCost = subscriptionCost;
     }
 
-    public short getIssuesPerYear() {
+    public int getIssuesPerYear() {
         return issuesPerYear;
     }
 
-    public void setIssuesPerYear(short issuesPerYear) throws IllegalArgumentException{
+    public void setIssuesPerYear(int issuesPerYear) {
         if (issuesPerYear < 0) {
             throw new IllegalArgumentException("number of issues per year must be positive number");
         }
         this.issuesPerYear = issuesPerYear;
     }
 
-    public boolean isLimited() {
+    public boolean getIsLimited() {
         return isLimited;
     }
 
@@ -86,22 +95,20 @@ public class Periodical implements Identified<Integer> {
         isLimited = limited;
     }
 
-    public Short getGenreId() {
-        return genreId;
+    public Genre getGenre() {
+        return genre;
     }
 
-    /*TODO decide whether is right to check here*/
-    public void setGenreId(Short genreId) {
-        this.genreId = genreId;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
-    public Integer getPublisherId() {
-        return publisherId;
+    public Publisher getPublisher() {
+        return publisher;
     }
 
-    /*TODO decide whether is right to check here*/
-    public void setPublisherId(Integer publisherId) {
-        this.publisherId = publisherId;
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     @Override
@@ -115,13 +122,12 @@ public class Periodical implements Identified<Integer> {
                 Objects.equals(name, that.name) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(subscriptionCost, that.subscriptionCost) &&
-                Objects.equals(genreId, that.genreId) &&
-                Objects.equals(publisherId, that.publisherId);
+                Objects.equals(genre, that.genre) &&
+                Objects.equals(publisher, that.publisher);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name, description, subscriptionCost, issuesPerYear, isLimited, genreId, publisherId);
+        return Objects.hash(id, name, description, subscriptionCost, issuesPerYear, isLimited, genre, publisher);
     }
 }

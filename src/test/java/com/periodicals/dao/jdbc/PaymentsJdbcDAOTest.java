@@ -3,7 +3,7 @@
 //import com.periodicals.exceptions.DaoException;
 //import com.periodicals.dao.factories.JdbcDAOFactory;
 //import com.periodicals.entities.Payment;
-//import dbTestHelpers.InMemoryDbManager;
+//import util.InMemoryDbManager;
 //import org.apache.log4j.LogManager;
 //import org.apache.log4j.Logger;
 //import org.apache.log4j.xml.DOMConfigurator;
@@ -39,7 +39,7 @@
 //            inmManager.insertDefaultData();
 //
 //            testPerIds = new ArrayList<>();
-//            testPerIds.add(1); testPerIds.add(2); testPerIds.add(3);
+//            testPerIds.addNewIssue(1); testPerIds.addNewIssue(2); testPerIds.addNewIssue(3);
 //            testPayment = new Payment(2, 20.5);
 //            testPayment.setPeriodicalsId(testPerIds);
 //
@@ -65,7 +65,7 @@
 //        try {
 //            conn = inmManager.getConnection();
 //            paymentsDao = (PaymentsJdbcDAO) JdbcDAOFactory.getInstance().getPaymentsDao();
-//            insertedPayment = paymentsDao.getByKey(INSERTED_KEY);
+//            insertedPayment = paymentsDao.getById(INSERTED_KEY);
 //            insertedPayment.setPeriodicalsId(paymentsDao.getPaymentPeriodicals(insertedPayment.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
@@ -88,17 +88,17 @@
 //    @Test
 //    void addPayment() {
 //        try {
-//            paymentsDao.add(testPayment);
+//            paymentsDao.addNewIssue(testPayment);
 //            assertTrue(testPayment.getId() != 0);
 //
-//            samePaymentFromDB = paymentsDao.getByKey(testPayment.getId());
+//            samePaymentFromDB = paymentsDao.getById(testPayment.getId());
 //
 //            assertNotNull(samePaymentFromDB);
 //
 //            testPayment.setPaymentTime(samePaymentFromDB.getPaymentTime());
 //            assertEquals(samePaymentFromDB, testPayment);
 //
-//            assertTrue(paymentsDao.delete(testPayment.getId()));
+//            assertTrue(paymentsDao.deletePeriodicalById(testPayment.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -108,7 +108,7 @@
 //    @Test
 //    void addNullablePayment() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.add(null);
+//            paymentsDao.addNewIssue(null);
 //        });
 //    }
 //
@@ -116,19 +116,19 @@
 //    void addPaymentWithNonNullKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
 //            testPayment.setId(INSERTED_KEY);
-//            paymentsDao.add(testPayment);
+//            paymentsDao.addNewIssue(testPayment);
 //        });
 //    }
 //
 //    @Test
 //    void addSamePaymentTwice() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.add(testPayment);
-//            paymentsDao.add(testPayment);
+//            paymentsDao.addNewIssue(testPayment);
+//            paymentsDao.addNewIssue(testPayment);
 //        });
 //
 //        try {
-//            assertTrue(paymentsDao.delete(testPayment.getId()));
+//            assertTrue(paymentsDao.deletePeriodicalById(testPayment.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -138,7 +138,7 @@
 //    @Test
 //    void getByValidPK() {
 //        try {
-//            samePaymentFromDB = paymentsDao.getByKey(insertedPayment.getId());
+//            samePaymentFromDB = paymentsDao.getById(insertedPayment.getId());
 //
 //            assertNotNull(samePaymentFromDB);
 //            assertEquals(samePaymentFromDB, insertedPayment);
@@ -151,24 +151,24 @@
 //    @Test
 //    void getByInvalidPK() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.getByKey(INVALID_PK);
+//            paymentsDao.getById(INVALID_PK);
 //        });
 //    }
 //
 //    @Test
 //    void getByNullableKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.getByKey(null);
+//            paymentsDao.getById(null);
 //        });
 //    }
 //
 //    @Test
 //    void deleteExistingPayment() {
 //        try {
-//            paymentsDao.add(testPayment);
+//            paymentsDao.addNewIssue(testPayment);
 //            assertTrue(testPayment.getId() != 0);
 //
-//            boolean deleted = paymentsDao.delete(testPayment.getId());
+//            boolean deleted = paymentsDao.deletePeriodicalById(testPayment.getId());
 //            assertTrue(deleted);
 //        } catch (DaoException e) {
 //            e.printStackTrace();
@@ -179,7 +179,7 @@
 //    @Test
 //    void deleteNonExistingPayment() {
 //        try {
-//            assertFalse(paymentsDao.delete(nonExistingPayment.getId()));
+//            assertFalse(paymentsDao.deletePeriodicalById(nonExistingPayment.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -189,7 +189,7 @@
 //    @Test
 //    void deleteNullablePayment() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.delete(null);
+//            paymentsDao.deletePeriodicalById(null);
 //        });
 //    }
 //
@@ -197,7 +197,7 @@
 //    void deleteNotIdentifiedPayment() {
 //        assertNull(testPayment.getId());
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            paymentsDao.delete(testPayment.getId());
+//            paymentsDao.deletePeriodicalById(testPayment.getId());
 //        });
 //    }
 //
@@ -244,7 +244,7 @@
 //    @Test
 //    void addPaymentPeriodicals(){
 //        try {
-//            paymentsDao.add(testPayment);
+//            paymentsDao.addNewIssue(testPayment);
 //            assertNotNull(testPayment.getId());
 //
 //            paymentsDao.addPaymentPeriodicals(testPayment);
@@ -257,7 +257,7 @@
 //            assertEquals(testPerIds, resultIds);
 //
 //            paymentsDao.deletePaymentPeriodicals(testPayment.getId());
-//            paymentsDao.delete(testPayment.getId());
+//            paymentsDao.deletePeriodicalById(testPayment.getId());
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());

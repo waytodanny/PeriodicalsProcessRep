@@ -10,76 +10,107 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-import static com.periodicals.utils.AttributesHolder.PAGE_SUFFIX;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.COMMAND;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.PAGE_SUFFIX;
+import static com.periodicals.utils.resourceHolders.PagesHolder.ERROR_PAGE;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Filter that:
+ * 1) checks incoming request;
+ * 2) pulls out command value;
+ * 3) due to command access level decides what to do with request.
+ * Uses SecurityConfiguration class to get commands access levels
+ * @see SecurityConfiguration
+ * @see com.periodicals.command.util.Command
+ */
 @WebFilter(urlPatterns = {"/*"})
 public class AccessFilter implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+        SecurityConfiguration securityConfiguration = SecurityConfiguration.getInstance();
 
-        SecurityConfiguration config = SecurityConfiguration.getInstance();
+        String requestURI = this.getCorrectedRequestURI(request);
+        String command = this.getCommandFromRequestURI(requestURI, securityConfiguration);
+        String securityType = securityConfiguration.getCommandSecurityType(command);
 
-        String path = getCorrectPath(request);
-        String command = getStringCommand(path, config.getEndPoints());
-        String securityType = config.getSecurityType(command);
-
-        if ("ALL".equals(securityType)) {
-            request.setAttribute("command", command);
-            filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        }
-        if ("AUTH".equals(securityType)) {
-            boolean loggedIn = AuthenticationHelper.isUserLoggedIn(request.getSession());
-            if (loggedIn) {
-                request.setAttribute("command", command);
+        switch (securityType) {
+            case "ALL":
+                request.setAttribute(COMMAND, command);
                 filterChain.doFilter(servletRequest, servletResponse);
-                return;
-            }
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            return;
+                break;
 
+            case "AUTH":
+                if (AuthenticationHelper.isUserLoggedIn(request.getSession())) {
+                    request.setAttribute(COMMAND, command);
+                    filterChain.doFilter(servletRequest, servletResponse);
+                } else {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.sendRedirect(ERROR_PAGE);
+                }
+                break;
+
+            case "ADMIN":
+                if (AuthenticationHelper.isSessionUserAdmin(request.getSession())) {
+                    request.setAttribute(COMMAND, command);
+                    filterChain.doFilter(servletRequest, servletResponse);
+                } else {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.sendRedirect(ERROR_PAGE);
+                }
+                break;
+
+            default:
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.sendRedirect(ERROR_PAGE);
         }
-        if ("ADMIN".equals(securityType)) {
-            boolean isAdmin = AuthenticationHelper.isAdmin(request.getSession());
-            if (isAdmin) {
-                request.setAttribute("command", command);
-                filterChain.doFilter(servletRequest, servletResponse);
-                return;
-            }
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            return;
-        }
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
-    private String getCorrectPath(HttpServletRequest request) {
-        String path = request.getRequestURI();
-        String perId = request.getParameter("periodical");
+    /**
+     * Method reorganize incoming URI from request in
+     * understandable for Command seeking method state
+     *
+     * @see this.getCommandFromRequestURI
+     */
+    private String getCorrectedRequestURI(HttpServletRequest request) {
+        String requestURI = request.getRequestURI();
+        if (requestURI != null && !requestURI.isEmpty()) {
+            requestURI = requestURI.toLowerCase();
 
-        if (path == null) {
-            path = "/";
+            /*gets rid of pages suffix*/
+            if (requestURI.endsWith(PAGE_SUFFIX)) {
+                requestURI = requestURI.substring(0, requestURI.lastIndexOf(PAGE_SUFFIX));
+            }
+            /*gets rid of pages last '/' character*/
+            if (requestURI.endsWith("/")) {
+                requestURI = requestURI.substring(0, requestURI.lastIndexOf("/"));
+            }
         } else {
-            path = path.toLowerCase();
-            int index = path.lastIndexOf(PAGE_SUFFIX);
-            if (index != -1 && index + PAGE_SUFFIX.length() == path.length()) {
-                path = path.substring(0, index);
-            }
+            requestURI = "/";
         }
-        return path;
+        return requestURI;
     }
 
-    /**TODO ЗАМЕНИТЬ НА ПРОВЕРКУ ОКРУЖЕНИЯ ЭНДПОИНТА СЛЕШАМИ*/
-    private String getStringCommand(String path, Set<String> endPoints) {
+    /**
+     * Finds command in requested path in possible command list
+     *
+     * @see SecurityConfiguration
+     */
+    private String getCommandFromRequestURI(String path, SecurityConfiguration securityConfiguration) {
+        Set<String> endPoints = securityConfiguration.getEndPoints();
         for (String endPoint : endPoints) {
-            if (path.contains(endPoint))
+            if (path.endsWith(endPoint))
                 return endPoint;
         }
         return null;

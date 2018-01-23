@@ -1,9 +1,10 @@
 package com.periodicals.dao.interfaces;
 
-import com.periodicals.dao.interfaces.GenericDao;
 import com.periodicals.entities.Genre;
 import com.periodicals.exceptions.DaoException;
 
-public interface GenresDao extends GenericDao<Genre, Short> {
+import java.util.UUID;
+
+public interface GenresDao extends GenericDao<Genre, UUID> {
     Genre getGenreByName(String name) throws DaoException;
 }

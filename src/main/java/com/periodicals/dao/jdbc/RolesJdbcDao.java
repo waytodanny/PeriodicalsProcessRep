@@ -1,55 +1,71 @@
 package com.periodicals.dao.jdbc;
 
-import com.periodicals.dao.connection.ConnectionManager;
-import com.periodicals.dao.connection.ConnectionWrapper;
 import com.periodicals.dao.interfaces.RolesDao;
 import com.periodicals.entities.Role;
 import com.periodicals.exceptions.DaoException;
+import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
-public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDao {
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
+
+public class RolesJdbcDao extends AbstractJdbcDao<Role, UUID> implements RolesDao {
+    private static final String ID = AttributesPropertyManager.getProperty("role.id");
+    private static final String NAME = AttributesPropertyManager.getProperty("role.name");
 
     @Override
-    protected String getSelectQuery() {
-        return "SELECT id, name FROM roles ";
+    public Role getEntityByPrimaryKey(UUID key) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_ID, key.toString());
     }
 
     @Override
-    protected String getInsertQuery() {
-        return "INSERT INTO roles (name) VALUES (?);";
+    public void createEntity(Role role) throws DaoException {
+        super.insert(ROLE_INSERT, getInsertObjectParams(role));
     }
 
     @Override
-    protected String getUpdateQuery() {
-        return "UPDATE roles SET name = ? WHERE id = ?;";
+    public void updateEntity(Role role) throws DaoException {
+        super.update(USER_UPDATE, getObjectUpdateParams(role));
     }
 
     @Override
-    protected String getDeleteQuery() {
-        return "DELETE FROM roles WHERE id = ?;";
+    public void deleteEntity(UUID key) throws DaoException {
+        super.delete(USER_DELETE, key);
     }
 
     @Override
-    protected Byte getGeneratedKey(ResultSet rs) throws DaoException {
-        try {
-            if (rs.next())
-                return rs.getByte(1);
-
-            throw new SQLException("entry was not written in DB");
-        } catch (SQLException e) {
-            throw new DaoException("No keys were generated: " + e.getMessage());
-        }
+    public List<Role> getEntityCollection() throws DaoException {
+        return super.selectObjects(ROLE_SELECT_ALL);
     }
 
     @Override
-    protected void setGeneratedKey(Role role, Byte genId) throws IllegalArgumentException {
-        role.setId(genId);
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(ROLE_ENTRIES_COUNT);
+    }
+
+    @Override
+    public Role getByName(String name) throws DaoException {
+        return super.selectObject(ROLE_SELECT_BY_NAME, name);
+    }
+
+    @Override
+    protected Object[] getInsertObjectParams(Role role) throws DaoException {
+        return new Object[]{
+                role.getId().toString(),
+                role.getName()
+        };
+    }
+
+    @Override
+    protected Object[] getObjectUpdateParams(Role role) throws DaoException {
+        return new Object[]{
+                role.getName(),
+                role.getId().toString()
+        };
     }
 
     @Override
@@ -58,8 +74,8 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
         try {
             while (rs.next()) {
                 Role role = new Role();
-                role.setId(rs.getByte("id"));
-                role.setName(rs.getString("name"));
+                role.setId(UUID.fromString(rs.getString(ID)));
+                role.setName(rs.getString(NAME));
 
                 result.add(role);
             }
@@ -69,47 +85,8 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, Byte> implements RolesDa
         return result;
     }
 
-    @Override
-    protected void prepareStatementForInsert(PreparedStatement stmt, Role role) throws DaoException {
-        try {
-            stmt.setString(1, role.getName());
-        } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
-        }
-    }
-
-    @Override
-    protected void prepareStatementForUpdate(PreparedStatement stmt, Role role) throws DaoException {
-        try {
-            stmt.setString(1, role.getName());
-            stmt.setLong(2, role.getId());
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public Role getByName(String name) throws DaoException {
-        if (Objects.isNull(name)) {
-            log.error("Attempt to get user by nullable login");
-            throw new DaoException("Attempt to get user by nullable login");
-        }
-
-        String sqlQuery = getSelectQuery() + " WHERE name = ?";
-
-        log.debug("Trying to get role by name");
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
-
-            stmt.setObject(1, name);
-
-            log.debug("Trying to execute select query");
-            ResultSet rs = stmt.executeQuery();
-
-            return parseResultSet(rs).iterator().next();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e.getMessage());
-        }
-    }
+//    @Override
+//    protected Byte getGeneratedKey(ResultSet rs) throws SQLException {
+//        return rs.getByte(1);
+//    }
 }

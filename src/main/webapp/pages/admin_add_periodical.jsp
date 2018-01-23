@@ -67,7 +67,7 @@
 
 <script>
     $(document).ready(function () {
-        $(document).on("click", "#add-btn", function () {
+        $(document).on("click", "#addNewIssue-btn", function () {
             var parent = $("body");
             var selectGenre = $(parent).find('.genres_dd_list').val();
             var selectPublisher = $(parent).find('.publishers_dd_list').val();

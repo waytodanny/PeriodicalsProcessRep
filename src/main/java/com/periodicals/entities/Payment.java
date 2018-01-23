@@ -4,36 +4,30 @@ import com.periodicals.entities.util.Identified;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
-public class Payment implements Identified<Long> {
-    private Long id;
+/**
+ * @author Daniel Volnitsky
+ *
+ * Class that represents payment made by some user purchasing some periodicals
+ * @see User
+ * @see Periodical
+ */
+public class Payment implements Identified<UUID> {
+    private UUID id;
     private Timestamp paymentTime;
-    private String userUuid;
+    private UUID userId;
     private BigDecimal paymentSum;
-    private List<Integer> periodicalIdList;
-
-    public Payment() {
-        periodicalIdList = new ArrayList<>();
-    }
-
-    public Payment(String userUuid, BigDecimal paymentSum) throws IllegalArgumentException {
-        this();
-        setUserUuid(userUuid);
-        setPaymentSum(paymentSum);
-    }
+    private List<Periodical> periodicals;
 
     @Override
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) throws IllegalArgumentException {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
-        }
+    public void setId(UUID id) throws IllegalArgumentException {
         this.id = id;
     }
 
@@ -48,13 +42,13 @@ public class Payment implements Identified<Long> {
         this.paymentTime = paymentTime;
     }
 
-    public String getUserId() {
-        return userUuid;
+    public UUID getUserId() {
+        return userId;
     }
 
     /*TODO decide whether is right to check here*/
-    public void setUserUuid(String userUuid) {
-        this.userUuid = userUuid;
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
     public BigDecimal getPaymentSum() {
@@ -68,12 +62,12 @@ public class Payment implements Identified<Long> {
         this.paymentSum = paymentSum;
     }
 
-    public List<Integer> getPeriodicalIdList() {
-        return periodicalIdList;
+    public List<Periodical> getPeriodicals() {
+        return periodicals;
     }
 
-    public void setPeriodicalIdList(List<Integer> periodicalIdList) {
-        this.periodicalIdList = periodicalIdList;
+    public void setPeriodicals(List<Periodical> periodicals) {
+        this.periodicals = periodicals;
     }
 
     @Override
@@ -83,13 +77,13 @@ public class Payment implements Identified<Long> {
         Payment payment = (Payment) o;
         return Objects.equals(id, payment.id) &&
                 Objects.equals(paymentTime, payment.paymentTime) &&
-                Objects.equals(userUuid, payment.userUuid) &&
+                Objects.equals(userId, payment.userId) &&
                 Objects.equals(paymentSum, payment.paymentSum) &&
-                Objects.equals(periodicalIdList, payment.periodicalIdList);
+                Objects.equals(periodicals, payment.periodicals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, paymentTime, userUuid, paymentSum, periodicalIdList);
+        return Objects.hash(id, paymentTime, userId, paymentSum, periodicals);
     }
 }

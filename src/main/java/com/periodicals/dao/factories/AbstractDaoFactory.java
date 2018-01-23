@@ -3,8 +3,9 @@ package com.periodicals.dao.factories;
 import com.periodicals.dao.interfaces.*;
 
 /**
- * @author Daniel Volnitsky
- * 24.12.2017
+ * @author Daniel Volnitsky 24.12.2017
+ *
+ * Abstract Dao factory that specifies getters for all Dao factory inheritors
  */
 public abstract class AbstractDaoFactory {
     public abstract RolesDao getRolesDao();

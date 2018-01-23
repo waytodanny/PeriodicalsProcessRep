@@ -3,7 +3,7 @@
 //import com.periodicals.entities.Genre;
 //import com.periodicals.exceptions.DaoException;
 //import com.periodicals.dao.factories.JdbcDaoFactory;
-//import dbTestHelpers.InMemoryDbManager;
+//import util.InMemoryDbManager;
 //import org.apache.log4j.LogManager;
 //import org.apache.log4j.Logger;
 //import org.apache.log4j.xml.DOMConfigurator;
@@ -57,7 +57,7 @@
 //        try {
 //            conn = inmManager.getConnection();
 //            genresDao = (GenresJdbcDao) JdbcDaoFactory.getInstance().getGenresDao();
-//            insertedGenre = genresDao.getByKey((short) 1);
+//            insertedGenre = genresDao.getById((short) 1);
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -79,15 +79,15 @@
 //    @Test
 //    void addPeriodicalGenre() {
 //        try {
-//            genresDao.add(testGenre);
+//            genresDao.addNewIssue(testGenre);
 //            assertTrue(testGenre.getId() != 0);
 //
-//            sameGenreFromDB = genresDao.getByKey(testGenre.getId());
+//            sameGenreFromDB = genresDao.getById(testGenre.getId());
 //
 //            assertNotNull(sameGenreFromDB);
 //            assertEquals(sameGenreFromDB, testGenre);
 //
-//            assertTrue(genresDao.delete(testGenre.getId()));
+//            assertTrue(genresDao.deletePeriodicalById(testGenre.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -97,7 +97,7 @@
 //    @Test
 //    void addNullablePeriodicalGenre() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            genresDao.add(null);
+//            genresDao.addNewIssue(null);
 //        });
 //    }
 //
@@ -105,19 +105,19 @@
 //    void addPeriodicalGenreWithNonNullKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
 //            testGenre.setId((short) 111);
-//            genresDao.add(testGenre);
+//            genresDao.addNewIssue(testGenre);
 //        });
 //    }
 //
 //    @Test
 //    void addSamePeriodicalGenreTwice() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            genresDao.add(testGenre);
-//            genresDao.add(testGenre);
+//            genresDao.addNewIssue(testGenre);
+//            genresDao.addNewIssue(testGenre);
 //        });
 //
 //        try {
-//            assertTrue(genresDao.delete(testGenre.getId()));
+//            assertTrue(genresDao.deletePeriodicalById(testGenre.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -127,7 +127,7 @@
 //    @Test
 //    void getByValidPK() {
 //        try {
-//            sameGenreFromDB = genresDao.getByKey(insertedGenre.getId());
+//            sameGenreFromDB = genresDao.getById(insertedGenre.getId());
 //
 //            assertNotNull(sameGenreFromDB);
 //            assertEquals(sameGenreFromDB, insertedGenre);
@@ -140,21 +140,21 @@
 //    @Test
 //    void getByInvalidPK() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            genresDao.getByKey((short) 111);
+//            genresDao.getById((short) 111);
 //        });
 //    }
 //
 //    @Test
 //    void getByNullableKey() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            genresDao.getByKey(null);
+//            genresDao.getById(null);
 //        });
 //    }
 //
 //    @Test
 //    void updateExistingPeriodicalGenre() {
 //        try {
-//            sameGenreFromDB = genresDao.getByKey(insertedGenre.getId());
+//            sameGenreFromDB = genresDao.getById(insertedGenre.getId());
 //            assertNotNull(sameGenreFromDB);
 //
 //            String newName = "marvel vol.4";
@@ -162,7 +162,7 @@
 //            sameGenreFromDB.setName(newName);
 //            genresDao.update(sameGenreFromDB);
 //
-//            sameGenreFromDB = genresDao.getByKey(insertedGenre.getId());
+//            sameGenreFromDB = genresDao.getById(insertedGenre.getId());
 //            assertNotEquals(sameGenreFromDB, insertedGenre);
 //            assertEquals(newName, sameGenreFromDB.getName());
 //
@@ -193,10 +193,10 @@
 //    @Test
 //    void deleteExistingPeriodicalGenre() {
 //        try {
-//            genresDao.add(testGenre);
+//            genresDao.addNewIssue(testGenre);
 //            assertTrue(testGenre.getId() != 0);
 //
-//            boolean deleted = genresDao.delete(testGenre.getId());
+//            boolean deleted = genresDao.deletePeriodicalById(testGenre.getId());
 //            assertTrue(deleted);
 //        } catch (DaoException e) {
 //            e.printStackTrace();
@@ -207,7 +207,7 @@
 //    @Test
 //    void deleteNonExistingPeriodicalGenre() {
 //        try {
-//            assertFalse(genresDao.delete(nonExistingGenre.getId()));
+//            assertFalse(genresDao.deletePeriodicalById(nonExistingGenre.getId()));
 //        } catch (DaoException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
@@ -217,7 +217,7 @@
 //    @Test
 //    void deleteNullablePeriodicalGenre() {
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            genresDao.delete(null);
+//            genresDao.deletePeriodicalById(null);
 //        });
 //    }
 //
@@ -225,7 +225,7 @@
 //    void deleteNotIdentifiedPeriodicalGenre() {
 //        assertNull(testGenre.getId());
 //        Assertions.assertThrows(DaoException.class, () -> {
-//            genresDao.delete(testGenre.getId());
+//            genresDao.deletePeriodicalById(testGenre.getId());
 //        });
 //    }
 //}

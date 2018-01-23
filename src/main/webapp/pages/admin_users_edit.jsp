@@ -6,7 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-
 <form method="post">
     <input id="updateRoleId" type="hidden" name="updateRoleId" value=""/>
     <table border="1" cellpadding="5" cellspacing="5">
@@ -18,7 +17,7 @@
             <th>view info</th>
         </tr>
         <c:forEach var="user" items="${users}">
-            <tr id="${user.uuid}">
+            <tr id="${user.id}">
                 <td>
                     <input type="text" value="${user.login}" readonly/>
                 </td>
@@ -38,14 +37,14 @@
                     </select>
                 </td>
                 <td>
-                    <button name="remId" type="submit" value=${user.uuid}>delete</button>
+                    <button name="remId" type="submit" value=${user.id}>delete</button>
                 </td>
                 <td>
-                    <button class="upd-btn" name="updId" type="submit" value=${user.uuid}>update</button>
+                    <button class="upd-btn" name="updId" type="submit" value=${user.id}>update</button>
                 </td>
                 <td>
                     <div>
-                        <a href="admin_user_info?id=${user.uuid}"> user info</a>
+                        <a href="admin_user_info?id=${user.id}"> user info</a>
                     </div>
                 </td>
             </tr>
