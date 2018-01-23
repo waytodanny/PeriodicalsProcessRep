@@ -12,10 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.COMMAND;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.COMMAND;
 
 /**
- * System main servlet that dispatches commands
+ * @author Daniel Vlnitsky
+ * <p>
+ * Application main servlet responsible for:
+ * 1. Obtaining command from incoming request
+ * 2. Executing command
+ * 3. Redirecting request further by parameters obtained from CommandResult object
+ * @see CommandResult
  */
 public class Dispatcher extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(Dispatcher.class.getSimpleName());
@@ -36,7 +42,7 @@ public class Dispatcher extends HttpServlet {
     }
 
     /**
-     * Main dispatching method for all types of requests
+     * Main dispatching method for all types of methods
      */
     private void dispatch(HttpServletRequest request, HttpServletResponse response) {
         CommandFactory factory = CommandFactory.getInstance();
@@ -52,9 +58,12 @@ public class Dispatcher extends HttpServlet {
         }
     }
 
+    /**
+     * @return command obtained from request attribute or default command if there is none
+     */
     private String getCommandNameFromRequest(HttpServletRequest request) {
         String commandName = (String) request.getAttribute(COMMAND);
-        return Objects.nonNull(commandName) ? commandName.toLowerCase() : "";
+        return Objects.nonNull(commandName) ? commandName.toLowerCase() : "/";
     }
 
     /**

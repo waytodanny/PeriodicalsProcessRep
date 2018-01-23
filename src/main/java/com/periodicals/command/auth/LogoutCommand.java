@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.LOGIN_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.LOGIN_PAGE;
 
 /*
  * Command made for logout, it does:

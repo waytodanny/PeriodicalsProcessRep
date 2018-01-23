@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
 public class GenresJdbcDao extends AbstractJdbcDao<Genre, UUID> implements GenresDao {
     private static final String ID = AttributesPropertyManager.getProperty("genre.id");

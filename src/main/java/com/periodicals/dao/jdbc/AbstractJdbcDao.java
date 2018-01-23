@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
-import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.COUNT_PARAM;
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.COUNT_PARAM;
 
 public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     private static final Logger LOGGER = Logger.getLogger(AbstractJdbcDao.class);

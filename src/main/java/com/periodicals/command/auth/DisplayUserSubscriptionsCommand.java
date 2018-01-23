@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 
-import static com.periodicals.utils.ResourceHolders.PagesHolder.USER_SUBSCRIPTIONS_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.USER_SUBSCRIPTIONS_PAGE;
 
 /**
  * Command that uses pagination to display user subscriptions(periodicals)

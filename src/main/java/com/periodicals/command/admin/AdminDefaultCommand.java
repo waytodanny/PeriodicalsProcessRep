@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
 public class AdminDefaultCommand implements Command {
 

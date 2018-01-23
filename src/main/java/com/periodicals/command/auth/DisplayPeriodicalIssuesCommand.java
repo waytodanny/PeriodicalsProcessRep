@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_PERIODICAL;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.PERIODICAL_ISSUES_PAGE;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_PERIODICAL;
+import static com.periodicals.utils.resourceHolders.PagesHolder.PERIODICAL_ISSUES_PAGE;
 
 public class DisplayPeriodicalIssuesCommand extends PagedCommand<PeriodicalIssue> {
     private static final int RECORDS_PER_PAGE = 10;

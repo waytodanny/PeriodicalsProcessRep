@@ -4,21 +4,20 @@ import com.periodicals.dao.interfaces.*;
 import com.periodicals.dao.jdbc.*;
 
 /**
- * JDBC Singleton factory class that implements AbstractDaoFactory
+ * JDBC  factory class that extends AbstractDaoFactory
  *
  * @author Daniel Volnitsky
  * @see AbstractDaoFactory
  */
 public class JdbcDaoFactory extends AbstractDaoFactory {
-    private static JdbcDaoFactory instance = new JdbcDaoFactory();
-
-    private static RolesDao rolesDao = new RolesJdbcDao();
-    private static UsersDao usersDao = new UsersJdbcDao();
-    private static PaymentsDao paymentsDao = new PaymentsJdbcDao();
-    private static GenresDao genresDao = new GenresJdbcDao();
-    private static PeriodicalIssuesDao periodicalIssuesDao = new PeriodicalIssuesJdbcDao();
-    private static PeriodicalsDao periodicalsDao = new PeriodicalsJdbcDao();
-    private static PublishersDao publishersDao = new PublishersJdbcDao();
+    private static final RolesDao rolesDao = new RolesJdbcDao();
+    private static final UsersDao usersDao = new UsersJdbcDao();
+    private static final PaymentsDao paymentsDao = new PaymentsJdbcDao();
+    private static final GenresDao genresDao = new GenresJdbcDao();
+    private static final PeriodicalIssuesDao periodicalIssuesDao = new PeriodicalIssuesJdbcDao();
+    private static final PeriodicalsDao periodicalsDao = new PeriodicalsJdbcDao();
+    private static final PublishersDao publishersDao = new PublishersJdbcDao();
+    private static final JdbcDaoFactory instance = new JdbcDaoFactory();
 
     private JdbcDaoFactory() {
 

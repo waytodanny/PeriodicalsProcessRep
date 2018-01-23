@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
 public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, UUID> implements PublishersDao {
     private static final String ID = AttributesPropertyManager.getProperty("publisher.id");

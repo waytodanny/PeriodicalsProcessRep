@@ -14,10 +14,10 @@ import java.util.Locale;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
-import static com.periodicals.utils.ResourceHolders.MessagesHolder.REGISTRATION_ERROR_MESSAGE;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.CATALOG_PAGE;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.REGISTRATION_PAGE;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
+import static com.periodicals.utils.resourceHolders.MessagesHolder.REGISTRATION_ERROR_MESSAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.REGISTRATION_PAGE;
 
 /**
  * Command that handles registration requests

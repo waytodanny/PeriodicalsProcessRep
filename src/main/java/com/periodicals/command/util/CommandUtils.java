@@ -5,7 +5,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
 
 /*TODO divide not to let class have lot of responsibilities*/
 public class CommandUtils {

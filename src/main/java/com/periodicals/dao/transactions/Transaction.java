@@ -6,9 +6,11 @@ import com.periodicals.exceptions.TransactionException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * Functional interface that helps to cover transactional block of code
+ */
 @FunctionalInterface
 public interface Transaction {
-//    Logger LOGGER = LogManager.getLogger(Transaction.class);
 
     static void doTransaction(Transaction tx, int transactionIsolationLevel) throws TransactionException {
         try {
@@ -17,7 +19,7 @@ public interface Transaction {
             TransactionManager.endTransaction();
         } catch (TransactionException | DaoException | SQLException e) {
             TransactionManager.doRollback();
-            throw new TransactionException("Transaction did rollback: " + e);
+            throw new TransactionException(e);
         }
     }
 
@@ -25,5 +27,8 @@ public interface Transaction {
         doTransaction(tx, Connection.TRANSACTION_READ_COMMITTED);
     }
 
+    /**
+     * This is where all transaction-reliable code will be passed
+     */
     void pass() throws DaoException;
 }

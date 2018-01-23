@@ -18,9 +18,9 @@ import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
-import static com.periodicals.utils.ResourceHolders.MessagesHolder.LOGIN_ERROR_MESSAGE;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.*;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
+import static com.periodicals.utils.resourceHolders.MessagesHolder.LOGIN_ERROR_MESSAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.*;
 
 /**
  * Command that is responsible to handle user-identifying data

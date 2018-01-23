@@ -9,7 +9,7 @@
 //import javax.servlet.http.HttpServletRequest;
 //import java.util.List;
 //
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICALS_EDIT_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_PERIODICALS_EDIT_PAGE;
 //
 //public class CatalogEditingCommand extends PagedCommand<Periodical> {
 //    private static final int RECORDS_PER_PAGE = 10;

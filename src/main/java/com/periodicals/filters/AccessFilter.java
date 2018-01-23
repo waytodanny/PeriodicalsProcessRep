@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.COMMAND;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.PAGE_SUFFIX;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.COMMAND;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.PAGE_SUFFIX;
+import static com.periodicals.utils.resourceHolders.PagesHolder.ERROR_PAGE;
 
 /**
  * @author Daniel Volnitsky

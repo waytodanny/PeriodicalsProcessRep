@@ -2,18 +2,16 @@ package com.periodicals.utils.customTags;
 
 import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
-import com.periodicals.services.lookup.RoleService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.util.Objects;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_USER;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_USER;
 
 
 /**
- * Custom JSP tag for checking user roles directly in the JSP page
+ * Custom JSP tag for checking if user has appropriate role directly in the JSP page
  */
 public class UserHasAppropriateRoleTag extends TagSupport {
     private String role;
@@ -42,7 +40,6 @@ public class UserHasAppropriateRoleTag extends TagSupport {
     }
 
     private boolean isUserRoleDefined() {
-        boolean result = false;
         Role userRole = getUserRole();
         return Objects.nonNull(userRole);
     }

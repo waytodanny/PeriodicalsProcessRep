@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Objects;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_CART;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_CART;
 
 public class CartAddItemCommand implements Command {
     private static final CartService cartService = CartService.getInstance();

@@ -12,8 +12,8 @@
 //import javax.servlet.http.HttpServletResponse;
 //
 //import static com.periodicals.command.util.RedirectType.FORWARD;
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_ADD_ISSUE_PAGE;
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_ADD_ISSUE_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 //
 //public class EditIssueCommand implements Command {
 //    private static PeriodicalService periodicalService = PeriodicalService.getInstance();

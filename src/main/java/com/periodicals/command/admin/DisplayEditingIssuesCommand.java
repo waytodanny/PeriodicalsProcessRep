@@ -13,7 +13,7 @@
 //import java.util.List;
 //import java.util.Objects;
 //
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_PERIODICAL_ISSUE_EDIT_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_PERIODICAL_ISSUE_EDIT_PAGE;
 //
 //public class DisplayEditingIssuesCommand extends PagedCommand<PeriodicalIssue> {
 //    private static final int RECORDS_PER_PAGE = 10;

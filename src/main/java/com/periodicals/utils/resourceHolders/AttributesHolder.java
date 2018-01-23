@@ -1,4 +1,4 @@
-package com.periodicals.utils.ResourceHolders;
+package com.periodicals.utils.resourceHolders;
 
 import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
@@ -6,6 +6,10 @@ import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
  * Holds attributes values from attributes.properties file
  */
 public final class AttributesHolder {
+
+    private AttributesHolder() {
+
+    }
 
     public static final String SERVLET_ROOT = AttributesPropertyManager.getProperty("servlet.root");
 
@@ -63,8 +67,4 @@ public final class AttributesHolder {
 
     public static final String ATTR_GENRE = AttributesPropertyManager.getProperty("attr.genre");
     public static final String ATTR_PERIODICAL = AttributesPropertyManager.getProperty("attr.periodical");
-
-    private AttributesHolder() {
-
-    }
 }

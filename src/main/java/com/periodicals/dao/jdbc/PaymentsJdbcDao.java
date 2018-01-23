@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
 public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, UUID> implements PaymentsDao {
     private static final String ID = AttributesPropertyManager.getProperty("payment.id");

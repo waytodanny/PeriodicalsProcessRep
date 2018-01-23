@@ -12,8 +12,8 @@
 //import java.util.UUID;
 //
 //import static com.periodicals.command.util.RedirectType.FORWARD;
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_EDIT_USERS_PAGE;
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_USERS_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_EDIT_USERS_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_USERS_PAGE;
 //
 //public class EditUserCommand implements Command {
 //    private static final UserService userService = UserService.getInstance();

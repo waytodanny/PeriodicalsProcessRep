@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
 
 /**
  * @author Daniel Volnitsky

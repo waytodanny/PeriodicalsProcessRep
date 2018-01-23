@@ -1,8 +1,13 @@
-package com.periodicals.utils.ResourceHolders;
+package com.periodicals.utils.resourceHolders;
 
 import com.periodicals.utils.propertyManagers.PagesPropertyManager;
 
 public final class PagesHolder {
+
+    private PagesHolder(){
+
+    }
+
     public static final String INDEX_PAGE = PagesPropertyManager.getProperty("page.index");
     public static final String DEFAULT_PAGE = PagesPropertyManager.getProperty("page.default");
     public static final String ERROR_PAGE = PagesPropertyManager.getProperty("page.error");

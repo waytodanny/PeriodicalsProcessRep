@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.*;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.ERROR_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.ERROR_PAGE;
 
 public abstract class PagedCommand<T> implements Command {
     protected static final int DEFAULT_RECORDS_PER_PAGE = 10;

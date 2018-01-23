@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_ADMIN_ID;
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ROLE_USER_ID;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ROLE_ADMIN_ID;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ROLE_USER_ID;
 
 /**
  * @author Daniel Volnitsky

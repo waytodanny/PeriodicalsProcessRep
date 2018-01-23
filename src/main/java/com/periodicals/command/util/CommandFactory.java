@@ -9,7 +9,7 @@ import com.periodicals.command.auth.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.*;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
 
 public class CommandFactory {
     private static final CommandFactory COMMAND_FACTORY = new CommandFactory();

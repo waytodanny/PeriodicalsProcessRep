@@ -51,7 +51,7 @@ public class Main {
 //        System.out.println(users.size());
 //
 //        User user = new User();
-//        user.setId(UuidGenerator.generateUuid());
+//        user.setId(UuidGenerator.generateSequentialUuid());
 //        user.setLogin("batman");
 //        user.setEmail("batman@gmail.com");
 //        user.setRole(new Role((byte)1, ""));

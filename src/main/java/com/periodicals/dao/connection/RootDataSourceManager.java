@@ -1,9 +1,16 @@
 package com.periodicals.dao.connection;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Class that holds application root DataSource settings
+ */
 public class RootDataSourceManager {
+    private static final Logger LOGGER = Logger.getLogger(RootDataSourceManager.class.getSimpleName());
+
     private static RootDataSourceManager instance = new RootDataSourceManager();
 
     private String jdbcUrl;
@@ -21,8 +28,10 @@ public class RootDataSourceManager {
             this.dbUserLogin = prop.getProperty("dbUserLogin");
             this.dbUserPass = prop.getProperty("dbUserPassword");
             this.connectionProperties = prop.getProperty("connProperties");
-        } catch (IOException e) {
 
+            LOGGER.debug("Succeed to initialize root data source");
+        } catch (IOException e) {
+            LOGGER.error("Failed to initialize root data source: " + e.getMessage());
         }
     }
 

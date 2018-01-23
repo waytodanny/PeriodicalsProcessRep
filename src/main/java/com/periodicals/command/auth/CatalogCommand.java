@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_GENRE;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.CATALOG_PAGE;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_GENRE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
 
 public class CatalogCommand extends PagedCommand<Periodical> {
     private static final int RECORDS_PER_PAGE = 10;

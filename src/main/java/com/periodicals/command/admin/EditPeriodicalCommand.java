@@ -16,8 +16,8 @@
 //import java.util.UUID;
 //
 //import static com.periodicals.command.util.RedirectType.FORWARD;
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_ADD_PERIODICAL_PAGE;
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_ADD_PERIODICAL_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 //
 //public class EditPeriodicalCommand implements Command {
 //    private static final PeriodicalService periodicalService = PeriodicalService.getInstance();

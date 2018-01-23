@@ -12,7 +12,7 @@
 //import java.util.List;
 //import java.util.Objects;
 //
-//import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_USER_PAYMENTS_PAGE;
+//import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_USER_PAYMENTS_PAGE;
 //
 //public class DisplayUserPaymentsCommand extends PagedCommand<Payment> {
 //    private static final int RECORDS_PER_PAGE = 10;

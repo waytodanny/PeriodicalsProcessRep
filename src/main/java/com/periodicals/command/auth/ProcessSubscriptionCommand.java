@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.ResourceHolders.PagesHolder.LOGIN_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.LOGIN_PAGE;
 
 public class ProcessSubscriptionCommand implements Command {
     private SubscriptionsService subscriptionsService = SubscriptionsService.getInstance();

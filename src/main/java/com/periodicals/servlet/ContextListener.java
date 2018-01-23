@@ -1,15 +1,13 @@
 package com.periodicals.servlet;
 
 import com.periodicals.dao.connection.ConnectionPool;
-import com.periodicals.services.LoginService;
-import com.periodicals.services.entity.PeriodicalService;
-import com.periodicals.services.lookup.RoleService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
  * Initializes some components before app starts:
+ *
  * @see this.contextInitialized
  * <p>
  * Does something before it closes:
@@ -19,10 +17,8 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ConnectionPool.getInstance();
-        LoginService.getInstance();
-        RoleService.getInstance();
-        PeriodicalService.getInstance();
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        ConnectionPool.initByRootDataSource();
     }
 
     /* TODO think of where would be better to do it*/
@@ -38,6 +34,6 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
+        ConnectionPool.releaseDataSource();
     }
 }

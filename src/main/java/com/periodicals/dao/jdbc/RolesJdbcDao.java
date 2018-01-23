@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
 public class RolesJdbcDao extends AbstractJdbcDao<Role, UUID> implements RolesDao {
     private static final String ID = AttributesPropertyManager.getProperty("role.id");

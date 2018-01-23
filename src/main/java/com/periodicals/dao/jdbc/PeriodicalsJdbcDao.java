@@ -7,16 +7,14 @@ import com.periodicals.dao.interfaces.PeriodicalsDao;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
 public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, UUID> implements PeriodicalsDao {
     private static final String ID = AttributesPropertyManager.getProperty("periodical.id");

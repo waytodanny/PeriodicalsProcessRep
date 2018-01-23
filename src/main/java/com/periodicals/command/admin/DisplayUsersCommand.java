@@ -8,7 +8,7 @@ import com.periodicals.services.util.PageableCollectionService;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.periodicals.utils.ResourceHolders.PagesHolder.ADMIN_USERS_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_USERS_PAGE;
 
 public class DisplayUsersCommand extends PagedCommand<User> {
     private static final int RECORDS_PER_PAGE = 10;

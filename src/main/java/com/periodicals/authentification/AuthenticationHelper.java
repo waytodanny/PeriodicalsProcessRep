@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Objects;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.AttributesHolder.ATTR_USER;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_USER;
 
 /**
  * Class that contains methods that help to get some authentication info from session

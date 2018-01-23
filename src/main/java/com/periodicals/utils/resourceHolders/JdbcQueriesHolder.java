@@ -1,8 +1,13 @@
-package com.periodicals.utils.ResourceHolders;
+package com.periodicals.utils.resourceHolders;
 
 import com.periodicals.utils.propertyManagers.JdbcQueriesPropertyManager;
 
-public class JdbcQueriesHolder {
+public final class JdbcQueriesHolder {
+
+    private JdbcQueriesHolder() {
+
+    }
+
     /*params*/
     public static final String COUNT_PARAM = JdbcQueriesPropertyManager.getProperty("param.count");
 
@@ -91,8 +96,4 @@ public class JdbcQueriesHolder {
     public static final String PAYMENT_INSERT_PAYMENT_PERIODICALS = JdbcQueriesPropertyManager.getProperty("payments.insert.payment.periodicals");
     public static final String PAYMENT_DELETE_PAYMENT_PERIODICALS= JdbcQueriesPropertyManager.getProperty("payments.delete.payment.periodicals");
     public static final String PAYMENT_SELECT_USER_PAYMENTS_COUNT = JdbcQueriesPropertyManager.getProperty("payments.select.user.payments.count");
-
-    private JdbcQueriesHolder() {
-
-    }
 }

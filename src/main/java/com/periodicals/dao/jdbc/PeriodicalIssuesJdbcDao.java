@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
 public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UUID> implements PeriodicalIssuesDao {
     private static final String ID = AttributesPropertyManager.getProperty("periodical_issue.id");
