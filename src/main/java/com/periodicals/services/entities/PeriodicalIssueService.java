@@ -8,6 +8,7 @@ import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
+import com.periodicals.utils.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class PeriodicalIssueService implements PageableCollectionService<Periodi
     public void createEntity(String name, int issueNo, UUID periodicalId) throws ServiceException {
         try {
             PeriodicalIssue added = new PeriodicalIssue();
-            UUID id = UUID.randomUUID();
+            UUID id = UUIDHelper.generateSequentialUuid();
 
             added.setId(id);
             added.setName(name);

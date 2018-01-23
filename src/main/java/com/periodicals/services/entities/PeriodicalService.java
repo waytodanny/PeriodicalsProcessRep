@@ -11,6 +11,7 @@ import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.lookups.GenreService;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
+import com.periodicals.utils.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
@@ -72,7 +73,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
                           short issuesPerYear, UUID genreId, UUID publisherId) throws ServiceException {
         try {
             Periodical added = new Periodical();
-            UUID id = UUID.randomUUID();
+            UUID id = UUIDHelper.generateSequentialUuid();
 
             added.setId(id);
             added.setName(name);

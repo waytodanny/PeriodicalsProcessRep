@@ -8,35 +8,18 @@
   <component name="ChangeListManager">
     <list default="true" id="de233fcb-9b4f-4b67-b303-f82ebe6967e2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/authentification/AuthenticationHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminIssuesCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminIssuesCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserPaymentsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/AdminUserPaymentsCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteIssueCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteIssueCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeletePeriodicalCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeletePeriodicalCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteUserCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/admin/DeleteUserCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartAddItemCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CartRemoveItemCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/CatalogCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/DisplayPeriodicalIssuesCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/DisplayUserSubscriptionsCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/LogoutCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/auth/ProcessSubscriptionCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/LoginCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/LoginCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/RegistrationCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/RegistrationCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/LoginService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/LoginService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/SubscriptionService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/SubscriptionService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PaymentService.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PaymentService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/uuid/UUIDHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/periodicals/utils/uuid/UUIDHelper.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/catalog.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/connection/ConnectionManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/connection/ConnectionPool.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/connection/ConnectionWrapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/transactions/Transaction.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/dao/transactions/TransactionManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/periodicals/utils/ResourceHolders/MessagesHolder.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mySQL_CreateDB(after uuid).sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mySQL_CreateDB(before uuid).sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mySQL_InsertDefaults_script.sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/CartService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/LoginService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/SubscriptionService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PaymentService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PeriodicalIssueService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PeriodicalService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PublisherService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/UserService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/interfaces/LookupService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/interfaces/PageableCollectionService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/lookups/GenreService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/periodicals/services/lookups/RoleService.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -125,7 +108,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PeriodicalIssueService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PublisherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/PeriodicalService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/utils/customTags/UserHasAppropriateRoleTag.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/utils/resourceHolders/AttributesHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/utils/resourceHolders/MessagesHolder.java" />
@@ -170,6 +152,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/LoginCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/SubscriptionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/periodicals/command/common/RegistrationCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/UserService.java" />
       </list>
     </option>
   </component>
@@ -278,7 +261,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="periodicals" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -311,10 +294,10 @@
       <recent name="com.periodicals.dao" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\java\com\periodicals" />
       <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\java\com\periodicals\command" />
       <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\test\resources" />
       <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\webapp\WEB-INF" />
-      <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\java\com\periodicals" />
       <recent name="C:\Users\Daniel\Desktop\Periodicalzz\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -863,7 +846,7 @@
       <workItem from="1516620401127" duration="1200000" />
       <workItem from="1516621765307" duration="18999000" />
       <workItem from="1516725076169" duration="22532000" />
-      <workItem from="1516750707126" duration="851000" />
+      <workItem from="1516750707126" duration="968000" />
     </task>
     <servers />
   </component>
@@ -900,7 +883,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="519007000" />
+    <option name="totallyTimeSpent" value="519124000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -1007,28 +990,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/filters/CharsetFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/exceptions/ServiceException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/entities/Genre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/servlet/ContextListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
@@ -1384,10 +1345,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/interfaces/LookupService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/lookups/GenreService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-151">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/lookups/RoleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="56" column="39" lean-forward="true" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/periodicals/services/entities/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+        <state relative-caret-position="817">
+          <caret line="73" column="28" lean-forward="false" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
           <folding />
         </state>
       </provider>

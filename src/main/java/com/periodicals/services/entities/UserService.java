@@ -10,8 +10,10 @@ import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.lookups.RoleService;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
+import com.periodicals.utils.UUIDHelper;
 import com.periodicals.utils.encryption.Cryptographer;
 import com.periodicals.utils.encryption.MD5Cryptographer;
+import com.periodicals.utils.uuid.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.security.NoSuchAlgorithmException;
@@ -69,7 +71,7 @@ public class UserService implements PageableCollectionService<User>, LookupServi
     public void createEntity(String login, String password, String email, UUID roleId) throws ServiceException {
         try {
             User added = new User();
-            UUID id = UUID.randomUUID();
+            UUID id = UUIDHelper.generateSequentialUuid();
 
             added.setId(id);
             added.setLogin(login);

@@ -2,7 +2,7 @@ package com.periodicals.services;
 
 import com.periodicals.entities.Periodical;
 import com.periodicals.services.entities.PeriodicalService;
-import com.periodicals.utils.entities.Cart;
+import com.periodicals.utils.Cart;
 import org.apache.log4j.Logger;
 
 import java.util.Objects;
