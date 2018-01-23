@@ -1,57 +1,77 @@
 package com.periodicals.services;
 
+import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.dao.jdbc.UsersJdbcDao;
 import com.periodicals.entities.User;
-import com.periodicals.services.entity.UserService;
+import com.periodicals.exceptions.DaoException;
 import com.periodicals.utils.encryption.MD5Cryptographer;
 import org.apache.log4j.Logger;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Service responsible for obtaining and processing information about user login attempt
+ */
 public class LoginService {
+
     private static final Logger LOGGER = Logger.getLogger(LoginService.class.getSimpleName());
 
-    private static LoginService loginService = new LoginService();
-    private static UserService userService = UserService.getInstance();
+    private static final LoginService loginService = new LoginService();
 
-    private LoginService() {
-
-    }
+    private static UsersJdbcDao usersDao = (UsersJdbcDao) JdbcDaoFactory.getInstance().getUsersDao();
 
     public static LoginService getInstance() {
         return loginService;
     }
 
     /**
-     * @return user object from DB if he was verified by incoming data or null if not
+     * @return user object from DB if it has been verified or null if not
      */
-    public User getUserIfVerified(String login, String pass) {
+    public User getUserByLogin(String login, String password) {
         User user = null;
         try {
-            user = userService.getUserByLogin(login);
-            if (Objects.nonNull(user) && passwordsMatch(user, pass)) {
-                LOGGER.debug("user has been verified");
-                return user;
+            user = usersDao.getUserByLogin(login);
+            if (Objects.nonNull(user)) {
+                LOGGER.debug("Succeeded to find user by login: " + login);
+                if (this.verifyUserPassword(user, password)) {
+                    LOGGER.debug("User " + login + " has been verified");
+                    return user;
+                } else {
+                    throw new IllegalArgumentException("User with login " + login + " has not been verified");
+                }
+            } else {
+                throw new NullPointerException("User with login " + login + " doesn't exist");
             }
-        } catch (NoSuchAlgorithmException e) {
-            LOGGER.error("Failed to obtain encryption algorithm: " + e.getMessage());
+        } catch (DaoException | NullPointerException | IllegalArgumentException e) {
+            LOGGER.error(e.getMessage());
         }
         return user;
     }
 
     /**
-     * Checks that user brought from DB has same password that client passed
+     * Checks whether given user has same password
      *
-     * @param user     user from DB taken by login
-     * @param password password that was entered by client
+     * @param user     some user
+     * @param password password that needed to be compared with users's one
      */
-    private boolean passwordsMatch(User user, String password) throws NoSuchAlgorithmException {
+    private boolean verifyUserPassword(User user, String password) {
         boolean result = false;
-        if (Objects.nonNull(password) && Objects.nonNull(user) && Objects.nonNull(user.getPassword())) {
-            String encrypted = new MD5Cryptographer().encrypt(password);
-            result = Objects.nonNull(encrypted) && encrypted.equals(user.getPassword());
-            LOGGER.debug("passwords match");
+
+        if (Objects.nonNull(password) && !password.isEmpty()) {
+            String userPassword = user.getPassword();
+            if (Objects.nonNull(userPassword) && !userPassword.isEmpty()) {
+                try {
+                    String encrypted = new MD5Cryptographer().encrypt(password);
+                    result = Objects.nonNull(encrypted) && encrypted.equals(userPassword);
+                } catch (NoSuchAlgorithmException e) {
+                    LOGGER.error(e.getMessage());
+                }
+            }
         }
+
         return result;
     }
 }

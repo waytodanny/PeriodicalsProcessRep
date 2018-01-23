@@ -1,16 +1,16 @@
-package com.periodicals.services.entity;
+package com.periodicals.services.entities;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
-import com.periodicals.entities.Genre;
-import com.periodicals.entities.Payment;
 import com.periodicals.entities.Periodical;
+import com.periodicals.entities.Payment;
 import com.periodicals.entities.Publisher;
+import com.periodicals.entities.Genre;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.services.lookup.GenreService;
-import com.periodicals.services.lookup.PublisherService;
-import com.periodicals.services.util.PageableCollectionService;
+import com.periodicals.services.lookups.GenreService;
+import com.periodicals.services.interfaces.LookupService;
+import com.periodicals.services.interfaces.PageableCollectionService;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
@@ -19,7 +19,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class PeriodicalService implements PageableCollectionService<Periodical> {
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Service responsible for processing CRUD and specified seeking operations with Periodicals
+ * @see Periodical
+ */
+public class PeriodicalService implements PageableCollectionService<Periodical>, LookupService<Periodical, UUID> {
     private static final Logger LOGGER = Logger.getLogger(PeriodicalService.class.getSimpleName());
 
     private static final PeriodicalService periodicalService = new PeriodicalService();
@@ -27,41 +33,48 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
     private static final PublisherService publisherService = PublisherService.getInstance();
     private static final PaymentService paymentService = PaymentService.getInstance();
 
-    private static final PeriodicalsJdbcDao periodicalDao =
+    private static final PeriodicalsJdbcDao periodicalsDao =
             (PeriodicalsJdbcDao) JdbcDaoFactory.getInstance().getPeriodicalsDao();
-
-    private PeriodicalService() { }
 
     public static PeriodicalService getInstance() {
         return periodicalService;
     }
 
-    public List<Periodical> getEntityCollection() {
-        List<Periodical> result = new ArrayList<>();
-        try {
-            result = periodicalDao.getEntityCollection();
-            LOGGER.debug("Obtained all periodicals using DAO");
-        } catch (DaoException e) {
-            LOGGER.error("Failed to obtain all periodicals using DAO: " + e.getMessage());
-        }
-        return result;
-    }
 
-    public Periodical getEntityByPrimaryKey(UUID id) {
+    @Override
+    public Periodical getEntityByPrimaryKey(UUID id)  {
         Periodical result = null;
         try {
-            result = periodicalDao.getEntityByPrimaryKey(id);
-            LOGGER.debug("Obtained periodical by id " + id);
+            result = periodicalsDao.getEntityByPrimaryKey(id);
+            LOGGER.debug("Obtained periodical with id " + id);
         } catch (DaoException e) {
-            LOGGER.debug("Failed to obtain periodical by id "+ id +" using DAO: " + e.getMessage());
+            LOGGER.error("Failed to obtain periodical with id "+ id + " due to: " + e.getMessage());
         }
         return result;
     }
 
+    @Override
+    public List<Periodical> getEntityCollection() {
+        List<Periodical> entities = new ArrayList<>();
+        try {
+            entities = periodicalsDao.getEntityCollection();
+            LOGGER.debug("Obtained all periodicals");
+        } catch (DaoException e) {
+            LOGGER.error("Failed to obtain all periodicals: " + e.getMessage());
+        }
+        return entities;
+    }
+
+    /**
+     * Constructs and inserts Periodical object by incoming params
+     */
     public void createEntity(String name, String description, BigDecimal subscriptionCost, boolean isLimited,
                           short issuesPerYear, UUID genreId, UUID publisherId) throws ServiceException {
         try {
             Periodical added = new Periodical();
+            UUID id = UUID.randomUUID();
+
+            added.setId(id);
             added.setName(name);
             added.setDescription(description);
             added.setSubscriptionCost(subscriptionCost);
@@ -81,14 +94,17 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
             } else {
                 throw new NullPointerException("Publisher with id " + publisherId + " doesn't exist");
             }
-            periodicalDao.createEntity(added);
-            LOGGER.debug("Successful periodical adding");
+            periodicalsDao.createEntity(added);
+            LOGGER.debug("Periodical with id " + id + " has been successfully created");
         } catch (DaoException | NullPointerException e) {
             LOGGER.error(e.getMessage());
             throw new ServiceException(e);
         }
     }
 
+    /**
+     * updates Periodical object by incoming params
+     */
     public void updateEntity(UUID id, String name, String description, BigDecimal subscriptionCost, boolean isLimited,
                              short issuesPerYear, UUID genreId, UUID publisherId) throws ServiceException {
         try {
@@ -113,9 +129,8 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
                 } else {
                     throw new NullPointerException("Publisher with id " + publisherId + " doesn't exist");
                 }
-
-                periodicalDao.updateEntity(updated);
-                LOGGER.debug("Successful update of periodical with id " + id);
+                periodicalsDao.updateEntity(updated);
+                LOGGER.debug("Periodical with id " + id + " has been successfully updated");
             } else {
                 throw new NullPointerException("Periodical with id " + id + " doesn't exist");
             }
@@ -125,15 +140,17 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
         }
     }
 
+    /**
+     * deletes Periodical object by incoming params
+     */
     public void deleteEntity(UUID id) throws ServiceException {
         try {
             Periodical deleted = this.getEntityByPrimaryKey(id);
-            if(Objects.nonNull(deleted)) {
-                periodicalDao.deleteEntity(deleted.getId());
-                LOGGER.debug("Successful deletion of periodical with id " + id);
-            } else {
+            if(Objects.isNull(deleted)) {
                 throw new NullPointerException("Periodical with id " + id + " doesn't exist");
             }
+            periodicalsDao.deleteEntity(deleted);
+            LOGGER.debug("Periodical with id " + id + " has been successfully deleted");
         } catch (DaoException | NullPointerException e) {
             LOGGER.error(e.getMessage());
             throw new ServiceException(e);
@@ -144,10 +161,10 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
     public List<Periodical> getEntitiesListBounded(int skip, int limit) {
         List<Periodical> entities = new ArrayList<>();
         try {
-            entities = periodicalDao.getPeriodicalListBounded(skip, limit);
+            entities = periodicalsDao.getEntitiesListBounded(skip, limit);
             LOGGER.debug("Obtained periodicals bounded list");
         } catch (DaoException e) {
-            LOGGER.error("Failed to get periodicals bounded list using DAO: " + e.getMessage());
+            LOGGER.error("Failed to get periodicals bounded list: " + e.getMessage());
         }
         return entities;
     }
@@ -156,21 +173,25 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
     public int getEntitiesCount() {
         int result = 0;
         try {
-            result = periodicalDao.getEntitiesCount();
+            result = periodicalsDao.getEntitiesCount();
             LOGGER.debug("Obtained all periodicals count");
         } catch (DaoException e) {
-            LOGGER.error("Failed to get periodicals count using DAO: " + e.getMessage());
+            LOGGER.error("Failed to get all periodicals count: " + e.getMessage());
         }
         return result;
     }
 
-    public List<Periodical> getPeriodicalsByGenreListBounded(UUID genreId, int skip, int limit) {
+    /**
+     * @return  Periodical limited list of specified genre
+     * @param genreId id of genre which periodicals are to be obtained
+     */
+    public List<Periodical> getPeriodicalsByGenreListBounded(int skip, int limit, UUID genreId) {
         List<Periodical> entities = new ArrayList<>();
         try {
             Genre genre = genreService.getEntityByPrimaryKey(genreId);
             if(Objects.nonNull(genre)) {
-                entities = periodicalDao.getGenrePeriodicalsLimited(genre, skip, limit);
-                LOGGER.debug("Obtained genre periodicals bounded list");
+                entities = periodicalsDao.getPeriodicalsByGenreListBounded(skip, limit, genre);
+                LOGGER.debug("Obtained periodicals bounded list with genreId " + genreId);
             } else {
                 throw new NullPointerException("Genre with id " + genreId + " doesn't exist");
             }
@@ -180,13 +201,17 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
         return entities;
     }
 
+    /**
+     * @return  Periodicals of specified genre count
+     * @param genreId id of genre which periodicals count is to be obtained
+     */
     public int getPeriodicalsByGenreCount(UUID genreId) {
         int result = 0;
         try {
             Genre genre = genreService.getEntityByPrimaryKey(genreId);
             if(Objects.nonNull(genre)) {
-                result = periodicalDao.getGenrePeriodicalsCount(genre);
-                LOGGER.debug("Obtained genre periodicals count");
+                result = periodicalsDao.getPeriodicalsByGenreCount(genre);
+                LOGGER.debug("Obtained periodicals list count with genreId " + genreId);
             } else {
                 throw new NullPointerException("Genre with id " + genreId + " doesn't exist");
             }
@@ -196,19 +221,23 @@ public class PeriodicalService implements PageableCollectionService<Periodical> 
         return result;
     }
 
-    public List<Periodical> getPeriodicalsByPaymentList(UUID paymentId) throws ServiceException {
-        List<Periodical> periodicals = new ArrayList<>();
+    /**
+     * @return  Periodicals of specified genre count
+     * @param paymentId id of payment which periodicals limited list is to be obtained
+     */
+    public List<Periodical> getPeriodicalsByPaymentListBounded(int skip, int limit, UUID paymentId) {
+        List<Periodical> entities = new ArrayList<>();
         try {
             Payment payment = paymentService.getEntityByPrimaryKey(paymentId);
             if(Objects.nonNull(payment)) {
-                periodicals = periodicalDao.getPaymentPeriodicals(payment);
-                LOGGER.debug("Obtained payment periodicals");
+                entities = periodicalsDao.getPeriodicalsByPaymentList(payment);
+                LOGGER.debug("Obtained periodicals list with paymentId " + paymentId);
             } else {
                 throw new NullPointerException("Payment with id " + paymentId + " doesn't exist");
             }
         } catch (DaoException | NullPointerException e) {
             LOGGER.error(e.getMessage());
         }
-        return periodicals;
+        return entities;
     }
 }
