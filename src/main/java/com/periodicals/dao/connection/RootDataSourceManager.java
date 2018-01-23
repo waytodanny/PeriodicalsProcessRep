@@ -3,8 +3,8 @@ package com.periodicals.dao.connection;
 import java.io.IOException;
 import java.util.Properties;
 
-public class DataSourceManager {
-    private static DataSourceManager instance = new DataSourceManager();
+public class RootDataSourceManager {
+    private static RootDataSourceManager instance = new RootDataSourceManager();
 
     private String jdbcUrl;
     private String dbUserLogin;
@@ -12,10 +12,10 @@ public class DataSourceManager {
     private String dbDriver;
     private String connectionProperties;
 
-    private DataSourceManager() {
+    private RootDataSourceManager() {
         Properties prop = new Properties();
         try {
-            prop.load(DataSourceManager.class.getClassLoader().getResourceAsStream("application.properties"));
+            prop.load(RootDataSourceManager.class.getClassLoader().getResourceAsStream("application.properties"));
             this.dbDriver = prop.getProperty("dbDriver");
             this.jdbcUrl = prop.getProperty("jdbcUrl");
             this.dbUserLogin = prop.getProperty("dbUserLogin");
@@ -26,7 +26,7 @@ public class DataSourceManager {
         }
     }
 
-    public static DataSourceManager getInstance() {
+    public static RootDataSourceManager getInstance() {
         return instance;
     }
 

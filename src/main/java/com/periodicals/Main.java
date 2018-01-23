@@ -2,6 +2,8 @@ package com.periodicals;
 
 import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.dao.jdbc.UsersJdbcDao;
+import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.utils.uuid.UuidGenerator;
@@ -11,10 +13,8 @@ public class Main {
 
     public static void main(String[] args) throws DaoException, ServiceException {
 
-        String requestURI = "admin.jsp";
-        requestURI = requestURI.substring(0, requestURI.lastIndexOf(".jsp"));
-
-        System.out.println(requestURI);
+      UsersJdbcDao usersDAO = (UsersJdbcDao) JdbcDaoFactory.getInstance().getUsersDao();
+        System.out.println("a");
 //        UsersJdbcDao usersJdbcDAO = (UsersJdbcDao) factory.getUsersDao();
 //        for (int i = 0; i < 10; i++) {
 //            new Thread( ()->{

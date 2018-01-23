@@ -16,7 +16,7 @@ import static com.periodicals.utils.ResourceHolders.JdbcQueriesHolder.*;
 
 public class UsersJdbcDao extends AbstractJdbcDao<User, UUID> implements UsersDao {
     private static final String ID = AttributesPropertyManager.getProperty("user.id");
-    private static final String NAME = AttributesPropertyManager.getProperty("user.name");
+    private static final String NAME = AttributesPropertyManager.getProperty("user.login");
     private static final String PASSWORD = AttributesPropertyManager.getProperty("user.password");
     private static final String EMAIL = AttributesPropertyManager.getProperty("user.email");
     private static final String ROLE_ID = AttributesPropertyManager.getProperty("user.role_id");
@@ -49,7 +49,7 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, UUID> implements UsersDa
 
     @Override
     public int getEntitiesCount() throws DaoException {
-        return super.getEntriesCount(PAYMENT_ENTRIES_COUNT);
+        return super.getEntriesCount(USER_ENTRIES_COUNT);
     }
 
     @Override

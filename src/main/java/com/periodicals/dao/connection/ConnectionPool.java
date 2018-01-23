@@ -1,37 +1,46 @@
 package com.periodicals.dao.connection;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 /*TODO replace with standard tomcat pool*/
 public class ConnectionPool {
-    static Logger log = Logger.getLogger(ConnectionPool.class.getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(ConnectionPool.class.getSimpleName());
 
-    private static ConnectionPool instance = new ConnectionPool();
-    private static BasicDataSource dataSource;
-
-    static {
-        new DOMConfigurator().doConfigure("src\\main\\resources\\log4j.xml", LogManager.getLoggerRepository());
-    }
+    private static ConnectionPool instance =  new ConnectionPool();
+    private static DataSource dataSource;
 
     private ConnectionPool() {
-        initDataSource();
+
     }
 
     public static ConnectionPool getInstance() {
         return instance;
     }
 
-    private static void initDataSource() {
-        try {
-            DataSourceManager manager = DataSourceManager.getInstance();
+    public synchronized static void initByRootDataSource() {
+        if(dataSource == null){
+            dataSource = getRootDataSource();
+        }
+        throw new IllegalStateException("Attempt to initialize data source that is already initialized");
+    }
 
-            dataSource = new BasicDataSource();
+    public synchronized static void initByDataSource(DataSource givenDataSource) {
+        if(dataSource == null){
+            dataSource = givenDataSource;
+        }
+        throw new IllegalStateException("Attempt to initialize data source that is already initialized");
+    }
+
+    private static DataSource getRootDataSource() {
+        try {
+            RootDataSourceManager manager = RootDataSourceManager.getInstance();
+
+            BasicDataSource dataSource = new BasicDataSource();
             dataSource.setDriverClassName(manager.getDbDriver());
             dataSource.setUrl(manager.getJdbcUrl());
             dataSource.setUsername(manager.getDbUserLogin());
@@ -39,27 +48,32 @@ public class ConnectionPool {
 
             dataSource.setInitialSize(10);
 
-            /*max number of opened connections same time*/
+            /*max number of opened connections per time*/
             dataSource.setMaxTotal(10);
 
             String connProps = manager.getConnectionProperties();
             if (connProps != null) {
                 dataSource.setConnectionProperties(connProps);
             }
-        } catch (IllegalStateException e) {
-            System.out.println(e.getMessage()); /*log*/
+            return dataSource;
+        } catch (Exception e) {
+            throw new IllegalStateException();
         }
     }
 
     Connection getConnection() {
         Connection conn = null;
-        log.debug("Trying to get connection form dataSource...");
+        LOGGER.debug("Trying to get connection form dataSource...");
         try {
             conn = dataSource.getConnection();
-            log.debug("Got connection from dataSource");
+            LOGGER.debug("Got connection from dataSource");
         } catch (SQLException e) {
-            log.error("Failed to get connection from dataSource: " + e.getMessage());
+            LOGGER.error("Failed to get connection from dataSource: " + e.getMessage());
         }
         return conn; /*throw*/
+    }
+
+    public synchronized static void releaseDataSource(){
+        dataSource = null;
     }
 }

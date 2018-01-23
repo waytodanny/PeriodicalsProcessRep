@@ -1,68 +1,75 @@
-//package com.periodicals.dao.jdbc;
-//
-//import com.periodicals.dao.factories.JdbcDaoFactory;
-//import com.periodicals.exceptions.DaoException;
-//import com.periodicals.entities.User;
-//import dbTestHelpers.InMemoryDbManager;
-//import org.apache.log4j.LogManager;
-//import org.apache.log4j.Logger;
-//import org.apache.log4j.xml.DOMConfigurator;
-//import org.junit.jupiter.api.*;
-//
-//import java.sql.Connection;
-//import java.sql.SQLException;
-//import java.util.List;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//class UsersJdbcDAOTest {
-//    static final String USERS_TABLE_NAME = "users";
-//    static InMemoryDbManager inmManager;
-//    static UsersJdbcDao2 usersDAO;
-//    static User testUser1, testUser2, nonExistingUser, sameUserFromDB;
-//    static Connection conn;
-//
-//    static Logger log = Logger.getLogger(UsersJdbcDAOTest.class.getSimpleName());
-//
-//    static {
-//        new DOMConfigurator().doConfigure("src\\main\\resources\\log4j.xml", LogManager.getLoggerRepository());
-//    }
-//
-//    int genId;
-//
-//    @BeforeAll
-//    static void BeforeAll() {
-//        try {
-//            inmManager = new InMemoryDbManager();
-//
-//            nonExistingUser = new User("non existing login", "non existing pass");
-//            nonExistingUser.setId(112);
-//
-//            testUser1 = new User("Peter", "123456", "waytopeter@gmail.com");
-//            testUser2 = new User("Mariya", "1234567");
-//        } catch (SQLException | IllegalArgumentException e) {
-//            log.error(e.getMessage());
-//            fail(e.getMessage());
-//        }
-//    }
-//
-//    @AfterAll
-//    static void AfterAll() {
-//        usersDAO = null;
-//        inmManager = null;
-//        testUser1 = null;
-//        testUser2 = null;
-//        nonExistingUser = null;
-//        sameUserFromDB = null;
-//    }
-//
-//    @BeforeEach
+package com.periodicals.dao.jdbc;
+
+import com.mysql.cj.core.exceptions.AssertionFailedException;
+import com.periodicals.dao.factories.JdbcDaoFactory;
+import com.periodicals.exceptions.DaoException;
+import org.apache.log4j.Logger;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import util.H2Manager;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class UsersJdbcDAOTest {
+    //    static User testUser1, testUser2, nonExistingUser, sameUserFromDB;
+    static Logger log = Logger.getLogger(UsersJdbcDAOTest.class.getSimpleName());
+    //    static final String USERS_TABLE_NAME = "users";
+    private static H2Manager testDbManager = H2Manager.getInstance();
+    private static UsersJdbcDao usersDAO;
+    int genId;
+
+    @BeforeAll
+    static void beforeAll() {
+        testDbManager.insertDefaultData();
+        usersDAO = (UsersJdbcDao) JdbcDaoFactory.getInstance().getUsersDao();
+    }
+
+    @Test
+    void getAllUsers() {
+        try {
+            int expected = 3;
+            int count = usersDAO.getEntitiesCount();
+            assertEquals(expected, count);
+        } catch (DaoException e) {
+            throw new AssertionFailedException(e.getMessage());
+        }
+    }
 //    void setUp() {
-//            genId = 0;
-//            conn = inmManager.getConnection();
-//            usersDAO = (UsersJdbcDao2) JdbcDaoFactory.getInstance().getUsersDao();
-//    }
+//////            genId = 0;
+//////            conn = inmManager.getConnection();
+//////            usersDAO = (UsersJdbcDao2) JdbcDaoFactory.getInstance().getUsersDao();
+////    }
+////    @BeforeAll
+////    static void BeforeAll() {
+////        try {
+////            nonExistingUser = new User("non existing login", "non existing pass");
+////            nonExistingUser.setId(112);
+////
+////            testUser1 = new User("Peter", "123456", "waytopeter@gmail.com");
+////            testUser2 = new User("Mariya", "1234567");
+////        } catch (SQLException | IllegalArgumentException e) {
+////            log.error(e.getMessage());
+////            fail(e.getMessage());
+////        }
+////    }
 //
+////    @AfterAll
+////    static void AfterAll() {
+//////        usersDAO = null;
+//////        inmManager = null;
+//////        testUser1 = null;
+//////        testUser2 = null;
+//////        nonExistingUser = null;
+//////        sameUserFromDB = null;
+////    }
+////
+////    @BeforeEach
+////    void setUp() {
+//////            genId = 0;
+//////            conn = inmManager.getConnection();
+//////            usersDAO = (UsersJdbcDao2) JdbcDaoFactory.getInstance().getUsersDao();
+////    }
+////
 //    @AfterEach
 //    void tearDown() {
 //        testUser1.setId(null);
@@ -70,13 +77,13 @@
 //        sameUserFromDB = null;
 //        try {
 //            conn.close();
-//            inmManager.truncateTable(USERS_TABLE_NAME);
+////            inmManager.truncateTable(USERS_TABLE_NAME);
 //        } catch (SQLException e) {
 //            log.error(e.getMessage());
 //            fail(e.getMessage());
 //        }
 //    }
-//
+
 //    @Test
 //    void addUser() {
 //        try {
@@ -277,4 +284,4 @@
 //            usersDAO.getByLogin(null);
 //        });
 //    }
-//}
+}
