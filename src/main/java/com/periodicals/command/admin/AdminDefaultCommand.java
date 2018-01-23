@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
+/**
+ * @author Daniel Volnitsky
+ *
+ * Admin default command that is responsible for redirecting to admin main page
+ */
 public class AdminDefaultCommand implements Command {
 
     @Override

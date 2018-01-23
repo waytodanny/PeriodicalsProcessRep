@@ -1,12 +1,9 @@
 package com.periodicals;
 
-import com.periodicals.dao.factories.AbstractDaoFactory;
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
-import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.utils.uuid.UuidGenerator;
 
 
 public class Main {
@@ -51,7 +48,7 @@ public class Main {
 //        System.out.println(users.size());
 //
 //        User user = new User();
-//        user.setId(UuidGenerator.generateSequentialUuid());
+//        user.setId(UUIDHelper.generateSequentialUuid());
 //        user.setLogin("batman");
 //        user.setEmail("batman@gmail.com");
 //        user.setRole(new Role((byte)1, ""));

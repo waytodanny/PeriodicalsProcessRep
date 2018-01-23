@@ -1,14 +1,13 @@
 package com.periodicals.command.util;
 
-import com.periodicals.services.util.PageableCollectionService;
+import com.periodicals.services.interfaces.PageableCollectionService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.util.List;
 import java.util.Objects;
 
-import static com.periodicals.command.util.RedirectType.*;
+import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.resourceHolders.PagesHolder.ERROR_PAGE;
 
 public abstract class PagedCommand<T> implements Command {
@@ -18,7 +17,7 @@ public abstract class PagedCommand<T> implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         PaginationInfoHolder<T> paginationInfoHolder = this.getPaginationInfoHolderInstance(request);
 
-        if(Objects.nonNull(paginationInfoHolder)) {
+        if (Objects.nonNull(paginationInfoHolder)) {
             paginationInfoHolder.setAttributesToRequest(request);
         } else {
             return new CommandResult(FORWARD, ERROR_PAGE);
@@ -55,7 +54,9 @@ public abstract class PagedCommand<T> implements Command {
 
     protected int getRecordsPerPage() {
         return DEFAULT_RECORDS_PER_PAGE;
-    };
+    }
+
+    ;
 
     protected abstract String getPageHrefTemplate();
 }
