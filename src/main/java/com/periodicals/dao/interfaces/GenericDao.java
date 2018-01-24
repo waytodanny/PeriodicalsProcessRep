@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * @author Daniel Volnitsky
  * Dao pattern interface for common dao implementors
- * @T type of object implementor dao working with
- * @K primary key type
+ * T - type of object implementor dao working with
+ * K - primary key type
  */
 public interface GenericDao<T, K> {
     /**
@@ -24,7 +24,7 @@ public interface GenericDao<T, K> {
     /**
      * Delete operation
      */
-    void deleteEntity(K key) throws DaoException;
+    void deleteEntity(T entity) throws DaoException;
 
     /**
      * Select operation

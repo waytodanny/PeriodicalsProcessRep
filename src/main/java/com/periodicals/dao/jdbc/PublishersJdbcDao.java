@@ -33,17 +33,17 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, UUID> implemen
 
     @Override
     public void deleteEntity(Publisher entity) throws DaoException {
-
-    }
-
-    @Override
-    public void deleteEntity(UUID id) throws DaoException {
-        super.delete(PUBLISHER_DELETE, id.toString());
+        super.delete(PUBLISHER_DELETE, entity.getId());
     }
 
     @Override
     public List<Publisher> getEntityCollection() throws DaoException {
         return super.selectObjects(PUBLISHER_SELECT_ALL);
+    }
+
+    @Override
+    public List<Publisher> getEntitiesListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(PUBLISHER_SELECT_SUBLIST);
     }
 
     @Override

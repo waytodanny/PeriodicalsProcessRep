@@ -7,7 +7,6 @@ import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.services.entities.PeriodicalService;
 import com.periodicals.services.entities.UserService;
-import com.periodicals.services.interfaces.PageableCollectionService;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -121,7 +120,7 @@ public class SubscriptionService extends PeriodicalService {
                 throw new NullPointerException("Periodical with id " + periodicalId + " doesn't exist");
             }
 
-            result = periodicalsDao.getIsUserSubscribedForPeriodical(user, periodical);
+            result = periodicalsDao.getIsUserSubscribedOnPeriodical(user, periodical);
             LOGGER.debug("Succeed to get whether user with id " + user.getId() +
                     " subscribed on periodical with id " + periodicalId);
         } catch (DaoException | NullPointerException e) {

@@ -33,8 +33,8 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, UUID> implements RolesDa
     }
 
     @Override
-    public void deleteEntity(UUID key) throws DaoException {
-        super.delete(USER_DELETE, key);
+    public void deleteEntity(Role role) throws DaoException {
+        super.delete(USER_DELETE, role.getId());
     }
 
     @Override
@@ -43,13 +43,13 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, UUID> implements RolesDa
     }
 
     @Override
-    public int getEntitiesCount() throws DaoException {
-        return super.getEntriesCount(ROLE_ENTRIES_COUNT);
+    public List<Role> getEntitiesListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(ROLE_SELECT_SUBLIST);
     }
 
     @Override
-    public Role getByName(String name) throws DaoException {
-        return super.selectObject(ROLE_SELECT_BY_NAME, name);
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(ROLE_ENTRIES_COUNT);
     }
 
     @Override

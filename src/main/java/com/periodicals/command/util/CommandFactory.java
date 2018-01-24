@@ -19,7 +19,7 @@ public class CommandFactory {
         commandMap.put(LOGIN, new LoginCommand());
         commandMap.put(LOGOUT, new LogoutCommand());
         commandMap.put(REGISTER, new RegistrationCommand());
-        commandMap.put(CATALOG, new CatalogCommand());
+        commandMap.put(CATALOG, new DisplayPeriodicalsCommand());
         commandMap.put(PERIODICAL_ISSUES, new DisplayPeriodicalIssuesCommand());
         commandMap.put(ADD_TO_CART, new CartAddItemCommand());
         commandMap.put(REMOVE_FROM_CART, new CartRemoveItemCommand());
@@ -29,19 +29,19 @@ public class CommandFactory {
         commandMap.put(ADMIN_MAIN, new AdminDefaultCommand());
 
         commandMap.put(ADMIN_USERS, new DisplayUsersCommand());
-//        commandMap.put(ADMIN_USERS_EDIT, new EditUserCommand());
-//        commandMap.put(ADMIN_USERS_DELETE, new DeleteUserCommand());
-//        commandMap.put(ADMIN_USER_PAYMENTS, new DisplayUserPaymentsCommand());
-//
-//        commandMap.put(ADMIN_CATALOG, new CatalogEditingCommand());
-//        commandMap.put(ADMIN_ADD_PERIODICAL, new AddPeriodicalCommand());
-//        commandMap.put(ADMIN_EDIT_PERIODICAL, new EditPeriodicalCommand());
-//        commandMap.put(ADMIN_DELETE_PERIODICAL, new DeletePeriodicalCommand());
-//
-//        commandMap.put(ADMIN_PERIODICAL_ISSUES, new DisplayEditingIssuesCommand());
-//        commandMap.put(ADMIN_ADD_ISSUE, new AddIssueCommand());
-//        commandMap.put(ADMIN_EDIT_ISSUE, new EditIssueCommand());
-//        commandMap.put(ADMIN_DELETE_ISSUE, new DeleteIssueCommand());
+        commandMap.put(ADMIN_USERS_EDIT, new EditUserCommand());
+        commandMap.put(ADMIN_USERS_DELETE, new DeleteUserCommand());
+        commandMap.put(ADMIN_USER_PAYMENTS, new DisplayUserPaymentsCommand());
+
+        commandMap.put(ADMIN_CATALOG, new CatalogEditingCommand());
+        commandMap.put(ADMIN_ADD_PERIODICAL, new AddPeriodicalCommand());
+        commandMap.put(ADMIN_EDIT_PERIODICAL, new EditPeriodicalCommand());
+        commandMap.put(ADMIN_DELETE_PERIODICAL, new DeletePeriodicalCommand());
+
+        commandMap.put(ADMIN_PERIODICAL_ISSUES, new DisplayEditingIssuesCommand());
+        commandMap.put(ADMIN_ADD_ISSUE, new AddIssueCommand());
+        commandMap.put(ADMIN_EDIT_ISSUE, new EditIssueCommand());
+        commandMap.put(ADMIN_DELETE_ISSUE, new DeleteIssueCommand());
 
         commandMap.put(DEFAULT, new DefaultCommand());
     }

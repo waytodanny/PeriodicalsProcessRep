@@ -28,8 +28,8 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, UUID> implements Genre
     }
 
     @Override
-    public void deleteEntity(UUID key) throws DaoException {
-        super.delete(GENRE_DELETE, key.toString());
+    public void deleteEntity(Genre entity) throws DaoException {
+        super.delete(GENRE_DELETE, entity.getId());
     }
 
     @Override
@@ -43,13 +43,13 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, UUID> implements Genre
     }
 
     @Override
-    public int getEntitiesCount() throws DaoException {
-        return super.getEntriesCount(GENRE_ENTRIES_COUNT);
+    public List<Genre> getEntitiesListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(GENRE_SELECT_SUBLIST);
     }
 
     @Override
-    public Genre getGenreByName(String name) throws DaoException {
-        return super.selectObject(GENRE_SELECT_BY_NAME, name);
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(GENRE_ENTRIES_COUNT);
     }
 
     @Override

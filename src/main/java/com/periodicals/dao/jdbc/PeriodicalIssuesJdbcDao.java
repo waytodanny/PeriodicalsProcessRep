@@ -1,5 +1,6 @@
 package com.periodicals.dao.jdbc;
 
+import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.entities.Periodical;
 import com.periodicals.dao.interfaces.PeriodicalIssuesDao;
 import com.periodicals.entities.PeriodicalIssue;
@@ -21,14 +22,12 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
     private static final String PUBLISHING_DATE = AttributesPropertyManager.getProperty("periodical_issue.publishing_date");
     private static final String PERIODICAL_ID = AttributesPropertyManager.getProperty("periodical_issue.periodical_id");
 
+    private static final PeriodicalsJdbcDao periodicalsDao =
+            (PeriodicalsJdbcDao) JdbcDaoFactory.getInstance().getPeriodicalsDao();
+
     @Override
     public void createEntity(PeriodicalIssue entity) throws DaoException {
         super.insert(PERIODICAL_ISSUE_INSERT, getInsertObjectParams(entity));
-    }
-
-    @Override
-    public PeriodicalIssue getEntityByPrimaryKey(UUID key) throws DaoException {
-        return super.selectObject(PERIODICAL_ISSUE_SELECT_BY_ID, key);
     }
 
     @Override
@@ -37,8 +36,13 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
     }
 
     @Override
-    public void deleteEntity(String key) throws DaoException {
-        super.delete(PERIODICAL_ISSUE_DELETE, key);
+    public void deleteEntity(PeriodicalIssue entity) throws DaoException {
+        super.delete(PERIODICAL_ISSUE_DELETE, entity.getId());
+    }
+
+    @Override
+    public PeriodicalIssue getEntityByPrimaryKey(UUID key) throws DaoException {
+        return super.selectObject(PERIODICAL_ISSUE_SELECT_BY_ID, key);
     }
 
     @Override
@@ -47,35 +51,23 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
     }
 
     @Override
+    public List<PeriodicalIssue> getEntitiesListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(PERIODICAL_ISSUE_ALL_SELECT_LIMITED, skip, limit);
+    }
+
+    @Override
     public int getEntitiesCount() throws DaoException {
         return super.getEntriesCount(PERIODICAL_ISSUE_ALL_ENTRIES_COUNT);
     }
 
     @Override
-    public List<PeriodicalIssue> getPeriodicalIssues(Periodical periodical) throws DaoException {
-        return super.selectObjects(PERIODICAL_ISSUE_SELECT_BY_PERIODICAL, periodical.getId());
-    }
-
-    @Override
-    public int getPeriodicalIssuesCount(Periodical periodical) throws DaoException {
-        return super.getEntriesCount(PERIODICAL_ISSUE_PERIODICAL_ENTRIES_COUNT);
-
-    }
-
-    @Override
-    public int getAllIssuesCount() throws DaoException {
-        return super.getEntriesCount(PERIODICAL_ISSUE_ALL_ENTRIES_COUNT);
-    }
-
-    @Override
-    public List<PeriodicalIssue> getAllIssuesLimited(int skip, int limit) throws DaoException {
-        return super.selectObjects(PERIODICAL_ISSUE_ALL_SELECT_LIMITED, skip, limit);
-    }
-
-
-    @Override
-    public List<PeriodicalIssue> getPeriodicalIssuesLimited(Periodical periodical, int skip, int limit) throws DaoException {
+    public List<PeriodicalIssue> getIssuesByPeriodicalListBounded(int skip, int limit, Periodical periodical) throws DaoException {
         return super.selectObjects(PERIODICAL_ISSUE_SELECT_LIMITED, periodical.getId(), skip, limit);
+    }
+
+    @Override
+    public int getIssuesByPeriodicalCount(Periodical periodical) throws DaoException {
+        return super.getEntriesCount(PERIODICAL_ISSUE_PERIODICAL_ENTRIES_COUNT);
     }
 
     @Override
@@ -84,7 +76,7 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
                 issue.getId(),
                 issue.getIssueNo(),
                 issue.getName(),
-                issue.getPeriodicalId()
+                issue.getPeriodical().getId()
         };
     }
 
@@ -93,7 +85,7 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
         return new Object[]{
                 issue.getIssueNo(),
                 issue.getName(),
-                issue.getPeriodicalId(),
+                issue.getPeriodical().getId(),
                 issue.getId()
         };
     }
@@ -108,7 +100,11 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
                 issue.setIssueNo(rs.getInt(ISSUE_NO));
                 issue.setName(rs.getString(NAME));
                 issue.setPublishDate(rs.getDate(PUBLISHING_DATE));
-                issue.setPeriodicalId(UUID.fromString(rs.getString(PERIODICAL_ID)));
+
+                Periodical periodical = periodicalsDao.
+                        getEntityByPrimaryKey(UUID.fromString(rs.getString(PERIODICAL_ID)));
+
+                issue.setPeriodical(periodical);
 
                 result.add(issue);
             }

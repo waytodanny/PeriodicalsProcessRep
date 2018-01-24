@@ -1,5 +1,6 @@
 package com.periodicals.dao.jdbc;
 
+import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.interfaces.UsersDao;
 import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
@@ -20,7 +21,9 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, UUID> implements UsersDa
     private static final String PASSWORD = AttributesPropertyManager.getProperty("user.password");
     private static final String EMAIL = AttributesPropertyManager.getProperty("user.email");
     private static final String ROLE_ID = AttributesPropertyManager.getProperty("user.role_id");
-    private static final String ROLE_NAME = AttributesPropertyManager.getProperty("user.role_name");
+
+    private static final RolesJdbcDao rolesDao =
+            (RolesJdbcDao) JdbcDaoFactory.getInstance().getRolesDao();
 
     @Override
     public User getEntityByPrimaryKey(UUID key) throws DaoException {
@@ -48,23 +51,18 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, UUID> implements UsersDa
     }
 
     @Override
+    public List<User> getEntitiesListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(USER_SELECT_LIMITED, skip, limit);
+    }
+
+    @Override
     public int getEntitiesCount() throws DaoException {
-        return super.getEntriesCount(PAYMENT_ENTRIES_COUNT);
-    }
-
-    @Override
-    public User getByLogin(String login) throws DaoException {
-        return super.selectObject(USER_SELECT_BY_LOGIN, login);
-    }
-
-    @Override
-    public int getUsersCount() throws DaoException {
         return super.getEntriesCount(USER_ENTRIES_COUNT);
     }
 
     @Override
-    public List<User> geUsersLimitedList(int skip, int limit) throws DaoException {
-        return super.selectObjects(USER_SELECT_LIMITED, skip, limit);
+    public User getUserByLogin(String login) throws DaoException {
+        return super.selectObject(USER_SELECT_BY_LOGIN, login);
     }
 
     @Override
@@ -100,10 +98,8 @@ public class UsersJdbcDao extends AbstractJdbcDao<User, UUID> implements UsersDa
                 user.setPassword(rs.getString(PASSWORD));
                 user.setEmail(rs.getString(EMAIL));
 
-                UUID roleId = UUID.fromString(rs.getString(ROLE_ID));
-                String roleName = rs.getString(ROLE_NAME);
-
-                user.setRole(new Role(roleId, roleName));
+                Role role = rolesDao.getEntityByPrimaryKey(UUID.fromString(rs.getString(ROLE_ID)));
+                user.setRole(role);
 
                 result.add(user);
             }

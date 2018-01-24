@@ -19,8 +19,6 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
 
     protected abstract Object[] getObjectUpdateParams(T object) throws DaoException;
 
-//    protected abstract K getGeneratedKey(ResultSet rs) throws SQLException;
-
     protected abstract List<T> parseResultSet(ResultSet rs) throws DaoException;
 
     /**
@@ -51,7 +49,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     /**
      * Select list of object building select query  by incoming query and params
      */
-    protected List<T> selectObjects(String query, Object... params) throws DaoException {
+     List<T> selectObjects(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -70,7 +68,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     /**
      * Selects one object from list of objects given by selectsObjects()
      */
-    protected T selectObject(String query, Object... params) throws DaoException {
+     T selectObject(String query, Object... params) throws DaoException {
         List<T> objects = selectObjects(query, params);
         if (objects.size() > 0) {
             return objects.get(0);
@@ -111,7 +109,7 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
     /**
      * Generic method for queries that intend to obtain count value from DB
      */
-    protected int getEntriesCount(String query, Object... params) throws DaoException {
+     int getEntriesCount(String query, Object... params) throws DaoException {
         try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -130,4 +128,6 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             throw new DaoException(e);
         }
     }
+
+//    protected abstract K getGeneratedKey(ResultSet rs) throws SQLException;
 }
