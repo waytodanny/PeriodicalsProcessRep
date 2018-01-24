@@ -18,7 +18,7 @@ import java.util.UUID;
 public class Payment implements Identified<UUID> {
     private UUID id;
     private Timestamp paymentTime;
-    private UUID userId;
+    private User user;
     private BigDecimal paymentSum;
     private List<Periodical> periodicals;
 
@@ -42,13 +42,13 @@ public class Payment implements Identified<UUID> {
         this.paymentTime = paymentTime;
     }
 
-    public UUID getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
     /*TODO decide whether is right to check here*/
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public BigDecimal getPaymentSum() {
@@ -77,13 +77,13 @@ public class Payment implements Identified<UUID> {
         Payment payment = (Payment) o;
         return Objects.equals(id, payment.id) &&
                 Objects.equals(paymentTime, payment.paymentTime) &&
-                Objects.equals(userId, payment.userId) &&
+                Objects.equals(user, payment.user) &&
                 Objects.equals(paymentSum, payment.paymentSum) &&
                 Objects.equals(periodicals, payment.periodicals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, paymentTime, userId, paymentSum, periodicals);
+        return Objects.hash(id, paymentTime, user, paymentSum, periodicals);
     }
 }

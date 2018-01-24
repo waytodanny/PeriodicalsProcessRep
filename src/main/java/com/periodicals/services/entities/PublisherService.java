@@ -7,7 +7,7 @@ import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
-import com.periodicals.utils.UUIDHelper;
+import com.periodicals.utils.uuid.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -33,13 +33,13 @@ public class PublisherService implements PageableCollectionService<Publisher>, L
     }
 
     @Override
-    public Publisher getEntityByPrimaryKey(UUID id)  {
+    public Publisher getEntityByPrimaryKey(UUID id) {
         Publisher result = null;
         try {
             result = publishersDao.getEntityByPrimaryKey(id);
             LOGGER.debug("Obtained publisher with id " + id);
         } catch (DaoException e) {
-            LOGGER.error("Failed to obtain publisher with id "+ id + " due to: " + e.getMessage());
+            LOGGER.error("Failed to obtain publisher with id " + id + " due to: " + e.getMessage());
         }
         return result;
     }
@@ -80,7 +80,7 @@ public class PublisherService implements PageableCollectionService<Publisher>, L
     public void updateEntity(UUID id, String name) throws ServiceException {
         try {
             Publisher updated = this.getEntityByPrimaryKey(id);
-            if(Objects.nonNull(updated)) {
+            if (Objects.nonNull(updated)) {
                 updated.setName(name);
                 publishersDao.updateEntity(updated);
                 LOGGER.debug("Publisher with id " + id + " has been successfully updated");
@@ -99,7 +99,7 @@ public class PublisherService implements PageableCollectionService<Publisher>, L
     public void deleteEntity(UUID id) throws ServiceException {
         try {
             Publisher deleted = this.getEntityByPrimaryKey(id);
-            if(Objects.isNull(deleted)) {
+            if (Objects.isNull(deleted)) {
                 throw new NullPointerException("Publisher with id " + id + " doesn't exist");
             }
             publishersDao.deleteEntity(deleted);

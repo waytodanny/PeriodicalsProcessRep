@@ -2,8 +2,8 @@ package com.periodicals.dao.jdbc;
 
 import com.periodicals.dao.connection.ConnectionManager;
 import com.periodicals.dao.connection.ConnectionWrapper;
-import com.periodicals.dao.interfaces.PeriodicalsDao;
 import com.periodicals.entities.*;
+import com.periodicals.dao.interfaces.PeriodicalsDao;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
@@ -30,7 +30,7 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, UUID> implem
 
     @Override
     public void createEntity(Periodical entity) throws DaoException {
-        super.insert(PERIODICAL_INSERT, getInsertObjectParams(entity));
+         super.insert(PERIODICAL_INSERT, getInsertObjectParams(entity));
     }
 
     @Override
@@ -182,8 +182,6 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, UUID> implem
         }
         return result;
     }
-
-
 
 //    @Override
 //    protected Integer getGeneratedKey(ResultSet rs) throws SQLException {

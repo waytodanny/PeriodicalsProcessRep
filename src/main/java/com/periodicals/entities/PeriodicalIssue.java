@@ -19,7 +19,7 @@ public class PeriodicalIssue implements Identified<UUID> {
     private int issueNo;
     private String name;
     private Date publishDate;
-    private UUID periodicalId;
+    private Periodical periodical;
 
     public PeriodicalIssue() {
 
@@ -57,13 +57,13 @@ public class PeriodicalIssue implements Identified<UUID> {
         this.name = name;
     }
 
-    public UUID getPeriodicalId() {
-        return periodicalId;
+    public Periodical getPeriodical() {
+        return periodical;
     }
 
     /*TODO decide whether is right to check here*/
-    public void setPeriodicalId(UUID periodicalId) {
-        this.periodicalId = periodicalId;
+    public void setPeriodical(Periodical periodical) {
+        this.periodical = periodical;
     }
 
     public Date getPublishDate() {
@@ -84,11 +84,11 @@ public class PeriodicalIssue implements Identified<UUID> {
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(publishDate, that.publishDate) &&
-                Objects.equals(periodicalId, that.periodicalId);
+                Objects.equals(periodical, that.periodical);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, issueNo, name, publishDate, periodicalId);
+        return Objects.hash(id, issueNo, name, publishDate, periodical);
     }
 }

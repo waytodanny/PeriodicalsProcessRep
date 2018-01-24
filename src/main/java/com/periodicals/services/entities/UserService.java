@@ -2,15 +2,13 @@ package com.periodicals.services.entities;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.UsersJdbcDao;
-import com.periodicals.entities.Periodical;
 import com.periodicals.entities.Role;
 import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.services.lookups.RoleService;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
-import com.periodicals.utils.UUIDHelper;
+import com.periodicals.services.lookups.RoleService;
 import com.periodicals.utils.encryption.Cryptographer;
 import com.periodicals.utils.encryption.MD5Cryptographer;
 import com.periodicals.utils.uuid.UUIDHelper;

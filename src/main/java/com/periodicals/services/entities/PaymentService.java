@@ -9,13 +9,15 @@ import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
-import com.periodicals.utils.UUIDHelper;
+import com.periodicals.utils.uuid.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @author Daniel Volnitsky

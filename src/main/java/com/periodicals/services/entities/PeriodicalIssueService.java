@@ -8,7 +8,7 @@ import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
-import com.periodicals.utils.UUIDHelper;
+import com.periodicals.utils.uuid.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -35,13 +35,13 @@ public class PeriodicalIssueService implements PageableCollectionService<Periodi
     }
 
     @Override
-    public PeriodicalIssue getEntityByPrimaryKey(UUID id)  {
+    public PeriodicalIssue getEntityByPrimaryKey(UUID id) {
         PeriodicalIssue result = null;
         try {
             result = periodicalIssuesDao.getEntityByPrimaryKey(id);
             LOGGER.debug("Obtained periodical issue with id " + id);
         } catch (DaoException e) {
-            LOGGER.error("Failed to obtain periodical issue with id "+ id + " due to: " + e.getMessage());
+            LOGGER.error("Failed to obtain periodical issue with id " + id + " due to: " + e.getMessage());
         }
         return result;
     }
@@ -71,7 +71,7 @@ public class PeriodicalIssueService implements PageableCollectionService<Periodi
             added.setIssueNo(issueNo);
 
             Periodical addedPeriodical = periodicalService.getEntityByPrimaryKey(periodicalId);
-            if(Objects.nonNull(addedPeriodical)) {
+            if (Objects.nonNull(addedPeriodical)) {
                 added.setPeriodical(addedPeriodical);
             } else {
                 throw new NullPointerException("Periodical with id " + periodicalId + " doesn't exist");
@@ -91,7 +91,7 @@ public class PeriodicalIssueService implements PageableCollectionService<Periodi
     public void updateEntity(UUID id, String name, int issueNo) throws ServiceException {
         try {
             PeriodicalIssue updated = this.getEntityByPrimaryKey(id);
-            if(Objects.nonNull(updated)) {
+            if (Objects.nonNull(updated)) {
                 updated.setName(name);
                 updated.setIssueNo(issueNo);
                 periodicalIssuesDao.updateEntity(updated);
@@ -111,7 +111,7 @@ public class PeriodicalIssueService implements PageableCollectionService<Periodi
     public void deleteEntity(UUID id) throws ServiceException {
         try {
             PeriodicalIssue deleted = this.getEntityByPrimaryKey(id);
-            if(Objects.isNull(deleted)) {
+            if (Objects.isNull(deleted)) {
                 throw new NullPointerException("Periodical issue with id " + id + " doesn't exist");
             }
             periodicalIssuesDao.deleteEntity(deleted);
@@ -147,14 +147,14 @@ public class PeriodicalIssueService implements PageableCollectionService<Periodi
     }
 
     /**
-     * @return  PeriodicalIssue limited list of specified periodical
      * @param periodicalId id of periodical which issues are to be obtained
+     * @return PeriodicalIssue limited list of specified periodical
      */
     public List<PeriodicalIssue> getIssuesByPeriodicalListBounded(int skip, int limit, UUID periodicalId) {
         List<PeriodicalIssue> entities = new ArrayList<>();
         try {
             Periodical periodical = periodicalService.getEntityByPrimaryKey(periodicalId);
-            if(Objects.nonNull(periodical)) {
+            if (Objects.nonNull(periodical)) {
                 entities = periodicalIssuesDao.getIssuesByPeriodicalListBounded(skip, limit, periodical);
                 LOGGER.debug("Obtained periodical issues bounded list with periodicalId " + periodicalId);
             } else {
@@ -167,14 +167,14 @@ public class PeriodicalIssueService implements PageableCollectionService<Periodi
     }
 
     /**
-     * @return  count of issues of specified periodical
      * @param periodicalId id of periodical which issues count is to be obtained
+     * @return count of issues of specified periodical
      */
     public int getIssuesByPeriodicalCount(UUID periodicalId) {
         int result = 0;
         try {
             Periodical periodical = periodicalService.getEntityByPrimaryKey(periodicalId);
-            if(Objects.nonNull(periodical)) {
+            if (Objects.nonNull(periodical)) {
                 result = periodicalIssuesDao.getIssuesByPeriodicalCount(periodical);
                 LOGGER.debug("Obtained periodical issues list count with periodicalId " + periodicalId);
             } else {

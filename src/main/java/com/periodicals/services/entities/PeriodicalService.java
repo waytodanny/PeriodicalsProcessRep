@@ -2,16 +2,16 @@ package com.periodicals.services.entities;
 
 import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.jdbc.PeriodicalsJdbcDao;
-import com.periodicals.entities.Periodical;
-import com.periodicals.entities.Payment;
-import com.periodicals.entities.Publisher;
 import com.periodicals.entities.Genre;
+import com.periodicals.entities.Payment;
+import com.periodicals.entities.Periodical;
+import com.periodicals.entities.Publisher;
 import com.periodicals.exceptions.DaoException;
 import com.periodicals.exceptions.ServiceException;
-import com.periodicals.services.lookups.GenreService;
 import com.periodicals.services.interfaces.LookupService;
 import com.periodicals.services.interfaces.PageableCollectionService;
-import com.periodicals.utils.UUIDHelper;
+import com.periodicals.services.lookups.GenreService;
+import com.periodicals.utils.uuid.UUIDHelper;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
@@ -43,13 +43,13 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
 
 
     @Override
-    public Periodical getEntityByPrimaryKey(UUID id)  {
+    public Periodical getEntityByPrimaryKey(UUID id) {
         Periodical result = null;
         try {
             result = periodicalsDao.getEntityByPrimaryKey(id);
             LOGGER.debug("Obtained periodical with id " + id);
         } catch (DaoException e) {
-            LOGGER.error("Failed to obtain periodical with id "+ id + " due to: " + e.getMessage());
+            LOGGER.error("Failed to obtain periodical with id " + id + " due to: " + e.getMessage());
         }
         return result;
     }
@@ -70,7 +70,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
      * Constructs and inserts Periodical object by incoming params
      */
     public void createEntity(String name, String description, BigDecimal subscriptionCost, boolean isLimited,
-                          short issuesPerYear, UUID genreId, UUID publisherId) throws ServiceException {
+                             short issuesPerYear, UUID genreId, UUID publisherId) throws ServiceException {
         try {
             Periodical added = new Periodical();
             UUID id = UUIDHelper.generateSequentialUuid();
@@ -83,14 +83,14 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
             added.setIssuesPerYear(issuesPerYear);
 
             Genre addedGenre = genreService.getEntityByPrimaryKey(genreId);
-            if(Objects.nonNull(addedGenre)) {
+            if (Objects.nonNull(addedGenre)) {
                 added.setGenre(addedGenre);
             } else {
                 throw new NullPointerException("Genre with id " + genreId + " doesn't exist");
             }
 
             Publisher addedPublisher = publisherService.getEntityByPrimaryKey(publisherId);
-            if(Objects.nonNull(addedPublisher)) {
+            if (Objects.nonNull(addedPublisher)) {
                 added.setPublisher(addedPublisher);
             } else {
                 throw new NullPointerException("Publisher with id " + publisherId + " doesn't exist");
@@ -110,7 +110,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
                              short issuesPerYear, UUID genreId, UUID publisherId) throws ServiceException {
         try {
             Periodical updated = this.getEntityByPrimaryKey(id);
-            if(Objects.nonNull(updated)) {
+            if (Objects.nonNull(updated)) {
                 updated.setName(name);
                 updated.setDescription(description);
                 updated.setSubscriptionCost(subscriptionCost);
@@ -118,14 +118,14 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
                 updated.setIssuesPerYear(issuesPerYear);
 
                 Genre updatedGenre = genreService.getEntityByPrimaryKey(genreId);
-                if(Objects.nonNull(updatedGenre)) {
+                if (Objects.nonNull(updatedGenre)) {
                     updated.setGenre(updatedGenre);
                 } else {
                     throw new NullPointerException("Genre with id " + genreId + " doesn't exist");
                 }
 
                 Publisher updatedPublisher = publisherService.getEntityByPrimaryKey(publisherId);
-                if(Objects.nonNull(updatedPublisher)) {
+                if (Objects.nonNull(updatedPublisher)) {
                     updated.setPublisher(updatedPublisher);
                 } else {
                     throw new NullPointerException("Publisher with id " + publisherId + " doesn't exist");
@@ -147,7 +147,7 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
     public void deleteEntity(UUID id) throws ServiceException {
         try {
             Periodical deleted = this.getEntityByPrimaryKey(id);
-            if(Objects.isNull(deleted)) {
+            if (Objects.isNull(deleted)) {
                 throw new NullPointerException("Periodical with id " + id + " doesn't exist");
             }
             periodicalsDao.deleteEntity(deleted);
@@ -183,14 +183,14 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
     }
 
     /**
-     * @return  Periodical limited list of specified genre
      * @param genreId id of genre which periodicals are to be obtained
+     * @return Periodical limited list of specified genre
      */
     public List<Periodical> getPeriodicalsByGenreListBounded(int skip, int limit, UUID genreId) {
         List<Periodical> entities = new ArrayList<>();
         try {
             Genre genre = genreService.getEntityByPrimaryKey(genreId);
-            if(Objects.nonNull(genre)) {
+            if (Objects.nonNull(genre)) {
                 entities = periodicalsDao.getPeriodicalsByGenreListBounded(skip, limit, genre);
                 LOGGER.debug("Obtained periodicals bounded list with genreId " + genreId);
             } else {
@@ -203,14 +203,14 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
     }
 
     /**
-     * @return  Periodicals of specified genre count
      * @param genreId id of genre which periodicals count is to be obtained
+     * @return Periodicals of specified genre count
      */
     public int getPeriodicalsByGenreCount(UUID genreId) {
         int result = 0;
         try {
             Genre genre = genreService.getEntityByPrimaryKey(genreId);
-            if(Objects.nonNull(genre)) {
+            if (Objects.nonNull(genre)) {
                 result = periodicalsDao.getPeriodicalsByGenreCount(genre);
                 LOGGER.debug("Obtained periodicals list count with genreId " + genreId);
             } else {
@@ -223,14 +223,14 @@ public class PeriodicalService implements PageableCollectionService<Periodical>,
     }
 
     /**
-     * @return  Periodicals of specified genre count
      * @param paymentId id of payment which periodicals limited list is to be obtained
+     * @return Periodicals of specified genre count
      */
     public List<Periodical> getPeriodicalsByPaymentListBounded(int skip, int limit, UUID paymentId) {
         List<Periodical> entities = new ArrayList<>();
         try {
             Payment payment = paymentService.getEntityByPrimaryKey(paymentId);
-            if(Objects.nonNull(payment)) {
+            if (Objects.nonNull(payment)) {
                 entities = periodicalsDao.getPeriodicalsByPaymentList(payment);
                 LOGGER.debug("Obtained periodicals list with paymentId " + paymentId);
             } else {

@@ -1,6 +1,8 @@
 package com.periodicals.dao.factories;
 
 import com.periodicals.dao.interfaces.*;
+import com.periodicals.dao.interfaces.lookup.GenresDao;
+import com.periodicals.dao.interfaces.lookup.RolesDao;
 import com.periodicals.dao.jdbc.*;
 
 /**
