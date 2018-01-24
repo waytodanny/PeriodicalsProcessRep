@@ -16,6 +16,13 @@ import java.util.Objects;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
 import static com.periodicals.utils.resourceHolders.PagesHolder.LOGIN_PAGE;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Command for authenticated users that is responsible for providing paymentService with
+ * info about incoming payment
+ * @see PaymentService
+ */
 public class ProcessSubscriptionCommand implements Command {
     private PaymentService paymentService = PaymentService.getInstance();
 

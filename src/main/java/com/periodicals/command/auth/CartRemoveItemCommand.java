@@ -14,6 +14,13 @@ import javax.servlet.http.HttpSession;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * @author Daniel Volnitsky
+ *
+ * Command for authenticated users that is responsible for handling
+ * user deleting from cart action
+ * @see Cart
+ */
 public class CartRemoveItemCommand implements Command {
     private static final CartService cartService = CartService.getInstance();
 

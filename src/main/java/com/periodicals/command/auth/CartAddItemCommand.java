@@ -16,6 +16,13 @@ import java.util.UUID;
 
 import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_CART;
 
+/**
+ * @author Daniel Volnitsky
+ *
+ * Command for authenticated users that is responsible for handling
+ * user adding to cart action
+ * @see Cart
+ */
 public class CartAddItemCommand implements Command {
     private static final CartService cartService = CartService.getInstance();
 

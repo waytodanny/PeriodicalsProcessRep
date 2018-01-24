@@ -20,7 +20,8 @@ import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
 import static com.periodicals.utils.resourceHolders.PagesHolder.REGISTRATION_PAGE;
 
 /**
- * Command that handles registration requests
+ * @author Daniel Volnitsky
+ * Command that is responsible to handle registration requests
  */
 public class RegistrationCommand implements Command {
     private static UserService userService = UserService.getInstance();

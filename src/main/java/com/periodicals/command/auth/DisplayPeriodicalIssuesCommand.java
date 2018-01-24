@@ -20,6 +20,14 @@ import java.util.UUID;
 import static com.periodicals.utils.resourceHolders.AttributesHolder.ADMIN_PERIODICAL_ISSUES;
 import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_PERIODICAL;
 
+/**
+ * @author Daniel Volnitsky
+ *
+ * Command for authenticated users that is responsible for providing request attributes
+ * for view to display paginable periodical issues collection
+ *
+ * @see PagedCommand
+ */
 public class DisplayPeriodicalIssuesCommand extends PagedCommand<PeriodicalIssue> {
     private PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
     private SubscriptionService subscriptionService = SubscriptionService.getInstance();

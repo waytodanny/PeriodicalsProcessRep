@@ -17,6 +17,13 @@ import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
 
 // TODO НЕ ВЫВОДИТЬ КНОПКУ ПОКУПКИ ДЛЯ ИЗДАНИЙ, НА КОТОРЫЕ ПОЛЬЗОВАТЕЛЬ УЖЕ ПОДПИСАН
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Command for authenticated users that is responsible for providing request attributes
+ * for view to display paginable periodical collection
+ * @see PagedCommand
+ */
 public class DisplayPeriodicalsCommand extends PagedCommand<Periodical> {
     private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
 
@@ -42,9 +49,7 @@ public class DisplayPeriodicalsCommand extends PagedCommand<Periodical> {
     }
 
     /**
-     * fills PaginationInfoHolder object by sublist of some genre periodicals
-     *
-     * @see
+     * @return PaginationInfoHolder object filled by sublist of genre filtered periodicals
      */
     private PaginationInfoHolder<Periodical> getPeriodicalsByGenrePaginationInfoHolder(HttpServletRequest request, UUID genreId) {
         PaginationInfoHolder<Periodical> holder = new PaginationInfoHolder<>();

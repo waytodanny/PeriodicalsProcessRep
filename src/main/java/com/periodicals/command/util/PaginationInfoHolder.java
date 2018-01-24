@@ -6,7 +6,9 @@ import java.util.List;
 import static sun.plugin.dom.css.CSSConstants.ATTR_PAGE;
 
 /**
- * Class that is needed to carry some info for pages that use objects pagination
+ * @author Daniel VOlnitsky
+ * <p>
+ * Class that is needed to carry information for views that do objects pagination
  * E - collection of elements that is to be divided on pages
  */
 public class PaginationInfoHolder<E> {

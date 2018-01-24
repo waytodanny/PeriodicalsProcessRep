@@ -10,6 +10,12 @@ import java.util.Objects;
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.utils.resourceHolders.PagesHolder.ERROR_PAGE;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Basic class for those command which need to specify pagination information
+ * @see Command
+ */
 public abstract class PagedCommand<T> implements Command {
     protected static final int DEFAULT_RECORDS_PER_PAGE = 10;
 
@@ -30,6 +36,10 @@ public abstract class PagedCommand<T> implements Command {
         return getBaseEntityPaginationHolder(request);
     }
 
+    /**
+     * @return Basic Generic PaginationInfoHolder for objects
+     * that child-class manipulates with
+     */
     private PaginationInfoHolder<T> getBaseEntityPaginationHolder(HttpServletRequest request) {
         PageableCollectionService<T> service = this.getPageableCollectionService();
         PaginationInfoHolder<T> holder = new PaginationInfoHolder<>();
@@ -37,7 +47,7 @@ public abstract class PagedCommand<T> implements Command {
         int currentPage = PaginationInfoHolder.getPageFromRequest(request);
         holder.setCurrentPage(currentPage);
 
-        int recordsCount = Math.toIntExact(service.getEntitiesCount());
+        int recordsCount = service.getEntitiesCount();
         holder.setRecordsCount(recordsCount);
         holder.setRecordsPerPage(this.getRecordsPerPage());
 
@@ -50,13 +60,17 @@ public abstract class PagedCommand<T> implements Command {
         return holder;
     }
 
+    /**
+     * @return service that is responsible for providing pagination information
+     */
     protected abstract PageableCollectionService<T> getPageableCollectionService();
 
     protected int getRecordsPerPage() {
         return DEFAULT_RECORDS_PER_PAGE;
     }
 
-    ;
-
+    /**
+     * @return path to page where pagination objects will be rendered
+     */
     protected abstract String getPageHrefTemplate();
 }

@@ -13,9 +13,9 @@ import static com.periodicals.command.util.RedirectType.REDIRECT;
 import static com.periodicals.utils.resourceHolders.PagesHolder.LOGIN_PAGE;
 
 /*
- * Command made for logout, it does:
- * 1) invalidates the session;
- * 2) clears the identity information in the request.
+ * Command made for logout, it's purpose:
+ * 1) invalidating the session;
+ * 2) clearing the identity information in the request.
  */
 public class LogoutCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(LogoutCommand.class.getSimpleName());

@@ -16,9 +16,11 @@ import java.util.UUID;
 import static com.periodicals.utils.resourceHolders.PagesHolder.USER_SUBSCRIPTIONS_PAGE;
 
 /**
- * Command that uses pagination to display user subscriptions (periodicals)
- *
- * @see
+ * @author Daniel Volnitsky
+ * <p>
+ * Command for authenticated users that is responsible for providing request attributes
+ * for view to display paginable user subscriptions (periodicals) collection
+ * @see PagedCommand
  */
 public class DisplayUserSubscriptionsCommand extends PagedCommand<Periodical> {
     private SubscriptionService subscriptionService = SubscriptionService.getInstance();
@@ -41,6 +43,9 @@ public class DisplayUserSubscriptionsCommand extends PagedCommand<Periodical> {
         return USER_SUBSCRIPTIONS_PAGE;
     }
 
+    /**
+     * @return PaginationInfoHolder object filled by sublist of user filtered periodicals
+     */
     private PaginationInfoHolder<Periodical> getPeriodicalsByUserPaginationInfoHolder(HttpServletRequest request, UUID userId) {
         PaginationInfoHolder<Periodical> holder = new PaginationInfoHolder<>();
 
