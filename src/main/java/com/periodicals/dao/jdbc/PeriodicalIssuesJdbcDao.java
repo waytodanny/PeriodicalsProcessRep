@@ -27,7 +27,7 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
     }
 
     @Override
-    public PeriodicalIssue getEntityByPrimaryKey(String key) throws DaoException {
+    public PeriodicalIssue getEntityByPrimaryKey(UUID key) throws DaoException {
         return super.selectObject(PERIODICAL_ISSUE_SELECT_BY_ID, key);
     }
 

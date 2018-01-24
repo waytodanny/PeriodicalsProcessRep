@@ -60,7 +60,7 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, UUID> implements P
     }
 
     @Override
-    public List<Payment> getUserPaymentsListBounded(User user, int skip, int limit) throws DaoException {
+    public List<Payment> getUserPaymentsListBounded(int skip, int limit, User user) throws DaoException {
         return super.selectObjects(PAYMENT_SELECT_USER_PAYMENTS_SUBLIST, user.getId(), skip, limit);
     }
 
