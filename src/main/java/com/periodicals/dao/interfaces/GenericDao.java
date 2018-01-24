@@ -37,6 +37,11 @@ public interface GenericDao<T, K> {
     List<T> getEntityCollection() throws DaoException;
 
     /**
+     * @return limited objects list of specified generic type
+     */
+    List<T> getEntitiesListBounded(int skip, int limit) throws DaoException;
+
+    /**
      * @return count of entities of specified generic type
      */
     int getEntitiesCount() throws DaoException;

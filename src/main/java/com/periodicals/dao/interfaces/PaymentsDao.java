@@ -9,13 +9,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PaymentsDao extends GenericDao<Payment, UUID> {
-    void addPaymentPeriodicals(Payment payment, List<Periodical> periodicals) throws DaoException;
+    List<Payment> getPaymentsByUserListBounded(int take, int limit, User user) throws DaoException;
 
-    void deletePaymentPeriodicals(Payment payment) throws DaoException;
-
-    List<Payment> getUserPaymentsListBounded(User user, int take, int limit) throws DaoException;
-
-    int getUserPaymentsCount(User user) throws DaoException;
-
-    List<Payment> getPaymentsListBounded(int skip, int limit) throws DaoException;
+    int getPaymentsByUserCount(User user) throws DaoException;
 }
+

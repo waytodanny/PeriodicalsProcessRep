@@ -10,21 +10,17 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PeriodicalsDao extends GenericDao<Periodical, UUID> {
-    boolean isUserSubscribed(User user, Periodical per) throws DaoException;
+    List<Periodical> getPeriodicalsByGenreListBounded(int skip, int limit,Genre genre) throws DaoException;
 
-    List<Periodical> getUserSubscriptions(User user) throws DaoException;
+    int getPeriodicalsByGenreCount(Genre genre) throws DaoException;
 
-    void addUserSubscriptions(User user, List<Periodical> subscriptions) throws DaoException;
+    List<Periodical> getPeriodicalsByPaymentList(Payment payment) throws DaoException;
 
-    List<Periodical> getUserSubscriptionsLimited(User user, int skip, int limit) throws DaoException;
+    List<Periodical> getPeriodicalsByUserList(User user) throws DaoException;
 
-    List<Periodical> getGenrePeriodicalsLimited(Genre genre, int skip, int limit) throws DaoException;
+    int getPeriodicalsByUserCount(User user) throws DaoException;
 
-    int getGenrePeriodicalsCount(Genre genre) throws DaoException;
+    List<Periodical> getPeriodicalsByUserListBounded(int skip, int limit, User user) throws DaoException;
 
-    List<Periodical> getPeriodicalListBounded(int skip, int limit) throws DaoException;
-
-    int getUserSubscriptionsCount(User user) throws DaoException;
-
-    List<Periodical> getPaymentPeriodicals(Payment payment) throws DaoException;
+    boolean getIsUserSubscribedForPeriodical(User user, Periodical periodical) throws DaoException;
 }

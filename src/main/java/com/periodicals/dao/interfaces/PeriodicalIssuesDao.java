@@ -7,13 +7,7 @@ import com.periodicals.exceptions.DaoException;
 import java.util.List;
 
 public interface PeriodicalIssuesDao extends GenericDao<PeriodicalIssue, String> {
-    List<PeriodicalIssue> getPeriodicalIssues(Periodical periodical) throws DaoException;
+    List<PeriodicalIssue> getIssuesByPeriodicalListBounded(int skip, int limit, Periodical periodical) throws DaoException;
 
-    int getPeriodicalIssuesCount(Periodical periodical) throws DaoException;
-
-    int getAllIssuesCount() throws DaoException;
-
-    List<PeriodicalIssue> getAllIssuesLimited(int skip, int limit) throws DaoException;
-
-    List<PeriodicalIssue> getPeriodicalIssuesLimited(Periodical periodical, int skip, int limit) throws DaoException;
+    int getIssuesByPeriodicalCount(Periodical periodical) throws DaoException;
 }
