@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
-import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_GENRE;
 import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
 
 // TODO НЕ ВЫВОДИТЬ КНОПКУ ПОКУПКИ ДЛЯ ИЗДАНИЙ, НА КОТОРЫЕ ПОЛЬЗОВАТЕЛЬ УЖЕ ПОДПИСАН
@@ -25,6 +24,7 @@ import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
  * @see PagedCommand
  */
 public class DisplayPeriodicalsCommand extends PagedCommand<Periodical> {
+    private static final String ATTR_GENRE = "genre";
     private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
 
     @Override

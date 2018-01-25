@@ -84,9 +84,4 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, UUID> implements Genre
         }
         return result;
     }
-
-//    @Override
-//    protected Short getGeneratedKey(ResultSet rs) throws SQLException {
-//        return rs.getShort(1);
-//    }
 }

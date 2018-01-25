@@ -2,11 +2,7 @@ package com.periodicals.utils.resourceHolders;
 
 import com.periodicals.utils.propertyManagers.JdbcQueriesPropertyManager;
 
-public final class JdbcQueriesHolder {
-
-    private JdbcQueriesHolder() {
-
-    }
+public class JdbcQueriesHolder {
 
     /*params*/
     public static final String COUNT_PARAM = JdbcQueriesPropertyManager.getProperty("param.count");

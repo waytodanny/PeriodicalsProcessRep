@@ -17,13 +17,14 @@ import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
 public class UsersJdbcDao extends AbstractJdbcDao<User, UUID> implements UsersDao {
     private static final String ID = AttributesPropertyManager.getProperty("user.id");
-    private static final String NAME = AttributesPropertyManager.getProperty("user.name");
+    private static final String NAME = AttributesPropertyManager.getProperty("user.login");
     private static final String PASSWORD = AttributesPropertyManager.getProperty("user.password");
     private static final String EMAIL = AttributesPropertyManager.getProperty("user.email");
     private static final String ROLE_ID = AttributesPropertyManager.getProperty("user.role_id");
 
-    private static final RolesJdbcDao rolesDao =
+    private RolesJdbcDao rolesDao =
             (RolesJdbcDao) JdbcDaoFactory.getInstance().getRolesDao();
+
 
     @Override
     public User getEntityByPrimaryKey(UUID key) throws DaoException {

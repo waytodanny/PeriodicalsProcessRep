@@ -99,31 +99,6 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, UUID> implem
         return count > 0;
     }
 
-//    /*TODO think of how to make generic*/
-//    @Override
-//    public void addUserSubscriptions(User user, List<Periodical> subs) throws DaoException {
-//        if (Objects.isNull(user) || Objects.isNull(user.getId())) {
-//            throw new DaoException("Attempt to addNewIssue subscriptions to nullable user or with empty id.");
-//        }
-//
-//        if (Objects.isNull(subs) || subs.size() < 1) {
-//            throw new DaoException("Attempt to addNewIssue subs without periodicals");
-//        }
-//
-//        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-//             PreparedStatement stmt = conn.prepareStatement(SUBSCRIPTIONS_ADD_USER_SUBSCRIPTION)) {
-//
-//            for (Periodical sub : subs) {
-//                stmt.setString(1, user.getId().toString());
-//                stmt.setString(2, sub.getId().toString());
-//                stmt.addBatch();
-//            }
-//            stmt.executeBatch();
-//        } catch (Exception e) {
-//            throw new DaoException(e);
-//        }
-//    }
-
     @Override
     protected Object[] getInsertObjectParams(Periodical periodical) throws DaoException {
         return new Object[]{
@@ -179,8 +154,4 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, UUID> implem
         return result;
     }
 
-//    @Override
-//    protected Integer getGeneratedKey(ResultSet rs) throws SQLException {
-//        return rs.getInt(1);
-//    }
 }

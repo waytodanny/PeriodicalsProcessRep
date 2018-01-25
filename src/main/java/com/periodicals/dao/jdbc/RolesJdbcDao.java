@@ -84,9 +84,4 @@ public class RolesJdbcDao extends AbstractJdbcDao<Role, UUID> implements RolesDa
         }
         return result;
     }
-
-//    @Override
-//    protected Byte getGeneratedKey(ResultSet rs) throws SQLException {
-//        return rs.getByte(1);
-//    }
 }

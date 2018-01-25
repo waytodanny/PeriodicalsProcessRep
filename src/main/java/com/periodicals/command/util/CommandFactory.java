@@ -13,7 +13,7 @@ import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
 
 /**
  * @author Daniel Volnitsky
- *
+ * <p>
  * Class that is responsible for holdng application endpoints and commands that
  * correspond to them
  */

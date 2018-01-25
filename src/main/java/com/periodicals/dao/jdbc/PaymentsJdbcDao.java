@@ -68,40 +68,6 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, UUID> implements P
         return super.getEntriesCount(PAYMENT_SELECT_USER_PAYMENTS_COUNT, user.getId());
     }
 
-//    @Override
-//    public void deletePaymentPeriodicals(Payment payment) throws DaoException {
-//        super.delete(PAYMENT_DELETE_PAYMENT_PERIODICALS, payment.getId());
-//    }
-//
-//    @Override
-//    public List<Payment> getPaymentsListBounded(int skip, int limit) throws DaoException {
-//        return super.selectObjects(PAYMENT_SELECT_SUBLIST, skip, limit);
-//    }
-//
-//    /*TODO make generic*/
-//    @Override
-//    public void addPaymentPeriodicals(Payment payment, List<Periodical> periodicals) throws DaoException {
-//        if (Objects.isNull(payment) ||
-//                Objects.isNull(periodicals) ||
-//                (payment.getPeriodicals().size() < 1)) {
-//            throw new DaoException("Attempt to addNewIssue nullable payment periodicals or payment without id");
-//        }
-//
-//        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-//             PreparedStatement stmt = conn.prepareStatement(PAYMENT_INSERT_PAYMENT_PERIODICALS)) {
-//
-//            String paymentId = payment.getId().toString();
-//            for (Periodical subscription : periodicals) {
-//                stmt.setString(1, paymentId);
-//                stmt.setString(2, subscription.getId().toString());
-//                stmt.addBatch();
-//            }
-//            stmt.executeBatch();
-//        } catch (Exception e) {
-//            throw new DaoException(e);
-//        }
-//    }
-
     @Override
     protected Object[] getInsertObjectParams(Payment payment) {
         return new Object[]{
@@ -140,9 +106,4 @@ public class PaymentsJdbcDao extends AbstractJdbcDao<Payment, UUID> implements P
         }
         return result;
     }
-
-//    @Override
-//    protected Long getGeneratedKey(ResultSet rs) throws SQLException {
-//        return rs.getLong(1);
-//    }
 }

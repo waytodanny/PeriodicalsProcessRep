@@ -30,20 +30,20 @@ public class ConnectionPool {
      * Initializes dataSource by root application dataSource
      */
     public synchronized static void initByRootDataSource() {
-        if (Objects.isNull(dataSource)) {
-            dataSource = getRootDataSource();
+        if (Objects.nonNull(dataSource)) {
+            throw new IllegalStateException("Attempt to initialize data source that is already initialized");
         }
-        throw new IllegalStateException("Attempt to initialize data source that is already initialized");
+        dataSource = getRootDataSource();
     }
 
     /**
      * Initializes dataSource by custom dataSource
      */
     public synchronized static void initByDataSource(DataSource givenDataSource) {
-        if (Objects.isNull(dataSource)) {
-            dataSource = givenDataSource;
+        if (Objects.nonNull(dataSource)) {
+            throw new IllegalStateException("Attempt to initialize data source that is already initialized");
         }
-        throw new IllegalStateException("Attempt to initialize data source that is already initialized");
+        dataSource = givenDataSource;
     }
 
     /**

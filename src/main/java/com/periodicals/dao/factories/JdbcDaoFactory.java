@@ -12,6 +12,8 @@ import com.periodicals.dao.jdbc.*;
  * @see AbstractDaoFactory
  */
 public class JdbcDaoFactory extends AbstractDaoFactory {
+    private static final JdbcDaoFactory instance = new JdbcDaoFactory();
+
     private static final RolesDao rolesDao = new RolesJdbcDao();
     private static final UsersDao usersDao = new UsersJdbcDao();
     private static final PaymentsDao paymentsDao = new PaymentsJdbcDao();
@@ -19,7 +21,6 @@ public class JdbcDaoFactory extends AbstractDaoFactory {
     private static final PeriodicalIssuesDao periodicalIssuesDao = new PeriodicalIssuesJdbcDao();
     private static final PeriodicalsDao periodicalsDao = new PeriodicalsJdbcDao();
     private static final PublishersDao publishersDao = new PublishersJdbcDao();
-    private static final JdbcDaoFactory instance = new JdbcDaoFactory();
 
     private JdbcDaoFactory() {
 

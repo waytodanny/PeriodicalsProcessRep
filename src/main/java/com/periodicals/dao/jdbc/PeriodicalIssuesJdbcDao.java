@@ -114,8 +114,4 @@ public class PeriodicalIssuesJdbcDao extends AbstractJdbcDao<PeriodicalIssue, UU
         return result;
     }
 
-//    @Override
-//    protected Long getGeneratedKey(ResultSet rs) throws SQLException {
-//        return rs.getLong(1);
-//    }
 }

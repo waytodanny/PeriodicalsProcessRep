@@ -77,25 +77,6 @@ public class PaymentService implements PageableCollectionService<Payment>, Looku
             added.setPaymentTime(new Timestamp(System.currentTimeMillis()));
             added.setPaymentSum(paymentSum);
 
-            /*
-            User addedUser = userService.getEntityByPrimaryKey(userId);
-            if (Objects.nonNull(addedUser)) {
-                added.setUser(addedUser);
-            } else {
-                throw new NullPointerException("User with id " + userId + " doesn't exist");
-            }
-
-            List<Periodical> addedPeriodicals = new ArrayList<>();
-            for (UUID periodicalId : periodicals) {
-                Periodical periodical = periodicalService.getEntityByPrimaryKey(periodicalId);
-                if (Objects.nonNull(periodical)) {
-                    addedPeriodicals.add(periodical);
-                } else {
-                    throw new NullPointerException("Periodical with id " + periodicalId + " doesn't exist");
-                }
-            }
-            */
-
             added.setPeriodicals(periodicals);
             paymentsDao.createEntity(added);
             LOGGER.debug("Payment with id " + id + " has been successfully created");

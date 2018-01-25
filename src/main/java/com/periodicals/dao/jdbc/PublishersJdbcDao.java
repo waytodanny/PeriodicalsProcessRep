@@ -83,9 +83,4 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, UUID> implemen
         }
         return result;
     }
-
-//    @Override
-//    protected Integer getGeneratedKey(ResultSet rs) throws SQLException {
-//        return rs.getInt(1);
-//    }
 }

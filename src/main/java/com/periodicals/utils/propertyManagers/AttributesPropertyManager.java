@@ -2,7 +2,7 @@ package com.periodicals.utils.propertyManagers;
 
 import java.util.ResourceBundle;
 
-public final class AttributesPropertyManager {
+public class AttributesPropertyManager {
     private static final String PROP_FILE_NAME = "attributes";
     private static ResourceBundle resourceBundle;
 

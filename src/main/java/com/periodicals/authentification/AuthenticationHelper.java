@@ -7,12 +7,12 @@ import javax.servlet.http.HttpSession;
 import java.util.Objects;
 import java.util.UUID;
 
-import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_USER;
-
 /**
  * Class that contains methods that help to get some authentication info from session
  */
 public class AuthenticationHelper {
+    private static final String ATTR_USER = "user";
+
     private static final UUID ADMIN_ID = RoleService.ADMIN_ROLE_ID;
 
     public static User getUserFromSession(HttpSession session) {

@@ -1,6 +1,7 @@
 package com.periodicals.servlet;
 
 import com.periodicals.dao.connection.ConnectionPool;
+import com.periodicals.utils.resourceHolders.AttributesHolder;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -20,17 +21,6 @@ public class ContextListener implements ServletContextListener {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
         ConnectionPool.initByRootDataSource();
     }
-
-    /* TODO think of where would be better to do it*/
-    /*private void createGenresList(HttpServletRequest request) {
-        List<Genre> genres = GenresService.getInstance().getAllGenres();
-        request.setAttribute("genres", genres);
-    }
-
-    private void createPublishersList(HttpServletRequest request) {
-        List<Publisher> publishers = PublisherService.getInstance().getAllGenres();
-        request.setAttribute("publishers", publishers);
-    }*/
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {

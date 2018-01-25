@@ -18,7 +18,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 import static com.periodicals.utils.resourceHolders.AttributesHolder.ADMIN_PERIODICAL_ISSUES;
-import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_PERIODICAL;
 
 /**
  * @author Daniel Volnitsky
@@ -29,6 +28,8 @@ import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_PERIOD
  * @see PagedCommand
  */
 public class DisplayPeriodicalIssuesCommand extends PagedCommand<PeriodicalIssue> {
+    private static final String ATTR_PERIODICAL = "periodical";
+
     private PeriodicalIssueService periodicalIssueService = PeriodicalIssueService.getInstance();
     private SubscriptionService subscriptionService = SubscriptionService.getInstance();
 

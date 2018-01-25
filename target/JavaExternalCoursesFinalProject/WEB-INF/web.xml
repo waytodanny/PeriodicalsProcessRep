@@ -36,4 +36,15 @@
         <error-code>403</error-code>
         <location>/pages/errors/error.jsp</location>
     </error-page>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>auth</taglib-uri>
+            <taglib-location>/WEB-INF/tld/auth.tld</taglib-location>
+        </taglib>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+        </jsp-property-group>
+    </jsp-config>
+
 </web-app>

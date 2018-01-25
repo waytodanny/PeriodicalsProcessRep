@@ -12,7 +12,7 @@ import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
  * Class responsible for keeping list of possible commands and their access type
  */
 public class SecurityConfiguration {
-    private static final SecurityConfiguration SECURITY_CONFIGURATION = new SecurityConfiguration();
+    private static final SecurityConfiguration INSTANCE = new SecurityConfiguration();
 
     /*Linked to save order*/
     private Map<String, String> permissions = new LinkedHashMap<>();
@@ -43,7 +43,7 @@ public class SecurityConfiguration {
     }
 
     public static SecurityConfiguration getInstance() {
-        return SECURITY_CONFIGURATION;
+        return INSTANCE;
     }
 
     public String getCommandSecurityType(String command) {

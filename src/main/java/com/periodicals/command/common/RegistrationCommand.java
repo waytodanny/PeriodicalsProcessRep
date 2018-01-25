@@ -14,7 +14,10 @@ import java.util.Locale;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.resourceHolders.AttributesHolder.*;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_EMAIL;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_LOGIN;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.ATTR_PASSWORD;
+import static com.periodicals.utils.resourceHolders.PagesHolder.*;
 import static com.periodicals.utils.resourceHolders.MessagesHolder.REGISTRATION_ERROR_MESSAGE;
 import static com.periodicals.utils.resourceHolders.PagesHolder.CATALOG_PAGE;
 import static com.periodicals.utils.resourceHolders.PagesHolder.REGISTRATION_PAGE;

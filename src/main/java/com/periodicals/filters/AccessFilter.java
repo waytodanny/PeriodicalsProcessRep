@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-import static com.periodicals.utils.resourceHolders.AttributesHolder.COMMAND;
-import static com.periodicals.utils.resourceHolders.AttributesHolder.PAGE_SUFFIX;
 import static com.periodicals.utils.resourceHolders.PagesHolder.ERROR_PAGE;
 
 /**
@@ -27,6 +25,8 @@ import static com.periodicals.utils.resourceHolders.PagesHolder.ERROR_PAGE;
  */
 @WebFilter(urlPatterns = {"/*"})
 public class AccessFilter implements Filter {
+    private static final String PAGE_SUFFIX = ".jsp";
+    private static final String ATTR_COMMAND = "command";
 
     @Override
     public void init(FilterConfig filterConfig) {
@@ -47,13 +47,13 @@ public class AccessFilter implements Filter {
 
         switch (securityType) {
             case "ALL":
-                request.setAttribute(COMMAND, command);
+                request.setAttribute(ATTR_COMMAND, command);
                 filterChain.doFilter(servletRequest, servletResponse);
                 break;
 
             case "AUTH":
                 if (AuthenticationHelper.isUserLoggedIn(request.getSession())) {
-                    request.setAttribute(COMMAND, command);
+                    request.setAttribute(ATTR_COMMAND, command);
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else {
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -63,7 +63,7 @@ public class AccessFilter implements Filter {
 
             case "ADMIN":
                 if (AuthenticationHelper.isSessionUserAdmin(request.getSession())) {
-                    request.setAttribute(COMMAND, command);
+                    request.setAttribute(ATTR_COMMAND, command);
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else {
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);

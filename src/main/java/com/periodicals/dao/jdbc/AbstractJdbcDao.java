@@ -33,12 +33,6 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             }
 
             stmt.executeUpdate();
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            if (rs.next()) {
-//                LOGGER.debug("Successful insert, returns generated key");
-//                return getGeneratedKey(rs);
-//            }
-//            return null;
             LOGGER.debug("Successful insertion");
         } catch (Exception e) {
             LOGGER.error("Failed to insert data to DB: " + e);
@@ -128,6 +122,4 @@ public abstract class AbstractJdbcDao<T extends Identified<K>, K> {
             throw new DaoException(e);
         }
     }
-
-//    protected abstract K getGeneratedKey(ResultSet rs) throws SQLException;
 }
