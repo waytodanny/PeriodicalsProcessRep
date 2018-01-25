@@ -1,73 +1,68 @@
 package com.periodicals.command.admin;
 
-import com.periodicals.command.Command;
-import com.periodicals.command.util.CommandHelper;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.GenreDto;
-import com.periodicals.entities.Genre;
-import com.periodicals.entities.Periodical;
-import com.periodicals.entities.Publisher;
-import com.periodicals.services.GenresService;
-import com.periodicals.services.PeriodicalService;
-import com.periodicals.services.PublisherService;
+import com.periodicals.command.util.CommandUtils;
+import com.periodicals.services.entities.PeriodicalService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
 import static com.periodicals.command.util.RedirectType.FORWARD;
-import static com.periodicals.utils.PagesHolder.ADMIN_ADD_PERIODICAL_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_ADD_PERIODICAL_PAGE;
+import static com.periodicals.utils.resourceHolders.PagesHolder.ADMIN_DEFAULT_PAGE;
 
+/**
+ * @author Daniel Volnitsky
+ *
+ * Admin command that is responsible for creating new Periodical object
+ *
+ * @see com.periodicals.entities.Periodical
+ */
 public class AddPeriodicalCommand implements Command {
+    private static final PeriodicalService periodicalService = PeriodicalService.getInstance();
 
     @Override
-    public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
-        String name = req.getParameter("add_name");
-        String desc = req.getParameter("add_desc");
-        String subCost = req.getParameter("add_sub_cost");
-        String is_limited = req.getParameter("add_limited_options");
-        String iss_per_year = req.getParameter("add_iss_per_year");
-        String genreId = req.getParameter("add_genre_id");
-        String publishId = req.getParameter("add_publish_id");
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        if (CommandUtils.isPostMethod(request)) {
+            String name = request.getParameter("name");
+            String description = request.getParameter("description");
+            String subscriptionCost = request.getParameter("subscription_cost");
+            String isLimited = request.getParameter("is_limited");
+            String issuesPerYear = request.getParameter("issues_per_year");
+            String genreId = request.getParameter("genre_id");
+            String publisherId = request.getParameter("publisher_id");
 
-        String [] reqFields = {name, desc, subCost, is_limited, iss_per_year, genreId, publishId};
-        if (CommandHelper.requiredFieldsNotEmpty(reqFields)) {
-            Periodical newPer = new Periodical();
-            newPer.setName(name);
-            newPer.setDescription(desc);
-            newPer.setLimited(Boolean.valueOf(is_limited));
+            String[] requiredFields = {
+                    name,
+                    description,
+                    subscriptionCost,
+                    isLimited,
+                    issuesPerYear,
+                    genreId,
+                    publisherId
+            };
 
-            try{
-                newPer.setSubscriptionCost(new BigDecimal(subCost));
-                newPer.setIssuesPerYear(Short.parseShort(iss_per_year));
-                newPer.setGenreId(Short.parseShort(genreId));
-                newPer.setPublisherId(Integer.parseInt(publishId));
-
-                PeriodicalService.getInstance().add(newPer);
-
-                req.setAttribute("addingResultMessage", "Successful periodical adding");
-            } catch (Exception e){
-                req.setAttribute("addingResultMessage", "Failed to add periodical: " + e.getMessage());
+            if (CommandUtils.requiredFieldsNotEmpty(requiredFields)) {
+                try {
+                    periodicalService.createEntity(
+                            name,
+                            description,
+                            new BigDecimal(subscriptionCost),
+                            Boolean.valueOf(isLimited),
+                            Short.parseShort(issuesPerYear),
+                            UUID.fromString(genreId),
+                            UUID.fromString(publisherId)
+                    );
+                    request.setAttribute("resultMessage", "Successfully added periodical");
+                } catch (Exception e) {
+                    request.setAttribute("resultMessage", "Failed to add periodical: " + e.getMessage());
+                }
+                return new CommandResult(FORWARD, ADMIN_DEFAULT_PAGE);
             }
         }
-
-        createGenresList(req);
-        createPublishersList(req);
-
-        return new CommandResult(req, resp, FORWARD, ADMIN_ADD_PERIODICAL_PAGE);
-    }
-
-   /*POVTOR*/
-    private void createGenresList(HttpServletRequest request) {
-        List<GenreDto> genres = GenresService.getInstance().getAll();
-        request.setAttribute("genres", genres);
-    }
-
-    /*POVTOR*/
-    private void createPublishersList(HttpServletRequest request) {
-        List<Publisher> publishers = PublisherService.getInstance().getAll();
-        request.setAttribute("publishers", publishers);
+        return new CommandResult(FORWARD, ADMIN_ADD_PERIODICAL_PAGE);
     }
 }

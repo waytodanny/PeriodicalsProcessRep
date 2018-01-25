@@ -3,11 +3,17 @@ package com.periodicals.entities;
 import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class Publisher implements Identified<Integer> {
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents publisher
+ */
+public class Publisher implements Identified<UUID> {
     private static final int PUBLISHER_NAME_MAX_LENGTH = 100;
 
-    private Integer id;
+    private UUID id;
     private String name;
 
     public Publisher() {
@@ -20,11 +26,11 @@ public class Publisher implements Identified<Integer> {
     }
 
     @Override
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

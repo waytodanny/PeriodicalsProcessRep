@@ -3,28 +3,24 @@ package com.periodicals.dao.interfaces;
 import com.periodicals.entities.Genre;
 import com.periodicals.entities.Payment;
 import com.periodicals.entities.Periodical;
+import com.periodicals.entities.User;
 import com.periodicals.exceptions.DaoException;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface PeriodicalsDao extends GenericDao<Periodical, Integer> {
+public interface PeriodicalsDao extends GenericDao<Periodical, UUID> {
+    List<Periodical> getPeriodicalsByGenreListBounded(int skip, int limit, Genre genre) throws DaoException;
 
-    boolean isUserSubscribed(String uuid, Periodical per) throws DaoException;
+    int getPeriodicalsByGenreCount(Genre genre) throws DaoException;
 
-    List<Periodical> getUserSubscriptions(String userUuid) throws DaoException;
+    List<Periodical> getPeriodicalsByPaymentList(Payment payment) throws DaoException;
 
-    void addUserSubscriptions(String uuid, List<Periodical> subs) throws DaoException;
+    List<Periodical> getPeriodicalsByUserList(User user) throws DaoException;
 
-    List<Periodical> getGenrePeriodicalsSublist(Genre genre, int skip, int take) throws DaoException;
+    int getPeriodicalsByUserCount(User user) throws DaoException;
 
-    int getGenrePeriodicalCount(Genre genre) throws DaoException;
+    List<Periodical> getPeriodicalsByUserListBounded(int skip, int limit, User user) throws DaoException;
 
-    /*to take first 5 object args must be: (0, 5)*/
-    List<Periodical> getPeriodicalSubList(int skip, int take) throws DaoException;
-
-    int getPeriodicalsCount() throws DaoException;
-
-    int getUserSubscriptionsCount(String userId) throws DaoException;
-
-    List<Periodical> getPaymentPeriodicals(Payment payment) throws DaoException;
+    boolean getIsUserSubscribedOnPeriodical(User user, Periodical periodical) throws DaoException;
 }

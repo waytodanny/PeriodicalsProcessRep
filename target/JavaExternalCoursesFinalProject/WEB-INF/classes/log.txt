@@ -12,3 +12,277 @@ ERROR - Duplicate entry '1f940bd3-f7a5-11e7-93e6-a30f6152aa28-2' for key 'PRIMAR
 ERROR - Unknown column 'user_id' in 'where clause'
 ERROR - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 1 AND user_uuid = '34fa41df-f7a5-11e7-adbd-41982924721f'' at line 1
 ERROR - Unknown column 'id' in 'where clause'
+INFO - a
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't get object DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Can't insert into DB
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+INFO - Trying to get connection form dataSource
+INFO - Got connection from dataSource
+ERROR - Failed to get objects from DB: For input string: "156638d4-fab3-11e7-ad94-2b2421f23a42"
+ERROR - Таблица "PAYMENTS" не найдена
+Table "PAYMENTS" not found; SQL statement:
+select count(*) as count from payments; [42102-196]
+ERROR - Таблица "USERS" не найдена
+Table "USERS" not found; SQL statement:
+select count(*) as count from users; [42102-196]
+ERROR - Таблица "USERS" не найдена
+Table "USERS" not found; SQL statement:
+select count(*) as count from users; [42102-196]

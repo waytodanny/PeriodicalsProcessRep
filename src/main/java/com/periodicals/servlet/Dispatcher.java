@@ -1,47 +1,93 @@
 package com.periodicals.servlet;
 
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandFactory;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.services.PeriodicalService;
-import com.periodicals.utils.PagesHolder;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Objects;
 
-import static com.periodicals.utils.AttributesHolder.COMMAND;
+import static com.periodicals.utils.resourceHolders.AttributesHolder.COMMAND;
 
-//@WebServlet("/")
+/**
+ * @author Daniel Vlnitsky
+ * <p>
+ * Application main servlet responsible for:
+ * 1. Obtaining command from incoming request
+ * 2. Executing command
+ * 3. Redirecting request further by parameters obtained from CommandResult object
+ * @see CommandResult
+ */
 public class Dispatcher extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Dispatcher.class.getSimpleName());
+
     @Override
-    public void init() throws ServletException {
+    public void init() {
 
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        dispatch(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        this.dispatch(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        dispatch(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        this.dispatch(request, response);
     }
 
-    private void dispatch(HttpServletRequest req, HttpServletResponse resp) {
+    /**
+     * Main dispatching method for all types of methods
+     */
+    private void dispatch(HttpServletRequest request, HttpServletResponse response) {
         CommandFactory factory = CommandFactory.getInstance();
 
-        String path = getCorrectedPath(req);
-        Command command = factory.getCommand(path);
+        String commandName = this.getCommandNameFromRequest(request);
+        Command command = factory.getCommand(commandName);
 
-        CommandResult comResult = command.execute(req, resp);
-        comResult.redirectFurther();
+        if (Objects.nonNull(command)) {
+            CommandResult commandResult = command.execute(request, response);
+            if (Objects.nonNull(commandResult)) {
+                this.redirectFurther(request, response, commandResult);
+            }
+        }
     }
 
-    private String getCorrectedPath(HttpServletRequest req) {
-        return ((String) req.getAttribute(COMMAND)).toLowerCase();
+    /**
+     * @return command obtained from request attribute or default command if there is none
+     */
+    private String getCommandNameFromRequest(HttpServletRequest request) {
+        String commandName = (String) request.getAttribute(COMMAND);
+        return Objects.nonNull(commandName) ? commandName.toLowerCase() : "/";
+    }
+
+    /**
+     * Method that takes redirect type and next page link from CommandResult and does redirecting
+     *
+     * @see CommandResult
+     */
+    private void redirectFurther(HttpServletRequest request, HttpServletResponse response, CommandResult commandResult) {
+        try {
+            switch (commandResult.redirectType) {
+                case FORWARD:
+                    request.getRequestDispatcher(commandResult.pageHref).forward(request, response);
+
+                    LOGGER.debug("Succeed to forward to the next page");
+                    break;
+                case REDIRECT:
+                    String redirectPath = request.getServletPath() + commandResult.pageHref;
+                    response.sendRedirect(redirectPath);
+
+                    LOGGER.debug("Succeed to redirect to the next page");
+                    break;
+            }
+        } catch (ServletException | IOException e) {
+            LOGGER.error("Failed to redirect to the next page: " + e.getMessage());
+        }
     }
 }

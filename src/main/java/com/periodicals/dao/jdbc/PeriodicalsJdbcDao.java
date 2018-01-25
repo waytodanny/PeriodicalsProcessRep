@@ -1,75 +1,130 @@
 package com.periodicals.dao.jdbc;
 
-import com.periodicals.dao.connection.ConnectionManager;
-import com.periodicals.dao.connection.ConnectionWrapper;
+import com.periodicals.dao.factories.JdbcDaoFactory;
 import com.periodicals.dao.interfaces.PeriodicalsDao;
-import com.periodicals.entities.Genre;
-import com.periodicals.entities.Payment;
-import com.periodicals.entities.Periodical;
+import com.periodicals.entities.*;
 import com.periodicals.exceptions.DaoException;
+import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
-public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> implements PeriodicalsDao {
-    public static final String IS_USER_SUBSCRIBED = "SELECT count(*) as count FROM subscriptions WHERE periodical_id = ? AND user_id = ?;";
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
 
-    private static final String SELECT_ENTRIES_COUNT =
-            "SELECT COUNT(*) AS count FROM periodicals";
-    private static final String ADD_USER_SUBSCRIPTION =
-            "INSERT INTO subscriptions(user_id, periodical_id) VALUES (?,?);";
-    private static final String SELECT_PERIODICALS_SUBLIST_BY_GENRE =
-            "SELECT id, name, description, subscr_cost, issues_per_year, is_limited, genre_id, publisher_id " +
-                    "FROM periodicals WHERE genre_id = ? LIMIT ?, ?;";
-    private static final String SELECT_GENRE_ENTRIES_COUNT =
-            "SELECT COUNT(*) AS count FROM periodicals WHERE genre_id = ?;";
-    private static final String SELECT_USER_SUBSCRIPTIONS_COUNT =
-            "SELECT COUNT(*) AS count FROM subscriptions WHERE user_id = ?;";
-    public static final String SELECT_PAYMENT_PERIODICALS =
-            "SELECT * FROM periodicals AS p JOIN payments_periodicals AS pp ON p.id = pp.periodical_id HAVING payment_id = ?;";
+public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, UUID> implements PeriodicalsDao {
+    private static final String ID = AttributesPropertyManager.getProperty("periodical.id");
+    private static final String NAME = AttributesPropertyManager.getProperty("periodical.name");
+    private static final String DESCRIPTION = AttributesPropertyManager.getProperty("periodical.description");
+    private static final String SUBSCRIPTION_COST = AttributesPropertyManager.getProperty("periodical.cost");
+    private static final String ISSUES_PER_YEAR = AttributesPropertyManager.getProperty("periodical.issues_per_year");
+    private static final String IS_LIMITED = AttributesPropertyManager.getProperty("periodical.is_limited");
+    private static final String GENRE_ID = AttributesPropertyManager.getProperty("periodical.genre.id");
+    private static final String PUBLISHER_ID = AttributesPropertyManager.getProperty("periodical.publisher.id");
+
+    private static final GenresJdbcDao genresDao =
+            (GenresJdbcDao) JdbcDaoFactory.getInstance().getGenresDao();
+    private static final PublishersJdbcDao publishersDao =
+            (PublishersJdbcDao) JdbcDaoFactory.getInstance().getPublishersDao();
 
     @Override
-    public String getSelectQuery() {
-        return "SELECT id, name, description, subscr_cost, issues_per_year, is_limited, genre_id, publisher_id " +
-                "FROM periodicals ";
+    public void createEntity(Periodical entity) throws DaoException {
+        super.insert(PERIODICAL_INSERT, getInsertObjectParams(entity));
     }
 
     @Override
-    public String getInsertQuery() {
-        return "INSERT INTO periodicals(name, description, subscr_cost, issues_per_year, is_limited, genre_id, publisher_id) " +
-                "VALUES (?,?,?,?,?,?,?)";
+    public Periodical getEntityByPrimaryKey(UUID key) throws DaoException {
+        return super.selectObject(PERIODICAL_SELECT_BY_ID, key.toString());
     }
 
     @Override
-    public String getUpdateQuery() {
-        return "UPDATE periodicals SET name = ?, description = ?, subscr_cost = ?, issues_per_year = ?, " +
-                "is_limited = ?, genre_id = ?, publisher_id = ? WHERE id = ?;";
+    public void updateEntity(Periodical periodical) throws DaoException {
+        super.update(PERIODICAL_UPDATE, getObjectUpdateParams(periodical));
     }
 
     @Override
-    public String getDeleteQuery() {
-        return "DELETE FROM periodicals WHERE id = ?;";
+    public void deleteEntity(Periodical entity) throws DaoException {
+        super.delete(PERIODICAL_DELETE, entity.getId());
     }
 
     @Override
-    public Integer getGeneratedKey(ResultSet rs) throws DaoException {
-        try {
-            if (rs.next())
-                return rs.getInt(1);
-
-            throw new SQLException("entry was not written in DB");
-        } catch (SQLException e) {
-            throw new DaoException("No keys were generated: " + e.getMessage());
-        }
+    public List<Periodical> getEntityCollection() throws DaoException {
+        return super.selectObjects(PERIODICAL_SELECT_ALL);
     }
 
     @Override
-    protected void setGeneratedKey(Periodical periodical, Integer genId) throws IllegalArgumentException {
-        periodical.setId(genId);
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(PERIODICAL_ENTRIES_COUNT);
+    }
+
+    @Override
+    public List<Periodical> getPeriodicalsByGenreListBounded(int skip, int limit, Genre genre) throws DaoException {
+        return super.selectObjects(PERIODICAL_SELECT_SUBLIST_BY_GENRE, genre.getId(), skip, limit);
+    }
+
+    @Override
+    public int getPeriodicalsByGenreCount(Genre genre) throws DaoException {
+        return super.getEntriesCount(PERIODICAL_ENTRIES_BY_GENRE_COUNT, genre.getId());
+    }
+
+    @Override
+    public List<Periodical> getPeriodicalsByPaymentList(Payment payment) throws DaoException {
+        return super.selectObjects(SELECT_PAYMENT_PERIODICALS, payment.getId());
+    }
+
+    @Override
+    public List<Periodical> getEntitiesListBounded(int skip, int take) throws DaoException {
+        return super.selectObjects(PERIODICAL_SELECT_SUBLIST, skip, take);
+    }
+
+    @Override
+    public List<Periodical> getPeriodicalsByUserList(User user) throws DaoException {
+        return super.selectObjects(SUBSCRIPTIONS_SELECT_USER_SUBSCRIPTIONS, user.getId());
+    }
+
+    @Override
+    public List<Periodical> getPeriodicalsByUserListBounded(int skip, int limit, User user) throws DaoException {
+        return super.selectObjects(SUBSCRIPTIONS_SELECT_USER_SUBSCRIPTIONS_LIMIT, skip, limit);
+    }
+
+    @Override
+    public int getPeriodicalsByUserCount(User user) throws DaoException {
+        return super.getEntriesCount(SUBSCRIPTIONS_USER_SUBSCRIPTIONS_COUNT, user.getId());
+    }
+
+    @Override
+    public boolean getIsUserSubscribedOnPeriodical(User user, Periodical per) throws DaoException {
+        int count = super.getEntriesCount(SUBSCRIPTIONS_IS_USER_SUBSCRIBED, per.getId(), user.getId());
+        return count > 0;
+    }
+
+    @Override
+    protected Object[] getInsertObjectParams(Periodical periodical) throws DaoException {
+        return new Object[]{
+                periodical.getId(),
+                periodical.getName(),
+                periodical.getDescription(),
+                periodical.getSubscriptionCost(),
+                periodical.getIssuesPerYear(),
+                periodical.getIsLimited(),
+                periodical.getGenre().getId(),
+                periodical.getPublisher().getId()
+        };
+    }
+
+    @Override
+    protected Object[] getObjectUpdateParams(Periodical periodical) throws DaoException {
+        return new Object[]{
+                periodical.getName(),
+                periodical.getDescription(),
+                periodical.getSubscriptionCost(),
+                periodical.getIssuesPerYear(),
+                periodical.getIsLimited(),
+                periodical.getGenre().getId(),
+                periodical.getPublisher().getId(),
+                periodical.getId()
+        };
     }
 
     @Override
@@ -78,14 +133,18 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> imp
         try {
             while (rs.next()) {
                 Periodical per = new Periodical();
-                per.setId(rs.getInt("id"));
-                per.setName(rs.getString("name"));
-                per.setDescription(rs.getString("description"));
-                per.setSubscriptionCost(rs.getBigDecimal("subscr_cost"));
-                per.setIssuesPerYear(rs.getShort("issues_per_year"));
-                per.setLimited(rs.getBoolean("is_limited"));
-                per.setGenreId(rs.getShort("genre_id"));
-                per.setPublisherId(rs.getInt("publisher_id"));
+                per.setId(UUID.fromString(rs.getString(ID)));
+                per.setName(rs.getString(NAME));
+                per.setDescription(rs.getString(DESCRIPTION));
+                per.setSubscriptionCost(rs.getBigDecimal(SUBSCRIPTION_COST));
+                per.setIssuesPerYear(rs.getShort(ISSUES_PER_YEAR));
+                per.setLimited(rs.getBoolean(IS_LIMITED));
+
+                Genre genre = genresDao.getEntityByPrimaryKey(UUID.fromString(rs.getString(GENRE_ID)));
+                per.setGenre(genre);
+
+                Publisher publisher = publishersDao.getEntityByPrimaryKey(UUID.fromString(rs.getString(PUBLISHER_ID)));
+                per.setPublisher(publisher);
 
                 result.add(per);
             }
@@ -95,254 +154,4 @@ public class PeriodicalsJdbcDao extends AbstractJdbcDao<Periodical, Integer> imp
         return result;
     }
 
-    @Override
-    protected void prepareStatementForInsert(PreparedStatement stmt, Periodical per) throws DaoException {
-        try {
-            stmt.setString(1, per.getName());
-            stmt.setString(2, per.getDescription());
-            stmt.setBigDecimal(3, per.getSubscriptionCost());
-            stmt.setShort(4, per.getIssuesPerYear());
-            stmt.setBoolean(5, per.isLimited());
-            stmt.setShort(6, per.getGenreId());
-            stmt.setInt(7, per.getPublisherId());
-        } catch (Exception e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    protected void prepareStatementForUpdate(PreparedStatement stmt, Periodical per) throws DaoException {
-        try {
-            stmt.setString(1, per.getName());
-            stmt.setString(2, per.getDescription());
-            stmt.setBigDecimal(3, per.getSubscriptionCost());
-            stmt.setShort(4, per.getIssuesPerYear());
-            stmt.setBoolean(5, per.isLimited());
-            stmt.setShort(6, per.getGenreId());
-            stmt.setInt(7, per.getPublisherId());
-            stmt.setInt(8, per.getId());
-        } catch (Exception e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public boolean isUserSubscribed(String id, Periodical per) throws DaoException {
-        if (Objects.isNull(id)) {
-            log.error("Attempt to get subscriptions of nullable id.");
-            throw new DaoException("Attempt to get subscriptions of nullable id.");
-        }
-
-        List<Periodical> subscriptions;
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(IS_USER_SUBSCRIBED)) {
-
-            stmt.setInt(1, per.getId());
-            stmt.setString(2, id);
-
-            ResultSet rs = stmt.executeQuery();
-            rs.next();
-            return rs.getInt("count") > 0;
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public List<Periodical> getUserSubscriptions(String userUuid) throws DaoException {
-        if (Objects.isNull(userUuid)) {
-            log.error("Attempt to get subscriptions of nullable id.");
-            throw new DaoException("Attempt to get subscriptions of nullable id.");
-        }
-
-        List<Periodical> subscriptions;
-        String sqlQuery = getSelectQuery() +
-                "WHERE id IN (SELECT periodical_id FROM subscriptions WHERE user_id = ?)";
-
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
-
-            stmt.setString(1, userUuid);
-
-            ResultSet rs = stmt.executeQuery();
-
-            log.debug("Got result set by query, trying to parse it...");
-            subscriptions = parseResultSet(rs);
-
-            log.debug("Successful object set parsing!");
-            return subscriptions;
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public void addUserSubscriptions(String id, List<Periodical> subs) throws DaoException {
-        if (Objects.isNull(id)) {
-            log.error("Attempt to add subscriptions to nullable user or with empty id.");
-            throw new DaoException("Attempt to add subscriptions to nullable user or with empty id.");
-        }
-        if (Objects.isNull(subs) || subs.size() < 1) {
-            throw new DaoException("Attempt to add subs without periodicals");
-        }
-
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(ADD_USER_SUBSCRIPTION)) {
-
-            for (Periodical sub : subs) {
-                stmt.setString(1, id);
-                stmt.setInt(2, sub.getId());
-                stmt.addBatch();
-            }
-            stmt.executeBatch();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public List<Periodical> getGenrePeriodicalsSublist(Genre genre, int skip, int take) throws DaoException {
-        if (Objects.isNull(genre)) {
-            log.error("passed nullable genre");
-            throw new DaoException("passed nullable genre");
-        }
-        if (skip < 0 && take < 0) {
-            log.error("skip and take params must be > 0");
-            throw new DaoException("skip and take params must be > 0");
-        }
-
-        List<Periodical> result;
-        String sqlQuery = SELECT_PERIODICALS_SUBLIST_BY_GENRE;
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
-
-            stmt.setShort(1, genre.getId());
-            stmt.setInt(2, skip);
-            stmt.setInt(3, take);
-
-            ResultSet rs = stmt.executeQuery();
-            result = parseResultSet(rs);
-
-            log.debug("Successful object set parsing!");
-            return result;
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public List<Periodical> getPeriodicalSubList(int skip, int take) throws DaoException {
-        if (skip < 0 || take < 0) {
-            throw new DaoException("skip and take params must be > 0");
-        }
-
-        List<Periodical> sublist;
-        String sqlQuery = getSelectQuery() +
-                "limit ?,?;";
-
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
-
-            stmt.setInt(1, skip);
-            stmt.setInt(2, take);
-
-            ResultSet rs = stmt.executeQuery();
-            sublist = parseResultSet(rs);
-
-            log.debug("Successful object set parsing!");
-            return sublist;
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public int getPeriodicalsCount() throws DaoException {
-        int result = 0;
-
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_ENTRIES_COUNT)) {
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                result = rs.getInt("count");
-            }
-
-            return result;
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public int getUserSubscriptionsCount(String userId) throws DaoException {
-        int result = 0;
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_USER_SUBSCRIPTIONS_COUNT)) {
-            stmt.setString(1, userId);
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                result = rs.getInt("count");
-            }
-            return result;
-        } catch (Exception e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public List<Periodical> getPaymentPeriodicals(Payment payment) throws DaoException {
-        if (Objects.isNull(payment)) {
-            log.error("Attempt to get pers of nullable payment.");
-            throw new DaoException("Attempt to get pers of nullable payment");
-        }
-
-        List<Periodical> periodicals;
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_PAYMENT_PERIODICALS)) {
-
-            stmt.setLong(1, payment.getId());
-
-            ResultSet rs = stmt.executeQuery();
-
-            log.debug("Got result set by query, trying to parse it...");
-            periodicals = parseResultSet(rs);
-
-            log.debug("Successful object set parsing!");
-            return periodicals;
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public int getGenrePeriodicalCount(Genre genre) throws DaoException {
-        int result = 0;
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_GENRE_ENTRIES_COUNT)) {
-            stmt.setString(1, genre.getName());
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                result = rs.getInt("count");
-            }
-            return result;
-        } catch (Exception e) {
-            throw new DaoException(e);
-        }
-    }
-
-//    private class PersistPeriodical extends PeriodicalDto {
-//        public void setId(int id) {
-//            super.setId(id);
-//        }
-//    }
 }

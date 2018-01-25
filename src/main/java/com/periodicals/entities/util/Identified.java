@@ -1,10 +1,10 @@
 package com.periodicals.entities.util;
 
 /**
+ * @param <K> type of identification field
+ * @author Daniel Volnitsky
+ * <p>
  * Interface for identified entities
- * Created by Daniel Volnitsky 23.12.2017
- *
- * @param <K> type of id field
  */
 public interface Identified<K> {
     K getId();

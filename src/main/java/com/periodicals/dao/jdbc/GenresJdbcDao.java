@@ -1,55 +1,71 @@
 package com.periodicals.dao.jdbc;
 
-import com.periodicals.dao.connection.ConnectionManager;
-import com.periodicals.dao.connection.ConnectionWrapper;
-import com.periodicals.dao.interfaces.GenresDao;
+import com.periodicals.dao.interfaces.lookup.GenresDao;
 import com.periodicals.entities.Genre;
 import com.periodicals.exceptions.DaoException;
+import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class GenresJdbcDao extends AbstractJdbcDao<Genre, Short> implements GenresDao {
-    public static final String SELECT_GENRE_BY_NAME = "SELECT id, name FROM genres WHERE name = ? LIMIT 0,1;";
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
+
+public class GenresJdbcDao extends AbstractJdbcDao<Genre, UUID> implements GenresDao {
+    private static final String ID = AttributesPropertyManager.getProperty("genre.id");
+    private static final String NAME = AttributesPropertyManager.getProperty("genre.name");
 
     @Override
-    public String getSelectQuery() {
-        return "SELECT id, name FROM genres ";
+    public void createEntity(Genre entity) throws DaoException {
+        super.insert(GENRE_INSERT, getInsertObjectParams(entity));
     }
 
     @Override
-    public String getInsertQuery() {
-        return "INSERT INTO genres(name) VALUES (?);";
+    public void updateEntity(Genre entity) throws DaoException {
+        super.update(GENRE_UPDATE, getObjectUpdateParams(entity));
     }
 
     @Override
-    public String getUpdateQuery() {
-        return "UPDATE genres SET name = ? WHERE id = ?;";
+    public void deleteEntity(Genre entity) throws DaoException {
+        super.delete(GENRE_DELETE, entity.getId());
     }
 
     @Override
-    public String getDeleteQuery() {
-        return "DELETE FROM genres WHERE id = ?;";
+    public Genre getEntityByPrimaryKey(UUID key) throws DaoException {
+        return super.selectObject(GENRE_SELECT_BY_ID, key.toString());
     }
 
     @Override
-    public Short getGeneratedKey(ResultSet rs) throws DaoException {
-        try {
-            if (rs.next())
-                return rs.getShort(1);
-
-            throw new SQLException("entry was not written in DB");
-        } catch (SQLException e) {
-            throw new DaoException("No keys were generated: " + e.getMessage());
-        }
+    public List<Genre> getEntityCollection() throws DaoException {
+        return super.selectObjects(GENRE_SELECT_ALL);
     }
 
     @Override
-    protected void setGeneratedKey(Genre genre, Short genId) throws IllegalArgumentException {
-        genre.setId(genId);
+    public List<Genre> getEntitiesListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(GENRE_SELECT_SUBLIST);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(GENRE_ENTRIES_COUNT);
+    }
+
+    @Override
+    protected Object[] getInsertObjectParams(Genre genre) {
+        return new Object[]{
+                genre.getId().toString(),
+                genre.getName()
+        };
+    }
+
+    @Override
+    protected Object[] getObjectUpdateParams(Genre genre) {
+        return new Object[]{
+                genre.getName(),
+                genre.getId().toString()
+        };
     }
 
     @Override
@@ -58,8 +74,8 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, Short> implements Genr
         try {
             while (rs.next()) {
                 Genre genre = new Genre();
-                genre.setId(rs.getShort("id"));
-                genre.setName(rs.getString("name"));
+                genre.setId(UUID.fromString(rs.getString(ID)));
+                genre.setName(rs.getString(NAME));
 
                 result.add(genre);
             }
@@ -68,44 +84,4 @@ public class GenresJdbcDao extends AbstractJdbcDao<Genre, Short> implements Genr
         }
         return result;
     }
-
-    @Override
-    protected void prepareStatementForInsert(PreparedStatement stmt, Genre genre) throws DaoException {
-        try {
-            stmt.setString(1, genre.getName());
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    protected void prepareStatementForUpdate(PreparedStatement stmt, Genre genre) throws DaoException {
-        try {
-            stmt.setString(1, genre.getName());
-            stmt.setLong(2, genre.getId());
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    public Genre getGenreByName(String name) throws DaoException {
-        try (ConnectionWrapper conn = ConnectionManager.getConnectionWrapper();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_GENRE_BY_NAME)) {
-
-            stmt.setString(1, name);
-            ResultSet rs = stmt.executeQuery();
-
-            return parseResultSet(rs).iterator().next();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            throw new DaoException(e);
-        }
-    }
-
-//    private class PersistPeriodicalGenre extends Genre {
-//        public void setId(short id) {
-//            super.setId(id);
-//        }
-//    }
 }

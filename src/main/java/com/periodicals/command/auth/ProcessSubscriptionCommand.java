@@ -1,53 +1,61 @@
 package com.periodicals.command.auth;
 
 import com.periodicals.authentification.AuthenticationHelper;
-import com.periodicals.command.Command;
+import com.periodicals.command.util.Command;
 import com.periodicals.command.util.CommandResult;
-import com.periodicals.dto.UserDto;
-import com.periodicals.entities.Periodical;
-import com.periodicals.services.UserSubscriptionsService;
-import com.periodicals.utils.Cart;
+import com.periodicals.entities.User;
+import com.periodicals.exceptions.ServiceException;
+import com.periodicals.services.entities.PaymentService;
+import com.periodicals.utils.entities.Cart;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 
-import static com.periodicals.authentification.AuthenticationHelper.isUserLoggedIn;
 import static com.periodicals.command.util.RedirectType.REDIRECT;
-import static com.periodicals.utils.PagesHolder.*;
+import static com.periodicals.utils.resourceHolders.PagesHolder.LOGIN_PAGE;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Command for authenticated users that is responsible for providing paymentService with
+ * info about incoming payment
+ * @see PaymentService
+ */
 public class ProcessSubscriptionCommand implements Command {
-    private UserSubscriptionsService subsService = UserSubscriptionsService.getInstance();
+    private PaymentService paymentService = PaymentService.getInstance();
 
     @Override
-    public CommandResult execute(HttpServletRequest req, HttpServletResponse resp) {
-        HttpSession session = req.getSession();
-        if(!isUserLoggedIn(session)){
-           return new CommandResult(req, resp, REDIRECT, LOGIN_PAGE);
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+
+        if (!AuthenticationHelper.isUserLoggedIn(session)) {
+            return new CommandResult(REDIRECT, LOGIN_PAGE);
         }
-        Cart cart = (Cart) session.getAttribute("cart");
-        if(Objects.nonNull(cart)){
-            List<Periodical> subs = cart.getPeriodicals();
-            BigDecimal paySum = cart.getQuantity();
-            if(Objects.nonNull(subs) && Objects.nonNull(paySum)){
-                UserDto user = (UserDto) session.getAttribute("user");
-                try {
-                    subsService.processSubscriptions(user.getUuid(), subs, paySum);
-                    return new CommandResult(req, resp, REDIRECT, USER_SUBSCRIPTIONS_PAGE);
-                } catch (Exception e) {
-                    /*TODO log*/
-                    return new CommandResult(req, resp, REDIRECT, LOGIN_PAGE);
+
+        Cart cart = this.getCartFromSession(session);
+        if (Objects.nonNull(cart)) {
+            try {
+                User user = AuthenticationHelper.getUserFromSession(session);
+                if (Objects.nonNull(user)) {
+                    paymentService.createEntity(
+                            user,
+                            cart.getTotalValue(),
+                            cart.getItems()
+                    );
+                    request.setAttribute("resultMessage", "Successfully processed subscriptions");
                 }
-            } else{
-                /*TODO log*/
-                return new CommandResult(req, resp, REDIRECT, ERROR_PAGE);
+            } catch (ServiceException e) {
+                request.setAttribute("resultMessage", "Failed to process subscriptions");
+            } finally {
+                cart.cleanUp();
             }
-        } else{
-            /*TODO log*/
-            return new CommandResult(req, resp, REDIRECT, ERROR_PAGE);
         }
+        return null;
+    }
+
+    private Cart getCartFromSession(HttpSession session) {
+        return (Cart) session.getAttribute("cart");
     }
 }

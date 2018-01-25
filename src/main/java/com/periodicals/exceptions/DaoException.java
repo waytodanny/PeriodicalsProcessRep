@@ -1,5 +1,10 @@
 package com.periodicals.exceptions;
 
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Exception made for Dao layer to cover Dao-level exceptions
+ */
 public class DaoException extends Exception {
 
     public DaoException() {

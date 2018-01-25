@@ -3,17 +3,24 @@ package com.periodicals.entities;
 import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class User implements Identified<String> {
-    private static final int UUID_DEFAULT_LENGTH = 36;
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents user of system;
+ * Each user has definite role
+ * @see Role
+ */
+public class User implements Identified<UUID> {
     private static final int MAX_LOGIN_LENGTH = 50;
     private static final int EMAIL_MAX_LENGTH = 254;
 
-    private String uuid;
+    private UUID id;
     private String login;
     private String password;
     private String email;
-    private Byte roleId;
+    private Role role;
 
     public User() {
 
@@ -31,15 +38,12 @@ public class User implements Identified<String> {
     }
 
     @Override
-    public String getId() {
-        return uuid;
+    public UUID getId() {
+        return id;
     }
 
-    public void setId(String uuid) throws IllegalArgumentException {
-        if (uuid.length() != UUID_DEFAULT_LENGTH) {
-            throw new IllegalArgumentException("Invalid uuid length: " + uuid.length());
-        }
-        this.uuid = uuid;
+    public void setId(UUID id) throws IllegalArgumentException {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -75,13 +79,12 @@ public class User implements Identified<String> {
         this.email = email;
     }
 
-    public Byte getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    /*TODO decide whether is right to check here*/
-    public void setRoleId(Byte roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -89,15 +92,15 @@ public class User implements Identified<String> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(uuid, user.uuid) &&
+        return Objects.equals(id, user.id) &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(roleId, user.roleId);
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, login, password, email, roleId);
+        return Objects.hash(id, login, password, email, role);
     }
 }

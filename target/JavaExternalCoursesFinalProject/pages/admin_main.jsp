@@ -12,7 +12,7 @@ ADMIN
 <form action="/app/admin_add_periodical">
     <input type="submit" value="add periodical"/>
 </form>
-<form action="/app/admin_users">
+<form action="/app/admin_users_edit">
     <input type="submit" value="see users"/>
 </form>
 </body>

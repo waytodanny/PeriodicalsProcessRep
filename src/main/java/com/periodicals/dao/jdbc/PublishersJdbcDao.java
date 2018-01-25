@@ -3,50 +3,68 @@ package com.periodicals.dao.jdbc;
 import com.periodicals.dao.interfaces.PublishersDao;
 import com.periodicals.entities.Publisher;
 import com.periodicals.exceptions.DaoException;
+import com.periodicals.utils.propertyManagers.AttributesPropertyManager;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> implements PublishersDao {
+import static com.periodicals.utils.resourceHolders.JdbcQueriesHolder.*;
+
+public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, UUID> implements PublishersDao {
+    private static final String ID = AttributesPropertyManager.getProperty("publisher.id");
+    private static final String NAME = AttributesPropertyManager.getProperty("publisher.name");
 
     @Override
-    public String getSelectQuery() {
-        return "SELECT id, name FROM publishers ";
+    public void createEntity(Publisher publisher) throws DaoException {
+        super.insert(PUBLISHER_INSERT, getInsertObjectParams(publisher));
     }
 
     @Override
-    public String getInsertQuery() {
-        return "INSERT INTO publishers (name) VALUES (?);";
+    public Publisher getEntityByPrimaryKey(UUID id) throws DaoException {
+        return super.selectObject(PUBLISHER_SELECT_BY_ID, id.toString());
     }
 
     @Override
-    public String getUpdateQuery() {
-        return "UPDATE publishers SET name = ? WHERE id = ?;";
+    public void updateEntity(Publisher object) throws DaoException {
+        super.update(PUBLISHER_UPDATE, getObjectUpdateParams(object));
     }
 
     @Override
-    public String getDeleteQuery() {
-        return "DELETE FROM publishers WHERE id = ?;";
+    public void deleteEntity(Publisher entity) throws DaoException {
+        super.delete(PUBLISHER_DELETE, entity.getId());
     }
 
     @Override
-    public Integer getGeneratedKey(ResultSet rs) throws DaoException {
-        try {
-            if (rs.next()){
-                return rs.getInt(1);
-            }
-            throw new SQLException("entry was not written in DB");
-        } catch (SQLException e) {
-            throw new DaoException("No keys were generated: " + e.getMessage());
-        }
+    public List<Publisher> getEntityCollection() throws DaoException {
+        return super.selectObjects(PUBLISHER_SELECT_ALL);
     }
 
     @Override
-    protected void setGeneratedKey(Publisher object, Integer genId) {
-        object.setId(genId);
+    public List<Publisher> getEntitiesListBounded(int skip, int limit) throws DaoException {
+        return super.selectObjects(PUBLISHER_SELECT_SUBLIST);
+    }
+
+    @Override
+    public int getEntitiesCount() throws DaoException {
+        return super.getEntriesCount(PUBLISHER_ENTRIES_COUNT);
+    }
+
+    @Override
+    protected Object[] getInsertObjectParams(Publisher publisher) {
+        return new Object[]{
+                publisher.getId().toString(),
+                publisher.getName()
+        };
+    }
+
+    @Override
+    protected Object[] getObjectUpdateParams(Publisher publisher) {
+        return new Object[]{
+                publisher.getName(),
+                publisher.getId().toString()
+        };
     }
 
     @Override
@@ -54,40 +72,15 @@ public class PublishersJdbcDao extends AbstractJdbcDao<Publisher, Integer> imple
         List<Publisher> result = new ArrayList<>();
         try {
             while (rs.next()) {
-                PersistPublisher publ = new PersistPublisher();
-                publ.setId(rs.getInt("id"));
-                publ.setName(rs.getString("name"));
+                Publisher publisher = new Publisher();
+                publisher.setId(UUID.fromString(rs.getString(ID)));
+                publisher.setName(rs.getString(NAME));
 
-                result.add(publ);
+                result.add(publisher);
             }
         } catch (Exception e) {
             throw new DaoException(e);
         }
         return result;
-    }
-
-    @Override
-    protected void prepareStatementForInsert(PreparedStatement stmt, Publisher publ) throws DaoException {
-        try {
-            stmt.setString(1, publ.getName());
-        } catch (Exception e) {
-            throw new DaoException(e);
-        }
-    }
-
-    @Override
-    protected void prepareStatementForUpdate(PreparedStatement stmt, Publisher publ) throws DaoException {
-        try {
-            stmt.setString(1, publ.getName());
-            stmt.setInt(2, publ.getId());
-        } catch (Exception e) {
-            throw new DaoException(e);
-        }
-    }
-
-    private class PersistPublisher extends Publisher {
-        public void setId(int id) {
-            super.setId(id);
-        }
     }
 }

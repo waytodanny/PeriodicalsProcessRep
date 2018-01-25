@@ -2,7 +2,7 @@
 //
 //import com.periodicals.dao.interfaces.GenericDao;
 //import com.periodicals.entities.util.Identified;
-//import dbTestHelpers.InMemoryDbManager;
+//import util.InMemoryDbManager;
 //import org.apache.log4j.LogManager;
 //import org.apache.log4j.Logger;
 //import org.apache.log4j.xml.DOMConfigurator;
@@ -39,7 +39,7 @@
 //    }
 //
 //    @Test
-//    void getAll() {
+//    void getAllGenres() {
 //    }
 //
 //    @Test

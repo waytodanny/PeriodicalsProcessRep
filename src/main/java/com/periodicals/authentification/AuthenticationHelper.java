@@ -1,28 +1,37 @@
 package com.periodicals.authentification;
 
-import com.periodicals.dto.UserDto;
-import com.periodicals.entities.Role;
-import com.periodicals.services.RoleService;
+import com.periodicals.entities.User;
+import com.periodicals.services.lookups.RoleService;
 
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
+import java.util.UUID;
 
-import static com.periodicals.utils.AttributesHolder.ROLE_ADMIN;
-import static com.periodicals.utils.AttributesHolder.USER;
-
-/*TODO преесмотреть создание статик админ*/
+/**
+ * Class that contains methods that help to get some authentication info from session
+ */
 public class AuthenticationHelper {
-    private static Role adminRole = RoleService.getInstance().getRole(ROLE_ADMIN);
+    private static final String ATTR_USER = "user";
+
+    private static final UUID ADMIN_ID = RoleService.ADMIN_ROLE_ID;
+
+    public static User getUserFromSession(HttpSession session) {
+        return (User) session.getAttribute(ATTR_USER);
+    }
 
     public static boolean isUserLoggedIn(HttpSession session) {
-        UserDto user = (UserDto) session.getAttribute(USER);
+        User user = getUserFromSession(session);
         return Objects.nonNull(user);
     }
 
-    public static boolean isAdmin(HttpSession session) {
-        UserDto user = (UserDto) session.getAttribute(USER);
+    public static boolean isSessionUserAdmin(HttpSession session) {
+        User user = getUserFromSession(session);
+        return isAdmin(user);
+    }
+
+    private static boolean isAdmin(User user) {
         return Objects.nonNull(user) &&
                 Objects.nonNull(user.getRole()) &&
-                user.getRole().getName().equals(adminRole.getName());
+                user.getRole().getId().equals(ADMIN_ID);
     }
 }

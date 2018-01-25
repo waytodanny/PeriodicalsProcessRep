@@ -4,45 +4,43 @@ import com.periodicals.entities.util.Identified;
 
 import java.sql.Date;
 import java.util.Objects;
+import java.util.UUID;
 
-public class PeriodicalIssue implements Identified<Long> {
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents periodical issue
+ * @see Periodical
+ */
+public class PeriodicalIssue implements Identified<UUID> {
     private static final int ISSUE_NAME_MAX_LENGTH = 100;
 
-    private Long id;
-    private Integer issueNo;
+    private UUID id;
+    private int issueNo;
     private String name;
     private Date publishDate;
-    private Integer periodicalId;
+    private Periodical periodical;
 
     public PeriodicalIssue() {
 
     }
 
-    public PeriodicalIssue(String name, int periodicalId) throws IllegalArgumentException {
-        this();
-        setName(name);
-        setPeriodicalId(periodicalId);
-    }
-
     @Override
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) throws IllegalArgumentException {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
-        }
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Integer getIssueNo() {
+    public int getIssueNo() {
         return issueNo;
     }
 
-    public void setIssueNo(int issueNo) {
+    public void setIssueNo(int issueNo) throws IllegalArgumentException {
         if (issueNo <= 0) {
-            throw new IllegalArgumentException("number of issue must be greater than 0");
+            throw new IllegalArgumentException("Number of issue must be greater than 0");
         }
         this.issueNo = issueNo;
     }
@@ -59,13 +57,13 @@ public class PeriodicalIssue implements Identified<Long> {
         this.name = name;
     }
 
-    public Integer getPeriodicalId() {
-        return periodicalId;
+    public Periodical getPeriodical() {
+        return periodical;
     }
 
     /*TODO decide whether is right to check here*/
-    public void setPeriodicalId(Integer periodicalId) {
-        this.periodicalId = periodicalId;
+    public void setPeriodical(Periodical periodical) {
+        this.periodical = periodical;
     }
 
     public Date getPublishDate() {
@@ -82,15 +80,15 @@ public class PeriodicalIssue implements Identified<Long> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PeriodicalIssue that = (PeriodicalIssue) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(issueNo, that.issueNo) &&
+        return issueNo == that.issueNo &&
+                Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(publishDate, that.publishDate) &&
-                Objects.equals(periodicalId, that.periodicalId);
+                Objects.equals(periodical, that.periodical);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, issueNo, name, publishDate, periodicalId);
+        return Objects.hash(id, issueNo, name, publishDate, periodical);
     }
 }

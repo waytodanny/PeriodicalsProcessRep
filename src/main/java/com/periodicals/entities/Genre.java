@@ -3,31 +3,28 @@ package com.periodicals.entities;
 import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class Genre implements Identified<Short> {
+/**
+ * @author Daniel Volnitsky
+ * Class that represents periodical genre
+ */
+public class Genre implements Identified<UUID> {
     private static final int GENRE_NAME_MAX_LENGTH = 100;
 
-    private Short id;
+    private UUID id;
     private String name;
 
     public Genre() {
 
     }
 
-    public Genre(String name) throws IllegalArgumentException {
-        this();
-        this.name = name;
-    }
-
     @Override
-    public Short getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Short id) throws IllegalArgumentException {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
-        }
+    public void setId(UUID id) throws IllegalArgumentException {
         this.id = id;
     }
 
@@ -46,10 +43,10 @@ public class Genre implements Identified<Short> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Genre)) return false;
-        Genre that = (Genre) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name);
+        if (o == null || getClass() != o.getClass()) return false;
+        Genre genre = (Genre) o;
+        return Objects.equals(id, genre.id) &&
+                Objects.equals(name, genre.name);
     }
 
     @Override

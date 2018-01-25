@@ -3,33 +3,35 @@ package com.periodicals.entities;
 import com.periodicals.entities.util.Identified;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class Role implements Identified<Byte> {
+/**
+ * @author Daniel Volnitsky
+ * <p>
+ * Class that represents user role in system
+ */
+public class Role implements Identified<UUID> {
     private static final int MAX_ROLE_NAME_LENGTH = 50;
 
-    private Byte id;
+    private UUID id;
     private String name;
 
     public Role() {
 
     }
 
-    public Role(String name) throws IllegalArgumentException {
-        this();
+    public Role(UUID id, String name) throws IllegalArgumentException {
+        setId(id);
         setName(name);
     }
 
     @Override
-    public Byte getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(byte id) throws IllegalArgumentException  {
-        if (id <= 0) {
-            throw new IllegalArgumentException("Id must be greater than 0");
-        }
+    public void setId(UUID id) throws IllegalArgumentException {
         this.id = id;
-
     }
 
     public String getName() {
